@@ -1,0 +1,9 @@
+import { injectable } from 'inversify-props';
+import { <%= iName %> } from '<%= interfacePath %>';
+
+@injectable()
+class <%= className %> implements <%= iName %> {
+
+}
+
+export default <%= className %>
