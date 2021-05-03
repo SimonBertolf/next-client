@@ -1,0 +1,8 @@
+import { container, cid } from 'inversify-props';
+import { <%= iName %> } from "@/services";
+
+const <%= instance %>: <%= iName %> = container.get<<%= iName %>>(cid.<%= iName %>);
+
+test('should do something', () => {
+    expect<<%= iName %>>(<%= instance %>).toBeDefined();
+});

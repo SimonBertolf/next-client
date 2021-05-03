@@ -1,0 +1,18 @@
+import { TemplateInterface } from '@/types';
+import { <%= cmp %> } from '@/components/<%= module %>';
+
+export default {
+  title: '<%= module %>/<%= cmp %>',
+  component: <%= cmp %>,
+};
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
+  props: Object.keys(argTypes),
+  components: { <%= cmp %> },
+  template: '<<%= cmp %>></<%= cmp %>>',
+});
+
+export const Example = Template.bind({});
+
+Example.args = {};

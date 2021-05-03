@@ -1,0 +1,3635 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots app/BackButton Example 1`] = `
+<a
+  class="fixed left-4 top-5"
+  custom=""
+  href="#/"
+>
+  <i
+    aria-label="icon: left"
+    class="anticon anticon-left"
+  >
+    <svg
+      aria-hidden="true"
+      class=""
+      data-icon="left"
+      fill="currentColor"
+      focusable="false"
+      height="1em"
+      viewBox="64 64 896 896"
+      width="1em"
+    >
+      <path
+        d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+      />
+    </svg>
+  </i>
+</a>
+`;
+
+exports[`Storyshots app/ButtonAbort Example 1`] = `
+<button
+  class="ant-btn ant-btn-primary button-primary"
+  type="button"
+>
+  <span>
+    abort
+  </span>
+</button>
+`;
+
+exports[`Storyshots app/ButtonAdd Example 1`] = `
+<button
+  class="ant-btn ant-btn-primary ant-btn-lg button-secondary"
+  type="button"
+>
+  <i
+    aria-label="icon: plus-circle"
+    class="anticon anticon-plus-circle"
+  >
+    <svg
+      aria-hidden="true"
+      class=""
+      data-icon="plus-circle"
+      fill="currentColor"
+      focusable="false"
+      height="1em"
+      viewBox="64 64 896 896"
+      width="1em"
+    >
+      <path
+        d="M696 480H544V328c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v152H328c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h152v152c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8V544h152c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8z"
+      />
+      <path
+        d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"
+      />
+    </svg>
+  </i>
+  <span>
+    add something
+  </span>
+</button>
+`;
+
+exports[`Storyshots app/ButtonBase Example 1`] = `
+<button
+  class="ant-btn ant-btn-primary button-primary"
+  type="button"
+>
+  <span>
+    Example
+  </span>
+</button>
+`;
+
+exports[`Storyshots app/ButtonEdit Example 1`] = `
+<button
+  class="button-edit ant-btn ant-btn-circle ant-btn-icon-only"
+  type="button"
+>
+  <i
+    aria-label="icon: edit"
+    class="anticon anticon-edit"
+  >
+    <svg
+      aria-hidden="true"
+      class=""
+      data-icon="edit"
+      fill="currentColor"
+      focusable="false"
+      height="1em"
+      viewBox="64 64 896 896"
+      width="1em"
+    >
+      <path
+        d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+      />
+    </svg>
+  </i>
+</button>
+`;
+
+exports[`Storyshots app/ButtonSave Example 1`] = `
+<form>
+  <button
+    class="ant-btn ant-btn-primary button-secondary"
+    type="submit"
+  >
+    <span>
+      save
+    </span>
+  </button>
+</form>
+`;
+
+exports[`Storyshots app/ButtonToggle Example 1`] = `
+<div
+  style="display: flex; background-color: lightgray; padding: 5px;"
+>
+  <div
+    class="transform transition-all duration-500 h-64 ease-in-out bg-primary w-0"
+  />
+   
+  <button
+    class="transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-0"
+    style="height: 3.125rem;"
+  >
+    <span
+      class="flex inline-block transform transition-all duration-200 ease-in-out self-center rotate-0"
+    >
+      <i
+        aria-label="icon: right"
+        class="anticon anticon-right"
+        style="color: rgb(156, 163, 175);"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          data-icon="right"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Storyshots app/ButtonToggleMobile Example 1`] = `
+<button
+  class="button-toggle-mobile ant-btn ant-btn-circle ant-btn-lg ant-btn-icon-only"
+  type="button"
+>
+  <i
+    aria-label="icon: menu"
+    class="anticon anticon-menu"
+  >
+    <svg
+      aria-hidden="true"
+      class=""
+      data-icon="menu"
+      fill="currentColor"
+      focusable="false"
+      height="1em"
+      viewBox="64 64 896 896"
+      width="1em"
+    >
+      <path
+        d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z"
+      />
+    </svg>
+  </i>
+</button>
+`;
+
+exports[`Storyshots app/Card Example 1`] = `
+<div
+  class="bg-background"
+  style="width: 500px; height: 500px; padding: 10px;"
+>
+  <div
+    class="ant-card ant-card-bordered card card-full-size card-padding"
+  >
+    <div
+      class="ant-card-head"
+    >
+      <div
+        class="ant-card-head-wrapper"
+      >
+        <div
+          class="ant-card-head-title"
+        >
+          Example Title
+        </div>
+      </div>
+    </div>
+    <div
+      class="ant-card-body"
+      style="flex-grow: 1; overflow-y: auto;"
+    >
+         
+      <div>
+        some content
+      </div>
+    </div>
+    <ul
+      class="ant-card-actions"
+    >
+      <li
+        style="width: 100%;"
+      >
+        <span>
+          <button>
+            example
+          </button>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/ColumnLayout Example 1`] = `
+<div
+  class="flex flex-row flex-wrap"
+>
+  <div
+    class="w-8 bg-primary"
+  >
+    0
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    1
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    2
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    3
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    4
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    5
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    6
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    7
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    8
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    9
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    10
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    11
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    12
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    13
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    14
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    15
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    16
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    17
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    18
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    19
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    20
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    21
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    22
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    23
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    24
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    25
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    26
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    27
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    28
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    29
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    30
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    31
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    32
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    33
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    34
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    35
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    36
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    37
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    38
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    39
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    40
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    41
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    42
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    43
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    44
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    45
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    46
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    47
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    48
+  </div>
+  <div
+    class="w-8 bg-primary"
+  >
+    49
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/Descriptions Example 1`] = `
+<div
+  class="ant-descriptions ant-descriptions-small"
+>
+  <div
+    class="ant-descriptions-view"
+  >
+    <table>
+      <tbody>
+        <tr
+          class="ant-descriptions-row"
+        >
+          <td
+            class="ant-descriptions-item"
+            colspan="1"
+          >
+            <span
+              class="ant-descriptions-item-label ant-descriptions-item-colon"
+            >
+              label 1
+            </span>
+            <span
+              class="ant-descriptions-item-content"
+            >
+              
+    value 1
+  
+            </span>
+          </td>
+          <td
+            class="ant-descriptions-item"
+            colspan="1"
+          >
+            <span
+              class="ant-descriptions-item-label ant-descriptions-item-colon"
+            >
+              label 2
+            </span>
+            <span
+              class="ant-descriptions-item-content"
+            >
+              
+    value 2
+  
+            </span>
+          </td>
+          <td
+            class="ant-descriptions-item"
+            colspan="1"
+          >
+            <span
+              class="ant-descriptions-item-label ant-descriptions-item-colon"
+            >
+              label 2
+            </span>
+            <span
+              class="ant-descriptions-item-content"
+            >
+              
+    value 2
+  
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/FormInline Example 1`] = `
+<form
+  class="ant-form ant-form-inline"
+/>
+`;
+
+exports[`Storyshots app/InfiniteScroll Example 1`] = `
+<div
+  style="height: 300px; overflow: auto;"
+>
+  <div
+    infinite-scroll-distance="10"
+  >
+    <ul />
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/Layout Example 1`] = `
+<section
+  class="h-screen bg-background root-layout ant-layout"
+>
+  <span
+    class="md:hidden"
+  >
+    <div
+      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+    />
+  </span>
+   
+  <aside
+    class="ant-layout-sider ant-layout-sider-dark a-layout-slider a-layout-slider-open"
+    style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+  >
+    <div
+      class="ant-layout-sider-children"
+    >
+      <div
+        class="flex flex-col h-full"
+      >
+        <div
+          class="flex-grow sm:flex-grow-0 sm:block sm:h-12 m-4"
+        />
+         
+        <ul
+          class="nav-menu ant-menu ant-menu-inline ant-menu-root ant-menu-light"
+          role="menu"
+        >
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/reports"
+            >
+              Reports
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/planing"
+            >
+              Planing
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="active-link"
+              custom=""
+              href="#/"
+            >
+              Assets
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/dashboard"
+            >
+              Dashboard
+            </a>
+          </li>
+        </ul>
+         
+        <button
+          class="button-toggle-mobile sm:hidden ant-btn ant-btn-circle ant-btn-lg ant-btn-icon-only"
+          type="button"
+        >
+          <i
+            aria-label="icon: close"
+            class="anticon anticon-close"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="close"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+              />
+            </svg>
+          </i>
+        </button>
+         
+        <div
+          class="w-full h-36"
+        />
+      </div>
+    </div>
+  </aside>
+   
+  <button
+    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
+    style="height: 3.125rem;"
+  >
+    <span
+      class="flex inline-block transform transition-all duration-200 ease-in-out self-center rotate-180"
+    >
+      <i
+        aria-label="icon: right"
+        class="anticon anticon-right"
+        style="color: rgb(156, 163, 175);"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          data-icon="right"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+   
+  <section
+    class="bg-background ant-layout"
+  >
+    <section
+      class="container mx-auto p-0 sm:p-4 bg-background ant-layout"
+    >
+      <header
+        class="layout-header ant-layout-header"
+      >
+        my header
+      </header>
+       
+      <main
+        class="bg-background ant-layout-content"
+      >
+        <div
+          class="sm:hidden h-20"
+        />
+         my content
+      </main>
+    </section>
+  </section>
+</section>
+`;
+
+exports[`Storyshots app/Modal Example 1`] = `
+<div>
+  <div />
+</div>
+`;
+
+exports[`Storyshots app/NavMenu Example 1`] = `
+<ul
+  class="nav-menu ant-menu ant-menu-inline ant-menu-root ant-menu-light"
+  role="menu"
+>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="inactive-link"
+      custom=""
+      href="#/reports"
+    >
+      Reports
+    </a>
+  </li>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="inactive-link"
+      custom=""
+      href="#/planing"
+    >
+      Planing
+    </a>
+  </li>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="active-link"
+      custom=""
+      href="#/"
+    >
+      Assets
+    </a>
+  </li>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="inactive-link"
+      custom=""
+      href="#/dashboard"
+    >
+      Dashboard
+    </a>
+  </li>
+</ul>
+`;
+
+exports[`Storyshots app/NavMenuItem Example 1`] = `
+<a
+  class="active-link"
+  custom=""
+  href="#/"
+>
+  Home
+</a>
+`;
+
+exports[`Storyshots app/Overlay Absolute 1`] = `
+<div
+  style="width: 100%; height: 100%; position: relative;"
+>
+  <div
+    style="border: 1px solid black; position: relative;"
+  >
+    <div
+      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 absolute"
+    />
+     
+    <div
+      style="position: relative;"
+    >
+      hey bro
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/Overlay Full Screen 1`] = `
+<div
+  style="width: 100%; height: 100%; position: relative;"
+>
+  <div
+    style="border: 1px solid black; position: relative;"
+  >
+    <div
+      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+    />
+     
+    <div
+      style="position: relative;"
+    >
+      hey bro
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/PrimaryList Example 1`] = `
+<div
+  class="ant-list ant-list-split ant-list-grid"
+>
+  <div
+    class="ant-spin-nested-loading"
+  >
+    <div
+      class="ant-spin-container"
+    >
+      <div
+        class="ant-row"
+        style="margin-left: -8px; margin-right: -8px;"
+      >
+        <div
+          class="ant-col ant-col-xs-24"
+          style="padding-left: 8px; padding-right: 8px;"
+        >
+          <div
+            class="ant-list-item"
+          >
+            <div>
+              data 1
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-xs-24"
+          style="padding-left: 8px; padding-right: 8px;"
+        >
+          <div
+            class="ant-list-item"
+          >
+            <div>
+              data 2
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-xs-24"
+          style="padding-left: 8px; padding-right: 8px;"
+        >
+          <div
+            class="ant-list-item"
+          >
+            <div>
+              data 3
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-xs-24"
+          style="padding-left: 8px; padding-right: 8px;"
+        >
+          <div
+            class="ant-list-item"
+          >
+            <div>
+              data 4
+            </div>
+          </div>
+        </div>
+        <div
+          class="ant-col ant-col-xs-24"
+          style="padding-left: 8px; padding-right: 8px;"
+        >
+          <div
+            class="ant-list-item"
+          >
+            <div>
+              data 5
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/PrimaryListItem Example 1`] = `
+<div
+  class="ant-card ant-card-bordered"
+>
+  <div
+    class="ant-card-body"
+    style="display: flex; position: relative; flex-direction: row;"
+  >
+    <div
+      class="ant-descriptions ant-descriptions-small"
+    >
+      <div
+        class="ant-descriptions-view"
+      >
+        <table>
+          <tbody>
+            <tr
+              class="ant-descriptions-row"
+            >
+              <td
+                class="ant-descriptions-item"
+                colspan="1"
+              >
+                <span
+                  class="ant-descriptions-item-label ant-descriptions-item-colon"
+                >
+                  label 1
+                </span>
+                <span
+                  class="ant-descriptions-item-content"
+                >
+                  
+    value 1
+  
+                </span>
+              </td>
+              <td
+                class="ant-descriptions-item"
+                colspan="1"
+              >
+                <span
+                  class="ant-descriptions-item-label ant-descriptions-item-colon"
+                >
+                  label 2
+                </span>
+                <span
+                  class="ant-descriptions-item-content"
+                >
+                  
+    value 2
+  
+                </span>
+              </td>
+              <td
+                class="ant-descriptions-item"
+                colspan="1"
+              >
+                <span
+                  class="ant-descriptions-item-label ant-descriptions-item-colon"
+                >
+                  label 2
+                </span>
+                <span
+                  class="ant-descriptions-item-content"
+                >
+                  
+    value 2
+  
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/PrimaryListItemLink Example 1`] = `
+<a
+  aria-current="page"
+  class="router-link-exact-active router-link-active"
+  href="#/"
+>
+  <div
+    class="ant-card ant-card-bordered"
+  >
+    <div
+      class="ant-card-body"
+      style="display: flex; position: relative; flex-direction: row;"
+    >
+      <div
+        class="ant-descriptions ant-descriptions-small"
+      >
+        <div
+          class="ant-descriptions-view"
+        >
+          <table>
+            <tbody>
+              <tr
+                class="ant-descriptions-row"
+              >
+                <td
+                  class="ant-descriptions-item"
+                  colspan="1"
+                >
+                  <span
+                    class="ant-descriptions-item-label ant-descriptions-item-colon"
+                  >
+                    label 1
+                  </span>
+                  <span
+                    class="ant-descriptions-item-content"
+                  >
+                    
+    value 1
+  
+                  </span>
+                </td>
+                <td
+                  class="ant-descriptions-item"
+                  colspan="2"
+                >
+                  <span
+                    class="ant-descriptions-item-label ant-descriptions-item-colon"
+                  >
+                    label 2
+                  </span>
+                  <span
+                    class="ant-descriptions-item-content"
+                  >
+                    
+    value 2
+  
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+       
+      <span
+        class="self-center"
+      >
+        <button
+          class="button-edit ant-btn ant-btn-circle ant-btn-icon-only"
+          type="button"
+        >
+          <i
+            aria-label="icon: edit"
+            class="anticon anticon-edit"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="edit"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M257.7 752c2 0 4-.2 6-.5L431.9 722c2-.4 3.9-1.3 5.3-2.8l423.9-423.9a9.96 9.96 0 0 0 0-14.1L694.9 114.9c-1.9-1.9-4.4-2.9-7.1-2.9s-5.2 1-7.1 2.9L256.8 538.8c-1.5 1.5-2.4 3.3-2.8 5.3l-29.5 168.2a33.5 33.5 0 0 0 9.4 29.8c6.6 6.4 14.9 9.9 23.8 9.9zm67.4-174.4L687.8 215l73.3 73.3-362.7 362.6-88.9 15.7 15.6-89zM880 836H144c-17.7 0-32 14.3-32 32v36c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-36c0-17.7-14.3-32-32-32z"
+              />
+            </svg>
+          </i>
+        </button>
+      </span>
+    </div>
+  </div>
+</a>
+`;
+
+exports[`Storyshots app/RouteLocalized Example 1`] = `
+<a
+  aria-current="page"
+  class="router-link-exact-active router-link-active"
+  href="#/"
+>
+  example link
+</a>
+`;
+
+exports[`Storyshots app/Skeleton Example 1`] = `
+<div
+  class="ant-skeleton ant-skeleton-active"
+>
+  <div
+    class="ant-skeleton-content"
+  >
+    <h3
+      class="ant-skeleton-title"
+      style="width: 38%;"
+    />
+    <ul
+      class="ant-skeleton-paragraph"
+    >
+      <li />
+      <li />
+      <li
+        style="width: 61%;"
+      />
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/Tabs Example 1`] = `
+<div
+  style="max-width: 300px;"
+>
+  <div
+    class="font-primary text-dark ant-tabs ant-tabs-top ant-tabs-line"
+  >
+    <div
+      class="ant-tabs-bar ant-tabs-top-bar"
+      role="tablist"
+      style="text-align: center; font-size: 20px;"
+      tabindex="0"
+    >
+      <div
+        class="ant-tabs-nav-container"
+      >
+        <span
+          class="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"
+          unselectable="unselectable"
+        >
+          <span
+            class="ant-tabs-tab-prev-icon"
+          >
+            <i
+              aria-label="icon: left"
+              class="anticon anticon-left ant-tabs-tab-prev-icon-target"
+            >
+              <svg
+                aria-hidden="true"
+                class=""
+                data-icon="left"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+                />
+              </svg>
+            </i>
+          </span>
+        </span>
+        <span
+          class="ant-tabs-tab-next ant-tabs-tab-btn-disabled"
+          unselectable="unselectable"
+        >
+          <span
+            class="ant-tabs-tab-next-icon"
+          >
+            <i
+              aria-label="icon: right"
+              class="anticon anticon-right ant-tabs-tab-next-icon-target"
+            >
+              <svg
+                aria-hidden="true"
+                class=""
+                data-icon="right"
+                fill="currentColor"
+                focusable="false"
+                height="1em"
+                viewBox="64 64 896 896"
+                width="1em"
+              >
+                <path
+                  d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+                />
+              </svg>
+            </i>
+          </span>
+        </span>
+        <div
+          class="ant-tabs-nav-wrap"
+        >
+          <div
+            class="ant-tabs-nav-scroll"
+          >
+            <div
+              class="ant-tabs-nav ant-tabs-nav-animated"
+            >
+              <div>
+                <div
+                  aria-disabled="false"
+                  aria-selected="true"
+                  class="ant-tabs-tab-active ant-tabs-tab"
+                  role="tab"
+                >
+                  tab 0
+                </div>
+                <div
+                  aria-disabled="false"
+                  aria-selected="false"
+                  class=" ant-tabs-tab"
+                  role="tab"
+                >
+                  tab 1
+                </div>
+                <div
+                  aria-disabled="false"
+                  aria-selected="false"
+                  class=" ant-tabs-tab"
+                  role="tab"
+                >
+                  tab 2
+                </div>
+              </div>
+              <div
+                class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      role="presentation"
+      style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+      tabindex="0"
+    />
+    <div
+      class="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content"
+      style="margin-left: 0%;"
+    >
+      <div
+        aria-hidden="false"
+        class="ant-tabs-tabpane ant-tabs-tabpane-active"
+        role="tabpanel"
+      >
+        <div
+          role="presentation"
+          style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+          tabindex="0"
+        />
+        
+          content of tab 0
+        
+        <div
+          role="presentation"
+          style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+          tabindex="0"
+        />
+      </div>
+      <div
+        aria-hidden="true"
+        class="ant-tabs-tabpane ant-tabs-tabpane-inactive"
+        role="tabpanel"
+      />
+      <div
+        aria-hidden="true"
+        class="ant-tabs-tabpane ant-tabs-tabpane-inactive"
+        role="tabpanel"
+      />
+    </div>
+    <div
+      role="presentation"
+      style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+      tabindex="0"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/YearPicker Example 1`] = `
+<span
+  class="w-full ant-calendar-picker"
+>
+  <div
+    class=""
+  >
+    <input
+      class="ant-calendar-picker-input ant-input"
+      placeholder="select year"
+      readonly="true"
+    />
+    <i
+      aria-label="icon: calendar"
+      class="anticon anticon-calendar ant-calendar-picker-icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        data-icon="calendar"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        viewBox="64 64 896 896"
+        width="1em"
+      >
+        <path
+          d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"
+        />
+      </svg>
+    </i>
+  </div>
+</span>
+`;
+
+exports[`Storyshots assets/AssetTabs Example 1`] = `
+<div
+  class="font-primary text-dark ant-tabs ant-tabs-top ant-tabs-line"
+>
+  <div
+    class="ant-tabs-bar ant-tabs-top-bar"
+    role="tablist"
+    style="text-align: center; font-size: 20px;"
+    tabindex="0"
+  >
+    <div
+      class="ant-tabs-nav-container"
+    >
+      <span
+        class="ant-tabs-tab-prev ant-tabs-tab-btn-disabled"
+        unselectable="unselectable"
+      >
+        <span
+          class="ant-tabs-tab-prev-icon"
+        >
+          <i
+            aria-label="icon: left"
+            class="anticon anticon-left ant-tabs-tab-prev-icon-target"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="left"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 0 0 0 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <span
+        class="ant-tabs-tab-next ant-tabs-tab-btn-disabled"
+        unselectable="unselectable"
+      >
+        <span
+          class="ant-tabs-tab-next-icon"
+        >
+          <i
+            aria-label="icon: right"
+            class="anticon anticon-right ant-tabs-tab-next-icon-target"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="right"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+              />
+            </svg>
+          </i>
+        </span>
+      </span>
+      <div
+        class="ant-tabs-nav-wrap"
+      >
+        <div
+          class="ant-tabs-nav-scroll"
+        >
+          <div
+            class="ant-tabs-nav ant-tabs-nav-animated"
+          >
+            <div>
+              <div
+                aria-disabled="false"
+                aria-selected="true"
+                class="ant-tabs-tab-active ant-tabs-tab"
+                role="tab"
+              >
+                Basic Data
+              </div>
+              <div
+                aria-disabled="false"
+                aria-selected="false"
+                class=" ant-tabs-tab"
+                role="tab"
+              >
+                Attributes
+              </div>
+            </div>
+            <div
+              class="ant-tabs-ink-bar ant-tabs-ink-bar-animated"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    role="presentation"
+    style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+    tabindex="0"
+  />
+  <div
+    class="ant-tabs-content ant-tabs-content-animated ant-tabs-top-content"
+    style="margin-left: 0%;"
+  >
+    <div
+      aria-hidden="false"
+      class="tab-pane ant-tabs-tabpane ant-tabs-tabpane-active"
+      role="tabpanel"
+    >
+      <div
+        role="presentation"
+        style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+        tabindex="0"
+      />
+      <div
+        class="gap-4 sm:gap-8 sm:p-8 flex-col-reverse sm:flex-row sm:flex-nowrap flex flex-row flex-wrap"
+      >
+        <div
+          class="w-full flex flex-col flex-wrap gap-6"
+          style="flex-grow: 1;"
+        >
+          <h6
+            class="font-bold font-primary text-3xl hidden sm:block"
+          >
+            Keyfigures
+          </h6>
+           
+          <div
+            class="sm:gap-8 flex flex-row flex-wrap justify-between"
+            style="flex-grow: 1;"
+          />
+        </div>
+         
+        <div
+          class="px-4 sm:p-0 w-full flex flex-row flex-wrap"
+          style="flex-grow: 1;"
+        >
+          <div
+            class="w-full bg-primary flex justify-center items-center text-neutral"
+            style="min-height: 100px; min-width: 200px;"
+          >
+            
+      Images
+    
+          </div>
+        </div>
+      </div>
+      <div
+        role="presentation"
+        style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+        tabindex="0"
+      />
+    </div>
+    <div
+      aria-hidden="true"
+      class="tab-pane ant-tabs-tabpane ant-tabs-tabpane-inactive"
+      role="tabpanel"
+    />
+  </div>
+  <div
+    role="presentation"
+    style="width: 0px; height: 0px; overflow: hidden; position: absolute;"
+    tabindex="0"
+  />
+</div>
+`;
+
+exports[`Storyshots assets/BasicData Example 1`] = `
+<div
+  class="gap-4 sm:gap-8 sm:p-8 flex-col-reverse sm:flex-row sm:flex-nowrap flex flex-row flex-wrap"
+>
+  <div
+    class="w-full flex flex-col flex-wrap gap-6"
+    style="flex-grow: 1;"
+  >
+    <h6
+      class="font-bold font-primary text-3xl hidden sm:block"
+    >
+      Keyfigures
+    </h6>
+     
+    <div
+      class="sm:gap-8 flex flex-row flex-wrap justify-between"
+      style="flex-grow: 1;"
+    />
+  </div>
+   
+  <div
+    class="px-4 sm:p-0 w-full flex flex-row flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <div
+      class="w-full bg-primary flex justify-center items-center text-neutral"
+      style="min-height: 100px; min-width: 200px;"
+    >
+      
+      Images
+    
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots assets/KpiItem Example 1`] = `
+<div
+  class="flex flex-row flex-wrap gap-x-2 justify-between"
+  style="flex-grow: 1;"
+>
+  <div
+    class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+  >
+    Example
+  </div>
+   
+  <div
+    class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+  >
+    5'949'302
+  </div>
+</div>
+`;
+
+exports[`Storyshots assets/KpiList Example 1`] = `
+<div
+  class="flex flex-row flex-wrap gap-8 justify-between"
+  style="flex-grow: 1;"
+>
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+   
+  <div
+    class="flex flex-col flex-wrap"
+    style="flex-grow: 1;"
+  >
+    <h4
+      class="text-subTitle font-primary text-base"
+    >
+      Example Kpis
+    </h4>
+     
+    <div
+      class="my-4 ant-divider ant-divider-horizontal"
+      role="separator"
+    />
+     
+    <div
+      class="flex flex-col flex-wrap gap-4"
+      style="flex-grow: 1;"
+    >
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-0
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-1
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-2
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100%
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-3
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-4
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-5
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          100
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-6
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-7
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-8
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          1'000'000'001
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-9
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-10
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap gap-x-2 justify-between"
+        style="flex-grow: 1;"
+      >
+        <div
+          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+        >
+          Keyfigure-11
+        </div>
+         
+        <div
+          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+        >
+          -9'999
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots assets/KpiListContainer Example 1`] = `
+<div
+  class="sm:gap-8 flex flex-row flex-wrap justify-between"
+  style="flex-grow: 1;"
+/>
+`;
+
+exports[`Storyshots assets/KpiListMobile Example 1`] = `
+<div
+  class="w-full text-center text-primary font-bold text-2xl bg-neutral ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
+>
+  <div
+    class="ant-collapse-item"
+    role="tablist"
+  >
+    <div
+      class="ant-collapse-header"
+      role="button"
+      tabindex="0"
+    >
+      <i
+        aria-label="icon: right"
+        class="anticon anticon-right ant-collapse-arrow"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          data-icon="right"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+          />
+        </svg>
+      </i>
+      Exklusive Kpis
+    </div>
+    <!---->
+  </div>
+</div>
+`;
+
+exports[`Storyshots data-entry/Select Example 1`] = `
+<div
+  class=" w-full p-2 flex flex-col justify-center items-center"
+  style="height: 500px;"
+>
+  <div
+    class="w-full ant-select ant-select-enabled"
+    tabindex="0"
+  >
+    <div
+      aria-autocomplete="list"
+      aria-controls="test-uuid"
+      aria-haspopup="true"
+      class="ant-select-selection ant-select-selection--single"
+      role="combobox"
+    >
+      <div
+        class="ant-select-selection__rendered"
+      >
+        <div
+          class="ant-select-selection__placeholder"
+          style="display: block; user-select: none;"
+          unselectable="on"
+        >
+          example select
+        </div>
+      </div>
+      <span
+        class="ant-select-arrow"
+        style="user-select: none;"
+        unselectable="on"
+      >
+        <i
+          aria-label="icon: down"
+          class="anticon anticon-down ant-select-arrow-icon"
+        >
+          <svg
+            aria-hidden="true"
+            class=""
+            data-icon="down"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"
+            />
+          </svg>
+        </i>
+      </span>
+    </div>
+  </div>
+   
+  <p>
+    
+  </p>
+</div>
+`;
+
+exports[`Storyshots motion/Fade Example 1`] = `
+<div>
+  <button>
+    fade
+  </button>
+  <p>
+    Example
+  </p>
+</div>
+`;
+
+exports[`Storyshots typography/Heading Example 1`] = `
+<h1
+  class="font-primary text-4xl font-light text-center pb-4"
+>
+  heading
+</h1>
+`;
+
+exports[`Storyshots typography/HighlightSmall Example 1`] = `
+<strong
+  class="font-primary text-dark"
+>
+  Example
+</strong>
+`;
+
+exports[`Storyshots typography/SubTitle Example 1`] = `<div />`;
+
+exports[`Storyshots typography/Title Example 1`] = `
+<h2
+  class="text-3xl font-bold font-primary font-dark"
+>
+  Example
+</h2>
+`;
+
+exports[`Storyshots typography/TitleLight Example 1`] = `
+<div
+  class="text-3xl font-light text-dark font-primary"
+>
+  Example Title
+</div>
+`;
+
+exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
+<section
+  class="h-screen bg-background root-layout ant-layout"
+>
+  <span
+    class="md:hidden"
+  >
+    <div
+      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+    />
+  </span>
+   
+  <aside
+    class="ant-layout-sider ant-layout-sider-dark a-layout-slider a-layout-slider-open"
+    style="flex: 0 0 200px; max-width: 200px; min-width: 200px; width: 200px;"
+  >
+    <div
+      class="ant-layout-sider-children"
+    >
+      <div
+        class="flex flex-col h-full"
+      >
+        <div
+          class="flex-grow sm:flex-grow-0 sm:block sm:h-12 m-4"
+        />
+         
+        <ul
+          class="nav-menu ant-menu ant-menu-inline ant-menu-root ant-menu-light"
+          role="menu"
+        >
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/reports"
+            >
+              Reports
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/planing"
+            >
+              Planing
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="active-link"
+              custom=""
+              href="#/"
+            >
+              Assets
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/dashboard"
+            >
+              Dashboard
+            </a>
+          </li>
+        </ul>
+         
+        <button
+          class="button-toggle-mobile sm:hidden ant-btn ant-btn-circle ant-btn-lg ant-btn-icon-only"
+          type="button"
+        >
+          <i
+            aria-label="icon: close"
+            class="anticon anticon-close"
+          >
+            <svg
+              aria-hidden="true"
+              class=""
+              data-icon="close"
+              fill="currentColor"
+              focusable="false"
+              height="1em"
+              viewBox="64 64 896 896"
+              width="1em"
+            >
+              <path
+                d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+              />
+            </svg>
+          </i>
+        </button>
+         
+        <div
+          class="w-full h-36"
+        />
+      </div>
+    </div>
+  </aside>
+   
+  <button
+    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
+    style="height: 3.125rem;"
+  >
+    <span
+      class="flex inline-block transform transition-all duration-200 ease-in-out self-center rotate-180"
+    >
+      <i
+        aria-label="icon: right"
+        class="anticon anticon-right"
+        style="color: rgb(156, 163, 175);"
+      >
+        <svg
+          aria-hidden="true"
+          class=""
+          data-icon="right"
+          fill="currentColor"
+          focusable="false"
+          height="1em"
+          viewBox="64 64 896 896"
+          width="1em"
+        >
+          <path
+            d="M765.7 486.8L314.9 134.7A7.97 7.97 0 0 0 302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 0 0 0-50.4z"
+          />
+        </svg>
+      </i>
+    </span>
+  </button>
+   
+  <section
+    class="bg-background ant-layout"
+  >
+    <section
+      class="container mx-auto p-0 sm:p-4 bg-background ant-layout"
+    >
+      <header
+        class="layout-header ant-layout-header"
+      >
+        <h1
+          class="font-primary text-4xl font-light text-center pb-4"
+        >
+          Asset Overview
+        </h1>
+      </header>
+       
+      <main
+        class="bg-background ant-layout-content"
+      >
+        <div
+          class="sm:hidden h-20"
+        />
+         
+      </main>
+    </section>
+  </section>
+</section>
+`;

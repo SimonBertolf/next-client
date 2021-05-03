@@ -1,0 +1,6 @@
+@font-face {
+	font-family: "Brown";
+	src: local("Brown"),
+	url(assets/fonts/Brown-Light.ttf) format("truetype");
+	font-display: swap;
+}
