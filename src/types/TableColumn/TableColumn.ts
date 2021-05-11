@@ -1,11 +1,14 @@
 interface TableColumn {
-  title: string;
+  title?: string;
   dataIndex: string;
   key: string;
-  width: number;
+  width?: number;
   fixed?: string;
-  className: string;
+  className?: string;
   align?: string;
+  slots?: {
+    [key: string]: string;
+  };
   scopedSlots?: { customRender: string };
 }
 
