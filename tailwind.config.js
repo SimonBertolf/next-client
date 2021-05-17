@@ -21,6 +21,7 @@ module.exports = {
       input: '#d9d9d9',
       subTitle: '#3E3E3E',
       divider: '#E8E8E8',
+      thumb: '#B2B2B2',
     },
     fontSize: {
       xs: '0.75rem',
@@ -50,6 +51,7 @@ module.exports = {
       width: ['hover', 'focus'],
       borderColor: ['hover', 'focus', 'active'],
       textColor: ['active'],
+      overflow: ['hover'],
     },
   },
   plugins: [
