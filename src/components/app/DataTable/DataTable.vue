@@ -41,12 +41,6 @@ export default class DataTable extends Vue {
 </script>
 
 <style>
-[ant-click-animating-without-extra-node='true']::after,
-.ant-click-animating-node::after,
-.ant-click-animating-node {
-  @apply shadow-none hidden !important;
-}
-
 .ant-table-body {
   @apply scrollbar-thin scrollbar-thumb-thumb scrollbar-thumb-rounded scrollbar-track-background;
   @apply lg:overflow-x-hidden hover:overflow-x-auto !important;
