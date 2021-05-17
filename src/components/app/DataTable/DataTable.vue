@@ -1,30 +1,37 @@
 <template>
-  <a-table :columns="itsColumns" :data-source="data" :pagination="false">
-    <span class="text-dark flex justify-center items-center" slot="customTitle"><a-icon type="edit" /></span>
-    <span style="height: 55px;" class="operation-cell flex items-center justify-center" slot="operation">
-      <a-icon type="edit" />
-    </span>
-  </a-table>
+  <a-table :columns="itsColumns" :data-source="data" :pagination="false" :scroll="{ x: true }"></a-table>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { TableColumn, TableData } from '@/types';
+import { TableActionButton } from '../TableActionButton';
 
-@Component
+@Component({ components: { TableActionButton } })
 export default class DataTable extends Vue {
   @Prop({ type: Array }) columns: TableColumn[];
 
   @Prop({ type: Array }) data: TableData[];
 
-  get itsColumns(): TableColumn[] {
+  @Prop({
+    type: [Object as () => { onOperationHeader: Function; onOperationCell: Function }, Boolean],
+    default: () => false,
+  })
+  operation: { onOperationHeader: Function; onOperationCell: Function } | boolean;
+
+  get itsColumns() {
+    if (!this.operation) return this.columns;
+    const { onOperationHeader, onOperationCell } = this.operation as {
+      onOperationHeader: Function;
+      onOperationCell: Function;
+    };
+    const itsProps = { props: { onAction: onOperationCell }, style: 'height: 55px !important;' };
     return [
       ...this.columns,
       {
-        dataIndex: 'operation',
+        title: this.$createElement(TableActionButton, { props: { onAction: onOperationHeader } }),
         key: 'operation',
-        slots: { title: 'customTitle' },
-        scopedSlots: { customRender: 'operation' },
+        customRender: () => this.$createElement(TableActionButton, itsProps),
         className: 'operation-cell',
         width: 10,
       },
@@ -34,12 +41,27 @@ export default class DataTable extends Vue {
 </script>
 
 <style>
+[ant-click-animating-without-extra-node='true']::after,
+.ant-click-animating-node::after,
+.ant-click-animating-node {
+  @apply shadow-none hidden !important;
+}
+
+.ant-table-body {
+  @apply scrollbar-thin scrollbar-thumb-thumb scrollbar-thumb-rounded scrollbar-track-background;
+  @apply lg:overflow-x-hidden hover:overflow-x-auto !important;
+}
+
 .ant-table td {
   white-space: nowrap;
 }
 
 th[key='operation'] {
-  background-color: #e0e0e0 !important;
+  background-color: #f0f0f0 !important;
+}
+
+th[key='operation'] > .ant-table-header-column {
+  @apply border-l-0 !important;
 }
 
 th[key='operation'] > .ant-table-header-column {
@@ -47,20 +69,26 @@ th[key='operation'] > .ant-table-header-column {
 }
 
 .operation-cell {
-  background-color: #e0e0e0 !important;
-  @apply p-0 !important;
+  background-color: #f0f0f0 !important;
+  @apply p-0 h-full !important;
+}
+
+.operation-cell:hover,
+.operation-cell:active,
+.operation-cell:focus {
+  background-color: #dbdbdb !important;
 }
 
 .ant-table-tbody {
   @apply font-primary text-dark;
 }
 
-.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td,
-.ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td,
-.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td {
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
+.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
+.ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
+.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell) {
   background: unset !important;
-  background-color: #eaeaea !important;
+  background-color: #f5f5f5 !important;
 }
 
 .ant-table-thead::after {
@@ -83,8 +111,8 @@ th[key='operation'] > .ant-table-header-column {
   @apply border-r border-divider;
 }
 
-th:not(:last-child) > .ant-table-header-column {
-  @apply border-r;
+th:not(:first-child) > .ant-table-header-column {
+  @apply border-l;
 }
 
 .ant-table-thead > tr > th {

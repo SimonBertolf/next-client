@@ -1,8 +1,10 @@
+import { VNode } from 'vue';
+
 interface TableColumn {
-  title?: string;
-  dataIndex: string;
+  title?: string | VNode;
+  dataIndex?: string;
   key: string;
-  width?: number;
+  width?: number | string;
   fixed?: string;
   className?: string;
   align?: string;
@@ -10,6 +12,7 @@ interface TableColumn {
     [key: string]: string;
   };
   scopedSlots?: { customRender: string };
+  customRender?: Function;
 }
 
 export default TableColumn;

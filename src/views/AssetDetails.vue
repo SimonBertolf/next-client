@@ -8,7 +8,6 @@
       <AssetTabs />
     </Card>
     <AssetTabs class="sm:hidden" />
-    <data-table :columns="columns" :data="dataForTable" />
   </Layout>
 </template>
 
@@ -16,7 +15,7 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
 import { Heading } from '@/components/typography';
-import { Layout, Tabs, Card, BackButton, DataTable } from '@/components/app';
+import { Layout, Tabs, Card, BackButton } from '@/components/app';
 import { AssetTabs } from '@/components/assets';
 import { Asset } from '@/models';
 
@@ -28,7 +27,6 @@ import { Asset } from '@/models';
     Card,
     AssetTabs,
     BackButton,
-    DataTable,
   },
 })
 export default class Assets extends Vue {
@@ -42,57 +40,6 @@ export default class Assets extends Vue {
     const { id } = asset;
     if (id !== this.assetId) return false;
     return true;
-  }
-
-  get columns() {
-    return [
-      {
-        title: 'Date',
-        dataIndex: 'date',
-        width: 200,
-      },
-      {
-        title: 'Amount',
-        dataIndex: 'amount',
-        width: 100,
-      },
-      {
-        title: 'Type',
-        dataIndex: 'type',
-        width: 100,
-      },
-      {
-        title: 'Note',
-        dataIndex: 'note',
-        width: 100,
-      },
-    ];
-  }
-
-  get dataForTable() {
-    return [
-      {
-        key: 0,
-        date: '2018-02-11',
-        amount: 120,
-        type: 'income',
-        note: 'transfer',
-      },
-      {
-        key: 1,
-        date: '2018-03-11',
-        amount: 243,
-        type: 'income',
-        note: 'transfer',
-      },
-      {
-        key: 2,
-        date: '2018-04-11',
-        amount: 98,
-        type: 'income',
-        note: 'transfer',
-      },
-    ];
   }
 
   @Watch('$store.state.Assets.asset', { deep: true, immediate: true })
