@@ -47,6 +47,10 @@ create a `.env` file in the root directory
 `VUE_APP_I18N_LOCALE=de` - the main language code  
 `VUE_APP_I18N_FALLBACK_LOCALE=de` - the fallback language code if the preferred language is unsupported  
 `VUE_APP_I18N_LOCALE_PATH=@/locales` - Path to the translations
+`VUE_APP_OPS_ENV=local` - set the location of operation (default: `local`)
+
+### Optional Variables
+`VUE_APP_DISABLE_LEGACY_AUTH=1` - to disable legacy authentication (default if not provided: `false`)
 
 ## Concepts
 
