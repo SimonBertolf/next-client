@@ -31,4 +31,4 @@ export default class Design extends Vue {
 }
 </script>
 
-<style></style>
+<style scoped></style>

@@ -22,6 +22,7 @@ module.exports = {
       subTitle: '#3E3E3E',
       divider: '#E8E8E8',
       thumb: '#B2B2B2',
+      magenta: '#FF00FF',
     },
     fontSize: {
       xs: '0.75rem',
