@@ -2,7 +2,9 @@
 declare module 'vue-grid-layout' {
   import Vue from 'vue';
 
-  export class GridLayout extends Vue {}
+  export class GridLayout extends Vue {
+    containerHeight: () => string;
+  }
 
   export class GridItem extends Vue {}
 
@@ -13,4 +15,6 @@ declare module 'vue-grid-layout' {
     h: number;
     i: string;
   }
+
+  export type GridBreakpoint = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';
 }

@@ -16,6 +16,8 @@
           Design asdf1234
         </button>
       </router-link>
+      <!-- TODO: remove pre after development -->
+      <pre>{{ layoutJSON }}</pre>
     </Card>
   </Layout>
 </template>
@@ -28,6 +30,16 @@ import { Heading } from '@/components/typography';
 @Component({ components: { Layout, Card, Heading, BackButton } })
 export default class Design extends Vue {
   name = 'Designs';
+
+  // TODO: remove
+  get layout() {
+    return this.$store.state.Layouts.responsiveLayout;
+  }
+
+  // TODO: remove
+  get layoutJSON() {
+    return JSON.stringify(this.layout, null, 2);
+  }
 }
 </script>
 

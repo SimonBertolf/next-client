@@ -1,5 +1,5 @@
 <template>
-  <Card :autoSize="false" :hasTitle="false" :padding="true" class="hidden sm:flex">
+  <Card :autoSize="false" :hasTitle="false" :padding="true">
     <component :is="type" :id="id"></component>
   </Card>
 </template>
