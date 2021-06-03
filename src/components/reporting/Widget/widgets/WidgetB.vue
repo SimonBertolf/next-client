@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <h3>Widget {{ name }}: {{ id }}</h3>
+  <div class="overflow-hidden">
+    <a-icon class="text-4xl" type="pie-chart" />
+    <h3>Widget {{ name }}</h3>
+    <p>_id: {{ id }}</p>
   </div>
 </template>
 

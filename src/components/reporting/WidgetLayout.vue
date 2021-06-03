@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="mx-4 mb-4">
+    <div v-if="editable" class="mx-4 mb-4">
       <a-space>
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
@@ -38,7 +38,7 @@
           ref="gridLayout"
         >
           <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
-            <widget :type="item.type" :id="item.i" />
+            <widget :type="item.type" :id="item.i" :removable="editable" @remove-widget="onRemoveWidget" />
           </grid-item>
         </grid-layout>
       </div>
@@ -47,16 +47,24 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import { WidgetItems } from '@/types';
+import { ResponsiveWidgetItems, WidgetData, WidgetItems } from '@/types';
 import { Widget } from './Widget';
 
 @Component({ components: { GridLayout, GridItem, Widget } })
-export default class EditableLayout extends Vue {
-  @Prop({ default: false }) readonly editable: boolean;
+export default class WidgetLayout extends Vue {
+  @Prop({ type: Boolean, default: false }) readonly editable: boolean;
 
-  height = 0;
+  @Prop({ default: null }) readonly newWidget: WidgetData | null;
+
+  private readonly margin = 12;
+
+  private readonly pageHeight = 600; // TODO: change to print page height
+
+  private readonly rowsPerPage = 4; // TODO: change according to design specs
+
+  height = this.margin;
 
   layout: WidgetItems = [];
 
@@ -69,12 +77,6 @@ export default class EditableLayout extends Vue {
   //   console.log('TEST BTN CLICKED');
   // }
 
-  private readonly margin = 12;
-
-  private readonly pageHeight = 600; // TODO: change to print page height
-
-  private readonly rowsPerPage = 4; // TODO: change according to design specs
-
   get rowHeight() {
     const rowHeight = this.pageHeight / this.rowsPerPage - this.margin;
     if (rowHeight !== Math.round(rowHeight)) {
@@ -84,10 +86,44 @@ export default class EditableLayout extends Vue {
     return rowHeight;
   }
 
+  get cols() {
+    return this.$store.state.Layouts.cols;
+  }
+
+  get breakpoints() {
+    return this.$store.state.Layouts.breakpoints;
+  }
+
   @Watch('height', { immediate: true, deep: true })
-  onHeightChange() {
-    const rest = this.height % this.pageHeight;
-    this.numberOfPages = (this.height - rest) / this.pageHeight + 1;
+  onHeightChange(newHeight: number) {
+    const decisiveHeight = newHeight - 2 * this.margin;
+    const rest = decisiveHeight % this.pageHeight;
+    const numberOfPages = (decisiveHeight - rest) / this.pageHeight + 1;
+    if (numberOfPages !== Math.round(numberOfPages)) {
+      throw new Error(`Number of pages is not a natural number. numberOfPages = ${numberOfPages}`);
+    }
+    this.numberOfPages = numberOfPages;
+  }
+
+  @Watch('newWidget', { immediate: true, deep: true })
+  onNewWidgetChange(newWidget: WidgetData | null) {
+    if (newWidget) {
+      this.addNewWidget(newWidget);
+    }
+  }
+
+  @Watch('$store.state.Layouts.responsiveLayout', { immediate: true, deep: true })
+  onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetItems) {
+    // update local layout for current breakpoint if it is different from the one on the store
+    if (this.breakpoint && JSON.stringify(this.layout) !== JSON.stringify(newResponsiveLayout[this.breakpoint])) {
+      const newLayout: WidgetItems = newResponsiveLayout[this.breakpoint];
+      this.layout.splice(0, this.layout.length, ...newLayout);
+    }
+  }
+
+  @Emit('new-widget-added')
+  addNewWidget(newWidget: WidgetData) {
+    this.$store.commit('Layouts/addWidget', newWidget);
   }
 
   get responsiveLayout() {
@@ -111,6 +147,10 @@ export default class EditableLayout extends Vue {
   onLayoutReady() {
     // console.log('LAYOUT READY', this.breakpoint);
     this.measureHeight();
+  }
+
+  onRemoveWidget(id: string) {
+    this.$store.commit('Layouts/removeWidget', { id });
   }
 
   mounted() {
