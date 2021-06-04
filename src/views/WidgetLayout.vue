@@ -2,7 +2,7 @@
   <Layout>
     <template v-slot:header>
       <BackButton to="/assets" class="sm:hidden self-start" />
-      <Heading>Design {{ designId }}</Heading>
+      <Heading>Design {{ layoutId }}</Heading>
     </template>
     <widget-editor />
   </Layout>
@@ -16,8 +16,8 @@ import { Heading } from '@/components/typography';
 import { WidgetEditor } from '@/components/reporting';
 
 @Component({ components: { Layout, Heading, BackButton, WidgetEditor } })
-export default class Design extends Vue {
-  @Prop(String) readonly designId: string;
+export default class WidgetLayout extends Vue {
+  @Prop(String) readonly layoutId: string;
 }
 </script>
 

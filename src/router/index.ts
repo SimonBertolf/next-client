@@ -1,7 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import { Assets, AssetDetails, Design, Designs, Views } from '../views';
+import { Assets, AssetDetails, WidgetLayout, WidgetLayouts, Views, ReportPrint } from '../views';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
 
@@ -34,13 +34,18 @@ const routes: Array<RouteConfig> = [
             component: AssetDetails,
           },
           {
-            path: '/designs',
-            component: Designs,
+            path: '/layouts',
+            component: WidgetLayouts,
           },
           {
-            path: '/designs/:designId',
+            path: '/layouts/:layoutId',
             props: true,
-            component: Design,
+            component: WidgetLayout,
+          },
+          {
+            path: '/reports/:reportId/print',
+            props: true,
+            component: ReportPrint,
           },
         ],
       },

@@ -28,7 +28,7 @@ import { Layout, Card, BackButton } from '@/components/app';
 import { Heading } from '@/components/typography';
 
 @Component({ components: { Layout, Card, Heading, BackButton } })
-export default class Design extends Vue {
+export default class WidgetLayouts extends Vue {
   name = 'Designs';
 
   // TODO: remove
