@@ -4,7 +4,7 @@
       <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
     </a-spin>
   </div>
-  <div class="w-full h-full" v-else>
+  <div v-else>
     <router-view></router-view>
   </div>
 </template>

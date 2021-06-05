@@ -7,7 +7,7 @@
     <Card :autoSize="true" :hasTitle="false" :padding="true" class="hidden sm:flex">
       <h2 class="text-2xl mb-2">Designs</h2>
       <p class="mb-2">TODO: List of designs</p>
-      <router-link to="/designs/asdf1234" v-slot="{ href, navigate }" custom>
+      <router-link to="/layouts/asdf1234" v-slot="{ href, navigate }" custom>
         <button
           :href="href"
           @click="navigate"

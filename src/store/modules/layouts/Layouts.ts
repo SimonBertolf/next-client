@@ -11,6 +11,12 @@ export default class Layouts extends VuexModule {
 
   public breakpoints: { [breakpoint: string]: number } = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
 
+  public margin = 12;
+
+  public pageHeight = 1122 - 138; // TODO: change to print page height
+
+  public rowsPerPage = 8; // TODO: change according to design specs
+
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetItems) {
     this.responsiveLayout = responsiveLayout;

@@ -10,7 +10,7 @@
       </a-space>
     </div>
     <div class="widget-layout relative" :style="{ height: `${height + 2 * rowHeight}px` }">
-      <div v-if="editable" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
+      <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
         <div :style="{ height: `${12 - 6 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
         <div
           :style="{ height: `${(rowHeight + margin) * rowsPerPage}px` }"
@@ -56,13 +56,9 @@ import { Widget } from './Widget';
 export default class WidgetLayout extends Vue {
   @Prop({ type: Boolean, default: false }) readonly editable: boolean;
 
+  @Prop({ type: Boolean, default: false }) readonly showGuides: boolean;
+
   @Prop({ default: null }) readonly newWidget: WidgetData | null;
-
-  private readonly margin = 12;
-
-  private readonly pageHeight = 600; // TODO: change to print page height
-
-  private readonly rowsPerPage = 4; // TODO: change according to design specs
 
   height = this.margin;
 
@@ -76,6 +72,18 @@ export default class WidgetLayout extends Vue {
   //   // eslint-disable-next-line no-console
   //   console.log('TEST BTN CLICKED');
   // }
+
+  get margin() {
+    return this.$store.state.Layouts.margin;
+  }
+
+  get pageHeight() {
+    return this.$store.state.Layouts.pageHeight;
+  }
+
+  get rowsPerPage() {
+    return this.$store.state.Layouts.rowsPerPage;
+  }
 
   get rowHeight() {
     const rowHeight = this.pageHeight / this.rowsPerPage - this.margin;

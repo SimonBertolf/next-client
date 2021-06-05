@@ -10,8 +10,19 @@
         </a-menu>
         <a-button style="margin-left: 8px;"> Add Widget <a-icon type="down" /> </a-button>
       </a-dropdown>
+      <router-link to="/reports/asdf1234/print" v-slot="{ href, navigate }" custom>
+        <a-button :href="href" @click="navigate">
+          Print View
+        </a-button>
+      </router-link>
     </a-space>
-    <widget-layout :editable="!!editable" :new-widget="newWidget" @new-widget-added="onNewWidgetAdded" class="mb-8" />
+    <widget-layout
+      :editable="!!editable"
+      :show-guides="!!editable"
+      :new-widget="newWidget"
+      @new-widget-added="onNewWidgetAdded"
+      class="mb-8"
+    />
   </div>
 </template>
 
