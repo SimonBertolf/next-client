@@ -3,9 +3,19 @@ import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { responsiveLayoutMock } from './LayoutMocks';
 
+// Helpers for development and local demo TODO: romove when done
+const locallyStoreLayout = (layout: ResponsiveWidgetItems) => {
+  localStorage.setItem('responsiveLayout', JSON.stringify(layout));
+};
+const locallyReadLayout = (): ResponsiveWidgetItems | undefined => {
+  const localLayoutString = localStorage.getItem('responsiveLayout');
+  if (localLayoutString) return JSON.parse(localLayoutString);
+  return undefined;
+};
+
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
-  public responsiveLayout: ResponsiveWidgetItems = responsiveLayoutMock; // TODO: remove mock
+  public responsiveLayout: ResponsiveWidgetItems = locallyReadLayout() || responsiveLayoutMock; // TODO: remove mock
 
   public cols: { [breakpoint: string]: number } = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
@@ -20,12 +30,14 @@ export default class Layouts extends VuexModule {
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetItems) {
     this.responsiveLayout = responsiveLayout;
+    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
   updateResponsiveLayout(payload: { layout: WidgetItems; breakpoint: GridBreakpoint }) {
     const { layout, breakpoint } = payload;
     this.responsiveLayout[breakpoint] = layout;
+    locallyStoreLayout(this.responsiveLayout);
     // console.log('this.responsiveLayout[breakpoint]: ', this.responsiveLayout[breakpoint]);
     // TODO: POST change to Server, trigger update action
   }
@@ -41,27 +53,12 @@ export default class Layouts extends VuexModule {
         this.responsiveLayout[breakpoint].splice(index, 1);
       }
     });
+    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
   addWidget(payload: WidgetData) {
     const { type, _id } = payload;
-
-    // // recursive alternative (buggy)
-    // const findCoordinates = (x: number, y: number, breakpoint: string): [number, number] => {
-    //   // console.log(`test [${x}, ${y}] for ${breakpoint}`);
-
-    //   const cols = this.cols[breakpoint];
-    //   // TODO: improve blocking widget check
-    //   const blockingWidget = this.responsiveLayout[breakpoint].find((widget) => widget.x === x && widget.y === y);
-    //   if (blockingWidget) {
-    //     if (x + blockingWidget.w < cols) return findCoordinates(x + blockingWidget.w, y, breakpoint);
-    //     return findCoordinates(x, y + blockingWidget.h, breakpoint);
-    //   }
-    //   // console.log(`free at [${x}, ${y}] for ${breakpoint}`);
-
-    //   return [x, y];
-    // };
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
       // get number of rows and cols of current layout
@@ -112,5 +109,6 @@ export default class Layouts extends VuexModule {
         this.responsiveLayout[breakpoint].push(newWidget);
       }
     });
+    locallyStoreLayout(this.responsiveLayout);
   }
 }
