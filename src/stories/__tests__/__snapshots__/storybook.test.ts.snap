@@ -739,11 +739,24 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="active-link"
+              class="inactive-link"
               custom=""
-              href="#/"
+              href="#/assets"
             >
               Assets
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/layouts"
+            >
+              Reporting Layouts
             </a>
           </li>
           <li
@@ -891,11 +904,24 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="active-link"
+      class="inactive-link"
       custom=""
-      href="#/"
+      href="#/assets"
     >
       Assets
+    </a>
+  </li>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="inactive-link"
+      custom=""
+      href="#/layouts"
+    >
+      Reporting Layouts
     </a>
   </li>
   <li
@@ -3643,11 +3669,24 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="active-link"
+              class="inactive-link"
               custom=""
-              href="#/"
+              href="#/assets"
             >
               Assets
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
+              href="#/layouts"
+            >
+              Reporting Layouts
             </a>
           </li>
           <li
