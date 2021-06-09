@@ -35,9 +35,18 @@ export default class Card extends Vue {
 </script>
 
 <style>
-.card {
-  @apply bg-neutral shadow-xl rounded-lg flex flex-col;
+@media print {
+  .card {
+    @apply bg-neutral rounded-lg flex flex-col;
+  }
 }
+
+@media screen {
+  .card {
+    @apply bg-neutral shadow-xl rounded-lg flex flex-col;
+  }
+}
+
 .card-padding {
   @apply p-1;
 }

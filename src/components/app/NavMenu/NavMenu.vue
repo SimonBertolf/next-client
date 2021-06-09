@@ -7,7 +7,10 @@
       <nav-menu-item to="/planing">Planing</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/">Assets</nav-menu-item>
+      <nav-menu-item to="/assets">Assets</nav-menu-item>
+    </a-menu-item>
+    <a-menu-item class="menu-item self-end sm:self-start">
+      <nav-menu-item to="/layouts">Reporting Layouts</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
       <nav-menu-item to="/dashboard">Dashboard</nav-menu-item>
