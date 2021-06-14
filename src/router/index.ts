@@ -1,7 +1,17 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import { Assets, AssetDetails, WidgetLayout, WidgetLayouts, Views, ReportPrint } from '../views';
+import {
+  Assets,
+  AssetDetails,
+  WidgetLayout,
+  WidgetLayouts,
+  Root,
+  ReportPrint,
+  Dashboards,
+  DashboardRedirect,
+  NotFound,
+} from '../views';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
 
@@ -10,7 +20,7 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: '/',
-    component: Views,
+    component: Root,
     children: [
       {
         path: '',
@@ -24,6 +34,15 @@ const routes: Array<RouteConfig> = [
         path: '',
         component: ProtectedRoutes,
         children: [
+          {
+            path: '/dashboards',
+            component: DashboardRedirect,
+          },
+          {
+            path: '/dashboards/:dashboardId',
+            component: Dashboards,
+            props: true,
+          },
           {
             path: '/assets',
             component: Assets,
@@ -50,6 +69,10 @@ const routes: Array<RouteConfig> = [
         ],
       },
     ],
+  },
+  {
+    path: '*',
+    component: NotFound,
   },
 ];
 
