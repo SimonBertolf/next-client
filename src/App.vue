@@ -1,12 +1,5 @@
 <template>
-  <div>
-    <router-view v-if="!$store.state.Auth.loading"></router-view>
-    <div v-else class="text-center mt-8">
-      <a-spin>
-        <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
-      </a-spin>
-    </div>
-  </div>
+  <router-view></router-view>
 </template>
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
