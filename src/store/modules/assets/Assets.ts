@@ -16,7 +16,7 @@ export default class Assets extends VuexModule {
   }
 
   @Action
-  public async loadAssetById(assetId: string): Promise<void> {
+  public async loadAssetById(assetId: number): Promise<void> {
     return this.assetRepository
       .getById(assetId)
       .then((asset: Asset) => {

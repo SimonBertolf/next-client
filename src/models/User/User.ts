@@ -1,7 +1,7 @@
 import { Role } from '../Role';
 
 interface User {
-  readonly id: string;
+  readonly id: number;
   email: string;
   username: string;
   fullname: string;

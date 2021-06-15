@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import { sync } from 'vuex-router-sync';
 import Vue from 'vue';
-import './axiosClient';
 import infiniteScroll from 'vue-infinite-scroll';
+import { environment } from './config';
+import './axiosClient';
 import { initIocContainer } from './ioc-container';
 import { mockContainer } from './ioc-mock-container';
 import './ant-design';
@@ -14,9 +15,9 @@ import './tailwind.css';
 import './font.css';
 import FilterRegistration from './FilterRegistration';
 
-const isLegacyAuthDisabled = process.env.VUE_APP_DISABLE_LEGACY_AUTH || false;
+const { DISABLE_LEGACY_AUTH } = environment;
 
-if (isLegacyAuthDisabled) {
+if (DISABLE_LEGACY_AUTH) {
   mockContainer();
 } else {
   initIocContainer();

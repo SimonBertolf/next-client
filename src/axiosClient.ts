@@ -1,5 +1,8 @@
 import axios from 'axios';
+import { environment } from './config';
 
-axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
+const { API_BASE_URL } = environment;
+
+axios.defaults.baseURL = API_BASE_URL;
 
 axios.defaults.withCredentials = true;

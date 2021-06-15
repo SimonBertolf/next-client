@@ -9,17 +9,17 @@ class AssetRepository implements IFetchableById<Asset> {
     this.client = axios;
   }
 
-  getById(id: string): Promise<Asset> {
+  getById(id: number): Promise<Asset> {
     const params = new URLSearchParams();
-    params.append('assetId', id);
+    params.append('assetId', id.toString());
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
     return this.client
       .get('/server.php?module=IO_Asset&action=getAssetPanel', { params, ...options })
       .then(({ data }) => data)
-      .then((asset: { id: string; name: string }) => {
+      .then((asset: { id: number; name: string }) => {
         const { name } = asset;
         return Promise.resolve({
-          id: asset.id,
+          id: Number(asset.id),
           name,
         });
       });

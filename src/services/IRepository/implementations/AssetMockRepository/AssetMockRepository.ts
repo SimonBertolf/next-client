@@ -9,7 +9,7 @@ class AssetMockRepository implements IFetchableById<Asset> {
     this.assets = [assetMock];
   }
 
-  getById(id: string): Promise<Asset> {
+  getById(id: number): Promise<Asset> {
     const asset: Asset | undefined = this.assets.find((a) => id === a.id);
     if (asset) return Promise.resolve(asset);
     return Promise.reject(new Error(`asset with id ${id} not found`));

@@ -9,7 +9,7 @@ interface ReamisAuthResponse {
     user: {
       email: string;
       fullname: string;
-      id: string;
+      id: number;
       isDeveloper: boolean;
       name: string;
     };
@@ -36,7 +36,7 @@ class Auth implements IAuth {
       username: name,
       roles,
     };
-    return reamisNextUser;
+    return email ? reamisNextUser : null;
   }
 
   async signIn(username: string, password: string): Promise<User> {
@@ -58,7 +58,8 @@ class Auth implements IAuth {
         username: name,
         roles,
       };
-      return reamisNextUser;
+      if (email) return reamisNextUser;
+      throw new Error(`failed to sign in for username ${username}`);
     });
   }
 }

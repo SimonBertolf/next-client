@@ -38,7 +38,7 @@ export default class Assets extends Vue {
     const { asset } = this.$store.state.Assets;
     if (!asset) return false;
     const { id } = asset;
-    if (id !== this.assetId) return false;
+    if (id !== Number(this.assetId)) return false;
     return true;
   }
 

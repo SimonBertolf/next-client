@@ -1,5 +1,5 @@
 interface IFetchableById<R> {
-  getById(id: string): Promise<R>;
+  getById(id: number): Promise<R>;
 }
 
 export default IFetchableById;

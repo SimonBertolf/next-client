@@ -1,4 +1,5 @@
 import { StoreType, StateType } from '@/types';
+import { environment } from '@/config';
 
 const AuthLoader = (store: StoreType) => {
   store.subscribe((...args: Array<StateType>) => {
@@ -6,9 +7,12 @@ const AuthLoader = (store: StoreType) => {
     if (!state.Auth.user && state.Auth.loading) {
       store.dispatch('Auth/currentAuthenticatedUser').then(() => {
         if (!state.Auth.user) {
-          const username = process.env.VUE_APP_LEGACY_AUTH_USER;
-          const password = process.env.VUE_APP_LEGACY_AUTH_PASSWORD;
-          store.dispatch('Auth/signIn', { username, password });
+          const { LEGACY_AUTH_USER, LEGACY_AUTH_PASSWORD } = environment;
+          const username = LEGACY_AUTH_USER;
+          const password = LEGACY_AUTH_PASSWORD;
+          store.dispatch('Auth/signIn', { username, password }).catch((error) => {
+            store.commit('Errors/setError', error);
+          });
         }
       });
     }
