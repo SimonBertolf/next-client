@@ -715,6 +715,19 @@ exports[`Storyshots app/Layout Example 1`] = `
             <a
               class="inactive-link"
               custom=""
+              href="#/dashboards"
+            >
+              Dashboards
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
               href="#/reports"
             >
               Reports
@@ -757,19 +770,6 @@ exports[`Storyshots app/Layout Example 1`] = `
               href="#/layouts"
             >
               Reporting Layouts
-            </a>
-          </li>
-          <li
-            class="menu-item self-end sm:self-start ant-menu-item"
-            role="menuitem"
-            style="padding-left: 24px;"
-          >
-            <a
-              class="inactive-link"
-              custom=""
-              href="#/dashboard"
-            >
-              Dashboard
             </a>
           </li>
         </ul>
@@ -880,6 +880,19 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     <a
       class="inactive-link"
       custom=""
+      href="#/dashboards"
+    >
+      Dashboards
+    </a>
+  </li>
+  <li
+    class="menu-item self-end sm:self-start ant-menu-item"
+    role="menuitem"
+    style="padding-left: 24px;"
+  >
+    <a
+      class="inactive-link"
+      custom=""
       href="#/reports"
     >
       Reports
@@ -922,19 +935,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
       href="#/layouts"
     >
       Reporting Layouts
-    </a>
-  </li>
-  <li
-    class="menu-item self-end sm:self-start ant-menu-item"
-    role="menuitem"
-    style="padding-left: 24px;"
-  >
-    <a
-      class="inactive-link"
-      custom=""
-      href="#/dashboard"
-    >
-      Dashboard
     </a>
   </li>
 </ul>
@@ -3645,6 +3645,19 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <a
               class="inactive-link"
               custom=""
+              href="#/dashboards"
+            >
+              Dashboards
+            </a>
+          </li>
+          <li
+            class="menu-item self-end sm:self-start ant-menu-item"
+            role="menuitem"
+            style="padding-left: 24px;"
+          >
+            <a
+              class="inactive-link"
+              custom=""
               href="#/reports"
             >
               Reports
@@ -3687,19 +3700,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
               href="#/layouts"
             >
               Reporting Layouts
-            </a>
-          </li>
-          <li
-            class="menu-item self-end sm:self-start ant-menu-item"
-            role="menuitem"
-            style="padding-left: 24px;"
-          >
-            <a
-              class="inactive-link"
-              custom=""
-              href="#/dashboard"
-            >
-              Dashboard
             </a>
           </li>
         </ul>
