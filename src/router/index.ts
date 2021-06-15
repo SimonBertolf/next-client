@@ -4,14 +4,17 @@ import VueRouter, { RouteConfig } from 'vue-router';
 import {
   Assets,
   AssetDetails,
-  WidgetLayout,
   WidgetLayouts,
   Root,
   ReportPrint,
   Dashboards,
   DashboardRedirect,
   NotFound,
-} from '../views';
+  Reporting,
+  Admin,
+} from '@/views';
+import { WidgetEditor } from '@/components/admin';
+import { Analysis, Reports, Report } from '@/components/reporting';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
 
@@ -24,7 +27,7 @@ const routes: Array<RouteConfig> = [
     children: [
       {
         path: '',
-        redirect: '/health',
+        redirect: '/dashboards',
       },
       {
         path: '/health',
@@ -36,7 +39,7 @@ const routes: Array<RouteConfig> = [
         children: [
           {
             path: '/dashboards',
-            component: DashboardRedirect,
+            component: DashboardRedirect, // use redirect component because target is dynamic (_id of first dashboard)
           },
           {
             path: '/dashboards/:dashboardId',
@@ -53,18 +56,47 @@ const routes: Array<RouteConfig> = [
             component: AssetDetails,
           },
           {
-            path: '/layouts',
-            component: WidgetLayouts,
-          },
-          {
-            path: '/layouts/:layoutId',
+            path: '/reporting',
             props: true,
-            component: WidgetLayout,
+            redirect: '/reporting/reports',
+            component: Reporting,
+            children: [
+              {
+                path: 'reports',
+                component: Reports,
+              },
+              {
+                path: 'reports/:reportId',
+                props: true,
+                component: Report,
+              },
+              {
+                path: 'analysis',
+                component: Analysis,
+              },
+            ],
           },
           {
-            path: '/reports/:reportId/print',
+            path: '/reporting/reports/:reportId/print',
             props: true,
             component: ReportPrint,
+          },
+          {
+            path: '/admin',
+            props: true,
+            redirect: '/admin/layouts',
+            component: Admin,
+            children: [
+              {
+                path: 'layouts',
+                component: WidgetLayouts,
+              },
+              {
+                path: 'layouts/:layoutId',
+                props: true,
+                component: WidgetEditor,
+              },
+            ],
           },
         ],
       },

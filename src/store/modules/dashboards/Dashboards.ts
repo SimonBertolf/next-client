@@ -1,5 +1,5 @@
 import { Module, VuexModule } from 'vuex-module-decorators';
-import { Dashboard } from '@/types';
+import { Dashboard } from '@/models';
 import { dashboardsMock } from './DashboardsMock';
 
 @Module({ namespaced: true })

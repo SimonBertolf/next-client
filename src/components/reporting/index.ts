@@ -1,4 +1,6 @@
 import WidgetLayout from './WidgetLayout.vue';
-import WidgetEditor from './WidgetEditor.vue';
+import Reports from './Reports.vue';
+import Report from './Report.vue';
+import Analysis from './Analysis.vue';
 
-export { WidgetLayout, WidgetEditor };
+export { WidgetLayout, Reports, Report, Analysis };

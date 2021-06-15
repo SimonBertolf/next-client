@@ -1,7 +1,8 @@
-import { ResponsiveWidgetItems, WidgetData, WidgetItem, WidgetItems } from '@/types';
+import { ResponsiveWidgetItems, WidgetData, WidgetItem, WidgetItems } from '@/models';
+import { Layout } from '@/models/Layout';
 import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
-import { responsiveLayoutMock } from './LayoutMocks';
+import { layoutsMock, responsiveLayoutMock } from './LayoutsMock';
 
 // Helpers for development and local demo TODO: romove when done
 const locallyStoreLayout = (layout: ResponsiveWidgetItems) => {
@@ -21,11 +22,13 @@ export default class Layouts extends VuexModule {
 
   public breakpoints: { [breakpoint: string]: number } = { lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 };
 
-  public margin = 12;
+  public margin = 16;
 
   public pageHeight = 1122 - 138; // TODO: change to print page height
 
   public rowsPerPage = 8; // TODO: change according to design specs
+
+  public layouts: Layout[] = layoutsMock;
 
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetItems) {

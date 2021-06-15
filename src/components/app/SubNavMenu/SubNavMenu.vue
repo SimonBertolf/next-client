@@ -15,15 +15,24 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 export default class SubNavMenu extends Vue {
   @Prop({ required: true }) readonly items: { _id: string; name: string }[];
 
-  @Prop(String) readonly subItemId: string;
+  @Prop({ type: String, default: '' }) readonly selectedId: string;
 
-  @Prop({ required: true, type: String }) readonly basePath: string;
+  @Prop({ type: String, default: '/' }) readonly basePath: string;
 
-  current: string[] = [this.subItemId];
+  current: string[] = [this.selectedId];
 
-  @Watch('subItemId', { immediate: true, deep: true })
-  onNewWidgetChange(newsubItemId: string) {
-    this.current = [newsubItemId];
+  @Watch('selectedId', { immediate: true, deep: true })
+  onNewWidgetChange(newselectedId: string) {
+    this.current = [newselectedId];
+  }
+
+  mounted() {
+    const currentIndex = this.items.findIndex((item) => this.$route.path.includes(item._id));
+    if (currentIndex === -1) {
+      this.current = [];
+    } else {
+      this.current = [this.items[currentIndex]._id];
+    }
   }
 }
 </script>

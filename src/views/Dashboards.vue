@@ -5,7 +5,7 @@
     </template>
     <div class="mx-4 md:mx-0">
       <Card :autoSize="true" :hasTitle="false" :padding="true">
-        <sub-nav-menu :items="items" :sub-item-id="dashboardId" base-path="/dashboards" />
+        <sub-nav-menu :items="items" :selected-id="dashboardId" base-path="/dashboards" />
       </Card>
       <dashboard :dashboard-id="dashboardId" />
     </div>

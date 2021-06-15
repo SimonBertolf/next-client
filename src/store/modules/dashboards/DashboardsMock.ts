@@ -1,4 +1,4 @@
-import { Dashboard } from '@/types';
+import { Dashboard } from '@/models';
 
 export const dashboardsMock: Dashboard[] = [
   {
