@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-view></router-view>
+    <router-view v-if="!$store.state.Auth.loading"></router-view>
+    <div v-else>loading...</div>
   </div>
 </template>
 <script lang="ts">

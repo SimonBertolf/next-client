@@ -14,7 +14,7 @@ class AssetRepository implements IFetchableById<Asset> {
     params.append('assetId', id);
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
     return this.client
-      .get('?module=IO_Asset&action=getAssetPanel', { params, ...options })
+      .get('/server.php?module=IO_Asset&action=getAssetPanel', { params, ...options })
       .then(({ data }) => data)
       .then((asset: { id: string; name: string }) => {
         const { name } = asset;

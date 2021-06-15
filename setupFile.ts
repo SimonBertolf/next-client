@@ -1,5 +1,7 @@
 import 'reflect-metadata';
-import './src/ioc-mock-container';
+import { mockContainer } from './src/ioc-mock-container';
+
+mockContainer();
 
 global.Math.random = () => 1;
 
