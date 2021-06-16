@@ -5,7 +5,6 @@ import {
   Assets,
   AssetDetails,
   WidgetLayouts,
-  Root,
   ReportPrint,
   Dashboards,
   DashboardRedirect,
@@ -22,89 +21,83 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
+    path: '/health',
+    component: Health,
+  },
+  {
     path: '/',
-    component: Root,
+    component: ProtectedRoutes,
     children: [
       {
         path: '',
         redirect: '/dashboards',
       },
       {
-        path: '/health',
-        component: Health,
+        path: '/dashboards',
+        component: DashboardRedirect, // use redirect component because target is dynamic (_id of first dashboard)
       },
       {
-        path: '',
-        component: ProtectedRoutes,
+        path: '/dashboards/:dashboardId',
+        component: Dashboards,
+        props: true,
+      },
+      {
+        path: '/assets',
+        component: Assets,
+      },
+      {
+        path: '/assets/:assetId',
+        props: true,
+        component: AssetDetails,
+      },
+      {
+        path: '/reporting',
+        props: true,
+        redirect: '/reporting/reports',
+        component: Reporting,
         children: [
           {
-            path: '/dashboards',
-            component: DashboardRedirect, // use redirect component because target is dynamic (_id of first dashboard)
+            path: 'reports',
+            component: Reports,
           },
           {
-            path: '/dashboards/:dashboardId',
-            component: Dashboards,
+            path: 'reports/:reportId',
             props: true,
+            component: Report,
           },
           {
-            path: '/assets',
-            component: Assets,
-          },
-          {
-            path: '/assets/:assetId',
-            props: true,
-            component: AssetDetails,
-          },
-          {
-            path: '/reporting',
-            props: true,
-            redirect: '/reporting/reports',
-            component: Reporting,
-            children: [
-              {
-                path: 'reports',
-                component: Reports,
-              },
-              {
-                path: 'reports/:reportId',
-                props: true,
-                component: Report,
-              },
-              {
-                path: 'analysis',
-                component: Analysis,
-              },
-            ],
-          },
-          {
-            path: '/reporting/reports/:reportId/print',
-            props: true,
-            component: ReportPrint,
-          },
-          {
-            path: '/admin',
-            props: true,
-            redirect: '/admin/layouts',
-            component: Admin,
-            children: [
-              {
-                path: 'layouts',
-                component: WidgetLayouts,
-              },
-              {
-                path: 'layouts/:layoutId',
-                props: true,
-                component: WidgetEditor,
-              },
-            ],
+            path: 'analysis',
+            component: Analysis,
           },
         ],
       },
+      {
+        path: '/reporting/reports/:reportId/print',
+        props: true,
+        component: ReportPrint,
+      },
+      {
+        path: '/admin',
+        props: true,
+        redirect: '/admin/layouts',
+        component: Admin,
+        children: [
+          {
+            path: 'layouts',
+            component: WidgetLayouts,
+          },
+          {
+            path: 'layouts/:layoutId',
+            props: true,
+            component: WidgetEditor,
+          },
+        ],
+      },
+      {
+        path: '*',
+        component: NotFound,
+      },
     ],
-  },
-  {
-    path: '*',
-    component: NotFound,
   },
 ];
 
