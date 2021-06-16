@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Report as ReportInterface } from '@/models';
+import { Report as ReportModel } from '@/models';
 
 @Component({ components: {} })
 export default class Report extends Vue {
@@ -14,7 +14,7 @@ export default class Report extends Vue {
 
   get report() {
     // TODO: maybe it makes sense to move this logic to store module?
-    const data = this.$store.state.Reports.reports.find((report: ReportInterface) => report._id === this.reportId);
+    const data = this.$store.state.Reports.reports.find((report: ReportModel) => report._id === this.reportId);
     if (!data) {
       this.$router.push('/404');
       throw new Error(`Could not find report with _id ${this.reportId}`);

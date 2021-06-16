@@ -3,7 +3,7 @@ import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
 import {
   Assets,
-  AssetDetails,
+  Asset,
   WidgetLayouts,
   ReportPrint,
   Dashboards,
@@ -13,6 +13,7 @@ import {
   Admin,
 } from '@/views';
 import { WidgetEditor } from '@/components/admin';
+import { AssetData, AssetAttributes } from '@/components/assets';
 import { Analysis, Reports, Report } from '@/components/reporting';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
@@ -48,7 +49,20 @@ const routes: Array<RouteConfig> = [
       {
         path: '/assets/:assetId',
         props: true,
-        component: AssetDetails,
+        redirect: '/assets/:assetId/data',
+        component: Asset,
+        children: [
+          {
+            path: 'data',
+            props: true,
+            component: AssetData,
+          },
+          {
+            path: 'attributes',
+            props: true,
+            component: AssetAttributes,
+          },
+        ],
       },
       {
         path: '/reporting',

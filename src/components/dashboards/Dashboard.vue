@@ -10,7 +10,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Dashboard as DashboardInterface } from '@/models';
+import { Dashboard as DashboardModel } from '@/models';
 
 @Component({ components: {} })
 export default class Dashboard extends Vue {
@@ -19,7 +19,7 @@ export default class Dashboard extends Vue {
   get dashboard() {
     // TODO: maybe it makes sense to move this logic to store module?
     const data = this.$store.state.Dashboards.dashboards.find(
-      (dashboard: DashboardInterface) => dashboard._id === this.dashboardId,
+      (dashboard: DashboardModel) => dashboard._id === this.dashboardId,
     );
     if (!data) {
       this.$router.push('/404');
