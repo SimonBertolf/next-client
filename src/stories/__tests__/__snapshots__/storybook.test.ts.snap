@@ -3835,7 +3835,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         <h1
           class="font-primary text-4xl font-light text-center pb-4"
         >
-          Asset Overview
+          Assets
         </h1>
       </header>
        
@@ -3845,7 +3845,42 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         <div
           class="sm:hidden h-20"
         />
-         
+          
+        <ul>
+          <li>
+            <button
+              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              custom=""
+              href="#/assets/60c9cbd35f6db188c6441116"
+            >
+              
+          Lindenbachstrasse 40, 8006 Zürich (id: 60c9cbd35f6db188c6441116)
+        
+            </button>
+          </li>
+          <li>
+            <button
+              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              custom=""
+              href="#/assets/60c9cbdd5d40b57b5c5cd5b1"
+            >
+              
+          Forststrasse 23, 8006 Zürich (id: 60c9cbdd5d40b57b5c5cd5b1)
+        
+            </button>
+          </li>
+          <li>
+            <button
+              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              custom=""
+              href="#/assets/60c9cbe2b62587d676cf5c1e"
+            >
+              
+          Giesshübelstrasse 84, 8045 Zürich (id: 60c9cbe2b62587d676cf5c1e)
+        
+            </button>
+          </li>
+        </ul>
       </main>
     </section>
   </section>
