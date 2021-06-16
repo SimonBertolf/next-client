@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="editable" class="mx-4 mb-4">
-      <a-space>
+    <div class="px-2 mb-4">
+      <a-space v-if="editable">
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
         <!-- <a-button type="primary" @click="onTestClick">
@@ -9,7 +9,7 @@
         </a-button> -->
       </a-space>
     </div>
-    <div class="widget-layout relative" :style="{ height: `${height + 2 * rowHeight}px` }">
+    <div class="widget-layout relative -mx-4" :style="{ height: `${height + 2 * rowHeight}px` }">
       <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
         <div :style="{ height: `${12 - 6 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
         <div
@@ -49,7 +49,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import { ResponsiveWidgetItems, WidgetData, WidgetItems } from '@/types';
+import { ResponsiveWidgetItems, WidgetData, WidgetItems } from '@/models';
 import { Widget } from './Widget';
 
 @Component({ components: { GridLayout, GridItem, Widget } })

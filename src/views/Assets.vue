@@ -1,6 +1,19 @@
 <template>
   <Layout>
-    <template v-slot:header><Heading>Asset Overview</Heading></template>
+    <template v-slot:header><Heading>Assets</Heading></template>
+    <ul>
+      <li v-for="asset in assets" :key="asset.id">
+        <router-link :to="`/assets/${asset.id}`" v-slot="{ href, navigate }" custom>
+          <button
+            :href="href"
+            @click="navigate"
+            class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+          >
+            {{ asset.name }} (id: {{ asset.id }})
+          </button>
+        </router-link>
+      </li>
+    </ul>
   </Layout>
 </template>
 
@@ -15,7 +28,11 @@ import { Layout } from '@/components/app';
     Heading,
   },
 })
-export default class Assets extends Vue {}
+export default class Assets extends Vue {
+  get assets() {
+    return this.$store.state.Assets.assets;
+  }
+}
 </script>
 
 <style scoped></style>

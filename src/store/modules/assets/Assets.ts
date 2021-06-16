@@ -2,10 +2,13 @@ import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { Inject } from 'inversify-props';
 import { IFetchableById } from '@/services';
 import { Asset } from '@/models';
+import { assetsMock } from './AssetsMock';
 
 @Module({ namespaced: true })
 export default class Assets extends VuexModule {
   public asset: Asset | null = null;
+
+  public assets: Asset[] = assetsMock;
 
   @Inject('AssetRepository')
   private assetRepository: IFetchableById<Asset>;
