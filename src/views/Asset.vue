@@ -4,10 +4,12 @@
       <BackButton to="/assets" class="sm:hidden self-start" />
       <Heading>{{ asset.name }}</Heading>
     </template>
-    <Card v-if="isReady" :autoSize="true" :hasTitle="false" :padding="true">
-      <sub-nav-menu :items="items" :base-path="basePath" />
-      <router-view></router-view>
-    </Card>
+    <div v-if="isReady" class="mx-4 md:mx-0">
+      <Card :autoSize="true" :hasTitle="false" :padding="true">
+        <sub-nav-menu :items="items" :base-path="basePath" />
+        <router-view></router-view>
+      </Card>
+    </div>
     <div v-else class="text-center mt-8">
       <a-spin>
         <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
