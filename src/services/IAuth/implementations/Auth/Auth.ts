@@ -9,7 +9,7 @@ interface ReamisAuthResponse {
     user: {
       email: string;
       fullname: string;
-      id: number;
+      id: string;
       isDeveloper: boolean;
       name: string;
     };

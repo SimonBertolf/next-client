@@ -1,5 +1,5 @@
 interface Asset {
-  readonly id: number;
+  readonly id: string;
   name: string;
 }
 

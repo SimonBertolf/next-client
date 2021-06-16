@@ -8,7 +8,7 @@ import { assetsMock } from './AssetsMock';
 export default class Assets extends VuexModule {
   public asset: Asset | null = null;
 
-  public assets: Asset[] = assetsMock;
+  public assets: Asset[] = assetsMock; // TODO: get assets from repository (or Repository mock)
 
   @Inject('AssetRepository')
   private assetRepository: IFetchableById<Asset>;
@@ -19,7 +19,7 @@ export default class Assets extends VuexModule {
   }
 
   @Action
-  public async loadAssetById(assetId: number): Promise<void> {
+  public async loadAssetById(assetId: string): Promise<void> {
     return this.assetRepository
       .getById(assetId)
       .then((asset: Asset) => {
@@ -30,5 +30,10 @@ export default class Assets extends VuexModule {
         this.context.commit('Errors/setError', error, { root: true });
         return Promise.reject();
       });
+  }
+
+  @Action
+  public flushAsset() {
+    this.context.commit('setAsset', null);
   }
 }

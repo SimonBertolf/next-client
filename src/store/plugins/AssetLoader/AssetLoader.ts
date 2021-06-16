@@ -6,11 +6,13 @@ const AssetLoader = (store: StoreType) => {
       if (state.Auth.user) {
         const { params } = state.route;
         if (params?.assetId) {
-          const assetId = Number(params.assetId);
+          const { assetId } = params;
           const { asset } = state.Assets;
           if (!asset || asset.id !== assetId) {
-            store.dispatch<number>('Assets/loadAssetById', assetId);
+            store.dispatch<string>('Assets/loadAssetById', assetId);
           }
+        } else {
+          store.dispatch('Assets/flushAsset');
         }
       }
     }
