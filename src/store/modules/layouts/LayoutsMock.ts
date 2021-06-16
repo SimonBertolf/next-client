@@ -1,4 +1,4 @@
-import { ResponsiveWidgetItems, WidgetItems } from '../../../types';
+import { ResponsiveWidgetItems, WidgetItems, Layout } from '@/models';
 
 export const responsiveLayoutMock: ResponsiveWidgetItems = {
   lg: [
@@ -373,152 +373,12 @@ export const responsiveLayoutMock: ResponsiveWidgetItems = {
   ],
 };
 
-// export const responsiveLayoutMock: ResponsiveWidgetItems = {
-//   lg: [
-//     {
-//       x: 0,
-//       y: 0,
-//       w: 2,
-//       h: 2,
-//       i: '00',
-//       _id: '00',
-//       type: 'WidgetA',
-//     },
-//     {
-//       x: 0,
-//       y: 2,
-//       w: 2,
-//       h: 1,
-//       i: '01',
-//       _id: '01',
-//       type: 'WidgetB',
-//     },
-//     {
-//       x: 0,
-//       y: 3,
-//       w: 1,
-//       h: 1,
-//       i: '02',
-//       _id: '02',
-//       type: 'WidgetC',
-//     },
-//   ],
-//   md: [
-//     {
-//       x: 0,
-//       y: 0,
-//       w: 2,
-//       h: 2,
-//       i: '00',
-//       _id: '00',
-//       type: 'WidgetA',
-//     },
-//     {
-//       x: 0,
-//       y: 2,
-//       w: 2,
-//       h: 1,
-//       i: '01',
-//       _id: '01',
-//       type: 'WidgetB',
-//     },
-//     {
-//       x: 0,
-//       y: 3,
-//       w: 1,
-//       h: 1,
-//       i: '02',
-//       _id: '02',
-//       type: 'WidgetC',
-//     },
-//   ],
-//   sm: [
-//     {
-//       x: 0,
-//       y: 0,
-//       w: 2,
-//       h: 2,
-//       i: '00',
-//       _id: '00',
-//       type: 'WidgetA',
-//     },
-//     {
-//       x: 0,
-//       y: 2,
-//       w: 2,
-//       h: 1,
-//       i: '01',
-//       _id: '01',
-//       type: 'WidgetB',
-//     },
-//     {
-//       x: 0,
-//       y: 3,
-//       w: 1,
-//       h: 1,
-//       i: '02',
-//       _id: '02',
-//       type: 'WidgetC',
-//     },
-//   ],
-//   xs: [
-//     {
-//       x: 0,
-//       y: 0,
-//       w: 2,
-//       h: 2,
-//       i: '00',
-//       _id: '00',
-//       type: 'WidgetA',
-//     },
-//     {
-//       x: 0,
-//       y: 2,
-//       w: 2,
-//       h: 1,
-//       i: '01',
-//       _id: '01',
-//       type: 'WidgetB',
-//     },
-//     {
-//       x: 0,
-//       y: 3,
-//       w: 1,
-//       h: 1,
-//       i: '02',
-//       _id: '02',
-//       type: 'WidgetC',
-//     },
-//   ],
-//   xxs: [
-//     {
-//       x: 0,
-//       y: 0,
-//       w: 2,
-//       h: 2,
-//       i: '00',
-//       _id: '00',
-//       type: 'WidgetA',
-//     },
-//     {
-//       x: 0,
-//       y: 2,
-//       w: 2,
-//       h: 1,
-//       i: '01',
-//       _id: '01',
-//       type: 'WidgetB',
-//     },
-//     {
-//       x: 0,
-//       y: 3,
-//       w: 1,
-//       h: 1,
-//       i: '02',
-//       _id: '02',
-//       type: 'WidgetC',
-//     },
-//   ],
-// };
+export const layoutsMock: Layout[] = [
+  {
+    _id: '60c8b6a92b48b3a8ebb276ae',
+    name: 'My Fantastic Layout',
+    responsiveLayout: responsiveLayoutMock,
+  },
+];
 
 export const layoutMock: WidgetItems = [];

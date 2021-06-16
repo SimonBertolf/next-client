@@ -1,5 +1,5 @@
 <template>
-  <div class="relative left-0" :style="{ top: '-6px' }">
+  <div class="relative left-0 mx-4" :style="{ top: '-6px' }">
     <widget-layout :show-guides="false" />
   </div>
 </template>

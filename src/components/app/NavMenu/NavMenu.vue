@@ -1,19 +1,19 @@
 <template>
   <a-menu mode="inline" class="nav-menu">
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/reports">Reports</nav-menu-item>
-    </a-menu-item>
-    <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/planing">Planing</nav-menu-item>
+      <nav-menu-item to="/dashboards">Dashboards</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
       <nav-menu-item to="/assets">Assets</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/layouts">Reporting Layouts</nav-menu-item>
+      <nav-menu-item to="/reporting">Reporting</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/dashboard">Dashboard</nav-menu-item>
+      <nav-menu-item to="/planing">Planing</nav-menu-item>
+    </a-menu-item>
+    <a-menu-item class="menu-item self-end sm:self-start">
+      <nav-menu-item to="/admin"><a-icon type="setting" /> Admin</nav-menu-item>
     </a-menu-item>
   </a-menu>
 </template>

@@ -28,3 +28,4 @@ export * from './ButtonToggleMobile';
 export * from './BackButton';
 export * from './DataTable';
 export * from './TableActionButton';
+export * from './SubNavMenu';

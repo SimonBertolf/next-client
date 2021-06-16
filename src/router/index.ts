@@ -1,7 +1,20 @@
 /* eslint-disable implicit-arrow-linebreak */
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import { Assets, AssetDetails, WidgetLayout, WidgetLayouts, Views, ReportPrint } from '../views';
+import {
+  Assets,
+  Asset,
+  WidgetLayouts,
+  ReportPrint,
+  Dashboards,
+  DashboardRedirect,
+  NotFound,
+  Reporting,
+  Admin,
+} from '@/views';
+import { WidgetEditor } from '@/components/admin';
+import { AssetData, AssetAttributes } from '@/components/assets';
+import { Analysis, Reports, Report } from '@/components/reporting';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
 
@@ -9,45 +22,94 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
+    path: '/health',
+    component: Health,
+  },
+  {
     path: '/',
-    component: Views,
+    component: ProtectedRoutes,
     children: [
       {
         path: '',
-        redirect: '/health',
+        redirect: '/dashboards',
       },
       {
-        path: '/health',
-        component: Health,
+        path: '/dashboards',
+        component: DashboardRedirect, // use redirect component because target is dynamic (_id of first dashboard)
       },
       {
-        path: '',
-        component: ProtectedRoutes,
+        path: '/dashboards/:dashboardId',
+        component: Dashboards,
+        props: true,
+      },
+      {
+        path: '/assets',
+        component: Assets,
+      },
+      {
+        path: '/assets/:assetId',
+        props: true,
+        redirect: '/assets/:assetId/data',
+        component: Asset,
         children: [
           {
-            path: '/assets',
-            component: Assets,
-          },
-          {
-            path: '/assets/:assetId',
+            path: 'data',
             props: true,
-            component: AssetDetails,
+            component: AssetData,
           },
           {
-            path: '/layouts',
+            path: 'attributes',
+            props: true,
+            component: AssetAttributes,
+          },
+        ],
+      },
+      {
+        path: '/reporting',
+        props: true,
+        redirect: '/reporting/reports',
+        component: Reporting,
+        children: [
+          {
+            path: 'reports',
+            component: Reports,
+          },
+          {
+            path: 'reports/:reportId',
+            props: true,
+            component: Report,
+          },
+          {
+            path: 'analysis',
+            component: Analysis,
+          },
+        ],
+      },
+      {
+        path: '/reporting/reports/:reportId/print',
+        props: true,
+        component: ReportPrint,
+      },
+      {
+        path: '/admin',
+        props: true,
+        redirect: '/admin/layouts',
+        component: Admin,
+        children: [
+          {
+            path: 'layouts',
             component: WidgetLayouts,
           },
           {
-            path: '/layouts/:layoutId',
+            path: 'layouts/:layoutId',
             props: true,
-            component: WidgetLayout,
-          },
-          {
-            path: '/reports/:reportId/print',
-            props: true,
-            component: ReportPrint,
+            component: WidgetEditor,
           },
         ],
+      },
+      {
+        path: '*',
+        component: NotFound,
       },
     ],
   },
