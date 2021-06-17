@@ -14,92 +14,94 @@ class KpiService implements IKpiService {
     params.append('year', today.getFullYear().toString());
     params.append('month', (today.getMonth() + 1).toString());
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
-    return this.client.get('?module=IO_Liegenschaft&action=getExklKpi', { params, ...options }).then(({ data }) => {
-      const { kpis } = data;
-      const kpiGroups = [
-        {
-          id: Math.random().toString(36),
-          category: 'Exklusive Kpis',
-          kpis: kpis.map(({ label, value, format }: Kpi) => {
-            let trend = 0;
-            if (value < 0) trend = -1;
-            if (value > 0) trend = 1;
-            return {
-              id: Math.random().toString(36),
-              label,
-              value,
-              format,
-              trend,
-            };
-          }),
-        },
-        {
-          id: Math.random().toString(36),
-          category: 'Exklusive Kpis',
-          kpis: kpis.map(({ label, value, format }: Kpi) => {
-            let trend = 0;
-            if (value < 0) trend = -1;
-            if (value > 0) trend = 1;
-            return {
-              id: Math.random().toString(36),
-              label,
-              value,
-              format,
-              trend,
-            };
-          }),
-        },
-        {
-          id: Math.random().toString(36),
-          category: 'Exklusive Kpis',
-          kpis: kpis.map(({ label, value, format }: Kpi) => {
-            let trend = 0;
-            if (value < 0) trend = -1;
-            if (value > 0) trend = 1;
-            return {
-              id: Math.random().toString(36),
-              label,
-              value,
-              format,
-              trend,
-            };
-          }),
-        },
-        {
-          id: Math.random().toString(36),
-          category: 'Exklusive Kpis',
-          kpis: kpis.map(({ label, value, format }: Kpi) => {
-            let trend = 0;
-            if (value < 0) trend = -1;
-            if (value > 0) trend = 1;
-            return {
-              id: Math.random().toString(36),
-              label,
-              value,
-              format,
-              trend,
-            };
-          }),
-        },
-        {
-          id: Math.random().toString(36),
-          category: 'Exklusive Kpis',
-          kpis: kpis.map(({ label, value, format }: Kpi) => {
-            let trend = 0;
-            if (value < 0) trend = -1;
-            if (value > 0) trend = 1;
-            return {
-              id: Math.random().toString(36),
-              label,
-              value,
-              format,
-              trend,
-            };
-          }),
-        },
-      ];
-      return Promise.resolve(kpiGroups);
-    });
+    return this.client
+      .get('/server.php?module=IO_Liegenschaft&action=getExklKpi', { params, ...options })
+      .then(({ data }) => {
+        const { kpis } = data;
+        const kpiGroups = [
+          {
+            id: Math.random().toString(36),
+            category: 'Exklusive Kpis',
+            kpis: kpis.map(({ label, value, format }: Kpi) => {
+              let trend = 0;
+              if (value < 0) trend = -1;
+              if (value > 0) trend = 1;
+              return {
+                id: Math.random().toString(36),
+                label,
+                value,
+                format,
+                trend,
+              };
+            }),
+          },
+          {
+            id: Math.random().toString(36),
+            category: 'Exklusive Kpis',
+            kpis: kpis.map(({ label, value, format }: Kpi) => {
+              let trend = 0;
+              if (value < 0) trend = -1;
+              if (value > 0) trend = 1;
+              return {
+                id: Math.random().toString(36),
+                label,
+                value,
+                format,
+                trend,
+              };
+            }),
+          },
+          {
+            id: Math.random().toString(36),
+            category: 'Exklusive Kpis',
+            kpis: kpis.map(({ label, value, format }: Kpi) => {
+              let trend = 0;
+              if (value < 0) trend = -1;
+              if (value > 0) trend = 1;
+              return {
+                id: Math.random().toString(36),
+                label,
+                value,
+                format,
+                trend,
+              };
+            }),
+          },
+          {
+            id: Math.random().toString(36),
+            category: 'Exklusive Kpis',
+            kpis: kpis.map(({ label, value, format }: Kpi) => {
+              let trend = 0;
+              if (value < 0) trend = -1;
+              if (value > 0) trend = 1;
+              return {
+                id: Math.random().toString(36),
+                label,
+                value,
+                format,
+                trend,
+              };
+            }),
+          },
+          {
+            id: Math.random().toString(36),
+            category: 'Exklusive Kpis',
+            kpis: kpis.map(({ label, value, format }: Kpi) => {
+              let trend = 0;
+              if (value < 0) trend = -1;
+              if (value > 0) trend = 1;
+              return {
+                id: Math.random().toString(36),
+                label,
+                value,
+                format,
+                trend,
+              };
+            }),
+          },
+        ];
+        return Promise.resolve(kpiGroups);
+      });
   }
 }
 

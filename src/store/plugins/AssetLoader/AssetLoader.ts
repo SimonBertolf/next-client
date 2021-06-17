@@ -11,6 +11,8 @@ const AssetLoader = (store: StoreType) => {
           if (!asset || asset.id !== assetId) {
             store.dispatch<string>('Assets/loadAssetById', assetId);
           }
+        } else {
+          store.dispatch('Assets/flushAsset');
         }
       }
     }

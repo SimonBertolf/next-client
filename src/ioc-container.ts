@@ -1,5 +1,6 @@
 import { ContainerManager, IContainerManager } from './inversify';
 
-const container: IContainerManager = new ContainerManager();
-
-container.buildContainer();
+export const initIocContainer = () => {
+  const container: IContainerManager = new ContainerManager();
+  container.buildContainer();
+};

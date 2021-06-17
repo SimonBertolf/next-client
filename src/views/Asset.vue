@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <template v-slot:header>
+    <template v-if="isReady" v-slot:header>
       <BackButton to="/assets" class="sm:hidden self-start" />
       <Heading>{{ asset.name }}</Heading>
     </template>
@@ -19,8 +19,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import _ from 'lodash';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Heading } from '@/components/typography';
 import { Layout, Tabs, Card, BackButton, SubNavMenu } from '@/components/app';
 import { AssetTabs } from '@/components/assets';
@@ -51,14 +50,8 @@ export default class Asset extends Vue {
     },
   ];
 
-  get asset() {
-    // TODO: remove this and use isReady and vuex store
-    const data = this.$store.state.Assets.assets.find((asset: AssetModel) => asset.id === this.assetId);
-    if (!data) {
-      this.$router.push('/404');
-      throw new Error(`Could not find asset with _id ${this.assetId}`);
-    }
-    return data;
+  get asset(): AssetModel {
+    return this.$store.state.Assets.asset;
   }
 
   get basePath() {
@@ -66,17 +59,11 @@ export default class Asset extends Vue {
   }
 
   get isReady() {
-    // TODO: uncomment when repository mocks are ready
-    // const { asset } = this.$store.state.Assets;
-    // if (!asset) return false;
-    // const { id } = asset;
-    // if (id !== this.assetId) return false;
+    const { asset } = this.$store.state.Assets;
+    if (!asset) return false;
+    const { id } = asset;
+    if (id !== this.assetId) return false;
     return true;
-  }
-
-  @Watch('$store.state.Assets.asset', { deep: true, immediate: true })
-  changeAsset(val: AssetModel, oldVal: AssetModel | null) {
-    if (val !== null && !_.isEqual(val, oldVal)) this.asset.name = this.$store.state.Assets.asset.name;
   }
 }
 </script>

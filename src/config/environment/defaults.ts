@@ -1,2 +1,7 @@
 // export env variables or defaults
-export const defaults = { API_BASE_URL: 'https://api.reamis.app/api/v1' };
+export const defaults = {
+  API_BASE_URL: 'http://localhost:8085',
+  DISABLE_LEGACY_AUTH: false,
+  LEGACY_AUTH_USER: 'eb',
+  LEGACY_AUTH_PASSWORD: 'raster23',
+};

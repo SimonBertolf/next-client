@@ -19,11 +19,11 @@ interface ReamisAuthResponse {
 @injectable()
 class Auth implements IAuth {
   async currentAuthenticatedUser(): Promise<User | null> {
-    await axios.post('?module=IO_App&action=init');
-    const res: { data: { login: boolean } } = await axios.get('?module=IO_Session&action=checkLogin');
+    await axios.post('/server.php?module=IO_App&action=init');
+    const res: { data: { login: boolean } } = await axios.get('/server.php?module=IO_Session&action=checkLogin');
     const { login } = res.data;
     if (!login) return null;
-    const { data } = (await axios.get('?module=IO_Session&action=getEnvironment')) as ReamisAuthResponse;
+    const { data } = (await axios.get('/server.php?module=IO_Session&action=getEnvironment')) as ReamisAuthResponse;
     const { access, user } = data;
     const keys = Object.keys(access);
     const roles = keys.map((key: string): Role => ({ label: key, operation: access[key] }));
@@ -36,7 +36,7 @@ class Auth implements IAuth {
       username: name,
       roles,
     };
-    return reamisNextUser;
+    return email ? reamisNextUser : null;
   }
 
   async signIn(username: string, password: string): Promise<User> {
@@ -44,8 +44,8 @@ class Auth implements IAuth {
     params.append('username', username);
     params.append('password', password);
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
-    return axios.post('?module=IO_Session&action=login', params, options).then(async () => {
-      const response = (await axios.get('?module=IO_Session&action=getEnvironment')) as ReamisAuthResponse;
+    return axios.post('/server.php?module=IO_Session&action=login', params, options).then(async () => {
+      const response = (await axios.get('/server.php?module=IO_Session&action=getEnvironment')) as ReamisAuthResponse;
       const { access, user } = response.data;
       const keys = Object.keys(access);
       const roles = keys.map((key: string): Role => ({ label: key, operation: access[key] }));
@@ -58,7 +58,8 @@ class Auth implements IAuth {
         username: name,
         roles,
       };
-      return reamisNextUser;
+      if (email) return reamisNextUser;
+      throw new Error(`failed to sign in for username ${username}`);
     });
   }
 }

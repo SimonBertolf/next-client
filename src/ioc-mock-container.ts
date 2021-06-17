@@ -1,10 +1,15 @@
 import { cid } from 'inversify-props';
-import { IKpiService, KpiMockService } from '@/services';
+import { Asset } from '@/models';
+import { IKpiService, KpiMockService, IFetchableById, AssetMockRepository, IAuth, AuthMock } from '@/services';
 import { ContainerManager, IContainerManager } from './inversify';
 
-const container: IContainerManager = new ContainerManager();
+export const mockContainer = () => {
+  const container: IContainerManager = new ContainerManager();
 
-container.resetIOCContainer();
-container.buildContainer();
+  container.resetIOCContainer();
+  container.buildContainer();
 
-container.mockSingleton<IKpiService>(cid.KpiService, KpiMockService);
+  container.mockSingleton<IAuth>(cid.IAuth, AuthMock);
+  container.mockSingleton<IKpiService>(cid.KpiService, KpiMockService);
+  container.mockSingleton<IFetchableById<Asset>>(cid.AssetRepository, AssetMockRepository);
+};
