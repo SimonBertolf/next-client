@@ -3851,10 +3851,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
               custom=""
-              href="#/assets/60c9cbd35f6db188c6441116"
+              href="#/assets/9"
             >
               
-          Lindenbachstrasse 40, 8006 Zürich (id: 60c9cbd35f6db188c6441116)
+          Gubelstrasse 64, 8006 Zürich (id: 9)
         
             </button>
           </li>
@@ -3862,10 +3862,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
               custom=""
-              href="#/assets/60c9cbdd5d40b57b5c5cd5b1"
+              href="#/assets/10"
             >
               
-          Forststrasse 23, 8006 Zürich (id: 60c9cbdd5d40b57b5c5cd5b1)
+          Forststrasse 23, 8006 Zürich (id: 10)
         
             </button>
           </li>
@@ -3873,10 +3873,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
               custom=""
-              href="#/assets/60c9cbe2b62587d676cf5c1e"
+              href="#/assets/11"
             >
               
-          Giesshübelstrasse 84, 8045 Zürich (id: 60c9cbe2b62587d676cf5c1e)
+          Giesshübelstrasse 84, 8045 Zürich (id: 11)
         
             </button>
           </li>
