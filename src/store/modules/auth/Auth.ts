@@ -25,26 +25,9 @@ export default class Auth extends VuexModule {
   public async currentAuthenticatedUser(): Promise<void> {
     return this.authService
       .currentAuthenticatedUser()
-      .then((user: User | null) => {
+      .then(async (user: User | null) => {
         this.context.commit('setUser', user);
         if (user) this.context.commit('setLoading', false);
-        return Promise.resolve();
-      })
-      .catch((error) => {
-        this.context.commit('setLoading', false);
-        this.context.commit('Errors/setError', error, { root: true });
-        return Promise.reject();
-      });
-  }
-
-  @Action
-  public async signIn({ username, password }: { username: string; password: string }): Promise<void> {
-    this.authService
-      .signIn(username, password)
-      .then((reamisUser: User) => {
-        this.context.commit('setUser', reamisUser);
-        this.context.commit('setLoading', false);
-        return Promise.resolve();
       })
       .catch((error) => {
         this.context.commit('setLoading', false);

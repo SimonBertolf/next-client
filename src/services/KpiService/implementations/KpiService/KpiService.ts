@@ -1,5 +1,5 @@
-import axios, { AxiosStatic } from 'axios';
-import { KpiGroup, Kpi } from '@/models';
+import axios, { AxiosResponse, AxiosStatic } from 'axios';
+import { KpiGroup, Kpi, ApiResponseBody } from '@/models';
 import { injectable } from 'inversify-props';
 import { IKpiService } from '../../interfaces';
 
@@ -15,9 +15,9 @@ class KpiService implements IKpiService {
     params.append('month', (today.getMonth() + 1).toString());
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
     return this.client
-      .get('/server.php?module=IO_Liegenschaft&action=getExklKpi', { params, ...options })
-      .then(({ data }) => {
-        const { kpis } = data;
+      .get('/legacy/server?module=IO_Liegenschaft&action=getExklKpi', { params, ...options })
+      .then(({ data: apiResponse }: AxiosResponse<ApiResponseBody>) => {
+        const { data: kpis } = apiResponse;
         const kpiGroups = [
           {
             id: Math.random().toString(36),
