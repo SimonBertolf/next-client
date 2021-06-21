@@ -1,5 +1,5 @@
-import axios, { AxiosStatic } from 'axios';
-import { Asset } from '@/models';
+import axios, { AxiosResponse, AxiosStatic } from 'axios';
+import { ApiResponseBody, Asset } from '@/models';
 import { IFetchableById } from '../../interfaces';
 
 class AssetRepository implements IFetchableById<Asset> {
@@ -9,20 +9,23 @@ class AssetRepository implements IFetchableById<Asset> {
     this.client = axios;
   }
 
-  getById(id: string): Promise<Asset> {
+  async getById(id: string): Promise<Asset> {
     const params = new URLSearchParams();
     params.append('assetId', id);
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
-    return this.client
-      .get('/server.php?module=IO_Asset&action=getAssetPanel', { params, ...options })
-      .then(({ data }) => data)
-      .then((asset: { id: string; name: string }) => {
-        const { name } = asset;
-        return Promise.resolve({
-          id: asset.id,
-          name,
-        });
-      });
+
+    const axiosResponse: AxiosResponse<ApiResponseBody<
+      Asset
+    >> = await this.client.get('/legacy/server?module=IO_Asset&action=getAssetPanel', { params, ...options });
+
+    const { data: apiResponse } = axiosResponse;
+
+    const { data: asset } = apiResponse;
+
+    // this error will never be thrown, because data is never undefined for GET request.
+    if (!asset) throw new Error('Data on api response body is undefined');
+
+    return asset;
   }
 }
 
