@@ -6,11 +6,11 @@ export const assetsMock: Asset[] = [
     name: 'Gubelstrasse 64, 8006 Zürich',
   },
   {
-    id: '10',
-    name: 'Forststrasse 23, 8006 Zürich',
+    id: '16',
+    name: 'St. Jakobs-Strasse 25, 8006 Zürich',
   },
   {
-    id: '11',
-    name: 'Giesshübelstrasse 84, 8045 Zürich',
+    id: '60',
+    name: 'Seestrasse 102, 8045 Zürich',
   },
 ];

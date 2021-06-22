@@ -8,11 +8,11 @@ export const assetMock: Asset = {
 export const assetsMock: Asset[] = [
   assetMock,
   {
-    id: '10',
-    name: 'Forststrasse 23, 8006 Zürich',
+    id: '16',
+    name: 'St. Jakobs-Strasse 25, 8006 Zürich',
   },
   {
-    id: '11',
-    name: 'Giesshübelstrasse 84, 8045 Zürich',
+    id: '60',
+    name: 'Seestrasse 102, 8045 Zürich',
   },
 ];
