@@ -3862,10 +3862,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
               custom=""
-              href="#/assets/10"
+              href="#/assets/16"
             >
               
-          Forststrasse 23, 8006 Zürich (id: 10)
+          St. Jakobs-Strasse 25, 8006 Zürich (id: 16)
         
             </button>
           </li>
@@ -3873,10 +3873,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
               custom=""
-              href="#/assets/11"
+              href="#/assets/60"
             >
               
-          Giesshübelstrasse 84, 8045 Zürich (id: 11)
+          Seestrasse 102, 8045 Zürich (id: 60)
         
             </button>
           </li>
