@@ -1,6 +1,6 @@
 <template>
   <div class="relative left-0 top-0 mx-4 -mt-2">
-    <widget-layout :show-guides="true" />
+    <widget-layout :show-guides="false" />
   </div>
 </template>
 
