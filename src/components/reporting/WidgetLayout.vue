@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="px-2 mb-4">
-      <a-space v-if="editable">
+    <div v-if="editable" class="px-2 mb-4">
+      <a-space>
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
         <!-- <a-button type="primary" @click="onTestClick">
@@ -11,7 +11,7 @@
     </div>
     <div class="widget-layout relative -mx-4" :style="{ height: `${height + 2 * rowHeight}px` }">
       <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
-        <div :style="{ height: `${12 - 6 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
+        <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
         <div
           :style="{ height: `${(rowHeight + margin) * rowsPerPage}px` }"
           v-for="n in numberOfPages - 1"
