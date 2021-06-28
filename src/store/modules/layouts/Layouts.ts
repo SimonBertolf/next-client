@@ -65,7 +65,7 @@ export default class Layouts extends VuexModule {
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
       // get number of rows and cols of current layout
-      const rows = Math.max(...this.responsiveLayout[breakpoint].map((widget) => widget.y + widget.h));
+      const rows = Math.max(...this.responsiveLayout[breakpoint].map((widget) => widget.y + widget.h), 0);
       const cols = this.cols[breakpoint];
 
       // prepare availability map
