@@ -13,3 +13,5 @@ export * from './StateType';
 export * from './FormatList';
 export * from './TrendList';
 export * from './TableData';
+export * from './Widget';
+export * from './WidgetLayout';

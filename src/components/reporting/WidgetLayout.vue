@@ -49,7 +49,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import { ResponsiveWidgetItems, WidgetData, WidgetItems } from '@/models';
+import { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems } from '@/types';
 import { Widget } from './Widget';
 
 @Component({ components: { GridLayout, GridItem, Widget } })
@@ -58,11 +58,11 @@ export default class WidgetLayout extends Vue {
 
   @Prop({ type: Boolean, default: false }) readonly showGuides: boolean;
 
-  @Prop({ default: null }) readonly newWidget: WidgetData | null;
+  @Prop({ default: null }) readonly newWidget: WidgetInterface | null;
 
   height = this.margin;
 
-  layout: WidgetItems = [];
+  layout: WidgetLayoutItems = [];
 
   numberOfPages = 1;
 
@@ -114,23 +114,23 @@ export default class WidgetLayout extends Vue {
   }
 
   @Watch('newWidget', { immediate: true, deep: true })
-  onNewWidgetChange(newWidget: WidgetData | null) {
+  onNewWidgetChange(newWidget: WidgetInterface | null) {
     if (newWidget) {
       this.addNewWidget(newWidget);
     }
   }
 
   @Watch('$store.state.Layouts.responsiveLayout', { immediate: true, deep: true })
-  onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetItems) {
+  onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetLayoutItems) {
     // update local layout for current breakpoint if it is different from the one on the store
     if (this.breakpoint && JSON.stringify(this.layout) !== JSON.stringify(newResponsiveLayout[this.breakpoint])) {
-      const newLayout: WidgetItems = newResponsiveLayout[this.breakpoint];
+      const newLayout: WidgetLayoutItems = newResponsiveLayout[this.breakpoint];
       this.layout.splice(0, this.layout.length, ...newLayout);
     }
   }
 
   @Emit('new-widget-added')
-  addNewWidget(newWidget: WidgetData) {
+  addNewWidget(newWidget: WidgetInterface) {
     this.$store.commit('Layouts/addWidget', newWidget);
   }
 
@@ -138,7 +138,7 @@ export default class WidgetLayout extends Vue {
     return this.$store.state.Layouts.responsiveLayout;
   }
 
-  onLayoutUpdated(newLayout: WidgetItems) {
+  onLayoutUpdated(newLayout: WidgetLayoutItems) {
     // console.log('LAYOUT UPDATED');
     this.$store.commit('Layouts/updateResponsiveLayout', { layout: [...newLayout], breakpoint: this.breakpoint });
     this.measureHeight();
@@ -147,7 +147,7 @@ export default class WidgetLayout extends Vue {
   onBreakpointChanged(newBreakpoint: GridBreakpoint) {
     this.breakpoint = newBreakpoint;
     // console.log('BREAKPOINT CHANGED: ', newBreakpoint);
-    const newLayout: WidgetItems = this.responsiveLayout[newBreakpoint];
+    const newLayout: WidgetLayoutItems = this.responsiveLayout[newBreakpoint];
     this.layout.splice(0, this.layout.length, ...newLayout);
     this.measureHeight();
   }

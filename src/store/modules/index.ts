@@ -4,3 +4,4 @@ export * from './auth';
 export * from './layouts';
 export * from './dashboards';
 export * from './reports';
+export * from './widgets';

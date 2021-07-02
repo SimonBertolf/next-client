@@ -31,7 +31,8 @@
 </template>
 
 <script lang="ts">
-import { WidgetData, WidgetType, Layout } from '@/models';
+import { Layout } from '@/models';
+import { WidgetType, Widget } from '@/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import WidgetLayout from '../reporting/WidgetLayout.vue';
 
@@ -41,7 +42,7 @@ export default class WidgetEditor extends Vue {
 
   editable = true;
 
-  newWidget: WidgetData | null = null;
+  newWidget: Widget | null = null;
 
   get layoutData() {
     // TODO: maybe it makes sense to move this logic to store module?

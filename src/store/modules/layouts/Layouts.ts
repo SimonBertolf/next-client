@@ -1,14 +1,14 @@
-import { ResponsiveWidgetItems, WidgetData, WidgetItem, WidgetItems } from '@/models';
+import { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
 import { Layout } from '@/models/Layout';
 import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { layoutsMock, responsiveLayoutMock } from './LayoutsMock';
 
 // Helpers for development and local demo TODO: romove when done
-const locallyStoreLayout = (layout: ResponsiveWidgetItems) => {
+const locallyStoreLayout = (layout: ResponsiveWidgetLayoutItems) => {
   localStorage.setItem('responsiveLayout', JSON.stringify(layout));
 };
-const locallyReadLayout = (): ResponsiveWidgetItems | undefined => {
+const locallyReadLayout = (): ResponsiveWidgetLayoutItems | undefined => {
   const localLayoutString = localStorage.getItem('responsiveLayout');
   if (localLayoutString) return JSON.parse(localLayoutString);
   return undefined;
@@ -16,7 +16,7 @@ const locallyReadLayout = (): ResponsiveWidgetItems | undefined => {
 
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
-  public responsiveLayout: ResponsiveWidgetItems = locallyReadLayout() || responsiveLayoutMock; // TODO: remove mock
+  public responsiveLayout: ResponsiveWidgetLayoutItems = locallyReadLayout() || responsiveLayoutMock; // TODO:removemock
 
   public cols: { [breakpoint: string]: number } = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
@@ -31,13 +31,13 @@ export default class Layouts extends VuexModule {
   public layouts: Layout[] = layoutsMock;
 
   @Mutation
-  setResponsiveLayout(responsiveLayout: ResponsiveWidgetItems) {
+  setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
     this.responsiveLayout = responsiveLayout;
     locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
-  updateResponsiveLayout(payload: { layout: WidgetItems; breakpoint: GridBreakpoint }) {
+  updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }) {
     const { layout, breakpoint } = payload;
     this.responsiveLayout[breakpoint] = layout;
     locallyStoreLayout(this.responsiveLayout);
@@ -60,7 +60,7 @@ export default class Layouts extends VuexModule {
   }
 
   @Mutation
-  addWidget(payload: WidgetData) {
+  addWidget(payload: Widget) {
     const { type, _id } = payload;
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
@@ -100,7 +100,7 @@ export default class Layouts extends VuexModule {
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
         const [x, y] = findFreeCoordinates(breakpoint);
-        const newWidget: WidgetItem = {
+        const newWidget: WidgetLayoutItem = {
           x,
           y,
           w: 1,

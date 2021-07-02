@@ -1,6 +1,7 @@
-import { ResponsiveWidgetItems, WidgetItems, Layout } from '@/models';
+import { ResponsiveWidgetLayoutItems, WidgetLayoutItems } from '@/types';
+import { Layout } from '@/models';
 
-export const responsiveLayoutMock: ResponsiveWidgetItems = {
+export const responsiveLayoutMock: ResponsiveWidgetLayoutItems = {
   lg: [
     {
       x: 0,
@@ -381,4 +382,4 @@ export const layoutsMock: Layout[] = [
   },
 ];
 
-export const layoutMock: WidgetItems = [];
+export const layoutMock: WidgetLayoutItems = [];
