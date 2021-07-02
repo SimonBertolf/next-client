@@ -8,9 +8,7 @@
       <slot :item="item" :index="index"></slot>
     </primary-list>
     <div class="text-center" v-if="(loading && busy && data.length) || (loading && !data.length)">
-      <a-spin>
-        <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
-      </a-spin>
+      <spinner />
     </div>
   </infinite-scroll>
 </template>
@@ -20,12 +18,14 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 import { PrimaryList } from '../PrimaryList';
 import { InfiniteScroll } from '../InfiniteScroll';
 import { Skeleton } from '../Skeleton';
+import { Spinner } from '../Spinner';
 
 @Component({
   components: {
     PrimaryList,
     InfiniteScroll,
     Skeleton,
+    Spinner,
   },
 })
 export default class AssetList extends Vue {
