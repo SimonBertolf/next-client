@@ -4,6 +4,7 @@
       <a-space>
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
+        <span>Ready: {{ dataReady }}</span>
         <!-- <a-button type="primary" @click="onTestClick">
           Test Button
         </a-button> -->
@@ -43,13 +44,15 @@
         </grid-layout>
       </div>
     </div>
+    <!-- The empty element #data-ready makes sure PDF gets rendered, only if all data available.  -->
+    <div v-if="dataReady" id="data-ready"></div>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems } from '@/types';
+import { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems, WidgetData } from '@/types';
 import { Widget } from './Widget';
 
 @Component({ components: { GridLayout, GridItem, Widget } })
@@ -67,6 +70,17 @@ export default class WidgetLayout extends Vue {
   numberOfPages = 1;
 
   breakpoint: GridBreakpoint | null = null;
+
+  // is true if data of all widgets is loaded.
+  get dataReady() {
+    const { widgets } = this.$store.state.Widgets as { widgets: WidgetData[] };
+    return (
+      widgets.reduce(
+        (acc: boolean, cur: WidgetData) => acc && !!this.layout.find((item) => item._id === cur._id),
+        true,
+      ) && this.layout.length === widgets.length
+    );
+  }
 
   // onTestClick() {
   //   // eslint-disable-next-line no-console
