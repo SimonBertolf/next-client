@@ -5,7 +5,7 @@
     </div>
     <div v-else>
       <span v-if="removable" class="remove" @click="removeWidget"><a-icon type="close" /></span>
-      <component :is="type" :id="id"></component>
+      <component :is="type" :id="id" :widget-data="widgetData"></component>
     </div>
   </Card>
 </template>
@@ -28,14 +28,18 @@ export default class Widget extends Vue {
     return !this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id);
   }
 
+  get widgetData() {
+    return this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id)?.data;
+  }
+
   @Emit('remove-widget')
   removeWidget() {
     return this.id;
   }
 
-  // mounted(): void {
-  //   console.log('type: ', this.type);
-  // }
+  mounted(): void {
+    this.$store.dispatch('Widgets/loadWidgetData', { _id: this.id, type: this.type });
+  }
 }
 </script>
 
