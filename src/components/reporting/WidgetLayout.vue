@@ -157,8 +157,9 @@ export default class WidgetLayout extends Vue {
     this.measureHeight();
   }
 
-  onRemoveWidget(id: string) {
-    this.$store.commit('Layouts/removeWidget', { id });
+  onRemoveWidget(_id: string) {
+    this.$store.commit('Widgets/removeWidgetData', { _id });
+    this.$store.commit('Layouts/removeWidget', { _id });
   }
 
   mounted() {

@@ -46,12 +46,13 @@ export default class Layouts extends VuexModule {
   }
 
   @Mutation
-  removeWidget(payload: { id: string }) {
-    const { id } = payload;
+  removeWidget(payload: { _id: string }) {
+    const { _id } = payload;
     const breakpoints = Object.keys(this.responsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
-        const index = this.responsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === id);
+        const index = this.responsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === _id);
+        // TODO: this error is probably uncaught. Fix!
         if (index < 0) throw new Error('could not find widget to delete');
         this.responsiveLayout[breakpoint].splice(index, 1);
       }

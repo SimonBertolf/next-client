@@ -6,10 +6,10 @@ export default class Widgets extends VuexModule {
   public widgets: WidgetData[] = [];
 
   @Mutation
-  removeWidgetData(widgetId: string) {
-    const index = this.widgets.findIndex((widget) => widget._id === widgetId);
-    if (index < 0) throw new Error(`Could not find widget data of widget with _id ${widgetId}`);
-    this.widgets.splice(index, 1);
+  removeWidgetData({ _id }: { _id: string }) {
+    const index = this.widgets.findIndex((widget) => widget._id === _id);
+    // if widget data for given _id exists, remove it.
+    if (index >= 0) this.widgets.splice(index, 1);
   }
 
   @Mutation
@@ -20,6 +20,7 @@ export default class Widgets extends VuexModule {
   @Action
   public async loadWidgetData(widget: Widget): Promise<void> {
     const { _id, type } = widget;
+    this.context.commit('removeWidgetData', { _id });
     // TODO: Remove mock, use repository to fetch widget data
     return new Promise((resolve) => {
       setTimeout(() => {
