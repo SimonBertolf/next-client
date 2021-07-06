@@ -756,7 +756,7 @@ exports[`Storyshots app/Layout Example 1`] = `
               custom=""
               href="#/planing"
             >
-              Planing
+              Planning
             </a>
           </li>
           <li
@@ -940,7 +940,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
       custom=""
       href="#/planing"
     >
-      Planing
+      Planning
     </a>
   </li>
   <li
@@ -3724,7 +3724,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
               custom=""
               href="#/planing"
             >
-              Planing
+              Planning
             </a>
           </li>
           <li
