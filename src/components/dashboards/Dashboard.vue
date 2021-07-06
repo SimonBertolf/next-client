@@ -16,8 +16,8 @@ export default class Dashboard extends Vue {
   @Prop({ required: true, type: String }) readonly dashboardId: string;
 
   // not used, TODO: remove if not used
-  get dashboard() {
-    return this.$store.state.Dashboards.dashboard as DashboardModel;
+  get dashboard(): DashboardModel | null {
+    return this.$store.state.Dashboards.dashboard;
   }
 
   get hasFilters() {

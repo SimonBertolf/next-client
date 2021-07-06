@@ -1,6 +1,7 @@
 import Dashboard from './Dashboard.vue';
-import Filters from './Filters.vue';
+import FilterList from './FilterList.vue';
 import FilterPanel from './FilterPanel.vue';
 import FilterButton from './FilterButton.vue';
+import FilterInput from './FilterInput.vue';
 
-export { Dashboard, Filters, FilterPanel, FilterButton };
+export { Dashboard, FilterList, FilterPanel, FilterButton, FilterInput };

@@ -15,3 +15,4 @@ export * from './TrendList';
 export * from './TableData';
 export * from './Widget';
 export * from './WidgetLayout';
+export * from './Filter';
