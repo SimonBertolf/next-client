@@ -10,7 +10,7 @@ export interface SelectFilter extends FilterBase {
 }
 
 export interface DateRangeFilter extends FilterBase {
-  selected: { from: Date; to: Date };
+  selected?: { from: Date; to: Date };
   available: { from: Date; to: Date };
   type: 'DateRange';
 }

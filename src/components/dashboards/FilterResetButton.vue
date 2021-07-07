@@ -1,5 +1,5 @@
 <template>
-  <button-base :primary="true" :on-click="onClick" icon="delete">Reset Filters</button-base>
+  <button-base :primary="true" :on-click="onClick" icon="delete">Reset All Filters</button-base>
 </template>
 
 <script lang="ts">

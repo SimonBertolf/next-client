@@ -6,6 +6,7 @@
     :maxTagCount="0"
     showArrow
     class="filter-select"
+    :allow-clear="true"
   >
     <a-select-option v-for="option in filter.available" :key="option" :value="option">
       {{ option }}

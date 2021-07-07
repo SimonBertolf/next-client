@@ -27,7 +27,7 @@ export default class Dashboards extends VuexModule {
       key: 'portfolios',
       type: 'Select',
       available: ['01', '02', '03'],
-      selected: [],
+      selected: ['01', '03'],
     },
     {
       key: 'regions',
