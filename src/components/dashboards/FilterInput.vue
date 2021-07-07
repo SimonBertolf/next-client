@@ -4,19 +4,28 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Filter as FilterType } from '@/types';
+import { Filter } from '@/types';
 import { DateRange, Select } from './filters';
 
 @Component({ components: { DateRange, Select } })
 export default class FilterInput extends Vue {
   name = 'Filter';
 
-  @Prop({ required: true, type: String }) readonly type: FilterType['type'];
+  @Prop({ required: true, type: String }) readonly type: Filter['type'];
 
   // @Prop({ required: true, type: String }) readonly key: string;
 
-  get filter(): FilterType | undefined {
-    return this.$store.state.Dashboards.filters.find((filter: FilterType) => this.$vnode.key === filter.key);
+  get filter(): Filter | undefined {
+    const { filters }: { filters: Filter[] } = this.$store.state.Dashboards;
+    const filter = filters.find((item) => this.$vnode.key === item.key);
+    if (!filter) {
+      this.$store.commit(
+        'Errors/setError',
+        new Error(`Could not find filter ${this.$vnode.key} in Dashboards store.`),
+        { root: true },
+      );
+    }
+    return filter;
   }
 }
 </script>

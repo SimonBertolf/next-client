@@ -1,7 +1,7 @@
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import { Dashboard } from '@/models';
 import { Filter } from '@/types';
-import { dashboardsMock } from './DashboardsMock';
+import { dashboardsMock, filtersMock } from './DashboardsMock';
 
 @Module({ namespaced: true })
 export default class Dashboards extends VuexModule {
@@ -9,59 +9,7 @@ export default class Dashboards extends VuexModule {
 
   public dashboard: Dashboard | null = null;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  public filters: Filter[] = [
-    {
-      key: 'date',
-      type: 'DateRange',
-      available: { from: new Date('2012-01-06T13:21:33+0000'), to: new Date('2021-07-06T13:21:33+0000') },
-      selected: { from: new Date('2021-01-06T13:21:33+0000'), to: new Date('2021-07-06T13:21:33+0000') },
-    },
-    {
-      key: 'clients',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-    {
-      key: 'portfolios',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: ['01', '03'],
-    },
-    {
-      key: 'regions',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-    {
-      key: 'assets',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-    {
-      key: 'usages',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-    {
-      key: 'kinds',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-    {
-      key: 'tanants',
-      type: 'Select',
-      available: ['01', '02', '03'],
-      selected: [],
-    },
-  ]; // TODO: implement and type
-
-  // public filters = [];
+  public filters: Filter[] = [];
 
   @Mutation
   setDashboard(dashboard: Dashboard) {
@@ -71,6 +19,34 @@ export default class Dashboards extends VuexModule {
   @Mutation
   flushDashboard() {
     this.dashboard = null;
+    this.filters.splice(0, this.filters.length);
+  }
+
+  @Mutation
+  setFilters(filters: Filter[]) {
+    this.filters.splice(0, this.filters.length, ...filters);
+  }
+
+  @Mutation
+  setFilterSelected({ key, selected }: { key: string; selected: Filter['selected'] }) {
+    const index = this.filters.findIndex((filter) => filter.key === key);
+    if (index >= 0) {
+      this.filters[index].selected = selected;
+    } else {
+      const error = new Error(`Filter ${key} not found. Could not set selected.`);
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Mutation
+  resetFiltersSelected() {
+    this.filters.forEach((filter, index) => {
+      if (Array.isArray(filter.selected)) {
+        this.filters[index].selected = [];
+      } else {
+        this.filters[index].selected = undefined;
+      }
+    });
   }
 
   @Action
@@ -80,7 +56,8 @@ export default class Dashboards extends VuexModule {
       setTimeout(() => {
         const dashboard = dashboardsMock.find((db) => db._id === _id);
         if (dashboard) {
-          this.context.commit('setDashboard', dashboard);
+          this.context.commit('setDashboard', { ...dashboard });
+          this.context.commit('setFilters', JSON.parse(JSON.stringify(filtersMock)));
           resolve();
         } else {
           const error = new Error('Dashboard not found');

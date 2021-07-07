@@ -9,8 +9,7 @@ import { ButtonBase } from '@/components/app';
 @Component({ components: { ButtonBase } })
 export default class FilterResetButton extends Vue {
   onClick() {
-    // TODO: implement state update
-    // console.log('reset filters');
+    this.$store.commit('Dashboards/resetFiltersSelected');
   }
 }
 </script>

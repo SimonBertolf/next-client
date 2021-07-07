@@ -3,7 +3,7 @@
   "env": {
     "node": true
   },
-  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "@vue/airbnb", "@vue/typescript/recommended"],
+  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "@vue/airbnb", "@vue/typescript/recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2020
   },

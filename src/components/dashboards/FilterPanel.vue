@@ -7,7 +7,7 @@
       <filter-list />
     </Card>
     <filter-button @click="showFilterModal" />
-    <a-modal title="Filters" v-model="filterModalVisible" @ok="onFilterModalOk" class="filter-modal">
+    <a-modal title="Filters" v-model="filterModalVisible" class="filter-modal" :footer="null">
       <filter-list />
     </a-modal>
   </div>
@@ -25,11 +25,6 @@ export default class FilterPanel extends Vue {
 
   showFilterModal() {
     this.filterModalVisible = true;
-  }
-
-  onFilterModalOk() {
-    // TODO: apply filters and fetch data
-    this.filterModalVisible = false;
   }
 }
 </script>
