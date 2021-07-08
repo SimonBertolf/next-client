@@ -1,10 +1,10 @@
 <template>
-  <component :is="type" :filter="filter" />
+  <component :is="type" :filter="filter" :filterIndex="filterIndex" :filter-selection="filterSelection" />
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Filter } from '@/types';
+import { Filter, FilterSelection } from '@/types';
 import { DateRange, Select } from './filters';
 
 @Component({ components: { DateRange, Select } })
@@ -12,6 +12,12 @@ export default class FilterInput extends Vue {
   name = 'Filter';
 
   @Prop({ required: true, type: String }) readonly type: Filter['type'];
+
+  @Prop({ required: true, type: Number }) readonly filterIndex: number;
+
+  get filterSelection(): FilterSelection {
+    return this.$store.state.Dashboards.filterSelections[this.filterIndex];
+  }
 
   // @Prop({ required: true, type: String }) readonly key: string;
 

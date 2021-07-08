@@ -4,11 +4,10 @@
     mode="multiple"
     :placeholder="filter.key"
     :maxTagCount="0"
-    showArrow
     class="filter-select"
-    :allow-clear="true"
+    allow-clear
   >
-    <a-select-option v-for="option in filter.available" :key="option" :value="option">
+    <a-select-option v-for="option in filter.options" :key="option" :value="option">
       {{ option }}
     </a-select-option>
     <template v-slot:maxTagPlaceholder>
@@ -19,7 +18,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { SelectFilter } from '@/types';
+import { SelectFilter, FilterSelection } from '@/types';
 
 @Component({ components: {} })
 export default class Select extends Vue {
@@ -27,23 +26,30 @@ export default class Select extends Vue {
 
   @Prop({ required: true, type: Object }) readonly filter: SelectFilter;
 
+  @Prop({ required: true, type: Number }) readonly filterIndex: number;
+
+  @Prop({ required: true, type: Array }) readonly filterSelection: FilterSelection;
+
   // watch filter selected on global store
-  @Watch('filter.selected', { deep: true, immediate: true })
-  onGlobalSelectedChange(newSelected: SelectFilter['selected'], oldSelected: SelectFilter['selected'] | undefined) {
-    // update local selected model if items in selected list change
-    if (JSON.stringify(newSelected) !== JSON.stringify(oldSelected)) {
-      this.selected.splice(0, this.selected.length, ...newSelected);
+  @Watch('filterSelection', { deep: true, immediate: true })
+  onGlobalSelectedChange() {
+    // update local selected if different from global selected
+    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+      const selectedUpdate = [...this.filterSelection];
+      this.selected.splice(0, this.selected.length, ...selectedUpdate);
     }
   }
 
   // watch local selected model
   @Watch('selected', { deep: true, immediate: true })
-  onLocalSelectedChange(newSelected: string[]) {
-    // commit change on local selected model to store
-    this.$store.commit('Dashboards/setFilterSelected', {
-      key: this.filter.key,
-      selected: [...newSelected],
-    });
+  onLocalSelectedChange() {
+    // update global selected if different from local
+    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+      this.$store.commit('Dashboards/setFilterSelection', {
+        key: this.filter.key,
+        selection: [...this.selected],
+      });
+    }
   }
 }
 </script>

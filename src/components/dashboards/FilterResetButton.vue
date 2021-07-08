@@ -9,7 +9,7 @@ import { ButtonBase } from '@/components/app';
 @Component({ components: { ButtonBase } })
 export default class FilterResetButton extends Vue {
   onClick() {
-    this.$store.commit('Dashboards/resetFiltersSelected');
+    this.$store.commit('Dashboards/resetFiltersSelections');
   }
 }
 </script>

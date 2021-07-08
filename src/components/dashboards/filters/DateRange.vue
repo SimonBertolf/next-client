@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import moment, { Moment } from 'moment';
-import { DateRangeFilter } from '@/types';
+import { DateRangeFilter, FilterSelection } from '@/types';
 
 @Component({ components: {} })
 export default class DateRange extends Vue {
@@ -15,24 +15,16 @@ export default class DateRange extends Vue {
 
   @Prop({ required: true, type: Object }) readonly filter: DateRangeFilter;
 
-  setSelected() {
-    if (this.filter.selected?.from && this.filter.selected?.to) {
-      const { from, to } = this.filter.selected;
-      this.selected.push(moment(from));
-      this.selected.push(moment(to));
-    }
-  }
+  @Prop({ required: true, type: Number }) readonly filterIndex: number;
+
+  @Prop({ required: true, type: Array }) readonly filterSelection: FilterSelection;
 
   // watch filter selected on global store
-  @Watch('filter.selected', { deep: true, immediate: true })
-  onGlobalSelectedChange(
-    newSelected: DateRangeFilter['selected'],
-    oldSelected: DateRangeFilter['selected'] | undefined,
-  ) {
-    // update local selected model if items in selected list change
-    if (JSON.stringify(newSelected) !== JSON.stringify(oldSelected)) {
-      if (newSelected) {
-        this.selected.splice(0, this.selected.length, ...[moment(newSelected.from), moment(newSelected.to)]);
+  @Watch('filterSelection', { deep: true, immediate: true })
+  onGlobalSelectedChange() {
+    if (JSON.stringify(this.selected) !== JSON.stringify(this.filterSelection)) {
+      if (this.filterSelection.length === 2) {
+        this.selected.splice(0, this.selected.length, ...this.filterSelection.map((item) => moment(item)));
       } else {
         this.selected.splice(0, this.selected.length);
       }
@@ -41,18 +33,15 @@ export default class DateRange extends Vue {
 
   // watch local selected model
   @Watch('selected', { deep: true, immediate: true })
-  onLocalSelectedChange(newSelected: Moment[]) {
-    // commit change on local selected model to store
-    this.$store.commit('Dashboards/setFilterSelected', {
-      key: this.filter.key,
-      selected:
-        newSelected?.length === 2
-          ? {
-              from: new Date(newSelected[0].toISOString()),
-              to: new Date(newSelected[1].toISOString()),
-            }
-          : undefined,
-    });
+  onLocalSelectedChange() {
+    // update global selected if different from local
+    if (JSON.stringify(this.selected) !== JSON.stringify(this.filterSelection)) {
+      const selectedUpdate = this.selected.map((item) => item.toISOString());
+      this.$store.commit('Dashboards/setFilterSelection', {
+        key: this.filter.key,
+        selection: this.selected?.length === 2 ? [...selectedUpdate] : [],
+      });
+    }
   }
 }
 </script>

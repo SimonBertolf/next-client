@@ -1,7 +1,7 @@
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import { Dashboard } from '@/models';
-import { Filter } from '@/types';
-import { dashboardsMock, filtersMock } from './DashboardsMock';
+import { Filter, FilterSelection } from '@/types';
+import { dashboardsMock, filterSelectionsMock, filtersMock } from './DashboardsMock';
 
 @Module({ namespaced: true })
 export default class Dashboards extends VuexModule {
@@ -10,6 +10,8 @@ export default class Dashboards extends VuexModule {
   public dashboard: Dashboard | null = null;
 
   public filters: Filter[] = [];
+
+  public filterSelections: FilterSelection[] = [];
 
   @Mutation
   setDashboard(dashboard: Dashboard) {
@@ -28,25 +30,25 @@ export default class Dashboards extends VuexModule {
   }
 
   @Mutation
-  setFilterSelected({ key, selected }: { key: string; selected: Filter['selected'] }) {
+  setFilterSelections(filterSelections: FilterSelection[]) {
+    this.filterSelections.splice(0, this.filterSelections.length, ...filterSelections);
+  }
+
+  @Mutation
+  setFilterSelection({ key, selection }: { key: string; selection: FilterSelection }) {
     const index = this.filters.findIndex((filter) => filter.key === key);
     if (index >= 0) {
-      this.filters[index].selected = selected;
+      this.filterSelections.splice(index, 1, [...selection]);
+      // this.filterSelections[index].splice(0, this.filterSelections[index].length, ...selection);
     } else {
-      const error = new Error(`Filter ${key} not found. Could not set selected.`);
+      const error = new Error(`Filter ${key} not found. Could not set selection.`);
       this.context.commit('Errors/setError', error, { root: true });
     }
   }
 
   @Mutation
-  resetFiltersSelected() {
-    this.filters.forEach((filter, index) => {
-      if (Array.isArray(filter.selected)) {
-        this.filters[index].selected = [];
-      } else {
-        this.filters[index].selected = undefined;
-      }
-    });
+  resetFiltersSelections() {
+    this.filterSelections.splice(0, this.filterSelections.length, ...[...new Array(this.filters.length)].map(() => []));
   }
 
   @Action
@@ -58,6 +60,7 @@ export default class Dashboards extends VuexModule {
         if (dashboard) {
           this.context.commit('setDashboard', { ...dashboard });
           this.context.commit('setFilters', JSON.parse(JSON.stringify(filtersMock)));
+          this.context.commit('setFilterSelections', JSON.parse(JSON.stringify(filterSelectionsMock)));
           resolve();
         } else {
           const error = new Error('Dashboard not found');

@@ -1,6 +1,12 @@
 <template>
   <div class="filter-list grid -m-4">
-    <filter-input v-for="filter in filters" :key="filter.key" :type="filter.type" class="m-4" />
+    <filter-input
+      v-for="(filter, index) in filters"
+      :key="filter.key"
+      :type="filter.type"
+      :filterIndex="index"
+      class="m-4"
+    />
     <filter-reset-button class="m-4" />
   </div>
 </template>

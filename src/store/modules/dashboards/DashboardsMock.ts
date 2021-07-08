@@ -1,5 +1,5 @@
 import { Dashboard } from '@/models';
-import { Filter } from '@/types';
+import { Filter, FilterSelection } from '@/types';
 
 export const dashboardsMock: Dashboard[] = [
   {
@@ -32,49 +32,52 @@ export const filtersMock: Filter[] = [
   {
     key: 'date',
     type: 'DateRange',
-    available: { from: new Date('2012-01-06T13:21:33+0000'), to: new Date('2021-07-06T13:21:33+0000') },
-    selected: { from: new Date('2021-01-06T13:21:33+0000'), to: new Date('2021-07-06T13:21:33+0000') },
+    options: { from: new Date('2012-01-06T13:21:33+000Z'), to: new Date('2021-07-06T13:21:33+000Z') },
   },
   {
     key: 'clients',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
   {
     key: 'portfolios',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: ['01', '03'],
+    options: ['01', '02', '03'],
   },
   {
     key: 'regions',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
   {
     key: 'assets',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
   {
     key: 'usages',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
   {
     key: 'kinds',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
   {
     key: 'tanants',
     type: 'Select',
-    available: ['01', '02', '03'],
-    selected: [],
+    options: ['01', '02', '03'],
   },
+];
+
+export const filterSelectionsMock: FilterSelection[] = [
+  [new Date('2021-07-06T13:21:33.000Z').toISOString(), new Date('2021-07-21T13:21:33.000Z').toISOString()],
+  [],
+  ['01', '03'],
+  [],
+  [],
+  [],
+  [],
+  [],
 ];
