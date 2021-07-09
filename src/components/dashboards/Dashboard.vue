@@ -1,14 +1,14 @@
 <template>
   <div class="dashboard">
     <filter-panel v-if="hasFilters" />
-    <widget-layout class="" />
+    <widget-layout />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Dashboard as DashboardModel } from '@/models';
-import { WidgetLayout } from '@/components/reporting';
+import { WidgetLayout } from '@/components/app';
 import FilterPanel from './FilterPanel.vue';
 
 @Component({ components: { WidgetLayout, FilterPanel } })

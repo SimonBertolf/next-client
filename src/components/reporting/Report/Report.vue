@@ -1,14 +1,17 @@
 <template>
-  <div class="report m-4">
-    <p>{{ `${report.name} (_id: ${report._id})` }}</p>
+  <div class="report">
+    <report-title :report="report" />
+    <widget-layout />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Report as ReportModel } from '@/models';
+import { WidgetLayout } from '@/components/app';
+import ReportTitle from './ReportTitle.vue';
 
-@Component({ components: {} })
+@Component({ components: { WidgetLayout, ReportTitle } })
 export default class Report extends Vue {
   @Prop(String) readonly reportId: string;
 
@@ -21,8 +24,6 @@ export default class Report extends Vue {
     }
     return data;
   }
-
-  name = 'Report';
 }
 </script>
 

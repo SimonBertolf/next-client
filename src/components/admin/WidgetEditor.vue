@@ -34,7 +34,7 @@
 import { Layout } from '@/models';
 import { WidgetType, Widget } from '@/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import WidgetLayout from '../reporting/WidgetLayout.vue';
+import { WidgetLayout } from '@/components/app';
 
 @Component({ components: { WidgetLayout } })
 export default class WidgetEditor extends Vue {

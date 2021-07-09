@@ -22,6 +22,7 @@ export default class Widgets extends VuexModule {
     const { _id, type } = widget;
     this.context.commit('removeWidgetData', { _id });
     // TODO: Remove mock, use repository to fetch widget data
+    // TODO: implement check: if filters? then use filters and fetch, if report with data, use that data
     return new Promise((resolve) => {
       setTimeout(() => {
         const data: WidgetData['data'] = {};

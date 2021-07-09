@@ -37,6 +37,9 @@ export default class Widget extends Vue {
     return this.id;
   }
 
+  // TODO: trigger reload:
+  //      - for dashboard: on filter change
+  //      - for report: on route change (report change) vuex plugin?
   mounted(): void {
     this.$store.dispatch('Widgets/loadWidgetData', { _id: this.id, type: this.type });
   }
