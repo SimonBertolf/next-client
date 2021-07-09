@@ -25,8 +25,14 @@ export default class Widgets extends VuexModule {
     // TODO: implement check: if filters? then use filters and fetch, if report with data, use that data
     return new Promise((resolve) => {
       setTimeout(() => {
-        const data: WidgetData['data'] = {};
-        data[type] = [Math.random(), Math.random(), Math.random()];
+        const data: WidgetData['data'] = [];
+        for (let i = 0; i < 3; i += 1) {
+          data.push({
+            x: Math.random(),
+            y: Math.random(),
+            z: type,
+          });
+        }
         this.context.commit('addWidgetData', { _id, data });
         resolve();
       }, Math.random() * 2000);

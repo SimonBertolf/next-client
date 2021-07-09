@@ -14,7 +14,7 @@ import { WidgetData } from '@/types';
 export default class WidgetB extends Vue {
   @Prop(String) readonly id: string;
 
-  @Prop(Object) readonly widgetData: WidgetData['data'] | undefined;
+  @Prop({ default: [], type: Array }) readonly widgetData: WidgetData['data'];
 
   name = 'B';
 }

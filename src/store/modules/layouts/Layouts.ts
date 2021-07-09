@@ -4,19 +4,9 @@ import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { layoutsMock, responsiveLayoutMock } from './LayoutsMock';
 
-// Helpers for development and local demo TODO: romove when done
-const locallyStoreLayout = (layout: ResponsiveWidgetLayoutItems) => {
-  localStorage.setItem('responsiveLayout', JSON.stringify(layout));
-};
-const locallyReadLayout = (): ResponsiveWidgetLayoutItems | undefined => {
-  const localLayoutString = localStorage.getItem('responsiveLayout');
-  if (localLayoutString) return JSON.parse(localLayoutString);
-  return undefined;
-};
-
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
-  public responsiveLayout: ResponsiveWidgetLayoutItems = locallyReadLayout() || responsiveLayoutMock; // TODO:removemock
+  public responsiveLayout: ResponsiveWidgetLayoutItems = responsiveLayoutMock; // TODO:removemock
 
   public cols: { [breakpoint: string]: number } = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
@@ -33,14 +23,12 @@ export default class Layouts extends VuexModule {
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
     this.responsiveLayout = responsiveLayout;
-    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
   updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }) {
     const { layout, breakpoint } = payload;
     this.responsiveLayout[breakpoint] = layout;
-    locallyStoreLayout(this.responsiveLayout);
     // console.log('this.responsiveLayout[breakpoint]: ', this.responsiveLayout[breakpoint]);
     // TODO: POST change to Server, trigger update action
   }
@@ -57,7 +45,6 @@ export default class Layouts extends VuexModule {
         this.responsiveLayout[breakpoint].splice(index, 1);
       }
     });
-    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
@@ -113,6 +100,5 @@ export default class Layouts extends VuexModule {
         this.responsiveLayout[breakpoint].push(newWidget);
       }
     });
-    locallyStoreLayout(this.responsiveLayout);
   }
 }
