@@ -15,14 +15,8 @@ import ReportTitle from './ReportTitle.vue';
 export default class Report extends Vue {
   @Prop(String) readonly reportId: string;
 
-  get report() {
-    // TODO: maybe it makes sense to move this logic to store module?
-    const data = this.$store.state.Reports.reports.find((report: ReportModel) => report._id === this.reportId);
-    if (!data) {
-      this.$router.push('/404');
-      throw new Error(`Could not find report with _id ${this.reportId}`);
-    }
-    return data;
+  get report(): ReportModel | undefined {
+    return this.$store.state.Reports.report;
   }
 }
 </script>

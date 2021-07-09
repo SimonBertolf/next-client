@@ -1,6 +1,6 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4 report-title">
-    {{ `${report.name} (_id: ${report._id})` }}
+    {{ `${name} (_id: ${_id})` }}
   </Card>
 </template>
 
@@ -11,7 +11,15 @@ import { Report } from '@/models';
 
 @Component({ components: { Card } })
 export default class ReportTitle extends Vue {
-  @Prop({ required: true, type: Object }) readonly report: Report;
+  @Prop({ default: null, type: Object }) readonly report: Report | null;
+
+  get name() {
+    return this.report?.name;
+  }
+
+  get _id() {
+    return this.report?._id;
+  }
 }
 </script>
 
