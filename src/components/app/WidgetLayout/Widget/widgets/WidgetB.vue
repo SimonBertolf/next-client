@@ -7,8 +7,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
-import { WidgetData } from '@/types';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { WidgetData, Filter } from '@/types';
+
+const relevantFilters = ['regions', 'assets'];
+const type = 'WidgetB';
 
 @Component({ components: {} })
 export default class WidgetB extends Vue {
@@ -17,6 +20,13 @@ export default class WidgetB extends Vue {
   @Prop({ default: [], type: Array }) readonly widgetData: WidgetData['data'];
 
   name = 'B';
+
+  @Watch('$store.state.Dashboards.updatedFilters', { deep: true, immediate: false })
+  onUpdatedFiltersChange(updatedFilters: Filter['key'][]) {
+    if (relevantFilters.reduce((acc, cur) => acc || updatedFilters.includes(cur), false)) {
+      this.$store.dispatch('Widgets/loadWidgetData', { _id: this.id, type });
+    }
+  }
 }
 </script>
 

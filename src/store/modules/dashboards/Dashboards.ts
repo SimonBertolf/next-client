@@ -9,9 +9,14 @@ export default class Dashboards extends VuexModule {
 
   public dashboard: Dashboard | null = null;
 
+  // stores available filters and options
   public filters: Filter[] = [];
 
+  // stores filter selections
   public filterSelections: FilterSelection[] = [];
+
+  // is watched to relode widget data on filter change
+  public updatedFilters: Filter['key'][] = [];
 
   @Mutation
   setDashboard(dashboard: Dashboard) {
@@ -44,6 +49,11 @@ export default class Dashboards extends VuexModule {
       const error = new Error(`Filter ${key} not found. Could not set selection.`);
       this.context.commit('Errors/setError', error, { root: true });
     }
+  }
+
+  @Mutation
+  setUpdatedFilters({ filterKeys }: { filterKeys: Filter['key'][] }) {
+    this.updatedFilters = [...filterKeys];
   }
 
   @Mutation
