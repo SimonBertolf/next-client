@@ -18,6 +18,11 @@ export default class Assets extends VuexModule {
     this.asset = asset;
   }
 
+  @Mutation
+  public flushAsset() {
+    this.asset = null;
+  }
+
   @Action
   public async loadAssetById(assetId: string): Promise<void> {
     return this.assetRepository
@@ -30,10 +35,5 @@ export default class Assets extends VuexModule {
         this.context.commit('Errors/setError', error, { root: true });
         return Promise.reject();
       });
-  }
-
-  @Action
-  public flushAsset() {
-    this.context.commit('setAsset', null);
   }
 }

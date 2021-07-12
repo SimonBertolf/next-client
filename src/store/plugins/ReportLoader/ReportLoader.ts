@@ -10,7 +10,7 @@ const ReportLoader: Plugin<any> = (store: Store<any>) => {
       if (params?.reportId) {
         const { reportId } = params;
         store.dispatch('Reports/loadReport', { _id: reportId });
-      } else {
+      } else if (state.Reports.report) {
         store.commit('Reports/flushReport');
       }
     }

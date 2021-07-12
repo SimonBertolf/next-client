@@ -1,12 +1,18 @@
 import { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
-import { Layout } from '@/models/Layout';
+import { Layout, LayoutMeta } from '@/models/Layout';
 import { GridBreakpoint } from 'vue-grid-layout';
-import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
-import { layoutsMock, responsiveLayoutMock } from './LayoutsMock';
+import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
+import { layoutsMock } from './LayoutsMock';
 
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
-  public responsiveLayout: ResponsiveWidgetLayoutItems = responsiveLayoutMock; // TODO:removemock
+  public responsiveLayout: ResponsiveWidgetLayoutItems = {
+    lg: [],
+    md: [],
+    sm: [],
+    xs: [],
+    xxs: [],
+  };
 
   public cols: { [breakpoint: string]: number } = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
@@ -20,9 +26,16 @@ export default class Layouts extends VuexModule {
 
   public layouts: Layout[] = layoutsMock;
 
+  public layoutMeta: LayoutMeta | null = null;
+
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
     this.responsiveLayout = responsiveLayout;
+  }
+
+  @Mutation
+  setLayoutMeta(layoutMeta: LayoutMeta) {
+    this.layoutMeta = layoutMeta;
   }
 
   @Mutation
@@ -99,6 +112,44 @@ export default class Layouts extends VuexModule {
         };
         this.responsiveLayout[breakpoint].push(newWidget);
       }
+    });
+  }
+
+  @Mutation
+  flushLayout() {
+    const breakpoints = Object.keys(this.responsiveLayout);
+    breakpoints.forEach((breakpoint: string) => {
+      if (this.responsiveLayout[breakpoint]) {
+        this.responsiveLayout[breakpoint].splice(0, this.responsiveLayout[breakpoint].length);
+      }
+    });
+    this.layoutMeta = null;
+  }
+
+  @Action
+  setLayout(layout: Layout) {
+    const { responsiveLayout, _id, name } = layout;
+    this.context.commit('setResponsiveLayout', { ...JSON.parse(JSON.stringify(responsiveLayout)) });
+    this.context.commit('setLayoutMeta', { _id, name });
+  }
+
+  @Action
+  loadLayout({ _id }: { _id: string }): Promise<void> {
+    // TODO: remove Mock
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const layout = layoutsMock.find((item) => item._id === _id);
+        if (layout) {
+          const { responsiveLayout, _id: layoutId, name } = layout;
+          this.context.commit('setResponsiveLayout', { ...JSON.parse(JSON.stringify(responsiveLayout)) });
+          this.context.commit('setLayoutMeta', { _id: layoutId, name });
+          resolve();
+        } else {
+          const error = new Error('Layout not found');
+          this.context.commit('Errors/setError', error, { root: true });
+          reject(error);
+        }
+      }, Math.random() * 2000);
     });
   }
 }

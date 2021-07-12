@@ -1,7 +1,7 @@
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import { Dashboard } from '@/models';
 import { Filter, FilterSelection } from '@/types';
-import { dashboardsMock, filterSelectionsMock, filtersMock } from './DashboardsMock';
+import { dashboardsMock, filterSelectionsMock } from './DashboardsMock';
 
 @Module({ namespaced: true })
 export default class Dashboards extends VuexModule {
@@ -58,9 +58,12 @@ export default class Dashboards extends VuexModule {
       setTimeout(() => {
         const dashboard = dashboardsMock.find((db) => db._id === _id);
         if (dashboard) {
-          this.context.commit('setDashboard', { ...dashboard });
-          this.context.commit('setFilters', JSON.parse(JSON.stringify(filtersMock)));
-          this.context.commit('setFilterSelections', JSON.parse(JSON.stringify(filterSelectionsMock)));
+          const { filters, layout, ...rest } = dashboard;
+          this.context.commit('setDashboard', { ...rest, layout: JSON.parse(JSON.stringify(layout)) });
+          if (filters) {
+            this.context.commit('setFilters', JSON.parse(JSON.stringify(filters)));
+            this.context.commit('setFilterSelections', JSON.parse(JSON.stringify(filterSelectionsMock)));
+          }
           resolve();
         } else {
           const error = new Error('Dashboard not found');

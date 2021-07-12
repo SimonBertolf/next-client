@@ -10,7 +10,7 @@ const DashboardLoader: Plugin<any> = (store: Store<any>) => {
       if (params?.dashboardId) {
         const { dashboardId } = params;
         store.dispatch('Dashboards/loadDashboard', { _id: dashboardId });
-      } else {
+      } else if (state.Dashboards.dashboard) {
         store.commit('Dashboards/flushDashboard');
       }
     }

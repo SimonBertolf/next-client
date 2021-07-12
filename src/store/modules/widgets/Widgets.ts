@@ -17,6 +17,11 @@ export default class Widgets extends VuexModule {
     this.widgets.push(widget);
   }
 
+  @Mutation
+  flushWidgetData() {
+    this.widgets.splice(0, this.widgets.length);
+  }
+
   @Action
   public async loadWidgetData(widget: Widget): Promise<void> {
     const { _id, type } = widget;

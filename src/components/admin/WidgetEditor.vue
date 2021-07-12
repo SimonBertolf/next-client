@@ -1,7 +1,7 @@
 <template>
   <div class="widget-editor">
     <div class="mb-4 px-2">
-      <h2 class="mb-4 text-2xl">{{ layoutData.name }}</h2>
+      <h2 class="mb-4 text-2xl">{{ name }}</h2>
       <a-space>
         <span>Editable: <a-switch default-checked v-model="editable" /></span>
         <a-dropdown v-if="editable">
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import { Layout } from '@/models';
+import { LayoutMeta } from '@/models';
 import { WidgetType, Widget } from '@/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { WidgetLayout } from '@/components/app';
@@ -44,14 +44,12 @@ export default class WidgetEditor extends Vue {
 
   newWidget: Widget | null = null;
 
-  get layoutData() {
-    // TODO: maybe it makes sense to move this logic to store module?
-    const data = this.$store.state.Layouts.layouts.find((layout: Layout) => layout._id === this.layoutId);
-    if (!data) {
-      this.$router.push('/404');
-      throw new Error(`Could not find layout with _id ${this.layoutId}`);
-    }
-    return data;
+  get layoutMeta(): LayoutMeta | null {
+    return this.$store.state.Layouts.layoutMeta;
+  }
+
+  get name(): string | undefined {
+    return this.layoutMeta?.name;
   }
 
   addWidget({ key: type }: { key: WidgetType }) {

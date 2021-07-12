@@ -1,8 +1,9 @@
-import { StoreType, StateType, MutationType } from '@/types';
+import { Store, Plugin } from 'vuex';
 
-// TODO: remove custom StoreType etc. Use { Store, Plugin } from 'vuex'
-const AssetLoader = (store: StoreType) => {
-  store.subscribe((mutation: MutationType, state: StateType) => {
+// TODO: replace any with type of state
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const AssetLoader: Plugin<any> = (store: Store<any>) => {
+  store.subscribe((mutation, state) => {
     // TODO: I would remove all auth checks from here -> separation of concerns
     if (mutation.type === 'route/ROUTE_CHANGED' || mutation.type === 'Auth/setUser') {
       if (state.Auth.user) {
@@ -11,10 +12,10 @@ const AssetLoader = (store: StoreType) => {
           const { assetId } = params;
           const { asset } = state.Assets;
           if (!asset || asset.id !== assetId) {
-            store.dispatch<string>('Assets/loadAssetById', assetId);
+            store.dispatch('Assets/loadAssetById', assetId);
           }
-        } else {
-          store.dispatch('Assets/flushAsset');
+        } else if (state.Assets.asset) {
+          store.commit('Assets/flushAsset');
         }
       }
     }
