@@ -1,3 +1,4 @@
+import { Report } from '@/models';
 import { Widget, WidgetData } from '@/types';
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 
@@ -23,12 +24,18 @@ export default class Widgets extends VuexModule {
   }
 
   @Action
-  public async loadWidgetData(widget: Widget): Promise<void> {
+  public async loadWidgetData({ widget, report }: { widget: Widget; report?: Report }): Promise<void> {
     const { _id, type } = widget;
     this.context.commit('removeWidgetData', { _id });
-    // TODO: Remove mock, use repository to fetch widget data
-    // TODO: implement check: if filters? then use filters and fetch, if report with data, use that data
+    if (report) {
+      const { data: widgetsData } = report;
+      const widgetData = widgetsData.find((item) => item._id === _id);
+      if (!widgetData) throw new Error(`Widget data for widget _id=${_id} missing on report`);
+      this.context.commit('addWidgetData', { _id, data: widgetData.data });
+      return Promise.resolve();
+    }
     return new Promise((resolve) => {
+      // TODO: Remove mock, use repository to fetch widget data
       setTimeout(() => {
         const data: WidgetData['data'] = [];
         for (let i = 0; i < 3; i += 1) {

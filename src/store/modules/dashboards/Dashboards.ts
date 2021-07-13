@@ -15,7 +15,7 @@ export default class Dashboards extends VuexModule {
   // stores filter selections
   public filterSelections: FilterSelection[] = [];
 
-  // is watched to relode widget data on filter change
+  // is watched to reload widget data on filter change
   public updatedFilters: Filter['key'][] = [];
 
   @Mutation

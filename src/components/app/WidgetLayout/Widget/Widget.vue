@@ -13,7 +13,8 @@
 <script lang="ts">
 import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import { Card, Spinner } from '@/components/app';
-import { WidgetData } from '@/types';
+import { WidgetData, Widget as WidgetInterface, WidgetType } from '@/types';
+import { Report } from '@/models';
 import { WidgetA, WidgetB, WidgetC } from './widgets';
 
 @Component({ components: { WidgetA, WidgetB, WidgetC, Card, Spinner } })
@@ -39,7 +40,9 @@ export default class Widget extends Vue {
 
   mounted(): void {
     // initial loading of widget data
-    this.$store.dispatch('Widgets/loadWidgetData', { _id: this.id, type: this.type });
+    const widget: WidgetInterface = { _id: this.id, type: this.type as WidgetType };
+    const { report }: { report: Report | null } = this.$store.state.Reports;
+    this.$store.dispatch('Widgets/loadWidgetData', { widget, report: report || undefined });
   }
 }
 </script>
