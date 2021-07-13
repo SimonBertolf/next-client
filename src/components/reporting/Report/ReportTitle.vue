@@ -13,11 +13,11 @@ import { Report } from '@/models';
 export default class ReportTitle extends Vue {
   @Prop({ default: null, type: Object }) readonly report: Report | null;
 
-  get name() {
+  get name(): string | undefined {
     return this.report?.name;
   }
 
-  get _id() {
+  get _id(): string | undefined {
     return this.report?._id;
   }
 }

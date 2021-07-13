@@ -18,15 +18,15 @@ import { Spinner } from '@/components/app';
 
 @Component({ components: { Spinner } })
 export default class ProtectedRoutes extends Vue {
-  get isAuthenticated() {
+  get isAuthenticated(): boolean {
     return this.hasUser && !this.isLoading;
   }
 
-  get hasUser() {
+  get hasUser(): boolean {
     return !!this.$store.state.Auth.user;
   }
 
-  get isLoading() {
+  get isLoading(): boolean {
     return this.$store.state.Auth.loading;
   }
 }

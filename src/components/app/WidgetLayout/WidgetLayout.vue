@@ -5,9 +5,7 @@
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
         <span>Ready: {{ dataReady }}</span>
-        <!-- <a-button type="primary" @click="onTestClick">
-          Test Button
-        </a-button> -->
+        <a-button type="primary" @click="onTestClick"> Test Button </a-button>
       </a-space>
     </div>
     <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
@@ -51,6 +49,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
+import qs from 'qs';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
 import { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems, WidgetData } from '@/types';
 import { Widget } from './Widget';
@@ -72,7 +71,7 @@ export default class WidgetLayout extends Vue {
   breakpoint: GridBreakpoint | null = null;
 
   // is true if data of all widgets is loaded.
-  get dataReady() {
+  get dataReady(): boolean {
     const { widgets } = this.$store.state.Widgets as { widgets: WidgetData[] };
     return (
       widgets.reduce(
@@ -82,24 +81,27 @@ export default class WidgetLayout extends Vue {
     );
   }
 
-  // onTestClick() {
-  //   // eslint-disable-next-line no-console
-  //   console.log('TEST BTN CLICKED');
-  // }
+  onTestClick(): void {
+    // eslint-disable-next-line no-console
+    console.log('TEST BTN CLICKED');
+    const qstest = { selections: [['a', 'b', 'd'], [], ['c']] };
+    // eslint-disable-next-line no-console
+    console.log('qstest: ', qs.stringify(qstest));
+  }
 
-  get margin() {
+  get margin(): number {
     return this.$store.state.Layouts.margin;
   }
 
-  get pageHeight() {
+  get pageHeight(): number {
     return this.$store.state.Layouts.pageHeight;
   }
 
-  get rowsPerPage() {
+  get rowsPerPage(): number {
     return this.$store.state.Layouts.rowsPerPage;
   }
 
-  get rowHeight() {
+  get rowHeight(): number {
     const rowHeight = this.pageHeight / this.rowsPerPage - this.margin;
     if (rowHeight !== Math.round(rowHeight)) {
       // eslint-disable-next-line no-console
@@ -108,16 +110,16 @@ export default class WidgetLayout extends Vue {
     return rowHeight;
   }
 
-  get cols() {
+  get cols(): { [breakpoint: string]: number } {
     return this.$store.state.Layouts.cols;
   }
 
-  get breakpoints() {
+  get breakpoints(): { [breakpoint: string]: number } {
     return this.$store.state.Layouts.breakpoints;
   }
 
   @Watch('height', { immediate: true, deep: true })
-  onHeightChange(newHeight: number) {
+  onHeightChange(newHeight: number): void {
     const decisiveHeight = newHeight - 2 * this.margin;
     const rest = decisiveHeight % this.pageHeight;
     const numberOfPages = (decisiveHeight - rest) / this.pageHeight + 1;
@@ -128,14 +130,14 @@ export default class WidgetLayout extends Vue {
   }
 
   @Watch('newWidget', { immediate: true, deep: true })
-  onNewWidgetChange(newWidget: WidgetInterface | null) {
+  onNewWidgetChange(newWidget: WidgetInterface | null): void {
     if (newWidget) {
       this.addNewWidget(newWidget);
     }
   }
 
   @Watch('$store.state.Layouts.responsiveLayout', { immediate: true, deep: true })
-  onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetLayoutItems) {
+  onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetLayoutItems): void {
     // update local layout for current breakpoint if it is different from the one on the store
     if (this.breakpoint && JSON.stringify(this.layout) !== JSON.stringify(newResponsiveLayout[this.breakpoint])) {
       const newLayout: WidgetLayoutItems = newResponsiveLayout[this.breakpoint];
@@ -144,21 +146,21 @@ export default class WidgetLayout extends Vue {
   }
 
   @Emit('new-widget-added')
-  addNewWidget(newWidget: WidgetInterface) {
+  addNewWidget(newWidget: WidgetInterface): void {
     this.$store.commit('Layouts/addWidget', newWidget);
   }
 
-  get responsiveLayout() {
+  get responsiveLayout(): ResponsiveWidgetLayoutItems {
     return this.$store.state.Layouts.responsiveLayout;
   }
 
-  onLayoutUpdated(newLayout: WidgetLayoutItems) {
+  onLayoutUpdated(newLayout: WidgetLayoutItems): void {
     // console.log('LAYOUT UPDATED');
     this.$store.commit('Layouts/updateResponsiveLayout', { layout: [...newLayout], breakpoint: this.breakpoint });
     this.measureHeight();
   }
 
-  onBreakpointChanged(newBreakpoint: GridBreakpoint) {
+  onBreakpointChanged(newBreakpoint: GridBreakpoint): void {
     this.breakpoint = newBreakpoint;
     // console.log('BREAKPOINT CHANGED: ', newBreakpoint);
     const newLayout: WidgetLayoutItems = this.responsiveLayout[newBreakpoint];
@@ -166,27 +168,27 @@ export default class WidgetLayout extends Vue {
     this.measureHeight();
   }
 
-  onLayoutReady() {
+  onLayoutReady(): void {
     // console.log('LAYOUT READY', this.breakpoint);
     this.measureHeight();
   }
 
-  onRemoveWidget(_id: string) {
+  onRemoveWidget(_id: string): void {
     this.$store.commit('Widgets/removeWidgetData', { _id });
     this.$store.commit('Layouts/removeWidget', { _id });
   }
 
-  mounted() {
+  mounted(): void {
     // console.log('MOUNTED');
   }
 
-  updated() {
+  updated(): void {
     // console.log('UPDATED');
     // this measures the height during a drag/resize operation.
     this.measureHeight();
   }
 
-  measureHeight() {
+  measureHeight(): void {
     this.height = parseInt((this.$refs.gridLayout as GridLayout).containerHeight(), 10);
     // console.log('MEASURED: ', this.height);
   }

@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const DocsWebpackPlugin = require('./DocsWebpackPlugin.ts');
 
@@ -12,9 +13,7 @@ module.exports = {
     if (process.env.NODE_ENV === 'production') {
       config.optimization.minimizer('terser').tap((args) => {
         const { terserOptions } = args[0];
-        // eslint-disable-next-line @typescript-eslint/camelcase
         terserOptions.keep_classnames = true;
-        // eslint-disable-next-line @typescript-eslint/camelcase
         terserOptions.keep_fnames = true;
         return args;
       });

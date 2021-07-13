@@ -15,16 +15,16 @@ import { FlexLayout } from '@/components/app';
 export default class KpiItem extends Vue {
   @Prop({ type: Object as () => Kpi }) kpi: Kpi;
 
-  get formatedValue() {
+  get formatedValue(): string {
     const { format, value } = this.kpi;
     const { filters } = this.$options;
     if (format.includes(FormatList.PERCENT)) return filters?.percentNumber(Number(value));
     if (format.includes(FormatList.NUMBER)) return filters?.simpleNumber(Number(value));
     if (!format) return '';
-    return value;
+    return value.toString();
   }
 
-  get clsValue() {
+  get clsValue(): string {
     return 'font-primary font-bold text-dark text-sm subpixel-antialiased';
   }
 }

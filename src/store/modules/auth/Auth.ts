@@ -12,12 +12,12 @@ export default class Auth extends VuexModule {
   @Inject('IAuth') private authService: IAuth;
 
   @Mutation
-  setUser(user: User) {
+  setUser(user: User): void {
     this.user = user;
   }
 
   @Mutation
-  setLoading(loading: boolean) {
+  setLoading(loading: boolean): void {
     this.loading = loading;
   }
 

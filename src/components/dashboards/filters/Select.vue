@@ -32,7 +32,7 @@ export default class Select extends Vue {
 
   // watch filter selected on global store
   @Watch('filterSelection', { deep: true, immediate: true })
-  onGlobalSelectedChange() {
+  onGlobalSelectedChange(): void {
     // update local selected if different from global selected
     if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
       const selectedUpdate = [...this.filterSelection];
@@ -42,7 +42,7 @@ export default class Select extends Vue {
 
   // watch local selected model
   @Watch('selected', { deep: true, immediate: true })
-  onLocalSelectedChange() {
+  onLocalSelectedChange(): void {
     // update global selected if different from local
     if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
       this.$store.commit('Dashboards/setFilterSelection', {

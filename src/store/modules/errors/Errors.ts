@@ -5,7 +5,7 @@ export default class Errors extends VuexModule {
   public error: Error | null = null;
 
   @Mutation
-  setError(error: Error) {
+  setError(error: Error): void {
     this.error = error;
   }
 }

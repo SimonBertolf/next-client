@@ -12,13 +12,14 @@
 </template>
 
 <script lang="ts">
+import { Filter } from '@/types';
 import { Vue, Component } from 'vue-property-decorator';
 import FilterInput from './FilterInput.vue';
 import FilterResetButton from './FilterResetButton.vue';
 
 @Component({ components: { FilterInput, FilterResetButton } })
 export default class FilterList extends Vue {
-  get filters() {
+  get filters(): Filter[] {
     return this.$store.state.Dashboards.filters;
   }
 }

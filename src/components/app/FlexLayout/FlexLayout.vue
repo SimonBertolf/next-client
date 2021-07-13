@@ -75,7 +75,7 @@ export default class FlexLayout extends Vue {
     return cls;
   }
 
-  get customStyle() {
+  get customStyle(): undefined | string {
     if (this.grow) return `flex-grow: ${this.grow};`;
     return undefined;
   }

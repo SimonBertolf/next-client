@@ -21,7 +21,7 @@ export default class DateRange extends Vue {
 
   // watch filter selected on global store
   @Watch('filterSelection', { deep: true, immediate: true })
-  onGlobalSelectedChange() {
+  onGlobalSelectedChange(): void {
     if (JSON.stringify(this.selected) !== JSON.stringify(this.filterSelection)) {
       if (this.filterSelection.length === 2) {
         this.selected.splice(0, this.selected.length, ...this.filterSelection.map((item) => moment(item)));
@@ -33,7 +33,7 @@ export default class DateRange extends Vue {
 
   // watch local selected model
   @Watch('selected', { deep: true, immediate: true })
-  onLocalSelectedChange() {
+  onLocalSelectedChange(): void {
     // update global selected if different from local
     if (JSON.stringify(this.selected) !== JSON.stringify(this.filterSelection)) {
       const selectedUpdate = this.selected.map((item) => item.toISOString());

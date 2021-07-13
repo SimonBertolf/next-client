@@ -9,7 +9,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class InfiniteScroll extends Vue {
-  @Prop(Function) readonly load: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop(Function) readonly load: (...args: any[]) => any;
 
   @Prop(Boolean) readonly disabled: boolean;
 

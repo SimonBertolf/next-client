@@ -23,7 +23,7 @@ import { KpiItem } from '../KpiItem';
 export default class KpiListMobile extends Vue {
   @Prop({ type: Object as () => KpiGroup }) kpiGroup: KpiGroup;
 
-  shouldDivide(kpi: Kpi) {
+  shouldDivide(kpi: Kpi): boolean {
     const { kpis } = this.kpiGroup;
     const kpiIndex = kpis.indexOf(kpi);
     const lastIndex = kpis.length - 1;

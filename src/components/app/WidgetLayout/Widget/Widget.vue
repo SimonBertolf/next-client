@@ -25,16 +25,16 @@ export default class Widget extends Vue {
 
   @Prop({ default: false }) readonly removable: boolean;
 
-  get loading() {
+  get loading(): boolean {
     return !this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id);
   }
 
-  get widgetData() {
+  get widgetData(): WidgetData['data'] | undefined {
     return this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id)?.data;
   }
 
   @Emit('remove-widget')
-  removeWidget() {
+  removeWidget(): string {
     return this.id;
   }
 

@@ -24,15 +24,18 @@ export default class Modal extends Vue {
 
   @Prop(String) readonly title: boolean;
 
-  @Prop({ default: () => () => undefined }) readonly onClose: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly onClose: (...args: any[]) => any;
 
   @Prop(String) readonly okText: string;
 
-  @Prop({ default: () => () => undefined }) readonly onOk: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly onOk: (...args: any[]) => any;
 
   @Prop({ default: false }) readonly confirmLoading: boolean;
 
-  @Prop({ default: () => () => undefined }) readonly afterClose: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly afterClose: (...args: any[]) => any;
 
   @Prop({ default: false }) readonly isDisabled: boolean;
 

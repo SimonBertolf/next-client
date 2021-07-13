@@ -9,7 +9,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class TableActionButton extends Vue {
-  @Prop({ type: Function, default: () => () => undefined }) onAction: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ type: Function, default: () => () => undefined }) onAction: (...args: any[]) => any;
 }
 </script>
 

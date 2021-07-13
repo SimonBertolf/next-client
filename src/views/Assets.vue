@@ -21,6 +21,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Heading } from '@/components/typography';
 import { Layout } from '@/components/app';
+import { Asset } from '@/models';
 
 @Component({
   components: {
@@ -29,7 +30,7 @@ import { Layout } from '@/components/app';
   },
 })
 export default class Assets extends Vue {
-  get assets() {
+  get assets(): Asset {
     return this.$store.state.Assets.assets;
   }
 }

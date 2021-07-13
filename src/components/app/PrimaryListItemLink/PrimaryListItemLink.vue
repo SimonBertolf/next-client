@@ -30,7 +30,8 @@ export default class PrimaryListItemLink extends Vue {
 
   @Prop({ required: true }) readonly column: ColumnType;
 
-  @Prop({ required: true }) readonly onEdit: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ required: true }) readonly onEdit: (...args: any[]) => any;
 }
 </script>
 

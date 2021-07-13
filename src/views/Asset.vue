@@ -53,11 +53,11 @@ export default class Asset extends Vue {
     return this.$store.state.Assets.asset;
   }
 
-  get basePath() {
+  get basePath(): string {
     return `/assets/${this.assetId}`;
   }
 
-  get isReady() {
+  get isReady(): boolean {
     const { asset } = this.$store.state.Assets;
     if (!asset) return false;
     const { id } = asset;

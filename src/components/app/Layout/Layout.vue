@@ -49,18 +49,16 @@ import { NavMenu } from '../NavMenu';
 export default class Layout extends Vue {
   collapsed = false;
 
-  handleCollapse() {
+  handleCollapse(): void {
     this.collapsed = !this.collapsed;
   }
 
-  get layoutSliderCls() {
-    let cls = 'a-layout-slider';
+  get layoutSliderCls(): string {
+    const cls = 'a-layout-slider';
     if (this.collapsed) {
-      cls = `${cls} a-layout-slider-closed`;
-    } else {
-      cls = `${cls} a-layout-slider-open`;
+      return `${cls} a-layout-slider-closed`;
     }
-    return cls;
+    return `${cls} a-layout-slider-open`;
   }
 }
 </script>

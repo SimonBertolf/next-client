@@ -21,7 +21,7 @@ export default class WidgetC extends Vue {
   name = 'C';
 
   @Watch('$store.state.Dashboards.updatedFilters', { deep: true, immediate: false })
-  onUpdatedFiltersChange(updatedFilters: Filter['key'][]) {
+  onUpdatedFiltersChange(updatedFilters: Filter['key'][]): void {
     if (relevantFilters.reduce((acc, cur) => acc || updatedFilters.includes(cur), false)) {
       this.$store.dispatch('Widgets/loadWidgetData', { widget: { _id: this.id, type: this.$options.name } });
     }

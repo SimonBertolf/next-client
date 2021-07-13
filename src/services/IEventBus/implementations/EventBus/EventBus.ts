@@ -10,7 +10,7 @@ class EventBus implements IEventBus {
     this.vueInstance.$emit(event);
   }
 
-  $on(event: string, callback: Function): void {
+  $on(event: string, callback: () => void): void {
     this.vueInstance.$on(event, callback);
   }
 }

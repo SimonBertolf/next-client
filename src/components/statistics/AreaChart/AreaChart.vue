@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDiv" class="w-full" style="height: 500px;" :chartTitle="chartTitle"></div>
+  <div ref="chartDiv" class="w-full" style="height: 500px" :chartTitle="chartTitle"></div>
 </template>
 
 <script lang="ts">
@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import _, { cloneDeep } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import '@amcharts/amcharts4/charts';
-/* eslint-disable @typescript-eslint/camelcase */
+// eslint-disable-next-line camelcase
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themes_animated);
@@ -25,7 +25,7 @@ export default class AreaChart extends Vue {
 
   chart: am4core.Sprite;
 
-  mounted() {
+  mounted(): void {
     this.createChart();
   }
 
@@ -41,7 +41,7 @@ export default class AreaChart extends Vue {
           value: number;
         }>
       | undefined,
-  ) {
+  ): void {
     if (!_.isEqual(val, oldVal)) this.createChart();
   }
 
@@ -49,13 +49,14 @@ export default class AreaChart extends Vue {
   onGuidesChanged(
     val: Array<{ value: number; label: string }>,
     oldVal: Array<{ value: number; label: string }> | undefined,
-  ) {
+  ): void {
     if (!_.isEqual(val, oldVal)) this.createChart();
   }
 
   createChart(): void {
     if (this.chart) this.chart.dispose();
-    const axisRanges: Array<object> = [];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const axisRanges: Array<any> = [];
     const itsData = [...this.data];
     const sortedData = itsData.sort((a, b) => {
       if (a.value > b.value) {
@@ -88,7 +89,8 @@ export default class AreaChart extends Vue {
       };
       axisRanges.push({ ...axisRange });
     });
-    const chartConfiguration: object = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const chartConfiguration: any = {
       type: 'XYChart',
       data: [...sortedData],
       logo: { disabled: true },
@@ -152,7 +154,7 @@ export default class AreaChart extends Vue {
     );
   }
 
-  beforeDestroy() {
+  beforeDestroy(): void {
     if (this.chart) {
       this.chart.dispose();
     }

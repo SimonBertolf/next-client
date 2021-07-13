@@ -6,7 +6,7 @@
     </FlexLayout>
     <FlexLayout :grow="1" class="px-4 sm:p-0 w-full">
       <div
-        style="min-height: 100px; min-width: 200px;"
+        style="min-height: 100px; min-width: 200px"
         class="w-full bg-primary flex justify-center items-center text-neutral"
       >
         Images

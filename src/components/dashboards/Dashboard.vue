@@ -20,7 +20,7 @@ export default class Dashboard extends Vue {
     return this.$store.state.Dashboards.dashboard;
   }
 
-  get hasFilters() {
+  get hasFilters(): boolean {
     return !!this.$store.state.Dashboards.filters.length;
   }
 }

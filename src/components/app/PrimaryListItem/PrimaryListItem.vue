@@ -9,7 +9,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class PrimaryListItem extends Vue {
-  @Prop({ default: () => () => undefined }) readonly onClick: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly onClick: (...args: any[]) => any;
 }
 </script>
 

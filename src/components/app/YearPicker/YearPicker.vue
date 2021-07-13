@@ -22,7 +22,8 @@ import { ButtonBase } from '@/components/app/ButtonBase';
 export default class YearPicker extends Vue {
   @Prop(Number) readonly year: number;
 
-  @Prop({ default: () => () => undefined }) onChange: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) onChange: (...args: any[]) => void;
 
   open = false;
 
@@ -30,17 +31,17 @@ export default class YearPicker extends Vue {
     return moment(new Date(`01-01-${this.year}`));
   }
 
-  openChange() {
+  openChange(): void {
     this.open = !this.open;
   }
 
-  panelChange(value: Moment) {
+  panelChange(value: Moment): void {
     const year = value.year();
     this.open = false;
     this.onChange(year);
   }
 
-  handleChange(date: Moment) {
+  handleChange(date: Moment): void {
     const year = date.year();
     this.onChange(year);
   }

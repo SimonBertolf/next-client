@@ -14,9 +14,9 @@ class AssetRepository implements IFetchableById<Asset> {
     params.append('assetId', id);
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
 
-    const axiosResponse: AxiosResponse<ApiResponseBody<
-      Asset
-    >> = await this.client.get('/legacy/server?module=IO_Asset&action=getAssetPanel', { params, ...options });
+    const axiosResponse: AxiosResponse<
+      ApiResponseBody<Asset>
+    > = await this.client.get('/legacy/server?module=IO_Asset&action=getAssetPanel', { params, ...options });
 
     const { data: apiResponse } = axiosResponse;
 

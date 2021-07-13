@@ -17,9 +17,10 @@ export default class ButtonToggleMobile extends Vue {
   readonly open: boolean;
 
   @Prop({ default: () => undefined })
-  readonly onToggle: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly onToggle: (...args: any[]) => any;
 
-  get itsOpen() {
+  get itsOpen(): boolean {
     return this.open;
   }
 }

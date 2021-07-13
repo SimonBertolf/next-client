@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const TypeDocMain = require('./TypeDocMain.ts');
 

@@ -7,19 +7,19 @@ export default class Widgets extends VuexModule {
   public widgets: WidgetData[] = [];
 
   @Mutation
-  removeWidgetData({ _id }: { _id: string }) {
+  removeWidgetData({ _id }: { _id: string }): void {
     const index = this.widgets.findIndex((widget) => widget._id === _id);
     // if widget data for given _id exists, remove it.
     if (index >= 0) this.widgets.splice(index, 1);
   }
 
   @Mutation
-  addWidgetData(widget: WidgetData) {
+  addWidgetData(widget: WidgetData): void {
     this.widgets.push(widget);
   }
 
   @Mutation
-  flushWidgetData() {
+  flushWidgetData(): void {
     this.widgets.splice(0, this.widgets.length);
   }
 

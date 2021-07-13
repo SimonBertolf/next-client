@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { sync } from 'vuex-router-sync';
-import Vue from 'vue';
+import Vue, { VNode } from 'vue';
 import infiniteScroll from 'vue-infinite-scroll';
 import './axiosClient';
 import { initIocContainer } from './ioc-container';
@@ -36,5 +36,6 @@ window.onbeforeunload = () => {
 new Vue({
   router,
   store,
-  render: (h: Function) => h(App),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  render: (h: (arg: any) => VNode) => h(App),
 }).$mount('#app');

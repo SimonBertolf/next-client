@@ -9,7 +9,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class PopUpConfirm extends Vue {
-  @Prop() readonly confirm: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop() readonly confirm: (...args: any[]) => any;
 
   @Prop({ default: 'Are you sure' }) readonly title: string;
 

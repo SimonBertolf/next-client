@@ -10,7 +10,7 @@
             <a-menu-item key="WidgetB"> <a-icon type="pie-chart" />Widget B</a-menu-item>
             <a-menu-item key="WidgetC"> <a-icon type="line-chart" />Widget C</a-menu-item>
           </a-menu>
-          <a-button style="margin-left: 8px;"> Add Widget <a-icon type="down" /> </a-button>
+          <a-button style="margin-left: 8px"> Add Widget <a-icon type="down" /> </a-button>
         </a-dropdown>
         <!-- <router-link :to="`/reporting/reports/${layoutId}/print`" v-slot="{ href, navigate }" custom>
           <a-button :href="href" @click="navigate">
@@ -52,11 +52,11 @@ export default class WidgetEditor extends Vue {
     return this.layoutMeta?.name;
   }
 
-  addWidget({ key: type }: { key: WidgetType }) {
+  addWidget({ key: type }: { key: WidgetType }): void {
     this.newWidget = { type, _id: Date.now().toString() };
   }
 
-  onNewWidgetAdded() {
+  onNewWidgetAdded(): void {
     this.newWidget = null;
   }
 }

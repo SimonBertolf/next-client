@@ -26,7 +26,7 @@ export default class AssetListItem extends Vue {
     return [];
   }
 
-  toggleEdit(event: { preventDefault: Function }): void {
+  toggleEdit(event: { preventDefault: () => void }): void {
     event.preventDefault();
     this.editable = !this.editable;
   }

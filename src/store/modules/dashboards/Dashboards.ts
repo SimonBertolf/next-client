@@ -20,28 +20,28 @@ export default class Dashboards extends VuexModule {
   public updatedFilters: Filter['key'][] = [];
 
   @Mutation
-  setDashboard(dashboard: Dashboard) {
+  setDashboard(dashboard: Dashboard): void {
     this.dashboard = dashboard;
   }
 
   @Mutation
-  flushDashboard() {
+  flushDashboard(): void {
     this.dashboard = null;
     this.filters.splice(0, this.filters.length);
   }
 
   @Mutation
-  setFilters(filters: Filter[]) {
+  setFilters(filters: Filter[]): void {
     this.filters.splice(0, this.filters.length, ...filters);
   }
 
   @Mutation
-  setFilterSelections(filterSelections: FilterSelection[]) {
+  setFilterSelections(filterSelections: FilterSelection[]): void {
     this.filterSelections.splice(0, this.filterSelections.length, ...filterSelections);
   }
 
   @Mutation
-  setFilterSelection({ key, selection }: { key: string; selection: FilterSelection }) {
+  setFilterSelection({ key, selection }: { key: string; selection: FilterSelection }): void {
     const index = this.filters.findIndex((filter) => filter.key === key);
     if (index >= 0) {
       this.filterSelections.splice(index, 1, [...selection]);
@@ -53,12 +53,12 @@ export default class Dashboards extends VuexModule {
   }
 
   @Mutation
-  setUpdatedFilters({ filterKeys }: { filterKeys: Filter['key'][] }) {
+  setUpdatedFilters({ filterKeys }: { filterKeys: Filter['key'][] }): void {
     this.updatedFilters = [...filterKeys];
   }
 
   @Mutation
-  resetFiltersSelections() {
+  resetFiltersSelections(): void {
     this.filterSelections.splice(0, this.filterSelections.length, ...[...new Array(this.filters.length)].map(() => []));
   }
 

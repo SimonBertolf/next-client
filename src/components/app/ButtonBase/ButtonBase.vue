@@ -18,7 +18,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class ButtonBase extends Vue {
   @Prop({ default: (): boolean => false }) readonly primary: boolean;
 
-  @Prop({ default: (): Function => () => undefined }) readonly onClick!: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly onClick!: (...args: any[]) => any;
 
   @Prop({ default: (): null => null }) readonly icon: string | null;
 

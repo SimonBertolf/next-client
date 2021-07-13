@@ -1,5 +1,5 @@
 <template>
-  <button style="height: 3.125rem;" @click="onToggle" :class="buttonCls">
+  <button style="height: 3.125rem" @click="onToggle" :class="buttonCls">
     <span :class="rootCls">
       <a-icon type="right" :style="{ color: '#9CA3AF' }" />
     </span>
@@ -15,7 +15,8 @@ export default class ButtonToggle extends Vue {
   readonly open: boolean;
 
   @Prop({ default: () => undefined })
-  readonly onToggle: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly onToggle: (...args: any[]) => any;
 
   // eslint-disable-next-line class-methods-use-this
   get buttonCls(): string {

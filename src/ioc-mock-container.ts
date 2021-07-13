@@ -3,7 +3,7 @@ import { Asset } from '@/models';
 import { IKpiService, KpiMockService, IFetchableById, AssetMockRepository, IAuth, AuthMock } from '@/services';
 import { ContainerManager, IContainerManager } from './inversify';
 
-export const mockContainer = () => {
+export const mockContainer = (): void => {
   const container: IContainerManager = new ContainerManager();
 
   container.resetIOCContainer();

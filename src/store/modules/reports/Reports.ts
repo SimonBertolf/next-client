@@ -10,12 +10,12 @@ export default class Reports extends VuexModule {
   public report: Report | null = null;
 
   @Mutation
-  setReport(report: Report) {
+  setReport(report: Report): void {
     this.report = report;
   }
 
   @Mutation
-  flushReport() {
+  flushReport(): void {
     this.report = null;
   }
 

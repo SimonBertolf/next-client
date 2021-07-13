@@ -1,6 +1,6 @@
 <template>
   <a-spin>
-    <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
+    <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48" spin />
   </a-spin>
 </template>
 

@@ -27,7 +27,7 @@ export default class FilterInput extends Vue {
     if (!filter) {
       this.$store.commit(
         'Errors/setError',
-        new Error(`Could not find filter ${this.$vnode.key} in Dashboards store.`),
+        new Error(`Could not find filter ${this.$vnode.key?.toString()} in Dashboards store.`),
         { root: true },
       );
     }

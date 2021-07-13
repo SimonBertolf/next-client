@@ -17,18 +17,18 @@ export default class Card extends Vue {
 
   @Prop({ default: true }) readonly padding: boolean;
 
-  get cardCls() {
-    let clsClass = this.autoSize ? 'card' : 'card card-full-size';
-    if (this.padding) clsClass = `${clsClass} card-padding`;
+  get cardCls(): string {
+    const clsClass = this.autoSize ? 'card' : 'card card-full-size';
+    if (this.padding) return `${clsClass} card-padding`;
     return clsClass;
   }
 
-  get bodyStyle() {
-    let bodyStyle: { [key: string]: string | number } = {
-      flexGrow: 1,
+  get bodyStyle(): Partial<CSSStyleDeclaration> {
+    let bodyStyle: Partial<CSSStyleDeclaration> = {
+      flexGrow: '1',
       overflowY: 'auto',
     };
-    if (!this.padding) bodyStyle = { ...bodyStyle, padding: 0 };
+    if (!this.padding) bodyStyle = { ...bodyStyle, padding: '0' };
     return bodyStyle;
   }
 }

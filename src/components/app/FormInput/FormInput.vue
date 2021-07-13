@@ -13,7 +13,8 @@ export default class FormInput extends Vue {
 
   @Prop([String, Number]) value: string | number;
 
-  @Prop(Function) readonly onChange: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop(Function) readonly onChange: (...args: any[]) => any;
 
   @Prop({ default: undefined }) id: string | undefined;
 }

@@ -8,7 +8,7 @@ import { Vue, Component, Emit } from 'vue-property-decorator';
 @Component({ components: {} })
 export default class FilterButton extends Vue {
   @Emit('click')
-  onClick() {
+  onClick(): void {
     // add some action if needed
   }
 }

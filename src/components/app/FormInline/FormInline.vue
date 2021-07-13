@@ -7,7 +7,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class FormInline extends Vue {
-  @Prop(Function) readonly onSubmit: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop(Function) readonly onSubmit: (...args: any[]) => any;
 }
 </script>
 

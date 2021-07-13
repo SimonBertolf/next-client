@@ -11,9 +11,10 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class Tabs extends Vue {
   @Prop(String) activeKey: string;
 
-  @Prop(Function) onChange: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop(Function) onChange: (...args: any[]) => any;
 
-  get activeKeyModel() {
+  get activeKeyModel(): string {
     return this.activeKey;
   }
 

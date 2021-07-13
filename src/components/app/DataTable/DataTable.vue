@@ -3,6 +3,8 @@
 </template>
 
 <script lang="ts">
+// TODO: remove all any's and following comment!
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { TableColumn, TableData } from '@/types';
 import { TableActionButton } from '../TableActionButton';
@@ -14,16 +16,16 @@ export default class DataTable extends Vue {
   @Prop({ type: Array }) data: TableData[];
 
   @Prop({
-    type: [Object as () => { onOperationHeader: Function; onOperationCell: Function }, Boolean],
+    type: [Object, Boolean],
     default: () => false,
   })
-  operation: { onOperationHeader: Function; onOperationCell: Function } | boolean;
+  operation: { onOperationHeader: (...args: any[]) => any; onOperationCell: (...args: any[]) => any } | boolean;
 
-  get itsColumns() {
+  get itsColumns(): TableColumn[] {
     if (!this.operation) return this.columns;
     const { onOperationHeader, onOperationCell } = this.operation as {
-      onOperationHeader: Function;
-      onOperationCell: Function;
+      onOperationHeader: (...args: any[]) => any;
+      onOperationCell: (...args: any[]) => any;
     };
     const itsProps = { props: { onAction: onOperationCell }, style: 'height: 55px !important;' };
     return [

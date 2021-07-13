@@ -23,7 +23,7 @@ import FilterButton from './FilterButton.vue';
 export default class FilterPanel extends Vue {
   filterModalVisible = false;
 
-  showFilterModal() {
+  showFilterModal(): void {
     this.filterModalVisible = true;
   }
 }

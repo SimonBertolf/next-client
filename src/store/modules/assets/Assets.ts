@@ -14,12 +14,12 @@ export default class Assets extends VuexModule {
   private assetRepository: IFetchableById<Asset>;
 
   @Mutation
-  setAsset(asset: Asset) {
+  setAsset(asset: Asset): void {
     this.asset = asset;
   }
 
   @Mutation
-  public flushAsset() {
+  public flushAsset(): void {
     this.asset = null;
   }
 

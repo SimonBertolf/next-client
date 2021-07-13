@@ -12,7 +12,8 @@ interface TableColumn {
     [key: string]: string;
   };
   scopedSlots?: { customRender: string };
-  customRender?: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  customRender?: (text: string, record: any, index: number) => VNode;
 }
 
 export default TableColumn;

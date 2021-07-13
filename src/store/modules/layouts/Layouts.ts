@@ -37,17 +37,17 @@ export default class Layouts extends VuexModule {
   // }
 
   @Mutation
-  setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
+  setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems): void {
     this.responsiveLayout = responsiveLayout;
   }
 
   @Mutation
-  setLayoutMeta(layoutMeta: LayoutMeta) {
+  setLayoutMeta(layoutMeta: LayoutMeta): void {
     this.layoutMeta = layoutMeta;
   }
 
   @Mutation
-  updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }) {
+  updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }): void {
     const { layout, breakpoint } = payload;
     this.responsiveLayout[breakpoint] = layout;
     // console.log('this.responsiveLayout[breakpoint]: ', this.responsiveLayout[breakpoint]);
@@ -55,7 +55,7 @@ export default class Layouts extends VuexModule {
   }
 
   @Mutation
-  removeWidget(payload: { _id: string }) {
+  removeWidget(payload: { _id: string }): void {
     const { _id } = payload;
     const breakpoints = Object.keys(this.responsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
@@ -69,7 +69,7 @@ export default class Layouts extends VuexModule {
   }
 
   @Mutation
-  addWidget(payload: Widget) {
+  addWidget(payload: Widget): void {
     const { type, _id } = payload;
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
@@ -124,7 +124,7 @@ export default class Layouts extends VuexModule {
   }
 
   @Mutation
-  flushLayout() {
+  flushLayout(): void {
     const breakpoints = Object.keys(this.responsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
@@ -135,7 +135,7 @@ export default class Layouts extends VuexModule {
   }
 
   @Action
-  setLayout(layout: Layout) {
+  setLayout(layout: Layout): void {
     const { responsiveLayout, _id, name } = layout;
     this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
     this.context.commit('setLayoutMeta', { _id, name });

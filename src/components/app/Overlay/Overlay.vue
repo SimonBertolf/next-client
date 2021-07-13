@@ -14,7 +14,8 @@ export default class Overlay extends Vue {
   readonly absolute: boolean;
 
   @Prop({ default: () => undefined })
-  readonly onClose: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly onClose: (...args: any[]) => any;
 
   get rootCls(): string {
     // eslint-disable-next-line max-len

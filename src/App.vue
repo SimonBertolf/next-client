@@ -7,7 +7,7 @@ import { Vue, Component, Watch } from 'vue-property-decorator';
 @Component
 export default class App extends Vue {
   @Watch('$store.state.Errors.error', { deep: true, immediate: true })
-  onErrorChange(val: Error, oldVal: Error | null) {
+  onErrorChange(val: Error, oldVal: Error | null): void {
     // eslint-disable-next-line no-console
     if (val) console.error(val);
     if (oldVal) {

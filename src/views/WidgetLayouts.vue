@@ -24,22 +24,24 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { Layout, Card, BackButton } from '@/components/app';
 import { Heading } from '@/components/typography';
+import { ResponsiveWidgetLayoutItems } from '@/types';
+import { Layout as LayoutModel } from '@/models';
 
 @Component({ components: { Layout, Card, Heading, BackButton } })
 export default class WidgetLayouts extends Vue {
   name = 'Designs';
 
   // TODO: remove
-  get layout() {
+  get layout(): ResponsiveWidgetLayoutItems {
     return this.$store.state.Layouts.responsiveLayout;
   }
 
-  get layouts() {
+  get layouts(): LayoutModel[] {
     return this.$store.state.Layouts.layouts;
   }
 
   // TODO: remove
-  get layoutJSON() {
+  get layoutJSON(): string {
     return JSON.stringify(this.layout, null, 2);
   }
 }

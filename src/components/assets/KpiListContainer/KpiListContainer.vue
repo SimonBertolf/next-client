@@ -9,7 +9,7 @@
 import { Vue, Component } from 'vue-property-decorator';
 import { inject } from 'inversify-props';
 import { IKpiService } from '@/services';
-import { KpiGroup } from '@/models';
+import { KpiGroup, Asset } from '@/models';
 import { FlexLayout } from '@/components/app';
 import { KpiList } from '../KpiList';
 import { KpiListMobile } from '../KpiListMobile';
@@ -20,7 +20,7 @@ export default class KpiListContainer extends Vue {
 
   kpiGroups: KpiGroup[] = [];
 
-  mounted() {
+  mounted(): void {
     if (this.asset) {
       this.kpiService.loadAssetKpis(this.asset.id).then((kpiGroups) => {
         this.kpiGroups = kpiGroups;
@@ -30,7 +30,7 @@ export default class KpiListContainer extends Vue {
     }
   }
 
-  get asset() {
+  get asset(): Asset {
     return this.$store.state.Assets.asset;
   }
 }

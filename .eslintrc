@@ -3,7 +3,13 @@
   "env": {
     "node": true
   },
-  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "@vue/airbnb", "@vue/typescript/recommended", "prettier"],
+  "extends": [
+    "plugin:vue/essential",
+    "plugin:prettier/recommended",
+    "@vue/airbnb",
+    "@vue/typescript/recommended",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaVersion": 2020
   },
@@ -12,7 +18,7 @@
     "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
     "import/prefer-default-export": "off",
     "class-methods-use-this": 0,
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.ts", "**/*.stories.ts"]}],
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": ["**/*.test.ts", "**/*.stories.ts"] }],
     "no-underscore-dangle": [
       "error",
       {
@@ -35,7 +41,9 @@
         "ImportDeclaration": { "multiline": true }
         // "ExportDeclaration": { "multiline": true, "minProperties": 3 }
       }
-    ]
+    ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   },
   "overrides": [
     {

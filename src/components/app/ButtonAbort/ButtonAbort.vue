@@ -8,7 +8,8 @@ import { ButtonBase } from '../ButtonBase';
 
 @Component({ components: { ButtonBase } })
 export default class ButtonSave extends Vue {
-  @Prop({ default: (): Function => () => undefined }) readonly onClick: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop({ default: () => () => undefined }) readonly onClick: (...args: any[]) => any;
 }
 </script>
 

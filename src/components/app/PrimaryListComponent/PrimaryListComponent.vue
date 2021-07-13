@@ -35,7 +35,8 @@ export default class AssetList extends Vue {
 
   @Prop({ type: Array, default: () => [] }) readonly data: Array<unknown>;
 
-  @Prop(Function) readonly load: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Prop(Function) readonly load: (...args: any[]) => any;
 
   handleLoad(): void {
     if (!this.busy) this.load();

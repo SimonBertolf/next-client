@@ -44,7 +44,7 @@ export default class AssetList extends Vue {
     return [];
   }
 
-  fetchAssets() {
+  fetchAssets(): void {
     this.loading = true;
     this.$store
       .dispatch('Assets/loadAssets')
