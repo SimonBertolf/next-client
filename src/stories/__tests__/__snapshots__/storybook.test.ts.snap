@@ -3,7 +3,6 @@
 exports[`Storyshots app/BackButton Example 1`] = `
 <a
   class="fixed left-4 top-5"
-  custom=""
   href="#/"
 >
   <i
@@ -714,7 +713,6 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/dashboards"
             >
               Dashboards
@@ -727,7 +725,6 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/assets"
             >
               Assets
@@ -740,7 +737,6 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/reporting"
             >
               Reporting
@@ -753,7 +749,6 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/planing"
             >
               Planning
@@ -766,7 +761,6 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/admin"
             >
               <i
@@ -898,7 +892,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      custom=""
       href="#/dashboards"
     >
       Dashboards
@@ -911,7 +904,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      custom=""
       href="#/assets"
     >
       Assets
@@ -924,7 +916,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      custom=""
       href="#/reporting"
     >
       Reporting
@@ -937,7 +928,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      custom=""
       href="#/planing"
     >
       Planning
@@ -950,7 +940,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      custom=""
       href="#/admin"
     >
       <i
@@ -981,7 +970,6 @@ exports[`Storyshots app/NavMenu Example 1`] = `
 exports[`Storyshots app/NavMenuItem Example 1`] = `
 <a
   class="active-link"
-  custom=""
   href="#/"
 >
   Home
@@ -3682,7 +3670,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/dashboards"
             >
               Dashboards
@@ -3695,7 +3682,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/assets"
             >
               Assets
@@ -3708,7 +3694,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/reporting"
             >
               Reporting
@@ -3721,7 +3706,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/planing"
             >
               Planning
@@ -3734,7 +3718,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              custom=""
               href="#/admin"
             >
               <i
@@ -3850,7 +3833,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           <li>
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
-              custom=""
               href="#/assets/9"
             >
               
@@ -3861,7 +3843,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           <li>
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
-              custom=""
               href="#/assets/16"
             >
               
@@ -3872,7 +3853,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           <li>
             <button
               class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
-              custom=""
               href="#/assets/60"
             >
               
