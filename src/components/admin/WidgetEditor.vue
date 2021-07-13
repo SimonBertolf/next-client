@@ -12,11 +12,11 @@
           </a-menu>
           <a-button style="margin-left: 8px;"> Add Widget <a-icon type="down" /> </a-button>
         </a-dropdown>
-        <router-link :to="`/reporting/reports/${layoutId}/print`" v-slot="{ href, navigate }" custom>
+        <!-- <router-link :to="`/reporting/reports/${layoutId}/print`" v-slot="{ href, navigate }" custom>
           <a-button :href="href" @click="navigate">
             Print View
           </a-button>
-        </router-link>
+        </router-link> -->
       </a-space>
     </div>
 
@@ -25,7 +25,7 @@
       :show-guides="!!editable"
       :new-widget="newWidget"
       @new-widget-added="onNewWidgetAdded"
-      class="mb-8"
+      class="pb-64"
     />
   </div>
 </template>

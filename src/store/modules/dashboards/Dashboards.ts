@@ -1,4 +1,5 @@
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
+import { cloneDeep } from 'lodash';
 import { Dashboard } from '@/models';
 import { Filter, FilterSelection } from '@/types';
 import { dashboardsMock, filterSelectionsMock } from './DashboardsMock';
@@ -69,10 +70,10 @@ export default class Dashboards extends VuexModule {
         const dashboard = dashboardsMock.find((db) => db._id === _id);
         if (dashboard) {
           const { filters, layout, ...rest } = dashboard;
-          this.context.commit('setDashboard', { ...rest, layout: JSON.parse(JSON.stringify(layout)) });
+          this.context.commit('setDashboard', { ...rest, layout: cloneDeep(layout) });
           if (filters) {
-            this.context.commit('setFilters', JSON.parse(JSON.stringify(filters)));
-            this.context.commit('setFilterSelections', JSON.parse(JSON.stringify(filterSelectionsMock)));
+            this.context.commit('setFilters', cloneDeep(filters));
+            this.context.commit('setFilterSelections', cloneDeep(filterSelectionsMock));
           }
           resolve();
         } else {

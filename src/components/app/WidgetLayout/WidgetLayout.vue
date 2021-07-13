@@ -10,7 +10,7 @@
         </a-button> -->
       </a-space>
     </div>
-    <div class="widget-layout relative -mx-4" :style="{ height: `${height + 2 * rowHeight}px` }">
+    <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
       <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
         <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
         <div

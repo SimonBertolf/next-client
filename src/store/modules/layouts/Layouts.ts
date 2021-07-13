@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash';
 import { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
 import { Layout, LayoutMeta } from '@/models/Layout';
 import { GridBreakpoint } from 'vue-grid-layout';
@@ -27,6 +28,13 @@ export default class Layouts extends VuexModule {
   public layouts: Layout[] = layoutsMock;
 
   public layoutMeta: LayoutMeta | null = null;
+
+  // TODO: uncomment if loading status is needed
+  // public get loading() {
+  //   return (
+  //   Object.entries(this.responsiveLayout).reduce((acc, cur) => acc || cur[1].length === 0, false) && !this.layoutMeta
+  //   );
+  // }
 
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
@@ -129,7 +137,7 @@ export default class Layouts extends VuexModule {
   @Action
   setLayout(layout: Layout) {
     const { responsiveLayout, _id, name } = layout;
-    this.context.commit('setResponsiveLayout', { ...JSON.parse(JSON.stringify(responsiveLayout)) });
+    this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
     this.context.commit('setLayoutMeta', { _id, name });
   }
 
@@ -141,7 +149,7 @@ export default class Layouts extends VuexModule {
         const layout = layoutsMock.find((item) => item._id === _id);
         if (layout) {
           const { responsiveLayout, _id: layoutId, name } = layout;
-          this.context.commit('setResponsiveLayout', { ...JSON.parse(JSON.stringify(responsiveLayout)) });
+          this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
           this.context.commit('setLayoutMeta', { _id: layoutId, name });
           resolve();
         } else {

@@ -1,4 +1,5 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
+import { cloneDeep } from 'lodash';
 import { Report } from '@/models';
 import { reportsMock } from './ReportsMock';
 
@@ -23,7 +24,7 @@ export default class Reports extends VuexModule {
     // TODO: remove Mock
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        const report = JSON.parse(JSON.stringify(reportsMock.find((db) => db._id === _id)));
+        const report = cloneDeep(reportsMock.find((db) => db._id === _id));
         if (report) {
           this.context.commit('setReport', { ...report });
           resolve();
