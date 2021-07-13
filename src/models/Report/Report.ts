@@ -1,4 +1,9 @@
+import { WidgetData } from '@/types/Widget/WidgetData';
+import { Layout } from '../Layout';
+
 export interface Report {
-  _id: string;
+  readonly _id: string;
   name: string;
+  layout: Layout;
+  data: WidgetData[];
 }

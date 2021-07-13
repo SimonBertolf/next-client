@@ -1,7 +1,10 @@
-import { ResponsiveWidgetItems } from '../Widget';
+import { ResponsiveWidgetLayoutItems } from '@/types/WidgetLayout';
 
-export interface Layout {
-  _id: string;
+export interface LayoutMeta {
+  readonly _id: string;
   name: string;
-  responsiveLayout: ResponsiveWidgetItems;
+}
+
+export interface Layout extends LayoutMeta {
+  responsiveLayout: ResponsiveWidgetLayoutItems;
 }

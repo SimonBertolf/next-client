@@ -3,7 +3,7 @@
   "env": {
     "node": true
   },
-  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "@vue/airbnb", "@vue/typescript/recommended"],
+  "extends": ["plugin:vue/essential", "plugin:prettier/recommended", "@vue/airbnb", "@vue/typescript/recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2020
   },
@@ -27,7 +27,6 @@
     ],
     "eol-last": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
-    "operator-linebreak": ["error", "before", { "overrides": { "=": "after" } }],
     "object-curly-newline": [
       "error",
       {

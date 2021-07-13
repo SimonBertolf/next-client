@@ -4,9 +4,7 @@
       <router-view></router-view>
     </div>
     <div v-if="isLoading" class="text-center mt-8">
-      <a-spin>
-        <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
-      </a-spin>
+      <spinner />
     </div>
     <div v-if="!hasUser && !isLoading">
       <h1>401 Unauthorized</h1>
@@ -16,8 +14,9 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
+import { Spinner } from '@/components/app';
 
-@Component
+@Component({ components: { Spinner } })
 export default class ProtectedRoutes extends Vue {
   get isAuthenticated() {
     return this.hasUser && !this.isLoading;

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { WidgetLayout } from '../components/reporting';
+import { WidgetLayout } from '@/components/app';
 
 @Component({ components: { WidgetLayout } })
 export default class ReportPrint extends Vue {

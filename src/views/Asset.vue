@@ -11,9 +11,7 @@
       </Card>
     </div>
     <div v-else class="text-center mt-8">
-      <a-spin>
-        <a-icon slot="indicator" type="loading" style="font-size: 24px; color: #252d48;" spin />
-      </a-spin>
+      <spinner />
     </div>
   </Layout>
 </template>
@@ -21,7 +19,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Heading } from '@/components/typography';
-import { Layout, Tabs, Card, BackButton, SubNavMenu } from '@/components/app';
+import { Layout, Tabs, Card, BackButton, SubNavMenu, Spinner } from '@/components/app';
 import { AssetTabs } from '@/components/assets';
 import { Asset as AssetModel } from '@/models';
 
@@ -34,6 +32,7 @@ import { Asset as AssetModel } from '@/models';
     AssetTabs,
     BackButton,
     SubNavMenu,
+    Spinner,
   },
 })
 export default class Asset extends Vue {

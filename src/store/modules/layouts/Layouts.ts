@@ -1,22 +1,19 @@
-import { ResponsiveWidgetItems, WidgetData, WidgetItem, WidgetItems } from '@/models';
-import { Layout } from '@/models/Layout';
+import { cloneDeep } from 'lodash';
+import { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
+import { Layout, LayoutMeta } from '@/models/Layout';
 import { GridBreakpoint } from 'vue-grid-layout';
-import { Module, Mutation, VuexModule } from 'vuex-module-decorators';
-import { layoutsMock, responsiveLayoutMock } from './LayoutsMock';
-
-// Helpers for development and local demo TODO: romove when done
-const locallyStoreLayout = (layout: ResponsiveWidgetItems) => {
-  localStorage.setItem('responsiveLayout', JSON.stringify(layout));
-};
-const locallyReadLayout = (): ResponsiveWidgetItems | undefined => {
-  const localLayoutString = localStorage.getItem('responsiveLayout');
-  if (localLayoutString) return JSON.parse(localLayoutString);
-  return undefined;
-};
+import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
+import { layoutsMock } from './LayoutsMock';
 
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
-  public responsiveLayout: ResponsiveWidgetItems = locallyReadLayout() || responsiveLayoutMock; // TODO: remove mock
+  public responsiveLayout: ResponsiveWidgetLayoutItems = {
+    lg: [],
+    md: [],
+    sm: [],
+    xs: [],
+    xxs: [],
+  };
 
   public cols: { [breakpoint: string]: number } = { lg: 12, md: 10, sm: 6, xs: 4, xxs: 2 };
 
@@ -30,37 +27,49 @@ export default class Layouts extends VuexModule {
 
   public layouts: Layout[] = layoutsMock;
 
+  public layoutMeta: LayoutMeta | null = null;
+
+  // TODO: uncomment if loading status is needed
+  // public get loading() {
+  //   return (
+  //   Object.entries(this.responsiveLayout).reduce((acc, cur) => acc || cur[1].length === 0, false) && !this.layoutMeta
+  //   );
+  // }
+
   @Mutation
-  setResponsiveLayout(responsiveLayout: ResponsiveWidgetItems) {
+  setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems) {
     this.responsiveLayout = responsiveLayout;
-    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
-  updateResponsiveLayout(payload: { layout: WidgetItems; breakpoint: GridBreakpoint }) {
+  setLayoutMeta(layoutMeta: LayoutMeta) {
+    this.layoutMeta = layoutMeta;
+  }
+
+  @Mutation
+  updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }) {
     const { layout, breakpoint } = payload;
     this.responsiveLayout[breakpoint] = layout;
-    locallyStoreLayout(this.responsiveLayout);
     // console.log('this.responsiveLayout[breakpoint]: ', this.responsiveLayout[breakpoint]);
     // TODO: POST change to Server, trigger update action
   }
 
   @Mutation
-  removeWidget(payload: { id: string }) {
-    const { id } = payload;
+  removeWidget(payload: { _id: string }) {
+    const { _id } = payload;
     const breakpoints = Object.keys(this.responsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
-        const index = this.responsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === id);
+        const index = this.responsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === _id);
+        // TODO: this error is probably uncaught. Fix!
         if (index < 0) throw new Error('could not find widget to delete');
         this.responsiveLayout[breakpoint].splice(index, 1);
       }
     });
-    locallyStoreLayout(this.responsiveLayout);
   }
 
   @Mutation
-  addWidget(payload: WidgetData) {
+  addWidget(payload: Widget) {
     const { type, _id } = payload;
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
@@ -100,7 +109,7 @@ export default class Layouts extends VuexModule {
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
         const [x, y] = findFreeCoordinates(breakpoint);
-        const newWidget: WidgetItem = {
+        const newWidget: WidgetLayoutItem = {
           x,
           y,
           w: 1,
@@ -112,6 +121,43 @@ export default class Layouts extends VuexModule {
         this.responsiveLayout[breakpoint].push(newWidget);
       }
     });
-    locallyStoreLayout(this.responsiveLayout);
+  }
+
+  @Mutation
+  flushLayout() {
+    const breakpoints = Object.keys(this.responsiveLayout);
+    breakpoints.forEach((breakpoint: string) => {
+      if (this.responsiveLayout[breakpoint]) {
+        this.responsiveLayout[breakpoint].splice(0, this.responsiveLayout[breakpoint].length);
+      }
+    });
+    this.layoutMeta = null;
+  }
+
+  @Action
+  setLayout(layout: Layout) {
+    const { responsiveLayout, _id, name } = layout;
+    this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
+    this.context.commit('setLayoutMeta', { _id, name });
+  }
+
+  @Action
+  loadLayout({ _id }: { _id: string }): Promise<void> {
+    // TODO: remove Mock
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const layout = layoutsMock.find((item) => item._id === _id);
+        if (layout) {
+          const { responsiveLayout, _id: layoutId, name } = layout;
+          this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
+          this.context.commit('setLayoutMeta', { _id: layoutId, name });
+          resolve();
+        } else {
+          const error = new Error('Layout not found');
+          this.context.commit('Errors/setError', error, { root: true });
+          reject(error);
+        }
+      }, Math.random() * 2000);
+    });
   }
 }

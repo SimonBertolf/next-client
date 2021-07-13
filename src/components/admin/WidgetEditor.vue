@@ -1,7 +1,7 @@
 <template>
   <div class="widget-editor">
     <div class="mb-4 px-2">
-      <h2 class="mb-4 text-2xl">{{ layoutData.name }}</h2>
+      <h2 class="mb-4 text-2xl">{{ name }}</h2>
       <a-space>
         <span>Editable: <a-switch default-checked v-model="editable" /></span>
         <a-dropdown v-if="editable">
@@ -12,11 +12,11 @@
           </a-menu>
           <a-button style="margin-left: 8px;"> Add Widget <a-icon type="down" /> </a-button>
         </a-dropdown>
-        <router-link :to="`/reporting/reports/${layoutId}/print`" v-slot="{ href, navigate }" custom>
+        <!-- <router-link :to="`/reporting/reports/${layoutId}/print`" v-slot="{ href, navigate }" custom>
           <a-button :href="href" @click="navigate">
             Print View
           </a-button>
-        </router-link>
+        </router-link> -->
       </a-space>
     </div>
 
@@ -25,15 +25,16 @@
       :show-guides="!!editable"
       :new-widget="newWidget"
       @new-widget-added="onNewWidgetAdded"
-      class="mb-8"
+      class="pb-64"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { WidgetData, WidgetType, Layout } from '@/models';
+import { LayoutMeta } from '@/models';
+import { WidgetType, Widget } from '@/types';
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import WidgetLayout from '../reporting/WidgetLayout.vue';
+import { WidgetLayout } from '@/components/app';
 
 @Component({ components: { WidgetLayout } })
 export default class WidgetEditor extends Vue {
@@ -41,16 +42,14 @@ export default class WidgetEditor extends Vue {
 
   editable = true;
 
-  newWidget: WidgetData | null = null;
+  newWidget: Widget | null = null;
 
-  get layoutData() {
-    // TODO: maybe it makes sense to move this logic to store module?
-    const data = this.$store.state.Layouts.layouts.find((layout: Layout) => layout._id === this.layoutId);
-    if (!data) {
-      this.$router.push('/404');
-      throw new Error(`Could not find layout with _id ${this.layoutId}`);
-    }
-    return data;
+  get layoutMeta(): LayoutMeta | null {
+    return this.$store.state.Layouts.layoutMeta;
+  }
+
+  get name(): string | undefined {
+    return this.layoutMeta?.name;
   }
 
   addWidget({ key: type }: { key: WidgetType }) {

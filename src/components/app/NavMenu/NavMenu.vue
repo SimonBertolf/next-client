@@ -10,7 +10,7 @@
       <nav-menu-item to="/reporting">Reporting</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/planing">Planing</nav-menu-item>
+      <nav-menu-item to="/planing">Planning</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
       <nav-menu-item to="/admin"><a-icon type="setting" /> Admin</nav-menu-item>

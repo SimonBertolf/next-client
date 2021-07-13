@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import _ from 'lodash';
+import _, { cloneDeep } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import '@amcharts/amcharts4/charts';
 /* eslint-disable @typescript-eslint/camelcase */
@@ -146,7 +146,8 @@ export default class AreaChart extends Vue {
       legend: { position: 'bottom' },
     };
     this.chart = am4core.createFromConfig(
-      JSON.parse(JSON.stringify(chartConfiguration)),
+      // TODO: why deep copy needed? replaced JSON.parse(JSON.stringify()) with _.cloneDeep()
+      cloneDeep(chartConfiguration),
       this.$refs.chartDiv as HTMLElement,
     );
   }
