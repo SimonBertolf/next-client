@@ -1,7 +1,7 @@
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import { cloneDeep } from 'lodash';
-import { Dashboard } from '@/models';
-import { Filter, FilterSelection } from '@/types';
+import type { Dashboard } from '@/models';
+import type { Filter, FilterSelection } from '@/types';
 import { dashboardsMock, filterSelectionsMock } from './DashboardsMock';
 
 @Module({ namespaced: true })

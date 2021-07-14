@@ -1,3 +1,1 @@
-import TableData from './TableData';
-
-export { TableData };
+export * from './TableData';

@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { SelectFilter, FilterSelection } from '@/types';
+import type { SelectFilter, FilterSelection } from '@/types';
 
 @Component({ components: {} })
 export default class Select extends Vue {

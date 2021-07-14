@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import moment, { Moment } from 'moment';
-import { DateRangeFilter, FilterSelection } from '@/types';
+import type { DateRangeFilter, FilterSelection } from '@/types';
 
 @Component({ components: {} })
 export default class DateRange extends Vue {

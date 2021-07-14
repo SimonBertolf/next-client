@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { DescriptionType, ColumnType } from '@/types';
+import type { DescriptionType, ColumnType } from '@/types';
 import { RouteLocalized } from '../RouteLocalized';
 import { PrimaryListItem } from '../PrimaryListItem';
 import { Descriptions } from '../Descriptions';

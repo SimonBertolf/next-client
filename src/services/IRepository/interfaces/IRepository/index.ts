@@ -1,3 +1,1 @@
-import IRepository from './IRepository';
-
-export { IRepository };
+export * from './IRepository';

@@ -1,7 +1,7 @@
 import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { Inject } from 'inversify-props';
-import { IAuth } from '@/services';
-import { User } from '@/models';
+import type { IAuth } from '@/services';
+import type { User } from '@/models';
 
 @Module({ namespaced: true })
 export default class Auth extends VuexModule {

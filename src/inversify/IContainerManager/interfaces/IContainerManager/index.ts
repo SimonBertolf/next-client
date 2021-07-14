@@ -1,3 +1,1 @@
-import IContainerManager from './IContainerManager';
-
-export { IContainerManager };
+export * from './IContainerManager';

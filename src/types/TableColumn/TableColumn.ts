@@ -1,6 +1,6 @@
 import { VNode } from 'vue';
 
-interface TableColumn {
+export interface TableColumn {
   title?: string | VNode;
   dataIndex?: string;
   key: string;
@@ -15,5 +15,3 @@ interface TableColumn {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customRender?: (text: string, record: any, index: number) => VNode;
 }
-
-export default TableColumn;

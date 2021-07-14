@@ -1,6 +1,6 @@
 import { cloneDeep } from 'lodash';
-import { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
-import { Layout, LayoutMeta } from '@/models/Layout';
+import type { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
+import type { Layout, LayoutMeta } from '@/models';
 import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import { layoutsMock } from './LayoutsMock';

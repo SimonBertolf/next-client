@@ -1,5 +1,5 @@
 import { Filter } from '@/types';
-import { Layout } from '../Layout';
+import { Layout } from './Layout';
 
 export interface Dashboard {
   readonly _id: string;

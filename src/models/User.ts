@@ -1,6 +1,6 @@
-import { Role } from '../Role';
+import { Role } from './Role';
 
-interface User {
+export interface User {
   readonly id: string;
   email: string;
   username: string;
@@ -8,5 +8,3 @@ interface User {
   isDeveloper: boolean;
   roles: Role[];
 }
-
-export default User;

@@ -1,3 +1,1 @@
-import FormatList from './FormatList';
-
-export { FormatList };
+export * from './FormatList';

@@ -5,7 +5,7 @@
         <span v-if="breakpoint">Breakpoint: {{ breakpoint }}</span>
         <span>Pages: {{ numberOfPages }}</span>
         <span>Ready: {{ dataReady }}</span>
-        <a-button type="primary" @click="onTestClick"> Test Button </a-button>
+        <!-- <a-button type="primary" @click="onTestClick"> Test Button </a-button> -->
       </a-space>
     </div>
     <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
@@ -49,9 +49,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
-import qs from 'qs';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems, WidgetData } from '@/types';
+import type { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems, WidgetData } from '@/types';
 import { Widget } from './Widget';
 
 @Component({ components: { GridLayout, GridItem, Widget } })
@@ -81,13 +80,13 @@ export default class WidgetLayout extends Vue {
     );
   }
 
-  onTestClick(): void {
-    // eslint-disable-next-line no-console
-    console.log('TEST BTN CLICKED');
-    const qstest = { selections: [['a', 'b', 'd'], [], ['c']] };
-    // eslint-disable-next-line no-console
-    console.log('qstest: ', qs.stringify(qstest));
-  }
+  // onTestClick(): void {
+  //   // eslint-disable-next-line no-console
+  //   console.log('TEST BTN CLICKED');
+  //   const qstest = { selections: [['a', 'b', 'd'], [], ['c']] };
+  //   // eslint-disable-next-line no-console
+  //   console.log('qstest: ', qs.stringify(qstest));
+  // }
 
   get margin(): number {
     return this.$store.state.Layouts.margin;

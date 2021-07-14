@@ -1,7 +1,5 @@
 import { KpiGroup } from '@/models';
 
-interface IKpiService {
+export interface IKpiService {
   loadAssetKpis(assetId: string | number): Promise<KpiGroup[]>;
 }
-
-export default IKpiService;

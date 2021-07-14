@@ -1,3 +1,1 @@
-import TrendList from './TrendList';
-
-export { TrendList };
+export * from './TrendList';

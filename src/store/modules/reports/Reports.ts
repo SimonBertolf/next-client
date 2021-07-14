@@ -1,6 +1,6 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import { cloneDeep } from 'lodash';
-import { Report } from '@/models';
+import type { Report } from '@/models';
 import { reportsMock } from './ReportsMock';
 
 @Module({ namespaced: true })

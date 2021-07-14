@@ -1,3 +1,1 @@
-import DescriptionType from './DescriptionType';
-
-export { DescriptionType };
+export * from './DescriptionType';

@@ -1,5 +1,5 @@
-import { Report } from '@/models';
-import { Widget, WidgetData } from '@/types';
+import type { Report } from '@/models';
+import type { Widget, WidgetData } from '@/types';
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 
 @Module({ namespaced: true })

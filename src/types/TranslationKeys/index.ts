@@ -1,3 +1,1 @@
-import TranslationKeys from './TranslationKeys';
-
-export { TranslationKeys };
+export * from './TranslationKeys';
