@@ -48,6 +48,7 @@ export const layoutsMock: Layout[] = [
   {
     _id: '60c8b6a92b48b3a8ebb276ae',
     name: 'My Fantastic Layout',
+    displayNames: [],
     responsiveLayout: responsiveLayoutMock,
   },
 ];
