@@ -3,24 +3,24 @@ import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '
 
 const testResponsiveLayout: ResponsiveWidgetLayoutItems = {
   lg: [
-    { x: 0, y: 0, w: 4, h: 2, i: '1625243270656', _id: '1625243270656', type: 'WidgetB' },
-    { x: 0, y: 2, w: 3, h: 2, i: '1625243272544', _id: '1625243272544', type: 'WidgetC' },
+    { x: 0, y: 0, w: 4, h: 2, i: '1625243270656', moved: false, _id: '1625243270656', type: 'WidgetB' },
+    { x: 0, y: 2, w: 3, h: 2, i: '1625243272544', moved: false, _id: '1625243272544', type: 'WidgetC' },
   ],
   md: [
-    { x: 0, y: 0, w: 4, h: 2, i: '1625243270656', _id: '1625243270656', type: 'WidgetB' },
-    { x: 0, y: 2, w: 4, h: 2, i: '1625243272544', _id: '1625243272544', type: 'WidgetC' },
+    { x: 0, y: 0, w: 4, h: 2, i: '1625243270656', moved: false, _id: '1625243270656', type: 'WidgetB' },
+    { x: 0, y: 2, w: 4, h: 2, i: '1625243272544', moved: false, _id: '1625243272544', type: 'WidgetC' },
   ],
   sm: [
-    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', _id: '1625243270656', type: 'WidgetB' },
-    { x: 0, y: 2, w: 2, h: 2, i: '1625243272544', _id: '1625243272544', type: 'WidgetC' },
+    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', moved: false, _id: '1625243270656', type: 'WidgetB' },
+    { x: 0, y: 2, w: 2, h: 2, i: '1625243272544', moved: false, _id: '1625243272544', type: 'WidgetC' },
   ],
   xs: [
-    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', _id: '1625243270656', type: 'WidgetB' },
-    { x: 2, y: 2, w: 2, h: 2, i: '1625243272544', _id: '1625243272544', type: 'WidgetC' },
+    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', moved: false, _id: '1625243270656', type: 'WidgetB' },
+    { x: 2, y: 2, w: 2, h: 2, i: '1625243272544', moved: false, _id: '1625243272544', type: 'WidgetC' },
   ],
   xxs: [
-    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', _id: '1625243270656', type: 'WidgetB' },
-    { x: 0, y: 6, w: 2, h: 2, i: '1625243272544', _id: '1625243272544', type: 'WidgetC' },
+    { x: 0, y: 0, w: 2, h: 2, i: '1625243270656', moved: false, _id: '1625243270656', type: 'WidgetB' },
+    { x: 0, y: 6, w: 2, h: 2, i: '1625243272544', moved: false, _id: '1625243272544', type: 'WidgetC' },
   ],
 };
 

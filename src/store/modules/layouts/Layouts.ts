@@ -1,12 +1,24 @@
 import { cloneDeep } from 'lodash';
-import type { WidgetLayoutItems, WidgetLayoutItem, ResponsiveWidgetLayoutItems, Widget } from '@/types';
-import type { Layout, LayoutMeta } from '@/models';
+import type {
+  WidgetLayoutItems,
+  WidgetLayoutItem,
+  ResponsiveWidgetLayoutItems,
+  Widget,
+  QueryInterface,
+  LayoutHostType,
+} from '@/types';
+import type { ApiLayout, LayoutMeta } from '@/models';
+import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '@/models';
 import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
-import { layoutsMock } from './LayoutsMock';
+import type { IRepository } from '@/services';
+import { Inject } from 'inversify-props';
 
 @Module({ namespaced: true })
 export default class Layouts extends VuexModule {
+  // host: knows where the layout is used/hosted
+  public host: LayoutHostType | null = null;
+
   public responsiveLayout: ResponsiveWidgetLayoutItems = {
     lg: [],
     md: [],
@@ -25,16 +37,32 @@ export default class Layouts extends VuexModule {
 
   public rowsPerPage = 8; // TODO: change according to design specs
 
-  public layouts: Layout[] = layoutsMock;
+  public layouts: ApiLayout[] = [];
+
+  public loading = {
+    layouts: false,
+    layout: false,
+  };
 
   public layoutMeta: LayoutMeta | null = null;
 
-  // TODO: uncomment if loading status is needed
-  // public get loading() {
-  //   return (
-  //   Object.entries(this.responsiveLayout).reduce((acc, cur) => acc || cur[1].length === 0, false) && !this.layoutMeta
-  //   );
-  // }
+  @Inject('LayoutRepository')
+  private layoutRepository: IRepository<ApiLayout>;
+
+  @Mutation
+  setLoading({ key, loading }: { key: 'layouts' | 'layout'; loading: boolean }): void {
+    this.loading[key] = loading;
+  }
+
+  @Mutation
+  setHost({ host }: { host: LayoutHostType | null }): void {
+    this.host = host;
+  }
+
+  @Mutation
+  setLayouts(layouts: ApiLayout[]): void {
+    this.layouts = layouts;
+  }
 
   @Mutation
   setResponsiveLayout(responsiveLayout: ResponsiveWidgetLayoutItems): void {
@@ -46,31 +74,41 @@ export default class Layouts extends VuexModule {
     this.layoutMeta = layoutMeta;
   }
 
-  @Mutation
+  @Action
   updateResponsiveLayout(payload: { layout: WidgetLayoutItems; breakpoint: GridBreakpoint }): void {
     const { layout, breakpoint } = payload;
-    this.responsiveLayout[breakpoint] = layout;
-    // console.log('this.responsiveLayout[breakpoint]: ', this.responsiveLayout[breakpoint]);
-    // TODO: POST change to Server, trigger update action
-  }
-
-  @Mutation
-  removeWidget(payload: { _id: string }): void {
-    const { _id } = payload;
-    const breakpoints = Object.keys(this.responsiveLayout);
-    breakpoints.forEach((breakpoint: string) => {
-      if (this.responsiveLayout[breakpoint]) {
-        const index = this.responsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === _id);
-        // TODO: this error is probably uncaught. Fix!
-        if (index < 0) throw new Error('could not find widget to delete');
-        this.responsiveLayout[breakpoint].splice(index, 1);
-      }
+    const updatedResponsiveLayout: ResponsiveWidgetLayoutItems = cloneDeep(this.responsiveLayout);
+    updatedResponsiveLayout[breakpoint] = cloneDeep(layout);
+    if (!this.layoutMeta?._id) throw new Error('_id of layout undefined!');
+    this.context.dispatch('updateLayout', {
+      _id: this.layoutMeta._id,
+      widgets: apiWidgetsFromResponsiveLayout(updatedResponsiveLayout),
     });
   }
 
-  @Mutation
-  addWidget(payload: Widget): void {
-    const { type, _id } = payload;
+  @Action
+  removeWidget(payload: { _id: string }): void {
+    const { _id } = payload;
+    const updatedResponsiveLayout: ResponsiveWidgetLayoutItems = cloneDeep(this.responsiveLayout);
+    const breakpoints = Object.keys(updatedResponsiveLayout);
+    breakpoints.forEach((breakpoint: string) => {
+      if (updatedResponsiveLayout[breakpoint]) {
+        const index = updatedResponsiveLayout[breakpoint].findIndex((widgetItem) => widgetItem.i === _id);
+        // TODO: this error is probably uncaught. Fix!
+        if (index < 0) throw new Error('could not find widget to delete');
+        updatedResponsiveLayout[breakpoint].splice(index, 1);
+      }
+    });
+    if (!this.layoutMeta?._id) throw new Error('_id of layout undefined!');
+    this.context.dispatch('updateLayout', {
+      _id: this.layoutMeta._id,
+      widgets: apiWidgetsFromResponsiveLayout(updatedResponsiveLayout),
+    });
+  }
+
+  @Action
+  addWidget({ widgetToAdd }: { widgetToAdd: Widget }): void {
+    const { type, _id } = widgetToAdd;
 
     const findFreeCoordinates = (breakpoint: string): [number, number] => {
       // get number of rows and cols of current layout
@@ -105,9 +143,10 @@ export default class Layouts extends VuexModule {
       return [freeX, freeY];
     };
 
-    const breakpoints = Object.keys(this.responsiveLayout);
+    const updatedResponsiveLayout: ResponsiveWidgetLayoutItems = cloneDeep(this.responsiveLayout);
+    const breakpoints = Object.keys(updatedResponsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
-      if (this.responsiveLayout[breakpoint]) {
+      if (updatedResponsiveLayout[breakpoint]) {
         const [x, y] = findFreeCoordinates(breakpoint);
         const newWidget: WidgetLayoutItem = {
           x,
@@ -115,49 +154,82 @@ export default class Layouts extends VuexModule {
           w: 1,
           h: 1,
           i: _id,
+          moved: false,
           _id,
           type,
         };
-        this.responsiveLayout[breakpoint].push(newWidget);
+        updatedResponsiveLayout[breakpoint].push(newWidget);
       }
+    });
+    if (!this.layoutMeta?._id) throw new Error('_id of layout undefined!');
+    this.context.dispatch('updateLayout', {
+      _id: this.layoutMeta._id,
+      widgets: apiWidgetsFromResponsiveLayout(updatedResponsiveLayout),
     });
   }
 
   @Mutation
-  flushLayout(): void {
+  flushResponsiveLayout(): void {
     const breakpoints = Object.keys(this.responsiveLayout);
     breakpoints.forEach((breakpoint: string) => {
       if (this.responsiveLayout[breakpoint]) {
         this.responsiveLayout[breakpoint].splice(0, this.responsiveLayout[breakpoint].length);
       }
     });
-    this.layoutMeta = null;
   }
 
   @Action
-  setLayout(layout: Layout): void {
-    const { responsiveLayout, _id, name } = layout;
-    this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
-    this.context.commit('setLayoutMeta', { _id, name });
+  setLayout(layout: ApiLayout): void {
+    const { widgets, ...meta } = layout;
+    const responsiveLayout = responsiveLayoutFromApiWidgets(widgets);
+    this.context.commit('setResponsiveLayout', cloneDeep(responsiveLayout));
+    this.context.commit('setLayoutMeta', { ...meta });
   }
 
   @Action
-  loadLayout({ _id }: { _id: string }): Promise<void> {
-    // TODO: remove Mock
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const layout = layoutsMock.find((item) => item._id === _id);
-        if (layout) {
-          const { responsiveLayout, _id: layoutId, name } = layout;
-          this.context.commit('setResponsiveLayout', { ...cloneDeep(responsiveLayout) });
-          this.context.commit('setLayoutMeta', { _id: layoutId, name });
-          resolve();
-        } else {
-          const error = new Error('Layout not found');
-          this.context.commit('Errors/setError', error, { root: true });
-          reject(error);
-        }
-      }, Math.random() * 2000);
-    });
+  async loadLayout({ _id }: { _id: string }): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'layout', loading: true });
+      const apiLayout = await this.layoutRepository.getById(_id);
+      this.context.dispatch('setLayout', apiLayout);
+      this.context.commit('setLoading', { key: 'layout', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
+  async updateLayout(layoutUpdates: Partial<ApiLayout> & { readonly _id: string }): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'layout', loading: true });
+      const apiLayout = await this.layoutRepository.update(layoutUpdates);
+      this.context.dispatch('setLayout', apiLayout);
+      this.context.commit('setLoading', { key: 'layout', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
+  flushLayout(): void {
+    this.context.commit('flushResponsiveLayout');
+    this.context.commit('setLayoutMeta', null);
+  }
+
+  @Action
+  async loadLayouts(query?: QueryInterface): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'layouts', loading: true });
+      const layouts = await this.layoutRepository.list(query);
+      this.context.commit('setLayouts', layouts);
+      this.context.commit('setLoading', { key: 'layouts', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
+  flushLayouts(): void {
+    this.context.commit('setLayouts', new Array<ApiLayout>());
   }
 }

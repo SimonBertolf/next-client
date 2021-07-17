@@ -3,7 +3,7 @@ import axios, { AxiosStatic } from 'axios';
 import { Document } from '@/models/Document';
 import { IRepository } from '../../interfaces';
 
-abstract class AbstractRepository<Model extends Document> implements IRepository<Model> {
+abstract class GenericRepository<Model extends Document> implements IRepository<Model> {
   protected client: AxiosStatic = axios;
 
   protected api: string;
@@ -27,7 +27,7 @@ abstract class AbstractRepository<Model extends Document> implements IRepository
     return documents as Model[];
   }
 
-  async update(entity: Model): Promise<Model> {
+  async update(entity: Partial<Model>): Promise<Model> {
     const { _id } = entity;
     if (!_id) throw new Error('Can not update a document with undefined _id.');
     const updates = { ...entity };
@@ -44,6 +44,13 @@ abstract class AbstractRepository<Model extends Document> implements IRepository
     const { data: document } = data;
     return document as Model;
   }
+
+  async delete(_id: string): Promise<Model> {
+    const response = await this.client.delete(`${this.api}/${_id}`);
+    const { data } = response;
+    const { data: document } = data;
+    return document as Model;
+  }
 }
 
-export default AbstractRepository;
+export default GenericRepository;

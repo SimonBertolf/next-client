@@ -2,7 +2,10 @@
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="hidden sm:flex">
     <h2 class="text-2xl mb-2">Layouts</h2>
     <p class="mb-2">TODO: List of Layouts</p>
-    <ul>
+    <div v-if="loading" class="flex h-full justify-center items-center">
+      <spinner />
+    </div>
+    <ul v-else>
       <li v-for="layout in layouts" :key="layout._id">
         <router-link :to="`/admin/layouts/${layout._id}`" v-slot="{ href, navigate }" custom>
           <button
@@ -15,34 +18,25 @@
         </router-link>
       </li>
     </ul>
-    <!-- TODO: remove pre after development -->
-    <!-- <pre>{{ layoutJSON }}</pre> -->
   </Card>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Layout, Card, BackButton } from '@/components/app';
+import { Layout, Card, BackButton, Spinner } from '@/components/app';
 import { Heading } from '@/components/typography';
-import { ResponsiveWidgetLayoutItems } from '@/types';
 import { Layout as LayoutModel } from '@/models';
 
-@Component({ components: { Layout, Card, Heading, BackButton } })
+@Component({ components: { Layout, Card, Heading, BackButton, Spinner } })
 export default class WidgetLayouts extends Vue {
   name = 'Designs';
 
-  // TODO: remove
-  get layout(): ResponsiveWidgetLayoutItems {
-    return this.$store.state.Layouts.responsiveLayout;
+  get loading(): boolean {
+    return this.$store.state.Layouts.layoutsLoading;
   }
 
   get layouts(): LayoutModel[] {
     return this.$store.state.Layouts.layouts;
-  }
-
-  // TODO: remove
-  get layoutJSON(): string {
-    return JSON.stringify(this.layout, null, 2);
   }
 }
 </script>

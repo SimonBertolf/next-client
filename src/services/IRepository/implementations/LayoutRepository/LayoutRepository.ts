@@ -5,6 +5,6 @@ import { GenericRepository } from '../GenericRepository';
 @injectable()
 export class LayoutRepository extends GenericRepository<ApiLayout> {
   constructor() {
-    super('layouts');
+    super('/api/v1/layouts');
   }
 }

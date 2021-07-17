@@ -8,7 +8,7 @@
  * @prop {integer} __v          - version number of document
  */
 export interface Document {
-  readonly _id?: string;
+  readonly _id: string;
   readonly createdBy?: string;
   readonly createdAt?: Date;
   readonly updatedAt?: Date;

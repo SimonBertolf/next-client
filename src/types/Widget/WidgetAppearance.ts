@@ -2,6 +2,7 @@ import { GridBreakpoint } from 'vue-grid-layout';
 import { WidgetType } from './WidgetType';
 
 export interface Coordinates {
+  readonly _id?: string;
   breakpoint: GridBreakpoint;
   x: number;
   y: number;

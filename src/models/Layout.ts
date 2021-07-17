@@ -30,10 +30,11 @@ export const responsiveLayoutFromApiWidgets = (apiWidgets: WidgetAppearance[]): 
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { breakpoint: bp, ...vals } = coordinates;
         return {
+          ...vals,
           type: apiWidget.type,
           _id: apiWidget._id,
           i: apiWidget._id,
-          ...vals,
+          moved: false,
         };
       }),
     );
@@ -42,11 +43,16 @@ export const responsiveLayoutFromApiWidgets = (apiWidgets: WidgetAppearance[]): 
   return responsiveLayout;
 };
 
-export const apiWidgetsFromResponsiveLayout = (responsiveLayout: ResponsiveWidgetLayoutItems): WidgetAppearance[] => {
+export const apiWidgetsFromResponsiveLayout = (
+  responsiveLayout: ResponsiveWidgetLayoutItems,
+): Partial<WidgetAppearance>[] => {
   const breakpoints = Object.keys(responsiveLayout);
   const responsiveWidgetLayoutItems = Object.values(responsiveLayout);
   const widgetMetas = responsiveWidgetLayoutItems.map((widgetLayoutItems) =>
-    widgetLayoutItems.map((layoutItem) => ({ _id: layoutItem._id, type: layoutItem.type })),
+    widgetLayoutItems.map((layoutItem) => ({
+      _id: layoutItem._id,
+      type: layoutItem.type,
+    })),
   );
 
   const widgets = widgetMetas.reduce((acc: { _id: string; type: WidgetType }[], current) => {
@@ -73,5 +79,10 @@ export const apiWidgetsFromResponsiveLayout = (responsiveLayout: ResponsiveWidge
     }),
   }));
 
-  return apiWidgets;
+  // return api widgets and remove temporary new-... ids
+  return apiWidgets.map((item) => {
+    const { _id, ...rest } = item;
+    if (_id?.includes('new-')) return { ...rest };
+    return item;
+  });
 };
