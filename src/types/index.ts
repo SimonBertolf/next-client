@@ -13,3 +13,4 @@ export * from './TableData';
 export * from './Widget';
 export * from './WidgetLayout';
 export * from './Filter';
+export * from './Translation';

@@ -53,7 +53,7 @@ export default class WidgetEditor extends Vue {
   }
 
   addWidget({ key: type }: { key: WidgetType }): void {
-    this.newWidget = { type, _id: Date.now().toString() };
+    this.newWidget = { type, _id: `new-${Date.now().toString()}` };
   }
 
   onNewWidgetAdded(): void {

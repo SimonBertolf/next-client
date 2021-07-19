@@ -1,9 +1,9 @@
 import { Filter } from '@/types';
-import { Layout } from './Layout';
+import { ApiLayout } from './Layout';
 
 export interface Dashboard {
   readonly _id: string;
   name: string;
-  layout: Layout;
+  layout: ApiLayout;
   filters?: Filter[];
 }

@@ -8,40 +8,43 @@
         <!-- <a-button type="primary" @click="onTestClick"> Test Button </a-button> -->
       </a-space>
     </div>
-    <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
-      <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
-        <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
-        <div
-          :style="{ height: `${(rowHeight + margin) * rowsPerPage}px` }"
-          v-for="n in numberOfPages - 1"
-          :key="n"
-          class="border-b-2 border-magenta line-break"
-        />
+
+    <spinner :spinning="loading">
+      <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
+        <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
+          <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
+          <div
+            :style="{ height: `${(rowHeight + margin) * rowsPerPage}px` }"
+            v-for="n in numberOfPages - 1"
+            :key="n"
+            class="border-b-2 border-magenta line-break"
+          />
+        </div>
+        <div class="layout-container absolute top-0 left-0 w-full" ref="layoutContainer">
+          <grid-layout
+            :layout="layout"
+            :col-num="12"
+            :row-height="rowHeight"
+            :is-draggable="editable"
+            :is-resizable="editable"
+            :is-mirrored="false"
+            :vertical-compact="true"
+            :responsive="true"
+            :prevent-collision="false"
+            :margin="[margin, margin]"
+            :use-css-transforms="true"
+            @layout-updated="onLayoutUpdated"
+            @breakpoint-changed="onBreakpointChanged"
+            @layout-ready="onLayoutReady"
+            ref="gridLayout"
+          >
+            <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
+              <widget :type="item.type" :id="item.i" :removable="editable" @remove-widget="onRemoveWidget" />
+            </grid-item>
+          </grid-layout>
+        </div>
       </div>
-      <div class="layout-container absolute top-0 left-0 w-full" ref="layoutContainer">
-        <grid-layout
-          :layout="layout"
-          :col-num="12"
-          :row-height="rowHeight"
-          :is-draggable="editable"
-          :is-resizable="editable"
-          :is-mirrored="false"
-          :vertical-compact="true"
-          :responsive="true"
-          :prevent-collision="false"
-          :margin="[margin, margin]"
-          :use-css-transforms="true"
-          @layout-updated="onLayoutUpdated"
-          @breakpoint-changed="onBreakpointChanged"
-          @layout-ready="onLayoutReady"
-          ref="gridLayout"
-        >
-          <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
-            <widget :type="item.type" :id="item.i" :removable="editable" @remove-widget="onRemoveWidget" />
-          </grid-item>
-        </grid-layout>
-      </div>
-    </div>
+    </spinner>
     <!-- The empty element #data-ready makes sure PDF gets rendered, only if all data available.  -->
     <div v-if="dataReady" id="data-ready"></div>
   </div>
@@ -50,10 +53,18 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { GridLayout, GridItem, GridBreakpoint } from 'vue-grid-layout';
-import type { Widget as WidgetInterface, WidgetLayoutItems, ResponsiveWidgetLayoutItems, WidgetData } from '@/types';
+import { Spinner } from '@/components/app/Spinner';
+import { isEqual, cloneDeep } from 'lodash';
+import type {
+  Widget as WidgetInterface,
+  WidgetLayoutItems,
+  ResponsiveWidgetLayoutItems,
+  WidgetData,
+  LayoutHostType,
+} from '@/types';
 import { Widget } from './Widget';
 
-@Component({ components: { GridLayout, GridItem, Widget } })
+@Component({ components: { GridLayout, GridItem, Widget, Spinner } })
 export default class WidgetLayout extends Vue {
   @Prop({ type: Boolean, default: false }) readonly editable: boolean;
 
@@ -69,6 +80,10 @@ export default class WidgetLayout extends Vue {
 
   breakpoint: GridBreakpoint | null = null;
 
+  get loading(): boolean {
+    return !!this.$store.state.Layouts.loading?.layout;
+  }
+
   // is true if data of all widgets is loaded.
   get dataReady(): boolean {
     const { widgets } = this.$store.state.Widgets as { widgets: WidgetData[] };
@@ -81,11 +96,7 @@ export default class WidgetLayout extends Vue {
   }
 
   // onTestClick(): void {
-  //   // eslint-disable-next-line no-console
   //   console.log('TEST BTN CLICKED');
-  //   const qstest = { selections: [['a', 'b', 'd'], [], ['c']] };
-  //   // eslint-disable-next-line no-console
-  //   console.log('qstest: ', qs.stringify(qstest));
   // }
 
   get margin(): number {
@@ -138,43 +149,54 @@ export default class WidgetLayout extends Vue {
   @Watch('$store.state.Layouts.responsiveLayout', { immediate: true, deep: true })
   onResponsiveLayoutChange(newResponsiveLayout: ResponsiveWidgetLayoutItems): void {
     // update local layout for current breakpoint if it is different from the one on the store
-    if (this.breakpoint && JSON.stringify(this.layout) !== JSON.stringify(newResponsiveLayout[this.breakpoint])) {
-      const newLayout: WidgetLayoutItems = newResponsiveLayout[this.breakpoint];
+    // console.log('global layout change');
+    // eslint-disable-next-line max-len
+    // console.log('global !== local: ', this.breakpoint && !isEqual(this.layout, newResponsiveLayout[this.breakpoint]));
+    if (this.breakpoint && !isEqual(this.layout, newResponsiveLayout[this.breakpoint])) {
+      const newLayout: WidgetLayoutItems = cloneDeep(newResponsiveLayout[this.breakpoint]);
       this.layout.splice(0, this.layout.length, ...newLayout);
     }
   }
 
   @Emit('new-widget-added')
   addNewWidget(newWidget: WidgetInterface): void {
-    this.$store.commit('Layouts/addWidget', newWidget);
+    this.$store.dispatch('Layouts/addWidget', { widgetToAdd: cloneDeep(newWidget) });
   }
 
   get responsiveLayout(): ResponsiveWidgetLayoutItems {
     return this.$store.state.Layouts.responsiveLayout;
   }
 
+  get host(): LayoutHostType | null {
+    return this.$store.state.Layouts.host;
+  }
+
   onLayoutUpdated(newLayout: WidgetLayoutItems): void {
-    // console.log('LAYOUT UPDATED');
-    this.$store.commit('Layouts/updateResponsiveLayout', { layout: [...newLayout], breakpoint: this.breakpoint });
+    // update global layout if different from local and if change is caused by layout editor
+    // console.log('local layout change');
+    // eslint-disable-next-line max-len
+    // console.log('global !== local: ', this.breakpoint && !isEqual(newLayout, this.responsiveLayout[this.breakpoint]));
+    if (this.breakpoint && !isEqual(newLayout, this.responsiveLayout[this.breakpoint]) && this.host === 'editor') {
+      this.$store.dispatch('Layouts/updateResponsiveLayout', { breakpoint: this.breakpoint, layout: newLayout });
+    }
     this.measureHeight();
   }
 
   onBreakpointChanged(newBreakpoint: GridBreakpoint): void {
     this.breakpoint = newBreakpoint;
     // console.log('BREAKPOINT CHANGED: ', newBreakpoint);
-    const newLayout: WidgetLayoutItems = this.responsiveLayout[newBreakpoint];
+    const newLayout: WidgetLayoutItems = cloneDeep(this.responsiveLayout[newBreakpoint]);
     this.layout.splice(0, this.layout.length, ...newLayout);
     this.measureHeight();
   }
 
   onLayoutReady(): void {
-    // console.log('LAYOUT READY', this.breakpoint);
     this.measureHeight();
   }
 
   onRemoveWidget(_id: string): void {
     this.$store.commit('Widgets/removeWidgetData', { _id });
-    this.$store.commit('Layouts/removeWidget', { _id });
+    this.$store.dispatch('Layouts/removeWidget', { _id });
   }
 
   mounted(): void {
