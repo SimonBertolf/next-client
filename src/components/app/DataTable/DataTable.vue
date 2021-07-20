@@ -1,5 +1,33 @@
 <template>
-  <a-table :columns="itsColumns" :data-source="data" :pagination="false" :scroll="{ x: true }"></a-table>
+  <a-table
+    :components="itsComponents"
+    :columns="itsColumns"
+    :data-source="data"
+    :pagination="false"
+    :scroll="{ x: true, y: 304 }"
+  >
+    <template slot="selection" slot-scope="text, row">
+      <row-selector :rowKey="row.key" @change="onSelectRow" />
+    </template>
+    <template slot="action" slot-scope="text, row">
+      <row-action>
+        <a-icon slot="title" type="more" :rotate="90" />
+        <template v-for="item in rowActionOptions">
+          <a-menu-item :key="item.key"
+            ><span @click="() => onRowSelectAction(item.key, row)">{{ item.label }}</span></a-menu-item
+          >
+        </template>
+      </row-action>
+    </template>
+    <row-action slot="customFilter">
+      <a-icon slot="title" type="eye" />
+      <template v-for="item in rowActionOptions">
+        <a-menu-item :key="item.key"
+          ><span>{{ item.label }}</span></a-menu-item
+        >
+      </template>
+    </row-action>
+  </a-table>
 </template>
 
 <script lang="ts">
@@ -7,124 +35,155 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { TableColumn, TableData } from '@/types';
-import { TableActionButton } from '../TableActionButton';
+import { VNode, VNodeChildren, VNodeData } from 'vue';
+import CustomTable from './CustomTable.vue';
+import HeaderRow from './HeaderRow.vue';
+import HeaderCell from './HeaderCell.vue';
+import BodyRow from './BodyRow.vue';
+import BodyCell from './BodyCell.vue';
+import RowSelector from './RowSelector.vue';
+import RowAction from './RowAction.vue';
 
-@Component({ components: { TableActionButton } })
+interface RowSelection {
+  onChange: (selectedRows: TableData[]) => void;
+}
+
+interface RowActionType {
+  options: Array<{ key: string; label: string }>;
+  onSelect: (selectedKey: string, row: TableData) => void;
+}
+
+@Component({ components: { RowSelector, RowAction } })
 export default class DataTable extends Vue {
   @Prop({ type: Array }) columns: TableColumn[];
 
   @Prop({ type: Array }) data: TableData[];
 
-  @Prop({
-    type: [Object, Boolean],
-    default: () => false,
-  })
-  operation: { onOperationHeader: (...args: any[]) => any; onOperationCell: (...args: any[]) => any } | boolean;
+  @Prop({ type: Object as () => RowSelection, default: undefined }) rowSelection: RowSelection | undefined;
 
-  get itsColumns(): TableColumn[] {
-    if (!this.operation) return this.columns;
-    const { onOperationHeader, onOperationCell } = this.operation as {
-      onOperationHeader: (...args: any[]) => any;
-      onOperationCell: (...args: any[]) => any;
-    };
-    const itsProps = { props: { onAction: onOperationCell }, style: 'height: 55px !important;' };
-    return [
-      ...this.columns,
-      {
-        title: this.$createElement(TableActionButton, { props: { onAction: onOperationHeader } }),
-        key: 'operation',
-        customRender: () => this.$createElement(TableActionButton, itsProps),
-        className: 'operation-cell',
-        width: 10,
-      },
-    ];
+  @Prop({ type: Object as () => RowActionType, default: undefined }) rowAction: RowActionType | undefined;
+
+  @Prop({ type: Boolean, default: false }) hasFilter: boolean;
+
+  selectedRows: TableData[] = [];
+
+  get itsComponents() {
+    const table = (h: (node: unknown, props: VNodeData, c: unknown) => VNode, p: Record<string, unknown>, c: unknown) =>
+      h(CustomTable, { ...p }, c);
+    const cell = (h: (node: unknown, props: VNodeData, c: unknown) => VNode, p: Record<string, unknown>, c: unknown) =>
+      h(HeaderCell, { ...p }, c);
+    const headerRow = (
+      h: (node: unknown, props: VNodeData, c: unknown) => VNode,
+      p: Record<string, unknown>,
+      c: unknown,
+    ) => h(HeaderRow, { ...p }, c);
+    const bodyRow = (
+      h: (node: unknown, props: VNodeData, c: unknown) => VNode,
+      p: Record<string, unknown>,
+      c: unknown,
+    ) => h(BodyRow, { ...p }, c);
+    const bodyCell = (
+      h: (node: unknown, props: VNodeData, c: unknown) => VNode,
+      p: Record<string, unknown>,
+      c: unknown,
+    ) => h(BodyCell, { ...p }, c);
+    return { table, header: { cell, row: headerRow }, body: { row: bodyRow, cell: bodyCell } };
+  }
+
+  get rowActionOptions(): Array<{ key: string; label: string }> {
+    return this.rowAction?.options || [];
+  }
+
+  onRowSelectAction(key: string, row: TableData) {
+    if (this.rowAction) this.rowAction.onSelect(key, row);
+  }
+
+  get itsColumns() {
+    let { columns } = this;
+    if (this.rowSelection) {
+      columns = [
+        {
+          title: '',
+          dataIndex: 'selection',
+          key: 'selection',
+          width: 32,
+          customCell: () => ({ props: { type: 'action' } }),
+          customHeaderCell: () => ({
+            props: {
+              bg: 'transparent',
+              type: 'action',
+            },
+          }),
+          scopedSlots: { customRender: 'selection' },
+        },
+        ...columns,
+      ];
+    }
+    let actionColumn: TableColumn = {};
+    if (this.hasFilter) {
+      actionColumn = {
+        ...actionColumn,
+        customHeaderCell: () => ({
+          props: {
+            bg: 'transparent',
+            type: 'action',
+          },
+        }),
+        slots: { title: 'customFilter' },
+      };
+    }
+    if (this.rowAction) {
+      if (!actionColumn.customHeaderCell) {
+        actionColumn = {
+          ...actionColumn,
+          customHeaderCell: () => ({
+            props: {
+              bg: 'transparent',
+              type: 'action',
+            },
+          }),
+        };
+      }
+      columns = [
+        ...columns,
+        {
+          ...actionColumn,
+          children: [
+            {
+              dataIndex: 'action',
+              key: 'action',
+              width: 32,
+              customHeaderCell: () => ({
+                props: {
+                  bg: 'transparent',
+                  type: 'action',
+                },
+              }),
+              customCell: () => ({ props: { type: 'action' } }),
+              scopedSlots: { customRender: 'action' },
+            },
+          ],
+        },
+      ];
+    }
+    return columns;
+  }
+
+  slotScopeLogger(...args: Array<unknown>) {
+    console.log(args);
+  }
+
+  onSelectRow({ rowKey }: { checked: boolean; rowKey: string }) {
+    const row = this.selectedRows.find(({ key }) => key === rowKey);
+    if (row) {
+      this.selectedRows = this.selectedRows.filter(({ key }) => key !== rowKey);
+    } else {
+      const selectedRow = this.data.find(({ key }) => key === rowKey);
+      if (selectedRow) this.selectedRows = [...this.selectedRows, selectedRow];
+    }
+    this.rowSelection?.onChange([...this.selectedRows]);
   }
 }
 </script>
 
-<style>
-.ant-table-body {
-  @apply scrollbar-thin scrollbar-thumb-thumb scrollbar-thumb-rounded scrollbar-track-background;
-  @apply lg:overflow-x-hidden hover:overflow-x-auto !important;
-}
-
-.ant-table td {
-  white-space: nowrap;
-}
-
-th[key='operation'] {
-  background-color: #f0f0f0 !important;
-}
-
-th[key='operation'] > .ant-table-header-column {
-  @apply border-l-0 !important;
-}
-
-th[key='operation'] > .ant-table-header-column {
-  @apply p-0 !important;
-}
-
-.operation-cell {
-  background-color: #f0f0f0 !important;
-  @apply p-0 h-full !important;
-}
-
-.operation-cell:hover,
-.operation-cell:active,
-.operation-cell:focus {
-  background-color: #dbdbdb !important;
-}
-
-.ant-table-tbody {
-  @apply font-primary text-dark;
-}
-
-.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell) {
-  background: unset !important;
-  background-color: #f5f5f5 !important;
-}
-
-.ant-table-thead::after {
-  content: '';
-  display: block;
-  height: 1.5em;
-  width: 100%;
-  background: transparent;
-}
-
-.ant-table-thead > tr {
-  @apply py-2;
-}
-
-.ant-table-row:first-child > td {
-  @apply border-t border-divider;
-}
-
-.ant-table-row > td:last-child {
-  @apply border-r border-divider;
-}
-
-th:not(:first-child) > .ant-table-header-column {
-  @apply border-l;
-}
-
-.ant-table-thead > tr > th {
-  white-space: nowrap;
-  @apply bg-table text-neutral px-0 py-2;
-}
-
-.ant-table-thead > tr > th:first-child {
-  @apply rounded-tl rounded-bl;
-}
-
-.ant-table-thead > tr > th:last-child {
-  @apply rounded-tr rounded-br;
-}
-
-.ant-table-thead > tr > th > .ant-table-header-column {
-  @apply w-full px-4 font-primary font-light;
-}
-</style>
+<style scoped></style>

@@ -1,9 +1,9 @@
-import { VNode } from 'vue';
+import { VNode, VNodeData } from 'vue';
 
 interface TableColumn {
   title?: string | VNode;
   dataIndex?: string;
-  key: string;
+  key?: string;
   width?: number | string;
   fixed?: string;
   className?: string;
@@ -11,9 +11,12 @@ interface TableColumn {
   slots?: {
     [key: string]: string;
   };
+  children?: TableColumn[];
   scopedSlots?: { customRender: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customRender?: (text: string, record: any, index: number) => VNode;
+  customHeaderCell?: () => VNodeData;
+  customCell?: () => VNodeData;
 }
 
 export default TableColumn;
