@@ -9,8 +9,6 @@ import { DateRange, Select } from './filters';
 
 @Component({ components: { DateRange, Select } })
 export default class FilterInput extends Vue {
-  name = 'Filter';
-
   @Prop({ required: true, type: String }) readonly type: Filter['type'];
 
   @Prop({ required: true, type: Number }) readonly filterIndex: number;

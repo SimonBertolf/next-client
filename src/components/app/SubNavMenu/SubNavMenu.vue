@@ -9,11 +9,12 @@
 </template>
 
 <script lang="ts">
+import { SubNavItem } from '@/types';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 
 @Component({ components: {} })
 export default class SubNavMenu extends Vue {
-  @Prop({ required: true }) readonly items: { _id: string; name: string }[];
+  @Prop({ required: true, type: Array }) readonly items: SubNavItem[];
 
   @Prop({ type: String, default: '' }) readonly selectedId!: string;
 
@@ -26,7 +27,8 @@ export default class SubNavMenu extends Vue {
     this.current = [newselectedId];
   }
 
-  mounted(): void {
+  @Watch('items', { immediate: false, deep: true })
+  onItemsChange(): void {
     const currentIndex = this.items.findIndex((item) => this.$route.path.includes(item._id));
     if (currentIndex === -1) {
       this.current = [];

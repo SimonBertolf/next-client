@@ -10,8 +10,7 @@ class AssetRepository implements IFetchableById<Asset> {
   }
 
   async getById(id: string): Promise<Asset> {
-    const params = new URLSearchParams();
-    params.append('assetId', id);
+    const params = { assetId: id };
     const options = { headers: { 'content-type': 'application/x-www-form-urlencoded' } };
 
     const axiosResponse: AxiosResponse<

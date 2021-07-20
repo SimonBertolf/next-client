@@ -10,7 +10,7 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter } from '@/types';
 
-const relevantFilters = ['date', 'kinds', 'usages', 'assets'];
+const relevantFilters = ['period', 'kinds', 'usages', 'assets'];
 
 @Component({ components: {} })
 export default class WidgetC extends Vue {
