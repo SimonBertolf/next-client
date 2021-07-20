@@ -1,5 +1,5 @@
 <template>
-  <a-range-picker v-model="selected" format="DD.MM.YYYY" separator="–" :placeholder="['from', 'to']" />
+  <a-range-picker v-model="selected" format="DD.MM.YYYY" separator="–" :placeholder="placeholder" />
 </template>
 
 <script lang="ts">
@@ -22,6 +22,15 @@ export default class DateRange extends Vue {
 
   get filterSelectionAsMoments(): Moment[] {
     return this.filterSelection.map((item) => moment(item));
+  }
+
+  get displayName(): string {
+    // TODO: set lang automatically from i18n store
+    return this.filter.displayNames.find((item) => item.lang === 'de')?.text || `t('${this.filter.key}')`;
+  }
+
+  get placeholder(): string[] {
+    return [`${this.displayName} von`, 'bis'];
   }
 
   // watch filter selected on global store

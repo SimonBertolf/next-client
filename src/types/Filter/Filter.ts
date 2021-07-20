@@ -1,6 +1,9 @@
+import { Translation } from '../Translation';
+
 export interface FilterBase {
   readonly _id?: string;
   key: string;
+  displayNames: Translation[];
   type: 'Select' | 'DateRange';
 }
 

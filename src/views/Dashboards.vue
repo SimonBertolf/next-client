@@ -35,7 +35,8 @@ export default class Dashboards extends Vue {
   get items(): SubNavItem[] {
     return this.$store.state.Dashboards.dashboards.map((dashboard: DashboardModel) => ({
       _id: dashboard._id,
-      name: dashboard.displayNames.find((displayName) => displayName.lang === 'de')?.text || 'translation missing',
+      // TODO: set lang automatically from i18n store
+      name: dashboard.displayNames.find((displayName) => displayName.lang === 'de')?.text || `t('${dashboard.name}')`,
     }));
   }
 }

@@ -4,43 +4,51 @@ import { apiLayoutsMock } from '../layouts/LayoutsMock';
 
 export const filtersMock: Filter[] = [
   {
-    key: 'date',
+    key: 'period',
     type: 'DateRange',
+    displayNames: [{ lang: 'de', text: 'Zeitraum' }],
     options: { from: new Date('2012-01-06T13:21:33+000Z'), to: new Date('2021-07-06T13:21:33+000Z') },
   },
   {
     key: 'clients',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Mandanten' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'portfolios',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Portfolios' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'regions',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Regionen' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'assets',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Liegenschaften' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'usages',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Nutzungsgruppen' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'kinds',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Nutzungsarten' }],
     options: ['01', '02', '03'],
   },
   {
     key: 'tanants',
     type: 'Select',
+    displayNames: [{ lang: 'de', text: 'Mieter' }],
     options: ['01', '02', '03'],
   },
 ];

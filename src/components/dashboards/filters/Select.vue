@@ -2,7 +2,7 @@
   <a-select
     v-model="selected"
     mode="multiple"
-    :placeholder="filter.key"
+    :placeholder="placeholder"
     :maxTagCount="0"
     class="filter-select"
     allow-clear
@@ -30,6 +30,11 @@ export default class Select extends Vue {
   @Prop({ required: true, type: Number }) readonly filterIndex: number;
 
   @Prop({ required: true, type: Array }) readonly filterSelection: FilterSelection;
+
+  get placeholder(): string {
+    // TODO: set lang automatically from i18n store
+    return this.filter.displayNames.find((item) => item.lang === 'de')?.text || `t('${this.filter.key}')`;
+  }
 
   // watch filter selected on global store
   @Watch('filterSelection', { deep: true, immediate: true })
