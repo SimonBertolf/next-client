@@ -5,7 +5,9 @@
     </template>
     <div class="mx-4 md:mx-0">
       <Card :autoSize="true" :hasTitle="false" :padding="true">
-        <sub-nav-menu :items="items" :selected-id="dashboardId" base-path="/dashboards" />
+        <spinner :spinning="loading">
+          <sub-nav-menu :items="items" :selected-id="dashboardId" base-path="/dashboards" />
+        </spinner>
       </Card>
       <dashboard :dashboard-id="dashboardId" />
     </div>
@@ -15,9 +17,10 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Dashboard as DashboardModel } from '@/models';
-import { Layout, Heading, SubNavMenu, Dashboard, Card } from '@/components';
+import { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner } from '@/components';
+import { SubNavItem } from '@/types';
 
-@Component({ components: { Layout, Heading, SubNavMenu, Dashboard, Card } })
+@Component({ components: { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner } })
 export default class Dashboards extends Vue {
   @Prop({ required: true, type: String }) readonly dashboardId!: string;
 
@@ -25,8 +28,15 @@ export default class Dashboards extends Vue {
 
   name = 'Dashboards';
 
-  get items(): DashboardModel[] {
-    return this.$store.state.Dashboards.dashboards;
+  get loading(): boolean {
+    return !!this.$store.state.Dashboards.loading?.dashboards;
+  }
+
+  get items(): SubNavItem[] {
+    return this.$store.state.Dashboards.dashboards.map((dashboard: DashboardModel) => ({
+      _id: dashboard._id,
+      name: dashboard.displayNames.find((displayName) => displayName.lang === 'de')?.text || 'translation missing',
+    }));
   }
 }
 </script>

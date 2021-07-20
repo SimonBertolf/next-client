@@ -17,6 +17,7 @@
 </template>
 
 <script lang="ts">
+import { isEqual } from 'lodash';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import type { SelectFilter, FilterSelection } from '@/types';
 
@@ -34,7 +35,7 @@ export default class Select extends Vue {
   @Watch('filterSelection', { deep: true, immediate: true })
   onGlobalSelectedChange(): void {
     // update local selected if different from global selected
-    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+    if (!isEqual(this.filterSelection, this.selected)) {
       const selectedUpdate = [...this.filterSelection];
       this.selected.splice(0, this.selected.length, ...selectedUpdate);
     }
@@ -44,7 +45,7 @@ export default class Select extends Vue {
   @Watch('selected', { deep: true, immediate: true })
   onLocalSelectedChange(): void {
     // update global selected if different from local
-    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+    if (!isEqual(this.filterSelection, this.selected)) {
       this.$store.commit('Dashboards/setFilterSelection', {
         key: this.filter.key,
         selection: [...this.selected],

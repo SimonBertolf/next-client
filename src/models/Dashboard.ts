@@ -1,9 +1,12 @@
-import { Filter } from '@/types';
+import { FilterBase, Translation } from '@/types';
+import { OrganisationDocument } from './Document';
 import { ApiLayout } from './Layout';
 
-export interface Dashboard {
-  readonly _id: string;
+export interface Dashboard extends OrganisationDocument {
   name: string;
+  displayNames: Translation[];
+  description?: string;
   layout: ApiLayout;
-  filters?: Filter[];
+  filters: FilterBase[];
+  pos: number;
 }

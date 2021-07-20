@@ -1,4 +1,5 @@
-interface FilterBase {
+export interface FilterBase {
+  readonly _id?: string;
   key: string;
   type: 'Select' | 'DateRange';
 }
