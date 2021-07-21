@@ -8,7 +8,7 @@ export const reportsMock: Report[] = [
     layout: apiLayoutsMock[0],
     data: [
       {
-        _id: apiLayoutsMock[0].widgets[0]._id,
+        widget: apiLayoutsMock[0].widgets[0]._id,
         data: [
           { x: 0.34376009422885456, y: 0.6720355641805758, z: apiLayoutsMock[0].widgets[0].type },
           { x: 0.7152418210466758, y: 0.346876533637388, z: apiLayoutsMock[0].widgets[0].type },
@@ -16,7 +16,7 @@ export const reportsMock: Report[] = [
         ],
       },
       {
-        _id: apiLayoutsMock[0].widgets[1]._id,
+        widget: apiLayoutsMock[0].widgets[1]._id,
         data: [
           { x: 0.5685327345526454, y: 0.47956121477804436, z: apiLayoutsMock[0].widgets[1].type },
           { x: 0.37798435033660915, y: 0.9404370685941059, z: apiLayoutsMock[0].widgets[1].type },
@@ -31,7 +31,7 @@ export const reportsMock: Report[] = [
     layout: apiLayoutsMock[0],
     data: [
       {
-        _id: apiLayoutsMock[0].widgets[0]._id,
+        widget: apiLayoutsMock[0].widgets[0]._id,
         data: [
           { x: 0.7627118933582804, y: 0.06332215775533201, z: apiLayoutsMock[0].widgets[0].type },
           { x: 0.4156069425255948, y: 0.45480299659007417, z: apiLayoutsMock[0].widgets[0].type },
@@ -39,7 +39,7 @@ export const reportsMock: Report[] = [
         ],
       },
       {
-        _id: apiLayoutsMock[0].widgets[1]._id,
+        widget: apiLayoutsMock[0].widgets[1]._id,
         data: [
           { x: 0.7917770168433145, y: 0.7697095716982787, z: apiLayoutsMock[0].widgets[1].type },
           { x: 0.40207200186795355, y: 0.6750912737170907, z: apiLayoutsMock[0].widgets[1].type },

@@ -16,7 +16,7 @@ const relevantFilters = ['period', 'kinds', 'usages', 'assets'];
 export default class WidgetC extends Vue {
   @Prop(String) readonly id: string;
 
-  @Prop({ default: [], type: Array }) readonly widgetData: WidgetData['data'];
+  @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
   name = 'C';
 

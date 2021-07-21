@@ -39,7 +39,7 @@
             ref="gridLayout"
           >
             <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
-              <widget :type="item.type" :id="item.i" :removable="editable" @remove-widget="onRemoveWidget" />
+              <widget :type="item.type" :id="item._id" :removable="editable" @remove-widget="onRemoveWidget" />
             </grid-item>
           </grid-layout>
         </div>
