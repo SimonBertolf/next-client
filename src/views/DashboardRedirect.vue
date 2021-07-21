@@ -15,7 +15,7 @@ export default class DashboardRedirect extends Vue {
     return this.$store.state.Dashboards.dashboards;
   }
 
-  @Watch('dashboards', { immediate: false, deep: true })
+  @Watch('dashboards', { immediate: true, deep: true })
   onDashboardsChange(newDashboards: Dashboard[]): void {
     if (newDashboards.length) {
       this.$router.push(`/dashboards/${newDashboards[0]._id}`);
