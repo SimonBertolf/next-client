@@ -19,8 +19,13 @@ export default class Widgets extends VuexModule {
   }
 
   @Mutation
+  setWidgetsData(widgets: WidgetData[]): void {
+    this.widgets = widgets;
+  }
+
+  @Action
   flushWidgetData(): void {
-    this.widgets.splice(0, this.widgets.length);
+    this.context.commit('setWidgetsData', new Array<WidgetData>());
   }
 
   @Action

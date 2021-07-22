@@ -1,3 +1,4 @@
+import { Filter } from '@/types';
 import { Route } from 'vue-router';
 import { Store, Plugin } from 'vuex';
 
@@ -5,7 +6,7 @@ import { Store, Plugin } from 'vuex';
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const DashboardLoader: Plugin<any> = (store: Store<any>) => {
   store.subscribe((mutation, state) => {
-    const { type } = mutation;
+    const { type, payload } = mutation;
     if (type === 'route/ROUTE_CHANGED') {
       const { params, path } = state.route as Route;
       if (params?.dashboardId) {
@@ -23,6 +24,18 @@ const DashboardLoader: Plugin<any> = (store: Store<any>) => {
       } else if (state.Dashboards.dashboards.length) {
         store.dispatch('Dashboards/flushDashboards');
       }
+    }
+
+    if (type === 'Dashboards/resetFiltersSelections' || type === 'Dashboards/setFilterSelections') {
+      // mutations of all filters trigger reload of all widgets
+      const { filters }: { filters: Filter[] } = state.Dashboards;
+      const filterKeys = filters.map((item: Filter) => item.key);
+      store.commit('Dashboards/setUpdatedFilters', { filterKeys });
+    }
+
+    if (type === 'Dashboards/setFilterSelection') {
+      // mutations of one filter triggers reload of widgets with dependency to that filter.
+      store.commit('Dashboards/setUpdatedFilters', { filterKeys: [payload.key] });
     }
   });
 };
