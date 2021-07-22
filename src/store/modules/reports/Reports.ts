@@ -2,7 +2,7 @@ import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import type { Report } from '@/models';
 import type { QueryInterface, WidgetData } from '@/types';
 import { Inject } from 'inversify-props';
-import { IRepository } from '@/services';
+import type { IRepository } from '@/services';
 
 @Module({ namespaced: true })
 export default class Reports extends VuexModule {

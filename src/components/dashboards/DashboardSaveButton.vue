@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { cloneDeep } from 'lodash';
 import { Report } from '@/models';
 
 @Component({ components: {} })
