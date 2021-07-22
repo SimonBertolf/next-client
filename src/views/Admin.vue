@@ -1,7 +1,7 @@
 <template>
   <Layout>
-    <template v-slot:header
-      ><Heading>{{ name }}</Heading>
+    <template v-slot:header>
+      <Heading>{{ name }}</Heading>
     </template>
     <div class="mx-4 md:mx-0">
       <Card :autoSize="true" :hasTitle="false" :padding="true">

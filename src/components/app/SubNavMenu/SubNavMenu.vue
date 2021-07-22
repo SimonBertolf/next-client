@@ -27,7 +27,7 @@ export default class SubNavMenu extends Vue {
     this.current = [newselectedId];
   }
 
-  @Watch('items', { immediate: false, deep: true })
+  @Watch('items', { immediate: true, deep: true })
   onItemsChange(): void {
     const currentIndex = this.items.findIndex((item) => this.$route.path.includes(item._id));
     if (currentIndex === -1) {

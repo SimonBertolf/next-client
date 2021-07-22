@@ -86,6 +86,6 @@ export default class Layout extends Vue {
 
 .layout-header {
   @apply bg-neutral sm:bg-background mb-2 shadow sm:shadow-none sm:mb-0 p-0 leading-normal sm:h-auto;
-  @apply flex justify-center items-end w-full fixed sm:static z-10;
+  @apply flex justify-center items-center w-full px-4 md:px-0 mb-0 sm:mb-4 fixed sm:static z-10;
 }
 </style>

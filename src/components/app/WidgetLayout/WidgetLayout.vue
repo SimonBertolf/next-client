@@ -89,7 +89,7 @@ export default class WidgetLayout extends Vue {
     const { widgets } = this.$store.state.Widgets as { widgets: WidgetData[] };
     return (
       widgets.reduce(
-        (acc: boolean, cur: WidgetData) => acc && !!this.layout.find((item) => item._id === cur._id),
+        (acc: boolean, cur: WidgetData) => acc && !!this.layout.find((item) => item._id === cur.widget),
         true,
       ) && this.layout.length === widgets.length
     );

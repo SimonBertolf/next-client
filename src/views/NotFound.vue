@@ -1,6 +1,8 @@
 <template>
   <Layout>
-    <template v-slot:header><Heading>404 – Not Found</Heading></template>
+    <template v-slot:header>
+      <Heading>404 – Not Found</Heading>
+    </template>
   </Layout>
 </template>
 

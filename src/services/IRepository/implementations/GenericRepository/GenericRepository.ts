@@ -37,7 +37,7 @@ abstract class GenericRepository<Model extends Document> implements IRepository<
     return document as Model;
   }
 
-  async create(entity: Model): Promise<Model> {
+  async create(entity: Omit<Model, '_id'>): Promise<Model> {
     const newDocument = { ...entity };
     const response = await this.client.post(`${this.api}`, newDocument);
     const { data } = response;

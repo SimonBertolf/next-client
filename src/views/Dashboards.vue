@@ -1,7 +1,12 @@
 <template>
   <Layout>
-    <template v-slot:header
-      ><Heading>{{ name }}</Heading>
+    <template v-slot:header>
+      <div class="flex-grow">
+        <Heading>{{ name }}</Heading>
+      </div>
+      <div class="justify-self-end">
+        <dashboard-save-button />
+      </div>
     </template>
     <div class="mx-4 md:mx-0">
       <Card :autoSize="true" :hasTitle="false" :padding="true">
@@ -17,10 +22,10 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Dashboard as DashboardModel } from '@/models';
-import { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner } from '@/components';
+import { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner, DashboardSaveButton } from '@/components';
 import { SubNavItem } from '@/types';
 
-@Component({ components: { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner } })
+@Component({ components: { Layout, Heading, SubNavMenu, Dashboard, Card, Spinner, DashboardSaveButton } })
 export default class Dashboards extends Vue {
   @Prop({ required: true, type: String }) readonly dashboardId!: string;
 
