@@ -3,7 +3,7 @@
 const DocsWebpackPlugin = require('./DocsWebpackPlugin.ts');
 
 module.exports = {
-  devServer: { proxy: 'http://localhost' },
+  devServer: { proxy: 'http://localhost', disableHostCheck: true },
   configureWebpack: {
     performance: { hints: false },
     plugins: [new DocsWebpackPlugin()],
