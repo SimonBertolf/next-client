@@ -1,6 +1,8 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4 report-title">
-    {{ `${name} (_id: ${_id})` }}
+    <h2 class="text-2xl mb-2">{{ name }}</h2>
+    <p>{{ description }}</p>
+    <p>Report created at {{ createdAt }}</p>
   </Card>
 </template>
 
@@ -15,6 +17,14 @@ export default class ReportTitle extends Vue {
 
   get name(): string | undefined {
     return this.report?.name;
+  }
+
+  get description(): string | undefined {
+    return this.report?.description;
+  }
+
+  get createdAt(): Date | undefined {
+    return this.report?.createdAt;
   }
 
   get _id(): string | undefined {

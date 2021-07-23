@@ -3601,7 +3601,7 @@ exports[`Storyshots motion/Fade Example 1`] = `
 
 exports[`Storyshots typography/Heading Example 1`] = `
 <h1
-  class="font-primary text-4xl font-light text-center pb-4"
+  class="font-primary text-4xl font-light text-center"
 >
   heading
 </h1>
@@ -3816,7 +3816,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         class="layout-header ant-layout-header"
       >
         <h1
-          class="font-primary text-4xl font-light text-center pb-4"
+          class="font-primary text-4xl font-light text-center"
         >
           Assets
         </h1>

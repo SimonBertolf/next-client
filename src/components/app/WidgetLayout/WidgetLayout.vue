@@ -39,7 +39,7 @@
             ref="gridLayout"
           >
             <grid-item v-for="item in layout" :x="item.x" :y="item.y" :w="item.w" :h="item.h" :i="item.i" :key="item.i">
-              <widget :type="item.type" :id="item.i" :removable="editable" @remove-widget="onRemoveWidget" />
+              <widget :type="item.type" :id="item._id" :removable="editable" @remove-widget="onRemoveWidget" />
             </grid-item>
           </grid-layout>
         </div>
@@ -89,7 +89,7 @@ export default class WidgetLayout extends Vue {
     const { widgets } = this.$store.state.Widgets as { widgets: WidgetData[] };
     return (
       widgets.reduce(
-        (acc: boolean, cur: WidgetData) => acc && !!this.layout.find((item) => item._id === cur._id),
+        (acc: boolean, cur: WidgetData) => acc && !!this.layout.find((item) => item._id === cur.widget),
         true,
       ) && this.layout.length === widgets.length
     );
