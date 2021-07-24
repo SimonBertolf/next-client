@@ -2,7 +2,7 @@ import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import type { Report } from '@/models';
 import type { QueryInterface, WidgetData } from '@/types';
 import { Inject } from 'inversify-props';
-import type { IRepository } from '@/services';
+import type { IRepositoryWithPdf } from '@/services';
 
 @Module({ namespaced: true })
 export default class Reports extends VuexModule {
@@ -14,10 +14,11 @@ export default class Reports extends VuexModule {
     reports: false,
     report: false,
     newReport: false,
+    pdf: false,
   };
 
   @Inject('ReportRepository')
-  private reportRepository: IRepository<Report>;
+  private reportRepository: IRepositoryWithPdf<Report>;
 
   @Mutation
   setLoading({ key, loading }: { key: 'reports' | 'report' | 'newReport'; loading: boolean }): void {
@@ -86,5 +87,20 @@ export default class Reports extends VuexModule {
       this.context.commit('Errors/setError', error, { root: true });
     }
     return undefined;
+  }
+
+  @Action
+  async loadPdf(): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'pdf', loading: true });
+      if (!this.report?._id) throw new Error('Report or its _id is undefined!');
+      const pdf = await this.reportRepository.getPdfById(this.report._id);
+      const pdfFile = new Blob([pdf], { type: 'application/pdf' });
+      const fileURL = URL.createObjectURL(pdfFile);
+      window.open(fileURL, '_blank');
+      this.context.commit('setLoading', { key: 'pdf', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
   }
 }
