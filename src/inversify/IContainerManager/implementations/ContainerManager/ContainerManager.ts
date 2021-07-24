@@ -16,6 +16,7 @@ import {
   KpiService,
   IRepository,
   ReportRepository,
+  IRepositoryWithPdf,
 } from '@/services';
 import { IContainerManager } from '../../interfaces';
 
@@ -33,7 +34,7 @@ class ContainerManager implements IContainerManager {
     this.iocContainer.addSingleton<IFetchableById<Asset>>(AssetRepository, 'AssetRepository');
     this.iocContainer.addSingleton<IRepository<ApiLayout>>(LayoutRepository, 'LayoutRepository');
     this.iocContainer.addSingleton<IRepository<Dashboard>>(DashboardRepository, 'DashboardRepository');
-    this.iocContainer.addSingleton<IRepository<Report>>(ReportRepository, 'ReportRepository');
+    this.iocContainer.addSingleton<IRepositoryWithPdf<Report>>(ReportRepository, 'ReportRepository');
     this.iocContainer.addSingleton<IKpiService>(KpiService, 'KpiService');
   }
 
