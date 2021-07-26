@@ -1,18 +1,20 @@
 <template>
-  <div class="overflow-hidden">
+  <div class="overflow-hidden h-full">
     <a-icon class="text-4xl" type="line-chart" />
-    <h3>Widget {{ name }}</h3>
-    <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre>
+    <h3 class="pb-4">Widget {{ name }}</h3>
+    <line-chart :chartData="widgetData" color="#F553AE" class="h-5/6" />
+    <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter } from '@/types';
+import { LineChart } from '@/components/data-visualization';
 
 const relevantFilters = ['period', 'kinds', 'usages', 'assets'];
 
-@Component({ components: {} })
+@Component({ components: { LineChart } })
 export default class WidgetC extends Vue {
   @Prop(String) readonly id: string;
 
