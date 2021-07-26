@@ -2,7 +2,7 @@
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4 report-title">
     <h2 class="text-2xl mb-2">{{ name }}</h2>
     <p>{{ description }}</p>
-    <p>Report created at {{ createdAt }}</p>
+    <p>Report erstellt am {{ createdAt | dateTime }}</p>
   </Card>
 </template>
 

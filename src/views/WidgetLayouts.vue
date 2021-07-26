@@ -6,7 +6,7 @@
       <a-table :columns="columns" :data-source="tableData">
         <template slot="name" slot-scope="text, record">
           <router-link :to="`/admin/layouts/${record._id}`" v-slot="{ href, navigate }" custom>
-            <a-button :href="href" @click="navigate" type="link">
+            <a-button :href="href" @click="navigate" type="link" class="px-0">
               {{ text }}
             </a-button>
           </router-link>
