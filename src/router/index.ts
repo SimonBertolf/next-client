@@ -12,7 +12,7 @@ import {
   Reporting,
   Admin,
 } from '@/views';
-import { WidgetEditor } from '@/components/admin';
+import { WidgetEditor, DashboardsAdmin } from '@/components/admin';
 import { AssetData, AssetAttributes } from '@/components/assets';
 import { Analysis, Reports, Report } from '@/components/reporting';
 import { Health } from '../components/util';
@@ -104,6 +104,10 @@ const routes: Array<RouteConfig> = [
             path: 'layouts/:layoutId',
             props: true,
             component: WidgetEditor,
+          },
+          {
+            path: 'dashboards',
+            component: DashboardsAdmin,
           },
         ],
       },

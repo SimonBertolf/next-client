@@ -9,4 +9,5 @@ export interface Dashboard extends OrganisationDocument {
   layout: ApiLayout;
   filters: FilterBase[];
   pos: number;
+  enabled: boolean;
 }

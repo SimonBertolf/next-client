@@ -29,6 +29,10 @@ export default class Admin extends Vue {
       _id: 'layouts',
       name: 'Layouts',
     },
+    {
+      _id: 'dashboards',
+      name: 'Dashboards',
+    },
   ];
 }
 </script>

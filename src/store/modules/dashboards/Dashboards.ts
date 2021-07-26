@@ -107,6 +107,17 @@ export default class Dashboards extends VuexModule {
   }
 
   @Action
+  async updateDashboard({ _id, ...dashboardUpdates }: Partial<Dashboard> & { _id: string }): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'dashboards', loading: true });
+      await this.dashboardRepository.update({ ...dashboardUpdates, _id });
+      await this.context.dispatch('loadDashboards', { sort: { pos: 1 } });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
   flushDashboard(): void {
     this.context.commit('setDashboard', null);
     this.context.commit('setFilters', new Array<Filter>());

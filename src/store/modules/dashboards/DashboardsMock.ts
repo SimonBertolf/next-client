@@ -66,6 +66,7 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
   {
     name: 'Finanzen',
@@ -79,6 +80,7 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
   {
     name: 'Gebäudefarben',
@@ -92,6 +94,7 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
   {
     name: 'Lage',
@@ -105,6 +108,7 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
   {
     name: 'Stockwerke',
@@ -118,6 +122,7 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
   {
     name: 'Nutzung',
@@ -131,5 +136,6 @@ export const dashboardsMock: Dashboard[] = [
     layout: apiLayoutsMock[0],
     filters: filtersMock,
     pos: 0,
+    enabled: true,
   },
 ];

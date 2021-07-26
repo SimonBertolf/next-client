@@ -1,5 +1,5 @@
 <template>
-  <Card :autoSize="true" :hasTitle="false" :padding="true" class="hidden sm:flex">
+  <Card :autoSize="true" :hasTitle="false" :padding="true">
     <h2 class="text-2xl mb-2">Layouts</h2>
     <p class="mb-2">TODO: List of Layouts</p>
     <div v-if="loading" class="flex h-full justify-center items-center">
