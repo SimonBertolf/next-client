@@ -1,15 +1,18 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true">
     <h1 class="text-2xl mb-4">Layouts</h1>
-    <a-table :columns="columns" :data-source="tableData" :loading="loading">
-      <template slot="name" slot-scope="text, record">
-        <router-link :to="`/admin/layouts/${record._id}`" v-slot="{ href, navigate }" custom>
-          <a-button :href="href" @click="navigate" type="link">
-            {{ text }}
-          </a-button>
-        </router-link>
-      </template>
-    </a-table>
+    <!-- TODO: setup working pagination -->
+    <spinner :spinning="loading">
+      <a-table :columns="columns" :data-source="tableData">
+        <template slot="name" slot-scope="text, record">
+          <router-link :to="`/admin/layouts/${record._id}`" v-slot="{ href, navigate }" custom>
+            <a-button :href="href" @click="navigate" type="link">
+              {{ text }}
+            </a-button>
+          </router-link>
+        </template>
+      </a-table>
+    </spinner>
   </Card>
 </template>
 
@@ -37,7 +40,7 @@ export default class WidgetLayouts extends Vue {
   ];
 
   get loading(): boolean {
-    return this.$store.state.Layouts.layoutsLoading;
+    return this.$store.state.Layouts.loading.layouts;
   }
 
   get tableData(): TableData[] {
