@@ -9,7 +9,7 @@
       </div>
     </template>
     <div class="mx-4 md:mx-0">
-      <Card :autoSize="true" :hasTitle="false" :padding="true">
+      <Card :autoSize="true" :hasTitle="false" :padding="true" class="mb-4">
         <sub-nav-menu :items="items" base-path="/reporting" />
       </Card>
       <router-view></router-view>

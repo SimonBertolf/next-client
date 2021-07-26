@@ -1,23 +1,18 @@
 <template>
-  <Card :autoSize="true" :hasTitle="false" :padding="true" class="hidden sm:flex">
-    <h2 class="text-2xl mb-2">Layouts</h2>
-    <p class="mb-2">TODO: List of Layouts</p>
-    <div v-if="loading" class="flex h-full justify-center items-center">
-      <spinner />
-    </div>
-    <ul v-else>
-      <li v-for="layout in layouts" :key="layout._id">
-        <router-link :to="`/admin/layouts/${layout._id}`" v-slot="{ href, navigate }" custom>
-          <button
-            :href="href"
-            @click="navigate"
-            class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
-          >
-            {{ layout.name }} (_id: {{ layout._id }})
-          </button>
-        </router-link>
-      </li>
-    </ul>
+  <Card :autoSize="true" :hasTitle="false" :padding="true">
+    <h1 class="text-2xl mb-4">Layouts</h1>
+    <!-- TODO: setup working pagination -->
+    <spinner :spinning="loading">
+      <a-table :columns="columns" :data-source="tableData">
+        <template slot="name" slot-scope="text, record">
+          <router-link :to="`/admin/layouts/${record._id}`" v-slot="{ href, navigate }" custom>
+            <a-button :href="href" @click="navigate" type="link">
+              {{ text }}
+            </a-button>
+          </router-link>
+        </template>
+      </a-table>
+    </spinner>
   </Card>
 </template>
 
@@ -27,16 +22,37 @@ import { Layout, Card, BackButton, Spinner } from '@/components/app';
 import { Heading } from '@/components/typography';
 import { Layout as LayoutModel } from '@/models';
 
+interface TableData {
+  _id: string;
+  key: string;
+  name: string;
+}
+
 @Component({ components: { Layout, Card, Heading, BackButton, Spinner } })
 export default class WidgetLayouts extends Vue {
-  name = 'Designs';
+  columns = [
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      scopedSlots: { customRender: 'name' },
+    },
+  ];
 
   get loading(): boolean {
-    return this.$store.state.Layouts.layoutsLoading;
+    return this.$store.state.Layouts.loading.layouts;
+  }
+
+  get tableData(): TableData[] {
+    return this.layouts.map((layout) => ({
+      _id: layout._id,
+      key: layout._id,
+      name: layout.displayNames.find((displayName) => displayName.lang === 'de')?.text || `t('${layout.name}')`,
+    }));
   }
 
   get layouts(): LayoutModel[] {
-    return this.$store.state.Layouts.layouts;
+    return this.$store.state.Layouts.layouts || [];
   }
 }
 </script>
