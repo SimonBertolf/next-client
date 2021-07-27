@@ -30,7 +30,7 @@ export default class CustomTable extends Vue {
 
 <style>
 .custom-table-scrollbar {
-  @apply overflow-hidden !important;
+  @apply overflow-scroll md:overflow-hidden !important;
 }
 .custom-table-scrollbar:hover {
   @apply overflow-scroll scrollbar-thin scrollbar-thumb-thumb scrollbar-track-transparent !important;

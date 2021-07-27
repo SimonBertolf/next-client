@@ -5,3 +5,4 @@ export * from './layouts';
 export * from './dashboards';
 export * from './reports';
 export * from './widgets';
+export * from './rentals';

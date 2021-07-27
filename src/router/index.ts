@@ -13,7 +13,7 @@ import {
   Admin,
 } from '@/views';
 import { WidgetEditor, DashboardsAdmin } from '@/components/admin';
-import { AssetData, AssetAttributes } from '@/components/assets';
+import { AssetData, AssetAttributes, RentalTable } from '@/components/assets';
 import { Analysis, Reports, Report } from '@/components/reporting';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
@@ -56,6 +56,14 @@ const routes: Array<RouteConfig> = [
             path: 'data',
             props: true,
             component: AssetData,
+            redirect: '/assets/:assetId/data/rentals',
+            children: [
+              {
+                path: 'rentals',
+                props: true,
+                component: RentalTable,
+              },
+            ],
           },
           {
             path: 'attributes',

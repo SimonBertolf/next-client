@@ -1,5 +1,5 @@
 <template>
-  <a-menu v-model="current" mode="horizontal">
+  <a-menu v-model="current" :mode="mode">
     <a-menu-item v-for="item in this.items" :key="item._id">
       <router-link :to="`${basePath}/${item._id}`">
         {{ item.name }}
@@ -19,6 +19,8 @@ export default class SubNavMenu extends Vue {
   @Prop({ type: String, default: '' }) readonly selectedId!: string;
 
   @Prop({ type: String, default: '/' }) readonly basePath: string;
+
+  @Prop({ type: String, default: 'horizontal' }) readonly mode: string;
 
   current: string[] = [this.selectedId];
 

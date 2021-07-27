@@ -1,6 +1,7 @@
 <template>
   <a-table
     class="w-full"
+    :row-key="(record) => record._id"
     :components="itsComponents"
     :columns="filteredColumns"
     :data-source="data"
