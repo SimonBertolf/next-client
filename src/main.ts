@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { sync } from 'vuex-router-sync';
 import Vue, { VNode } from 'vue';
 import infiniteScroll from 'vue-infinite-scroll';
+import * as am4core from '@amcharts/amcharts4/core';
 import './axiosClient';
 import { initIocContainer } from './ioc-container';
 import './ant-design';
@@ -12,6 +13,9 @@ import store from './store';
 import './tailwind.css';
 import './font.css';
 import FilterRegistration from './FilterRegistration';
+import { environment } from './config';
+
+const { AMCHART_LICENSE_KEY } = environment;
 
 initIocContainer();
 
@@ -32,6 +36,8 @@ const unsync = sync(store, router);
 window.onbeforeunload = () => {
   unsync();
 };
+
+am4core.addLicense(AMCHART_LICENSE_KEY);
 
 new Vue({
   router,

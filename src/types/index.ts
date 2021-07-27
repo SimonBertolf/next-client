@@ -15,3 +15,4 @@ export * from './WidgetLayout';
 export * from './Filter';
 export * from './Translation';
 export * from './SubNavItem';
+export * from './Chart';
