@@ -43,13 +43,14 @@ export default class Widgets extends VuexModule {
       // TODO: Remove mock, use repository to fetch widget data
       setTimeout(() => {
         const data: WidgetData['data'] = [];
-        for (let i = 0; i < 3; i += 1) {
+        for (let i = 0; i < 6; i += 1) {
           data.push({
             x: Math.random(),
             y: Math.random(),
             z: type,
           });
         }
+        data.sort((item1, item2) => (item1.x as number) - (item2.x as number));
         this.context.commit('addWidgetData', { widget: widgetId, data });
         resolve();
       }, Math.random() * 2000);

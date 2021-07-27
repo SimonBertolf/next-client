@@ -1,7 +1,7 @@
 <template>
-  <Card :autoSize="false" :hasTitle="false" :padding="true">
-    <spinner :spinning="loading">
-      <div>
+  <Card :autoSize="false" :hasTitle="false" :padding="true" class="widget-card">
+    <spinner :spinning="loading" class="h-full">
+      <div class="h-full">
         <span v-if="removable" class="remove" @click="removeWidget"><a-icon type="close" /></span>
         <component :is="type" :id="id" :widget-data="widgetData"></component>
       </div>
@@ -46,13 +46,17 @@ export default class Widget extends Vue {
 }
 </script>
 
-<style scoped>
-.remove {
+<style>
+.widget-card .remove {
   position: absolute;
   right: 5px;
   font-size: 10px;
   top: 4px;
   color: #a3a3a3;
   cursor: pointer;
+}
+
+.widget-card .ant-spin-container {
+  height: 100%;
 }
 </style>
