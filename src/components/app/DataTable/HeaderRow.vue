@@ -7,7 +7,7 @@
 <script lang="ts">
 // TODO: remove all any's and following comment!
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class HeaderRow extends Vue {
@@ -15,7 +15,7 @@ export default class HeaderRow extends Vue {
     headerRow: HTMLTableRowElement;
   };
 
-  mounted() {
+  mounted(): void {
     const row = this.$refs.headerRow;
     const fixedHeaderWrapper = row.parentElement?.parentElement?.parentElement;
     if (fixedHeaderWrapper?.style.cssText.includes('overflow: scroll')) {
@@ -27,7 +27,7 @@ export default class HeaderRow extends Vue {
     }
   }
 
-  get restProps() {
+  get restProps(): Record<string, unknown> {
     return this.$props;
   }
 }

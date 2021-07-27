@@ -11,7 +11,7 @@ import { Vue, Component } from 'vue-property-decorator';
 
 @Component
 export default class BodyRow extends Vue {
-  get restProps() {
+  get restProps(): Record<string, unknown> {
     return this.$props;
   }
 }

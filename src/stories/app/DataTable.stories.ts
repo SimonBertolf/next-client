@@ -1,4 +1,5 @@
 import { TemplateInterface } from '@/types';
+import { action } from '@storybook/addon-actions';
 import { DataTable } from '@/components/app';
 
 export default {
@@ -12,10 +13,11 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
   components: { DataTable },
   template: `
     <DataTable
-      :hasFilter="true" 
-      :rowSelection="{ onChange: handleChange }" 
-      :rowAction="rowAction" 
-      :columns="columns" 
+      :columns="columns"
+      :row-selection="{ onChange: handleChange }"
+      :rowAction="rowAction"
+      :hasFilter="true"
+      :scroll="{ x: true, y: 304 }"
       :data="data"
     ></DataTable>
     `,
@@ -31,37 +33,119 @@ Example.args = {
         label: 'Example',
       },
     ],
-    onSelect: (...args: unknown[]) => console.log(args),
+    onSelect: () => action('selected'),
   },
-  handleChange: (selectedRows: unknown) => {
-    console.log(selectedRows);
+  handleChange: () => {
+    action('row-selected');
   },
   columns: [
     {
       title: 'Age',
-      customHeaderCell: () => ({ props: { isFirst: true } }),
+      dataIndex: 'age',
+      width: 150,
+      key: 'age',
+    },
+    {
+      title: 'Address',
+      dataIndex: 'address',
+      background: 'secondary',
+      key: 'address',
+    },
+  ],
+  data: [
+    {
+      key: '1',
+      age: 32,
+      example: 'example',
+      address: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '2',
+      age: 42,
+      example: 'example',
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '3',
+      age: 32,
+      example: 'example',
+      address: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '4',
+      age: 42,
+      example: 'example',
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '5',
+      age: 32,
+      example: 'example',
+      address: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '6',
+      age: 42,
+      example: 'example',
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '7',
+      age: 32,
+      example: 'example',
+      address: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '8',
+      age: 42,
+      example: 'example',
+      address: 'London No. 1 Lake Park',
+    },
+    {
+      key: '9',
+      age: 32,
+      example: 'example',
+      address: 'New York No. 1 Lake Park',
+    },
+    {
+      key: '10',
+      age: 42,
+      example: 'example',
+      address: 'London No. 1 Lake Park',
+    },
+  ],
+};
+
+export const ExampleWithChildren = Template.bind({});
+
+ExampleWithChildren.args = {
+  rowAction: {
+    options: [
+      {
+        key: 'example',
+        label: 'Example',
+      },
+    ],
+    onSelect: () => action('selected'),
+  },
+  handleChange: () => {
+    action('row-selected');
+  },
+  columns: [
+    {
+      title: 'Age',
+      key: 'age',
       children: [
         {
-          title: '',
-          customHeaderCell: () => ({
-            props: {
-              bg: 'transparent',
-              type: 'sub',
-            },
-          }),
+          type: 'sub',
+          background: 'transparent',
           children: [
             {
               title: 'Total',
-              key: 'age',
+              background: 'transparent',
+              type: 'summary',
               dataIndex: 'age',
               width: 150,
-              customHeaderCell: () => ({
-                props: {
-                  bg: 'transparent',
-                  type: 'summary',
-                  isFirst: true,
-                },
-              }),
             },
           ],
         },
@@ -69,33 +153,19 @@ Example.args = {
     },
     {
       title: 'Address',
-      customHeaderCell: () => ({
-        props: {
-          bg: 'secondary',
-          isLast: true,
-        },
-      }),
+      background: 'secondary',
+      key: 'address',
       children: [
         {
           title: 'example',
-          customHeaderCell: () => ({
-            props: {
-              bg: 'transparent',
-              type: 'sub',
-            },
-          }),
+          type: 'sub',
+          background: 'transparent',
           children: [
             {
-              title: '4422',
-              key: 'address',
+              title: '4342',
+              background: 'transparent',
+              type: 'summary',
               dataIndex: 'address',
-              customHeaderCell: () => ({
-                props: {
-                  bg: 'transparent',
-                  type: 'summary',
-                  isLast: true,
-                },
-              }),
             },
           ],
         },

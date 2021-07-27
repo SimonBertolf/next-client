@@ -17,7 +17,7 @@ export default class RowSelector extends Vue {
 
   fill = 'transparent';
 
-  mounted() {
+  mounted(): void {
     if (this.checked) {
       this.fill = '#28304D';
     } else {
@@ -26,14 +26,13 @@ export default class RowSelector extends Vue {
   }
 
   @Emit()
-  change() {
+  change(): { checked: boolean; rowKey: string } {
     this.checked = !this.checked;
     if (this.checked) {
       this.fill = '#28304D';
     } else {
       this.fill = 'transparent';
     }
-    console.log({ fill: this.fill });
     return { checked: this.checked, rowKey: this.rowKey };
   }
 }

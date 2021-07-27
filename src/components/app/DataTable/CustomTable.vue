@@ -15,14 +15,14 @@ export default class CustomTable extends Vue {
     dataTable: HTMLTableElement;
   };
 
-  mounted() {
+  mounted(): void {
     const table = this.$refs.dataTable;
     if (table.classList.value.includes('ant-table-fixed')) {
       table.parentElement?.classList.add('custom-table-scrollbar');
     }
   }
 
-  get restProps() {
+  get restProps(): Record<string, unknown> {
     return this.$props;
   }
 }

@@ -1,24 +1,39 @@
 <template>
-  <a-dropdown class="dropdown-action" :trigger="['click']" @select="select">
-    <slot name="title"></slot>
-    <a-menu slot="overlay">
-      <slot></slot>
-    </a-menu>
-  </a-dropdown>
+  <span>
+    <a-dropdown v-if="multiselect" class="dropdown-action" :visible="visible">
+      <slot name="title" :onToggle="handleToggle"></slot>
+      <a-menu slot="overlay" :selectable="true" v-click-outside="hide">
+        <slot></slot>
+      </a-menu>
+    </a-dropdown>
+    <a-dropdown v-else class="dropdown-action" :trigger="['click']">
+      <slot name="title"></slot>
+      <a-menu slot="overlay" :selectable="true">
+        <slot></slot>
+      </a-menu>
+    </a-dropdown>
+  </span>
 </template>
 
 <script lang="ts">
 // TODO: remove all any's and following comment!
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Vue, Component, Emit } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import ClickOutside from 'vue-click-outside';
 
-@Component
+@Component({ directives: { ClickOutside } })
 export default class RowAction extends Vue {
-  @Emit()
-  select(...args: Array<unknown>) {
-    const key = args[1] as string;
-    const selectedKeys = args[2] as string[];
-    return { key, selectedKeys };
+  @Prop({ type: Boolean, default: false }) multiselect: boolean;
+
+  visible = false;
+
+  hide(): void {
+    this.visible = false;
+  }
+
+  handleToggle(e: MouseEvent): void {
+    this.visible = !this.visible;
+    e.stopPropagation();
   }
 }
 </script>

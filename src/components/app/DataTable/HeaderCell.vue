@@ -19,12 +19,14 @@ export default class HeaderCell extends Vue {
 
   @Prop({ type: Boolean, default: false }) isLast: boolean;
 
-  get restProps() {
-    const { bg, ...restProps } = this.$props;
+  @Prop({ type: Boolean, default: false }) hidden: boolean;
+
+  get restProps(): Record<string, unknown> {
+    const { ...restProps } = this.$props;
     return restProps;
   }
 
-  get background() {
+  get background(): string {
     let bg = '';
     if (this.bg === 'primary') bg = 'header-cell-bg-primary';
     if (this.bg === 'secondary') bg = 'header-cell-bg-secondary';
@@ -32,22 +34,22 @@ export default class HeaderCell extends Vue {
     return bg;
   }
 
-  get color() {
+  get color(): string {
     if (this.bg === 'transparent') return 'header-cell-text-color-dark';
     return 'header-cell-text-color-neutral';
   }
 
-  get firstCellCls() {
+  get firstCellCls(): string {
     if (this.isFirst) return 'header-cell-first';
     return '';
   }
 
-  get lastCellCls() {
+  get lastCellCls(): string {
     if (this.isLast) return 'header-cell-last';
     return '';
   }
 
-  get typeCls() {
+  get typeCls(): string {
     let cls = '';
     if (this.type === 'default') {
       cls = `${cls} header-cell-default`;
@@ -67,10 +69,11 @@ export default class HeaderCell extends Vue {
     return cls;
   }
 
-  get clsClass() {
+  get clsClass(): string {
     let cls = `header-cell ${this.background} ${this.color}`;
     if (this.firstCellCls) cls = `${cls} ${this.firstCellCls}`;
     if (this.lastCellCls) cls = `${cls} ${this.lastCellCls}`;
+    if (this.hidden) cls = `${cls} header-cell-hidden`;
     cls = `${cls} ${this.typeCls}`;
     return cls;
   }
@@ -78,6 +81,9 @@ export default class HeaderCell extends Vue {
 </script>
 
 <style scoped>
+.header-cell-hidden {
+  @apply hidden !important;
+}
 .header-cell {
   @apply px-2 font-primary !important;
 }

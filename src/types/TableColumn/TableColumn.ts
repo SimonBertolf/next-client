@@ -17,6 +17,9 @@ interface TableColumn {
   customRender?: (text: string, record: any, index: number) => VNode;
   customHeaderCell?: () => VNodeData;
   customCell?: () => VNodeData;
+  background?: string;
+  type?: string;
+  sorter?: boolean;
 }
 
 export default TableColumn;
