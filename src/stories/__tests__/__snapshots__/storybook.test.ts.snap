@@ -498,28 +498,26 @@ exports[`Storyshots app/DataTable Example 1`] = `
   class="w-full ant-table-wrapper"
 >
   <div
-    class="ant-table-wrapper"
+    class="ant-spin-nested-loading"
   >
     <div
-      class="ant-spin-nested-loading"
+      class="ant-spin-container"
     >
       <div
         class="ant-table ant-table-fixed-header ant-table-scroll-position-left ant-table-layout-fixed ant-table-default"
       >
         <div
-          class="ant-table ant-table-scroll-position-left ant-table-default ant-table-empty"
+          class="ant-table-content"
         >
           <div
-            class="ant-table-content"
+            class="ant-table-scroll"
           >
             <div
               class="ant-table-header"
             >
-              <!---->
-              <div
-                class="ant-table-body"
-                style="overflow-x: scroll;"
-                tabindex="-1"
+              <table
+                class="ant-table-fixed"
+                style="width: auto;"
               >
                 <colgroup>
                   <col
