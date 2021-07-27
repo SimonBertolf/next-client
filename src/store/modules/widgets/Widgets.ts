@@ -50,6 +50,7 @@ export default class Widgets extends VuexModule {
             z: type,
           });
         }
+        data.sort((item1, item2) => (item1.x as number) - (item2.x as number));
         this.context.commit('addWidgetData', { widget: widgetId, data });
         resolve();
       }, Math.random() * 2000);

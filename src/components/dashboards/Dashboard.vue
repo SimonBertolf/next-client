@@ -1,29 +1,23 @@
 <template>
   <div class="dashboard">
-    <spinner :spinning="loading">
-      <filter-panel v-if="hasFilters" />
-      <widget-layout />
-    </spinner>
+    <filter-panel v-if="hasFilters" />
+    <widget-layout />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Dashboard as DashboardModel } from '@/models';
-import { WidgetLayout, Spinner } from '@/components/app';
+import { WidgetLayout } from '@/components/app';
 import FilterPanel from './FilterPanel.vue';
 
-@Component({ components: { WidgetLayout, FilterPanel, Spinner } })
+@Component({ components: { WidgetLayout, FilterPanel } })
 export default class Dashboard extends Vue {
   @Prop({ required: true, type: String }) readonly dashboardId: string;
 
   // not used, TODO: remove if not used
   get dashboard(): DashboardModel | null {
     return this.$store.state.Dashboards.dashboard;
-  }
-
-  get loading(): boolean {
-    return !!this.$store.state.Dashboards.loading?.dashboard;
   }
 
   get hasFilters(): boolean {

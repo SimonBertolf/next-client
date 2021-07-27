@@ -4,9 +4,11 @@
       <template v-slot:title>
         <span>Filters</span>
       </template>
-      <filter-list />
+      <spinner :spinning="loading">
+        <filter-list />
+      </spinner>
     </Card>
-    <filter-button @click="showFilterModal" />
+    <filter-button @click="showFilterModal" :loading="loading" />
     <a-modal title="Filters" v-model="filterModalVisible" class="filter-modal" :footer="null">
       <filter-list />
     </a-modal>
@@ -15,13 +17,17 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
-import { Card } from '@/components/app';
+import { Card, Spinner } from '@/components/app';
 import FilterList from './FilterList.vue';
 import FilterButton from './FilterButton.vue';
 
-@Component({ components: { FilterList, Card, FilterButton } })
+@Component({ components: { FilterList, Card, FilterButton, Spinner } })
 export default class FilterPanel extends Vue {
   filterModalVisible = false;
+
+  get loading(): boolean {
+    return this.$store.state.Dashboards.loading?.dashboard;
+  }
 
   showFilterModal(): void {
     this.filterModalVisible = true;
