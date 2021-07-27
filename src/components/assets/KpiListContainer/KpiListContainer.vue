@@ -8,8 +8,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator';
 import { inject } from 'inversify-props';
-import { IKpiService } from '@/services';
-import { KpiGroup, Asset } from '@/models';
+import type { IKpiService } from '@/services';
+import type { KpiGroup, Asset } from '@/models';
 import { FlexLayout } from '@/components/app';
 import { KpiList } from '../KpiList';
 import { KpiListMobile } from '../KpiListMobile';

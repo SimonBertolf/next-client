@@ -1,6 +1,6 @@
 import { container, Container } from 'inversify-props';
 import { ConstructorType } from '@/types';
-import { Asset } from '@/models';
+import { ApiLayout, Asset, Dashboard, Report } from '@/models';
 import {
   IDomDocument,
   DomDocument,
@@ -9,9 +9,14 @@ import {
   IAuth,
   Auth,
   AssetRepository,
+  LayoutRepository,
+  DashboardRepository,
   IFetchableById,
   IKpiService,
   KpiService,
+  IRepository,
+  ReportRepository,
+  IRepositoryWithPdf,
 } from '@/services';
 import { IContainerManager } from '../../interfaces';
 
@@ -27,6 +32,9 @@ class ContainerManager implements IContainerManager {
     this.iocContainer.addSingleton<IEventBus>(EventBus);
     this.iocContainer.addSingleton<IAuth>(Auth, 'IAuth');
     this.iocContainer.addSingleton<IFetchableById<Asset>>(AssetRepository, 'AssetRepository');
+    this.iocContainer.addSingleton<IRepository<ApiLayout>>(LayoutRepository, 'LayoutRepository');
+    this.iocContainer.addSingleton<IRepository<Dashboard>>(DashboardRepository, 'DashboardRepository');
+    this.iocContainer.addSingleton<IRepositoryWithPdf<Report>>(ReportRepository, 'ReportRepository');
     this.iocContainer.addSingleton<IKpiService>(KpiService, 'KpiService');
   }
 

@@ -2,7 +2,7 @@
   <a-select
     v-model="selected"
     mode="multiple"
-    :placeholder="filter.key"
+    :placeholder="placeholder"
     :maxTagCount="0"
     class="filter-select"
     allow-clear
@@ -17,8 +17,9 @@
 </template>
 
 <script lang="ts">
+import { isEqual } from 'lodash';
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { SelectFilter, FilterSelection } from '@/types';
+import type { SelectFilter, FilterSelection } from '@/types';
 
 @Component({ components: {} })
 export default class Select extends Vue {
@@ -30,11 +31,16 @@ export default class Select extends Vue {
 
   @Prop({ required: true, type: Array }) readonly filterSelection: FilterSelection;
 
+  get placeholder(): string {
+    // TODO: set lang automatically from i18n store
+    return this.filter.displayNames.find((item) => item.lang === 'de')?.text || `t('${this.filter.key}')`;
+  }
+
   // watch filter selected on global store
   @Watch('filterSelection', { deep: true, immediate: true })
   onGlobalSelectedChange(): void {
     // update local selected if different from global selected
-    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+    if (!isEqual(this.filterSelection, this.selected)) {
       const selectedUpdate = [...this.filterSelection];
       this.selected.splice(0, this.selected.length, ...selectedUpdate);
     }
@@ -44,7 +50,7 @@ export default class Select extends Vue {
   @Watch('selected', { deep: true, immediate: true })
   onLocalSelectedChange(): void {
     // update global selected if different from local
-    if (JSON.stringify(this.filterSelection) !== JSON.stringify(this.selected)) {
+    if (!isEqual(this.filterSelection, this.selected)) {
       this.$store.commit('Dashboards/setFilterSelection', {
         key: this.filter.key,
         selection: [...this.selected],

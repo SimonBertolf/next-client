@@ -1,3 +1,1 @@
-import SupportedLocales from './SupportedLocales';
-
-export { SupportedLocales };
+export * from './SupportedLocales';

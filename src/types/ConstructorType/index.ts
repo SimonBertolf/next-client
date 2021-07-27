@@ -1,3 +1,1 @@
-import ConstructorType from './ConstructorType';
-
-export { ConstructorType };
+export * from './ConstructorType';

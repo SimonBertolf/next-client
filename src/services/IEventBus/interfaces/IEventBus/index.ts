@@ -1,3 +1,1 @@
-import IEventBus from './IEventBus';
-
-export { IEventBus };
+export * from './IEventBus';

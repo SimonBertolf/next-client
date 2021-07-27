@@ -1,3 +1,1 @@
-import IKpiService from './IKpiService';
-
-export { IKpiService };
+export * from './IKpiService';

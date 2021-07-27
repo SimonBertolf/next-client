@@ -1,7 +1,5 @@
 import { User } from '@/models';
 
-interface IAuth {
+export interface IAuth {
   currentAuthenticatedUser(): Promise<User | null>;
 }
-
-export default IAuth;

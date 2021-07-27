@@ -1,3 +1,1 @@
-import SupportedLocalesList from './SupportedLocalesList';
-
-export { SupportedLocalesList };
+export * from './SupportedLocalesList';

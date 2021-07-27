@@ -8,7 +8,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { FormatList } from '@/types';
-import { Kpi } from '@/models';
+import type { Kpi } from '@/models';
 import { FlexLayout } from '@/components/app';
 
 @Component({ components: { FlexLayout } })

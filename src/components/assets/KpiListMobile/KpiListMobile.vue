@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { KpiGroup, Kpi } from '@/models';
+import type { KpiGroup, Kpi } from '@/models';
 import { FlexLayout } from '@/components/app';
 import { KpiItem } from '../KpiItem';
 

@@ -14,6 +14,7 @@ declare module 'vue-grid-layout' {
     w: number;
     h: number;
     i: string;
+    moved: boolean;
   }
 
   export type GridBreakpoint = 'lg' | 'md' | 'sm' | 'xs' | 'xxs';

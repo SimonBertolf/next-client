@@ -1,6 +1,8 @@
 <template>
   <Layout>
-    <template v-slot:header><Heading>Assets</Heading></template>
+    <template v-slot:header>
+      <Heading>Assets</Heading>
+    </template>
     <ul>
       <li v-for="asset in assets" :key="asset.id">
         <router-link :to="`/assets/${asset.id}`" v-slot="{ href, navigate }" custom>

@@ -3,7 +3,7 @@
     <div class="mb-4 px-2">
       <h2 class="mb-4 text-2xl">{{ name }}</h2>
       <a-space>
-        <span>Editable: <a-switch default-checked v-model="editable" /></span>
+        <span>Edit mode: <a-switch v-model="editable" /></span>
         <a-dropdown v-if="editable">
           <a-menu slot="overlay" @click="addWidget">
             <a-menu-item key="WidgetA"> <a-icon type="dot-chart" />Widget A</a-menu-item>
@@ -40,7 +40,7 @@ import { WidgetLayout } from '@/components/app';
 export default class WidgetEditor extends Vue {
   @Prop(String) readonly layoutId: string;
 
-  editable = true;
+  editable = false;
 
   newWidget: Widget | null = null;
 
@@ -49,11 +49,11 @@ export default class WidgetEditor extends Vue {
   }
 
   get name(): string | undefined {
-    return this.layoutMeta?.name;
+    return this.layoutMeta?.displayNames.find((item) => item.lang === 'de')?.text;
   }
 
   addWidget({ key: type }: { key: WidgetType }): void {
-    this.newWidget = { type, _id: Date.now().toString() };
+    this.newWidget = { type, _id: `new-${Date.now().toString()}` };
   }
 
   onNewWidgetAdded(): void {

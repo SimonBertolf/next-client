@@ -1,3 +1,1 @@
-import ColumnType from './ColumnType';
-
-export { ColumnType };
+export * from './ColumnType';

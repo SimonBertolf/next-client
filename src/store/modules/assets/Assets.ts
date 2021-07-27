@@ -1,7 +1,7 @@
 import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { Inject } from 'inversify-props';
-import { IFetchableById } from '@/services';
-import { Asset } from '@/models';
+import type { IFetchableById } from '@/services';
+import type { Asset } from '@/models';
 import { assetsMock } from './AssetsMock';
 
 @Module({ namespaced: true })

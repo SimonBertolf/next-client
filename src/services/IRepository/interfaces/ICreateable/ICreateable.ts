@@ -1,5 +1,3 @@
-interface ICreateable<T, R> {
-  create(entity: T): Promise<R>;
+export interface ICreateable<T, R> {
+  create(entity: Omit<T, '_id'>): Promise<R>;
 }
-
-export default ICreateable;

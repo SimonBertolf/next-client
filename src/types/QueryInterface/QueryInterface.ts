@@ -1,6 +1,6 @@
 export type SortType = -1 | 1;
 
-interface QueryInterface {
+export interface QueryInterface {
   _start?: number;
   _end?: number;
   search?: {
@@ -13,5 +13,3 @@ interface QueryInterface {
     [key: string]: SortType;
   };
 }
-
-export default QueryInterface;

@@ -1,5 +1,3 @@
-enum SupportedLocales {
+export enum SupportedLocales {
   DE = 'de',
 }
-
-export default SupportedLocales;

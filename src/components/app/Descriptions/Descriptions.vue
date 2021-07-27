@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { DescriptionType, ColumnType } from '@/types';
+import type { DescriptionType, ColumnType } from '@/types';
 
 @Component
 export default class Descriptions extends Vue {

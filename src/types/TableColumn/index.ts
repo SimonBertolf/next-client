@@ -1,3 +1,1 @@
-import TableColumn from './TableColumn';
-
-export { TableColumn };
+export * from './TableColumn';

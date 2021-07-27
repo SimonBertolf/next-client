@@ -8,3 +8,5 @@ export type WidgetLayoutItems = WidgetLayoutItem[];
 export interface ResponsiveWidgetLayoutItems {
   [breakpoint: string]: WidgetLayoutItems;
 }
+
+export const gridBreakpoints = ['lg', 'md', 'sm', 'xs', 'xxs'];

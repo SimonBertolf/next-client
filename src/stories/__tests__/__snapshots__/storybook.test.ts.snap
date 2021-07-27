@@ -498,26 +498,28 @@ exports[`Storyshots app/DataTable Example 1`] = `
   class="w-full ant-table-wrapper"
 >
   <div
-    class="ant-spin-nested-loading"
+    class="ant-table-wrapper"
   >
     <div
-      class="ant-spin-container"
+      class="ant-spin-nested-loading"
     >
       <div
         class="ant-table ant-table-fixed-header ant-table-scroll-position-left ant-table-layout-fixed ant-table-default"
       >
         <div
-          class="ant-table-content"
+          class="ant-table ant-table-scroll-position-left ant-table-default ant-table-empty"
         >
           <div
-            class="ant-table-scroll"
+            class="ant-table-content"
           >
             <div
               class="ant-table-header"
             >
-              <table
-                class="ant-table-fixed"
-                style="width: auto;"
+              <!---->
+              <div
+                class="ant-table-body"
+                style="overflow-x: scroll;"
+                tabindex="-1"
               >
                 <colgroup>
                   <col
@@ -5243,7 +5245,7 @@ exports[`Storyshots motion/Fade Example 1`] = `
 
 exports[`Storyshots typography/Heading Example 1`] = `
 <h1
-  class="font-primary text-4xl font-light text-center pb-4"
+  class="font-primary text-4xl font-light text-center"
 >
   heading
 </h1>
@@ -5458,7 +5460,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         class="layout-header ant-layout-header"
       >
         <h1
-          class="font-primary text-4xl font-light text-center pb-4"
+          class="font-primary text-4xl font-light text-center"
         >
           Assets
         </h1>

@@ -1,6 +1,6 @@
-interface TableData {
+export interface TableData {
   key: string;
   [key: string]: string | number;
 }
 
-export default TableData;
+export const foo = 0;

@@ -1,4 +1,3 @@
-import { Filter } from '@/types';
 import { Store, Plugin } from 'vuex';
 
 // TODO: replace any with type of state
@@ -9,19 +8,14 @@ const WidgetLoader: Plugin<any> = (store: Store<any>) => {
 
     if (type === 'route/ROUTE_CHANGED') {
       const { params } = state.route;
-      if (!params?.reportId && !params?.dashboardId && !params?.layoutId && state.Widgets.widgets.length > 0) {
-        store.commit('Widgets/flushWidgetData');
+      if (
+        (!params?.reportId && !params?.dashboardId && !params?.layoutId && state.Widgets.widgets.length) ||
+        (payload?.to?.params?.dashboardId && payload.to.params.dashboardId !== payload.from?.params?.dashboardId) ||
+        (payload?.to?.params?.reportId && payload.to.params.reportId !== payload.from?.params?.reportId) ||
+        (payload?.to?.params?.layoutId && payload.to.params.layoutId !== payload.from?.params?.layoutId)
+      ) {
+        store.dispatch('Widgets/flushWidgetData');
       }
-    }
-    if (type === 'Dashboards/resetFiltersSelections' || type === 'Dashboards/setFilterSelections') {
-      // mutations of all filters trigger reload of all widgets
-      const { filters }: { filters: Filter[] } = state.Dashboards;
-      const filterKeys = filters.map((item: Filter) => item.key);
-      store.commit('Dashboards/setUpdatedFilters', { filterKeys });
-    }
-    if (type === 'Dashboards/setFilterSelection') {
-      // mutations of one filter triggers reload of widgets with dependency to that filter.
-      store.commit('Dashboards/setUpdatedFilters', { filterKeys: [payload.key] });
     }
   });
 };

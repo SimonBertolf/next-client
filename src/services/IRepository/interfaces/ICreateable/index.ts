@@ -1,3 +1,1 @@
-import ICreateable from './ICreateable';
-
-export { ICreateable };
+export * from './ICreateable';

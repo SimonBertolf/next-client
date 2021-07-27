@@ -1,7 +1,5 @@
-type ConstructorType<T = unknown> =
+export type ConstructorType<T = unknown> =
   | {
       new (...args: unknown[]): T;
     }
   | unknown;
-
-export default ConstructorType;

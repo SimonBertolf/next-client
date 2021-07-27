@@ -1,3 +1,1 @@
-import IFetchableById from './IFetchableById';
-
-export { IFetchableById };
+export * from './IFetchableById';

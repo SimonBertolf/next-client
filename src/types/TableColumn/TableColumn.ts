@@ -1,6 +1,6 @@
 import { VNode, VNodeData } from 'vue';
 
-interface TableColumn {
+export interface TableColumn {
   title?: string | VNode;
   dataIndex?: string;
   key?: string;
@@ -21,5 +21,3 @@ interface TableColumn {
   type?: string;
   sorter?: boolean;
 }
-
-export default TableColumn;

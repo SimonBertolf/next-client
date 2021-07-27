@@ -1,12 +1,11 @@
 <template>
   <Card :autoSize="false" :hasTitle="false" :padding="true">
-    <div v-if="loading" class="flex h-full justify-center items-center">
-      <spinner />
-    </div>
-    <div v-else>
-      <span v-if="removable" class="remove" @click="removeWidget"><a-icon type="close" /></span>
-      <component :is="type" :id="id" :widget-data="widgetData"></component>
-    </div>
+    <spinner :spinning="loading">
+      <div>
+        <span v-if="removable" class="remove" @click="removeWidget"><a-icon type="close" /></span>
+        <component :is="type" :id="id" :widget-data="widgetData"></component>
+      </div>
+    </spinner>
   </Card>
 </template>
 
@@ -26,11 +25,11 @@ export default class Widget extends Vue {
   @Prop({ default: false }) readonly removable: boolean;
 
   get loading(): boolean {
-    return !this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id);
+    return !this.$store.state.Widgets.widgets.find((widgetData: WidgetData) => widgetData.widget === this.id);
   }
 
   get widgetData(): WidgetData['data'] | undefined {
-    return this.$store.state.Widgets.widgets.find((widget: WidgetData) => widget._id === this.id)?.data;
+    return this.$store.state.Widgets.widgets.find((widgetData: WidgetData) => widgetData.widget === this.id)?.data;
   }
 
   @Emit('remove-widget')
