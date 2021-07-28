@@ -7,6 +7,7 @@
     :data-source="data"
     :scroll="scroll"
     :pagination="false"
+    :loading="{ indicator: spinnerComponent, spinning: loading }"
   >
     <template slot="selection" slot-scope="text, row">
       <row-selector :rowKey="row.key" @change="onSelectRow" />
@@ -52,6 +53,7 @@ import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import _ from 'lodash';
 import { TableColumn, TableData } from '@/types';
 import { VNode, VNodeData } from 'vue';
+import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderRow from './HeaderRow.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -108,6 +110,8 @@ export default class DataTable extends Vue {
 
   @Prop({ type: Object as () => ScrollType, default: { x: false, y: undefined } }) scroll: ScrollType;
 
+  @Prop({ type: Boolean, default: false }) loading: boolean;
+
   selectedRows: TableData[] = [];
 
   selectedFilterOptions: string[] = [];
@@ -121,6 +125,10 @@ export default class DataTable extends Vue {
     const bodyRow: TableComponentRenderer = (h, p, c) => h(BodyRow, { ...p }, c);
     const bodyCell: TableComponentRenderer = (h, p, c) => h(BodyCell, { ...p }, c);
     return { table, header: { cell, row: headerRow }, body: { row: bodyRow, cell: bodyCell } };
+  }
+
+  get spinnerComponent(): VNode {
+    return this.$createElement(Spinner, { props: { spinning: true } });
   }
 
   get rowActionOptions(): Array<{ key: string; label: string }> {

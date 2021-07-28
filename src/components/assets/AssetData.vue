@@ -1,15 +1,12 @@
 <template>
-  <div class="flex flex-row w-full h-full">
-    <sub-nav-menu :items="items" :base-path="basePath" mode="vertical" />
-    <div class="w-full h-full pl-4"><router-view></router-view></div>
-  </div>
+  <div class="flex flex-row w-full h-full"><rental-table :assetId="assetId" /></div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { SubNavMenu } from '@/components/app';
+import { RentalTable } from './RentalTable';
 
-@Component({ components: { SubNavMenu } })
+@Component({ components: { RentalTable } })
 export default class AssetData extends Vue {
   @Prop(String) assetId: string;
 

@@ -2,10 +2,11 @@
   <data-table
     :columns="columns"
     :hasFilter="true"
-    :scroll="{ x: true, y: 304 }"
+    :scroll="{ x: true }"
     :data="rentals"
     :row-selection="{ onChange: rowSelection }"
     :rowAction="{ options: rowActionOptions, onSelect: rowAction }"
+    :loading="loading"
   />
 </template>
 
@@ -18,6 +19,8 @@ import { DataTable } from '@/components/app';
 @Component({ components: { DataTable } })
 export default class RentalTableComponent extends Vue {
   @Prop({ type: Array }) rentals: Rental[];
+
+  @Prop(Boolean) loading: boolean;
 
   @Emit()
   rowSelection(selectedRows: Rental[]): Rental[] {
@@ -33,20 +36,17 @@ export default class RentalTableComponent extends Vue {
     return [
       {
         title: 'Nr.',
-        width: 100,
         key: 'rentalId',
         customRender: () => this.$createElement('span', {}, '-'),
       },
       {
         title: 'Mietobjekt',
         dataIndex: 'nr',
-        width: 100,
         key: 'nr',
       },
       {
         title: 'Miettyp',
         dataIndex: 'rentalType',
-        width: 150,
         key: 'rentalType',
       },
       {
@@ -58,41 +58,35 @@ export default class RentalTableComponent extends Vue {
         title: 'Anzahl',
         dataIndex: 'count',
         customRender: (text: string) => this.$options.filters?.tableNumber(Number(text)),
-        width: 75,
         key: 'count',
       },
       {
         title: 'Fläche',
         dataIndex: 'area',
         customRender: (text: string) => this.$options.filters?.simpleNumber(Number(text)),
-        width: 90,
         key: 'area',
       },
       {
         title: 'Aktiv ab',
         dataIndex: 'activeFrom',
-        width: 100,
         customRender: (text: string) => this.$options.filters?.dateFormatFilter(text),
         key: 'activeFrom',
       },
       {
         title: 'Aktiv bis',
         dataIndex: 'activeTo',
-        width: 100,
         customRender: (text: string) => this.$options.filters?.dateFormatFilter(text),
         key: 'activeTo',
       },
       {
         title: 'Markmiete',
         dataIndex: 'marketRent',
-        width: 150,
         customRender: (text: string) => this.$options.filters?.tableNumber(text),
         key: 'marketRent',
       },
       {
         title: 'Nettomiete',
         dataIndex: 'netRent',
-        width: 150,
         customRender: (text: string) => this.$options.filters?.tableNumber(text),
         key: 'netRent',
       },
