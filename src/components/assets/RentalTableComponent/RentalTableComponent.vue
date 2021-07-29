@@ -1,11 +1,10 @@
 <template>
   <data-table
     :columns="columns"
-    :hasFilter="true"
+    :hasFilter="false"
     :scroll="{ x: true }"
     :data="rentals"
     :row-selection="{ onChange: rowSelection }"
-    :rowAction="{ options: rowActionOptions, onSelect: rowAction }"
     :loading="loading"
   />
 </template>

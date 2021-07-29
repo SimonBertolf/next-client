@@ -8,7 +8,7 @@ import type {
   LayoutHostType,
 } from '@/types';
 import type { ApiLayout, LayoutMeta } from '@/models';
-import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '@/models';
+import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '@/model-mappers';
 import { GridBreakpoint } from 'vue-grid-layout';
 import { Module, Mutation, VuexModule, Action } from 'vuex-module-decorators';
 import type { IRepository } from '@/services';

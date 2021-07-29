@@ -3,7 +3,7 @@
     class="w-full"
     :row-key="(record) => record._id"
     :components="itsComponents"
-    :columns="filteredColumns"
+    :columns="itsColumns"
     :data-source="data"
     :scroll="scroll"
     :pagination="false"
@@ -53,6 +53,7 @@ import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import _ from 'lodash';
 import { TableColumn, TableData } from '@/types';
 import { VNode, VNodeData } from 'vue';
+import { TableResolver, HeaderStyleResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderRow from './HeaderRow.vue';
@@ -118,6 +119,11 @@ export default class DataTable extends Vue {
 
   filteredColumns: TableColumn[] = this.itsColumns;
 
+  get tableResolver(): TableResolver {
+    const resolver: TableResolver = new HeaderStyleResolver();
+    return resolver;
+  }
+
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
@@ -136,6 +142,10 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
+    return this.tableResolver.resolve(this.columns);
+  }
+
+  /* get itsColumns(): TableColumn[] {
     let columns = [...this.columns];
     const firstCol = columns.shift() as TableColumn;
     const { background = 'primary', type = 'default' } = firstCol;
@@ -277,7 +287,7 @@ export default class DataTable extends Vue {
     }
     if (Object.keys(actionColumn).length) columns = [...columns, { ...actionColumn }];
     return columns;
-  }
+  } */
 
   get hasChildren(): boolean {
     const itsCol = this.columns.find((col) => {

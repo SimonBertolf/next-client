@@ -494,45 +494,17 @@ exports[`Storyshots app/DataTable Example 1`] = `
               >
                 <colgroup>
                   <col
-                    style="width: 32px; min-width: 32px;"
+                    style="width: 150px; min-width: 150px;"
                   />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 32px; min-width: 32px;"
-                  />
+                  <col />
                 </colgroup>
                 <thead
                   class="ant-table-thead"
                 >
                   <tr>
                     <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-action ant-table-row-cell-break-word"
-                      key="selection"
-                      type="action"
-                    >
-                      <span
-                        class="ant-table-header-column"
-                      >
-                        <div>
-                          <span
-                            class="ant-table-column-title"
-                          />
-                          <span
-                            class="ant-table-column-sorter"
-                          />
-                        </div>
-                      </span>
-                    </th>
-                    <th
                       bg="primary"
-                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral header-cell-first header-cell-hidden  header-cell-default header-cell-default-border"
-                      hidden="hidden"
+                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral header-cell-first  header-cell-default header-cell-default-border ant-table-row-cell-break-word"
                       isfirst="true"
                       key="age"
                       type="default"
@@ -554,8 +526,7 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     </th>
                     <th
                       bg="secondary"
-                      class="header-cell header-cell-bg-secondary header-cell-text-color-neutral header-cell-last header-cell-hidden  header-cell-default"
-                      hidden="hidden"
+                      class="header-cell header-cell-bg-secondary header-cell-text-color-neutral header-cell-last  header-cell-default ant-table-row-cell-last"
                       islast="true"
                       key="address"
                       type="default"
@@ -568,48 +539,6 @@ exports[`Storyshots app/DataTable Example 1`] = `
                             class="ant-table-column-title"
                           >
                             Address
-                          </span>
-                          <span
-                            class="ant-table-column-sorter"
-                          />
-                        </div>
-                      </span>
-                    </th>
-                    <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-action ant-table-row-cell-break-word ant-table-row-cell-last"
-                      key="filter"
-                      type="action"
-                    >
-                      <span
-                        class="ant-table-header-column"
-                      >
-                        <div>
-                          <span
-                            class="ant-table-column-title"
-                          >
-                            <span>
-                              <i
-                                aria-label="icon: eye"
-                                class="dropdown-action anticon anticon-eye ant-dropdown-trigger"
-                                tabindex="-1"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  class=""
-                                  data-icon="eye"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 0 0 0 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
-                                  />
-                                </svg>
-                              </i>
-                            </span>
                           </span>
                           <span
                             class="ant-table-column-sorter"
@@ -632,17 +561,9 @@ exports[`Storyshots app/DataTable Example 1`] = `
               >
                 <colgroup>
                   <col
-                    style="width: 32px; min-width: 32px;"
+                    style="width: 150px; min-width: 150px;"
                   />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 32px; min-width: 32px;"
-                  />
+                  <col />
                 </colgroup>
                 <tbody
                   class="ant-table-tbody"
@@ -652,61 +573,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="1"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -714,61 +588,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="2"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -776,61 +603,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="3"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -838,61 +618,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="4"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -900,61 +633,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="5"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -962,61 +648,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="6"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1024,61 +663,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="7"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1086,61 +678,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="8"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1148,61 +693,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="9"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1210,61 +708,14 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="10"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                 </tbody>
@@ -1306,47 +757,18 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
               >
                 <colgroup>
                   <col
-                    style="width: 32px; min-width: 32px;"
+                    style="width: 150px; min-width: 150px;"
                   />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 32px; min-width: 32px;"
-                  />
+                  <col />
                 </colgroup>
                 <thead
                   class="ant-table-thead"
                 >
                   <tr>
                     <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-action ant-table-row-cell-break-word"
-                      key="selection"
-                      rowspan="3"
-                      type="action"
-                    >
-                      <span
-                        class="ant-table-header-column"
-                      >
-                        <div>
-                          <span
-                            class="ant-table-column-title"
-                          />
-                          <span
-                            class="ant-table-column-sorter"
-                          />
-                        </div>
-                      </span>
-                    </th>
-                    <th
                       bg="primary"
-                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral header-cell-first header-cell-hidden  header-cell-default header-cell-default-border"
+                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral header-cell-first  header-cell-default header-cell-default-border"
                       colspan="1"
-                      hidden="hidden"
                       isfirst="true"
                       key="age"
                       type="default"
@@ -1368,9 +790,8 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     </th>
                     <th
                       bg="secondary"
-                      class="header-cell header-cell-bg-secondary header-cell-text-color-neutral header-cell-last header-cell-hidden  header-cell-default"
+                      class="header-cell header-cell-bg-secondary header-cell-text-color-neutral header-cell-last  header-cell-default ant-table-row-cell-last"
                       colspan="1"
-                      hidden="hidden"
                       islast="true"
                       key="address"
                       type="default"
@@ -1390,56 +811,13 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                         </div>
                       </span>
                     </th>
-                    <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-action ant-table-row-cell-last"
-                      colspan="1"
-                      key="filter"
-                      type="action"
-                    >
-                      <span
-                        class="ant-table-header-column"
-                      >
-                        <div>
-                          <span
-                            class="ant-table-column-title"
-                          >
-                            <span>
-                              <i
-                                aria-label="icon: eye"
-                                class="dropdown-action anticon anticon-eye ant-dropdown-trigger"
-                                tabindex="-1"
-                              >
-                                <svg
-                                  aria-hidden="true"
-                                  class=""
-                                  data-icon="eye"
-                                  fill="currentColor"
-                                  focusable="false"
-                                  height="1em"
-                                  viewBox="64 64 896 896"
-                                  width="1em"
-                                >
-                                  <path
-                                    d="M942.2 486.2C847.4 286.5 704.1 186 512 186c-192.2 0-335.4 100.5-430.2 300.3a60.3 60.3 0 0 0 0 51.5C176.6 737.5 319.9 838 512 838c192.2 0 335.4-100.5 430.2-300.3 7.7-16.2 7.7-35 0-51.5zM512 766c-161.3 0-279.4-81.8-362.7-254C232.6 339.8 350.7 258 512 258c161.3 0 279.4 81.8 362.7 254C791.5 684.2 673.4 766 512 766zm-4-430c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm0 288c-61.9 0-112-50.1-112-112s50.1-112 112-112 112 50.1 112 112-50.1 112-112 112z"
-                                  />
-                                </svg>
-                              </i>
-                            </span>
-                          </span>
-                          <span
-                            class="ant-table-column-sorter"
-                          />
-                        </div>
-                      </span>
-                    </th>
                   </tr>
                   <tr>
                     <th
                       bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-hidden  header-cell-other header-cell-sub-border"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first  header-cell-other header-cell-sub-border"
                       colspan="1"
-                      hidden="hidden"
+                      isfirst="true"
                       type="sub"
                     >
                       <span
@@ -1457,9 +835,9 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     </th>
                     <th
                       bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-hidden  header-cell-other header-cell-sub-border"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first  header-cell-other header-cell-sub-border ant-table-row-cell-last"
                       colspan="1"
-                      hidden="hidden"
+                      isfirst="true"
                       type="sub"
                     >
                       <span
@@ -1477,33 +855,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                         </div>
                       </span>
                     </th>
-                    <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-action ant-table-row-cell-break-word ant-table-row-cell-last"
-                      rowspan="2"
-                      type="action"
-                    >
-                      <span
-                        class="ant-table-header-column"
-                      >
-                        <div>
-                          <span
-                            class="ant-table-column-title"
-                          />
-                          <span
-                            class="ant-table-column-sorter"
-                          />
-                        </div>
-                      </span>
-                    </th>
                   </tr>
                   <tr>
                     <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first header-cell-hidden  header-cell-other header-cell-summary header-cell-summary-border header-cell-summary-border-first"
-                      hidden="hidden"
-                      isfirst="true"
-                      type="summary"
+                      bg="primary"
+                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral  header-cell-default header-cell-default-border ant-table-row-cell-break-word"
+                      type="default"
                     >
                       <span
                         class="ant-table-header-column"
@@ -1521,11 +878,9 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                       </span>
                     </th>
                     <th
-                      bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-last header-cell-hidden  header-cell-other header-cell-summary header-cell-summary-border header-cell-summary-border-last"
-                      hidden="hidden"
-                      islast="true"
-                      type="summary"
+                      bg="primary"
+                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral  header-cell-default header-cell-default-border ant-table-row-cell-last"
+                      type="default"
                     >
                       <span
                         class="ant-table-header-column"
@@ -1557,17 +912,9 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
               >
                 <colgroup>
                   <col
-                    style="width: 32px; min-width: 32px;"
+                    style="width: 150px; min-width: 150px;"
                   />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 0px; min-width: 0px;"
-                  />
-                  <col
-                    style="width: 32px; min-width: 32px;"
-                  />
+                  <col />
                 </colgroup>
                 <tbody
                   class="ant-table-tbody"
@@ -1577,61 +924,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="1"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1639,61 +939,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="2"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1701,61 +954,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="3"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1763,61 +969,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="4"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1825,61 +984,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="5"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1887,61 +999,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="6"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -1949,61 +1014,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="7"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -2011,61 +1029,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="8"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -2073,61 +1044,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="9"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       New York No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                   <tr
@@ -2135,61 +1059,14 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="10"
                   >
                     <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <svg
-                        height="18"
-                        width="18"
-                      >
-                        <circle
-                          cx="9"
-                          cy="9"
-                          fill="transparent"
-                          r="7"
-                          stroke="black"
-                          stroke-width="1"
-                        />
-                      </svg>
-                    </td>
-                    <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class="ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class="body-cell-hidden"
-                      hidden="hidden"
+                      class=""
                     >
                       London No. 1 Lake Park
-                    </td>
-                    <td
-                      class="body-cell-action ant-table-row-cell-break-word"
-                      type="action"
-                    >
-                      <span>
-                        <i
-                          aria-label="icon: more"
-                          class="dropdown-action anticon anticon-more ant-dropdown-trigger"
-                        >
-                          <svg
-                            aria-hidden="true"
-                            class=""
-                            data-icon="more"
-                            fill="currentColor"
-                            focusable="false"
-                            height="1em"
-                            style="transform: rotate(90deg);"
-                            viewBox="64 64 896 896"
-                            width="1em"
-                          >
-                            <path
-                              d="M456 231a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0zm0 280a56 56 0 1 0 112 0 56 56 0 1 0-112 0z"
-                            />
-                          </svg>
-                        </i>
-                      </span>
                     </td>
                   </tr>
                 </tbody>
