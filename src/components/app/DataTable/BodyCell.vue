@@ -20,14 +20,18 @@ export default class BodyCell extends Vue {
   }
 
   get cls(): string {
-    if (this.type === 'action') return 'body-cell-action';
+    let cls = 'body-cell';
+    if (this.type === 'action') cls = `${cls} body-cell-action`;
     if (this.hidden) return 'body-cell-hidden';
-    return '';
+    return cls;
   }
 }
 </script>
 
 <style scoped>
+.body-cell {
+  @apply whitespace-nowrap !important;
+}
 .body-cell-hidden {
   @apply hidden !important;
 }
