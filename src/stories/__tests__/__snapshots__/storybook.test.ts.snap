@@ -573,12 +573,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="1"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -588,12 +588,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="2"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -603,12 +603,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="3"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -618,12 +618,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="4"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -633,12 +633,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="5"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -648,12 +648,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="6"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -663,12 +663,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="7"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -678,12 +678,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="8"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -693,12 +693,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="9"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -708,12 +708,12 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     data-row-key="10"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -815,7 +815,7 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                   <tr>
                     <th
                       bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first  header-cell-other header-cell-sub-border"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-other header-cell-sub-border"
                       colspan="1"
                       isfirst="true"
                       type="sub"
@@ -835,9 +835,9 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     </th>
                     <th
                       bg="transparent"
-                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first  header-cell-other header-cell-sub-border ant-table-row-cell-last"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark  header-cell-other header-cell-sub-border ant-table-row-cell-last"
                       colspan="1"
-                      isfirst="true"
+                      islast="true"
                       type="sub"
                     >
                       <span
@@ -858,9 +858,10 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                   </tr>
                   <tr>
                     <th
-                      bg="primary"
-                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral  header-cell-default header-cell-default-border ant-table-row-cell-break-word"
-                      type="default"
+                      bg="transparent"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-first  header-cell-other header-cell-summary header-cell-summary-border header-cell-summary-border-first ant-table-row-cell-break-word"
+                      isfirst="true"
+                      type="summary"
                     >
                       <span
                         class="ant-table-header-column"
@@ -878,9 +879,10 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                       </span>
                     </th>
                     <th
-                      bg="primary"
-                      class="header-cell header-cell-bg-primary header-cell-text-color-neutral  header-cell-default header-cell-default-border ant-table-row-cell-last"
-                      type="default"
+                      bg="transparent"
+                      class="header-cell header-cell-bg-transparent header-cell-text-color-dark header-cell-last  header-cell-other header-cell-summary header-cell-summary-border header-cell-summary-border-last ant-table-row-cell-last"
+                      islast="true"
+                      type="summary"
                     >
                       <span
                         class="ant-table-header-column"
@@ -924,12 +926,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="1"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -939,12 +941,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="2"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -954,12 +956,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="3"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -969,12 +971,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="4"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -984,12 +986,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="5"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -999,12 +1001,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="6"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -1014,12 +1016,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="7"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -1029,12 +1031,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="8"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>
@@ -1044,12 +1046,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="9"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       32
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       New York No. 1 Lake Park
                     </td>
@@ -1059,12 +1061,12 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     data-row-key="10"
                   >
                     <td
-                      class="ant-table-row-cell-break-word"
+                      class="body-cell ant-table-row-cell-break-word"
                     >
                       42
                     </td>
                     <td
-                      class=""
+                      class="body-cell"
                     >
                       London No. 1 Lake Park
                     </td>

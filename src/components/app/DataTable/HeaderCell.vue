@@ -40,12 +40,12 @@ export default class HeaderCell extends Vue {
   }
 
   get firstCellCls(): string {
-    if (this.isFirst) return 'header-cell-first';
+    if (this.isFirst && this.type !== 'sub') return 'header-cell-first';
     return '';
   }
 
   get lastCellCls(): string {
-    if (this.isLast) return 'header-cell-last';
+    if (this.isLast && this.type !== 'sub') return 'header-cell-last';
     return '';
   }
 

@@ -6,37 +6,49 @@ export class HeaderStyleResolver implements TableResolver {
 
   resolve(ctx: TableColumn[]): TableColumn[] {
     const columns = [...ctx];
-    const transformChildren = (childColumns: TableColumn[], isFirst = false): TableColumn[] => {
+    const transformChildren = (
+      childColumns: TableColumn[],
+      parentIndex: number,
+      parentLength: number,
+    ): TableColumn[] => {
       const itsChildColumns = [...childColumns];
-      return itsChildColumns.map((itsChildCol: TableColumn) => ({
-        ...itsChildCol,
-        customHeaderCell: () => {
-          const { background: bg, type, customHeaderCell } = itsChildCol;
-          const edgeStyle = {
-            isFirst,
-            isLast: !isFirst,
-          };
-          if (customHeaderCell) {
-            const itsCustomHeaderCell = customHeaderCell();
+      return itsChildColumns.map((itsChildCol: TableColumn) => {
+        const itsChildColumn = {
+          ...itsChildCol,
+          customHeaderCell: () => {
+            const { background: bg, type, customHeaderCell } = itsChildCol;
+            const edgeStyle = {
+              isFirst: !parentIndex,
+              isLast: parentLength - 1 === parentIndex,
+            };
+            if (customHeaderCell) {
+              const itsCustomHeaderCell = customHeaderCell();
+              return {
+                ...itsCustomHeaderCell,
+                props: {
+                  ...itsCustomHeaderCell.props,
+                  bg,
+                  type,
+                  ...edgeStyle,
+                },
+              };
+            }
             return {
-              ...itsCustomHeaderCell,
               props: {
-                ...itsCustomHeaderCell.props,
                 bg,
                 type,
                 ...edgeStyle,
               },
             };
-          }
+          },
+        };
+        if (itsChildColumn.children?.length)
           return {
-            props: {
-              bg,
-              type,
-              ...edgeStyle,
-            },
+            ...itsChildColumn,
+            children: [...transformChildren(itsChildColumn.children, parentIndex, parentLength)],
           };
-        },
-      }));
+        return itsChildColumn;
+      });
     };
     const itsColumns = columns.map((col: TableColumn, index) => {
       const itsHeaderCell = {
@@ -60,7 +72,8 @@ export class HeaderStyleResolver implements TableResolver {
         ...col,
         ...itsHeaderCell,
       };
-      if (itsCol.children?.length) return { ...itsCol, children: [...transformChildren(itsCol.children, true)] };
+      if (itsCol.children?.length)
+        return { ...itsCol, children: [...transformChildren(itsCol.children, index, columns.length)] };
       return itsCol;
     });
     if (this.nextResolver) {
