@@ -85,7 +85,7 @@ export default class HeaderCell extends Vue {
   @apply hidden !important;
 }
 .header-cell {
-  @apply px-2 font-primary !important;
+  @apply px-2 font-primary whitespace-nowrap !important;
 }
 .header-cell-bg-primary {
   background-color: #ce423b;
