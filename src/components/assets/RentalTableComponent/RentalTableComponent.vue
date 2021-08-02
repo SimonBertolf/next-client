@@ -1,17 +1,10 @@
 <template>
-  <data-table
-    :columns="columns"
-    :hasFilter="false"
-    :scroll="{ x: true }"
-    :data="rentals"
-    :row-selection="{ onChange: rowSelection }"
-    :loading="loading"
-  />
+  <data-table :columns="columns" :data="rentals" :loading="loading" />
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
-import { Rental } from '@/models';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import type { Rental } from '@/models';
 import { TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
 
@@ -20,16 +13,6 @@ export default class RentalTableComponent extends Vue {
   @Prop({ type: Array }) rentals: Rental[];
 
   @Prop(Boolean) loading: boolean;
-
-  @Emit()
-  rowSelection(selectedRows: Rental[]): Rental[] {
-    return selectedRows;
-  }
-
-  @Emit()
-  rowAction(key: string, row: Rental): { key: string; row: Rental } {
-    return { key, row };
-  }
 
   get columns(): TableColumn[] {
     return [
@@ -222,31 +205,6 @@ export default class RentalTableComponent extends Vue {
       (accumulator: number, rental: Rental) => Number(accumulator) + Number(rental.netRent),
       0,
     );
-  }
-
-  get rowActionOptions(): Array<{ key: string; label: string }> {
-    return [
-      {
-        key: 'edit',
-        label: 'Bearbeiten',
-      },
-      {
-        key: 'delete',
-        label: 'Löschen',
-      },
-      {
-        key: 'copy',
-        label: 'Kopieren',
-      },
-      {
-        key: 'contracts',
-        label: 'Verträge & Sollstellungen',
-      },
-      {
-        key: 'history',
-        label: 'Historie',
-      },
-    ];
   }
 }
 </script>

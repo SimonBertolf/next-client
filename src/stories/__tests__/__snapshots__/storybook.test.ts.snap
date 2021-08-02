@@ -469,6 +469,10 @@ exports[`Storyshots app/ColumnLayout Example 1`] = `
 exports[`Storyshots app/DataTable Example 1`] = `
 <div
   class="w-full ant-table-wrapper"
+  hasfilter="true"
+  row-selection="[object Object]"
+  rowaction="[object Object]"
+  scroll="[object Object]"
 >
   <div
     class="ant-spin-nested-loading"
@@ -477,7 +481,7 @@ exports[`Storyshots app/DataTable Example 1`] = `
       class="ant-spin-container"
     >
       <div
-        class="ant-table ant-table-fixed-header ant-table-scroll-position-left ant-table-layout-fixed ant-table-default"
+        class="ant-table ant-table-scroll-position-left ant-table-default"
       >
         <div
           class="ant-table-content"
@@ -485,8 +489,11 @@ exports[`Storyshots app/DataTable Example 1`] = `
           <div
             class="ant-table-scroll"
           >
+            <!---->
             <div
-              class="ant-table-header"
+              class="ant-table-body custom-table-scrollbar"
+              style="overflow-x: scroll;"
+              tabindex="-1"
             >
               <table
                 class="ant-table-fixed"
@@ -548,23 +555,6 @@ exports[`Storyshots app/DataTable Example 1`] = `
                     </th>
                   </tr>
                 </thead>
-              </table>
-            </div>
-            <div
-              class="ant-table-body custom-table-scrollbar"
-              style="overflow-x: scroll; max-height: 304px; overflow-y: scroll;"
-              tabindex="-1"
-            >
-              <table
-                class="ant-table-fixed"
-                style="width: auto;"
-              >
-                <colgroup>
-                  <col
-                    style="width: 150px; min-width: 150px;"
-                  />
-                  <col />
-                </colgroup>
                 <tbody
                   class="ant-table-tbody"
                 >
@@ -739,6 +729,10 @@ exports[`Storyshots app/DataTable Example 1`] = `
 exports[`Storyshots app/DataTable Example With Children 1`] = `
 <div
   class="w-full ant-table-wrapper"
+  hasfilter="true"
+  row-selection="[object Object]"
+  rowaction="[object Object]"
+  scroll="[object Object]"
 >
   <div
     class="ant-spin-nested-loading"
@@ -747,7 +741,7 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
       class="ant-spin-container"
     >
       <div
-        class="ant-table ant-table-fixed-header ant-table-scroll-position-left ant-table-layout-fixed ant-table-default"
+        class="ant-table ant-table-scroll-position-left ant-table-default"
       >
         <div
           class="ant-table-content"
@@ -755,8 +749,11 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
           <div
             class="ant-table-scroll"
           >
+            <!---->
             <div
-              class="ant-table-header"
+              class="ant-table-body custom-table-scrollbar"
+              style="overflow-x: scroll;"
+              tabindex="-1"
             >
               <table
                 class="ant-table-fixed"
@@ -908,23 +905,6 @@ exports[`Storyshots app/DataTable Example With Children 1`] = `
                     </th>
                   </tr>
                 </thead>
-              </table>
-            </div>
-            <div
-              class="ant-table-body custom-table-scrollbar"
-              style="overflow-x: scroll; max-height: 304px; overflow-y: scroll;"
-              tabindex="-1"
-            >
-              <table
-                class="ant-table-fixed"
-                style="width: auto;"
-              >
-                <colgroup>
-                  <col
-                    style="width: 150px; min-width: 150px;"
-                  />
-                  <col />
-                </colgroup>
                 <tbody
                   class="ant-table-tbody"
                 >

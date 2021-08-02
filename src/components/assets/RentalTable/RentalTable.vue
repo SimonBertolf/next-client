@@ -1,10 +1,5 @@
 <template>
-  <rental-table-component
-    @row-selection="handleRowSelection"
-    @row-action="handleRowAction"
-    :rentals="rentals"
-    :loading="loading"
-  />
+  <rental-table-component :rentals="rentals" :loading="loading" />
 </template>
 
 <script lang="ts">
@@ -26,14 +21,6 @@ export default class RentalTable extends Vue {
 
   get rentals(): Rental[] {
     return this.$store.state.Rentals.rentals;
-  }
-
-  handleRowSelection(): void {
-    // console.log(selectedRows);
-  }
-
-  handleRowAction(): void {
-    // console.log({ key, row });
   }
 }
 </script>
