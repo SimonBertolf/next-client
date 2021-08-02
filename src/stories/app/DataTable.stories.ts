@@ -1,5 +1,4 @@
 import { TemplateInterface } from '@/types';
-import { action } from '@storybook/addon-actions';
 import { DataTable } from '@/components/app';
 
 export default {
@@ -22,7 +21,6 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
 export const Example = Template.bind({});
 
 Example.args = {
-  
   columns: [
     {
       title: 'Age',
