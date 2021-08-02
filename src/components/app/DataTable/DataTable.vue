@@ -6,8 +6,9 @@
     :columns="itsColumns"
     :data-source="data"
     :scroll="scroll"
-    :pagination="false"
+    :pagination="{ pageSize: 5, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
     :loading="{ indicator: spinnerComponent, spinning: loading }"
+    @change="change"
   >
     <template slot="selection" slot-scope="text, row">
       <row-selector :rowKey="row.key" @change="onSelectRow" />
@@ -311,6 +312,11 @@ export default class DataTable extends Vue {
     return { dataIndex, dir };
   }
 
+  @Emit()
+  change(...args: unknown[]): unknown {
+    return { ...args };
+  }
+
   @Watch('selectedFilterOptions', { deep: true, immediate: true })
   handleFilterChange(val: string[], oldVal: string[]): void {
     if (!_.isEqual(val, oldVal)) {
@@ -552,8 +558,20 @@ export default class DataTable extends Vue {
 }
 </script>
 
-<style scoped>
-.body-cell-hidden {
-  @apply hidden;
+<style>
+.data-table-pagination > .ant-pagination-item-active {
+  @apply border-primary !important;
+}
+.data-table-pagination > .ant-pagination-item-active > a {
+  @apply text-primary !important;
+}
+.data-table-pagination > .ant-pagination-item > a {
+  @apply hover:text-primary !important;
+}
+.data-table-pagination > li:not(.ant-pagination-disabled) > a {
+  @apply hover:text-primary !important;
+}
+.data-table-pagination > .ant-pagination-item:hover a {
+  @apply text-primary !important;
 }
 </style>

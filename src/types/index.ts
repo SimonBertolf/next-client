@@ -16,3 +16,4 @@ export * from './Filter';
 export * from './Translation';
 export * from './SubNavItem';
 export * from './Chart';
+export * from './Pagination';

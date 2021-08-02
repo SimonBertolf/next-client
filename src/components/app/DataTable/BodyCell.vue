@@ -1,5 +1,5 @@
 <template>
-  <td v-bind="{ ...$attrs, ...restProps }" :class="cls">
+  <td v-bind="{ ...$attrs, ...restProps }">
     <slot></slot>
   </td>
 </template>
