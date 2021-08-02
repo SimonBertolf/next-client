@@ -14,10 +14,6 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
   template: `
     <DataTable
       :columns="columns"
-      :row-selection="{ onChange: handleChange }"
-      :rowAction="rowAction"
-      :hasFilter="true"
-      :scroll="{ x: true, y: 304 }"
       :data="data"
     ></DataTable>
     `,
@@ -26,18 +22,7 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
 export const Example = Template.bind({});
 
 Example.args = {
-  rowAction: {
-    options: [
-      {
-        key: 'example',
-        label: 'Example',
-      },
-    ],
-    onSelect: () => action('selected'),
-  },
-  handleChange: () => {
-    action('row-selected');
-  },
+  
   columns: [
     {
       title: 'Age',
@@ -50,126 +35,6 @@ Example.args = {
       dataIndex: 'address',
       background: 'secondary',
       key: 'address',
-    },
-  ],
-  data: [
-    {
-      _id: '1',
-      age: 32,
-      example: 'example',
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      _id: '2',
-      age: 42,
-      example: 'example',
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      _id: '3',
-      age: 32,
-      example: 'example',
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      _id: '4',
-      age: 42,
-      example: 'example',
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      _id: '5',
-      age: 32,
-      example: 'example',
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      _id: '6',
-      age: 42,
-      example: 'example',
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      _id: '7',
-      age: 32,
-      example: 'example',
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      _id: '8',
-      age: 42,
-      example: 'example',
-      address: 'London No. 1 Lake Park',
-    },
-    {
-      _id: '9',
-      age: 32,
-      example: 'example',
-      address: 'New York No. 1 Lake Park',
-    },
-    {
-      _id: '10',
-      age: 42,
-      example: 'example',
-      address: 'London No. 1 Lake Park',
-    },
-  ],
-};
-
-export const ExampleWithChildren = Template.bind({});
-
-ExampleWithChildren.args = {
-  rowAction: {
-    options: [
-      {
-        key: 'example',
-        label: 'Example',
-      },
-    ],
-    onSelect: () => action('selected'),
-  },
-  handleChange: () => {
-    action('row-selected');
-  },
-  columns: [
-    {
-      title: 'Age',
-      key: 'age',
-      children: [
-        {
-          type: 'sub',
-          background: 'transparent',
-          children: [
-            {
-              title: 'Total',
-              background: 'transparent',
-              type: 'summary',
-              dataIndex: 'age',
-              width: 150,
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: 'Address',
-      background: 'secondary',
-      key: 'address',
-      children: [
-        {
-          title: 'example',
-          type: 'sub',
-          background: 'transparent',
-          children: [
-            {
-              title: '4342',
-              background: 'transparent',
-              type: 'summary',
-              dataIndex: 'address',
-            },
-          ],
-        },
-      ],
     },
   ],
   data: [
