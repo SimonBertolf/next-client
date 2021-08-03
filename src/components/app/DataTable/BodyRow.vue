@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts">
-// TODO: remove all any's and following comment!
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
@@ -22,7 +20,7 @@ export default class BodyRow extends Vue {
   border-color: #cbcbcb;
   @apply font-primary px-2 py-2 text-dark border-b bg-transparent !important;
 }
-.body-row:hover > td:not(.body-cell-action) {
+.body-row:hover > td {
   background-color: #f0f0f0 !important;
 }
 </style>

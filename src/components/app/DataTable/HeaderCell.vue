@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts">
-// TODO: remove all any's and following comment!
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
@@ -18,8 +16,6 @@ export default class HeaderCell extends Vue {
   @Prop({ type: Boolean, default: false }) isFirst: boolean;
 
   @Prop({ type: Boolean, default: false }) isLast: boolean;
-
-  @Prop({ type: Boolean, default: false }) hidden: boolean;
 
   get restProps(): Record<string, unknown> {
     const { ...restProps } = this.$props;
@@ -65,7 +61,6 @@ export default class HeaderCell extends Vue {
       if (this.isFirst) cls = `${cls} header-cell-summary-border-first`;
       if (this.isLast) cls = `${cls} header-cell-summary-border-last`;
     }
-    if (this.type === 'action') cls = `${cls} header-cell-action`;
     return cls;
   }
 
@@ -73,7 +68,6 @@ export default class HeaderCell extends Vue {
     let cls = `header-cell ${this.background} ${this.color}`;
     if (this.firstCellCls) cls = `${cls} ${this.firstCellCls}`;
     if (this.lastCellCls) cls = `${cls} ${this.lastCellCls}`;
-    if (this.hidden) cls = `${cls} header-cell-hidden`;
     cls = `${cls} ${this.typeCls}`;
     return cls;
   }
@@ -81,9 +75,6 @@ export default class HeaderCell extends Vue {
 </script>
 
 <style scoped>
-.header-cell-hidden {
-  @apply hidden !important;
-}
 .header-cell {
   @apply px-2 font-primary whitespace-nowrap !important;
 }
@@ -132,8 +123,5 @@ export default class HeaderCell extends Vue {
 }
 .header-cell-summary-border-last {
   @apply border-dark border-r !important;
-}
-.header-cell-action {
-  @apply border-none py-1 !important;
 }
 </style>

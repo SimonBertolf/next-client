@@ -13,38 +13,14 @@
 </template>
 
 <script lang="ts">
-// TODO: remove all any's and following comment!
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { TableColumn, TableData } from '@/types';
-import { VNode, VNodeData } from 'vue';
+import { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
+import { VNode } from 'vue';
 import { TableResolver, HeaderStyleResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
-import HeaderRow from './HeaderRow.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
-import BodyCell from './BodyCell.vue';
-
-interface TableRenderer {
-  (node: unknown, props: VNodeData, c: unknown): VNode;
-}
-interface TableComponentRenderer {
-  (h: TableRenderer, p: Record<string, unknown>, c: unknown): VNode;
-}
-interface TableComponents {
-  table?: TableComponentRenderer;
-  header?: {
-    cell?: TableComponentRenderer;
-    row?: TableComponentRenderer;
-    wrapper?: TableComponentRenderer;
-  };
-  body?: {
-    cell?: TableComponentRenderer;
-    row?: TableComponentRenderer;
-    wrapper?: TableComponentRenderer;
-  };
-}
 
 @Component
 export default class DataTable extends Vue {
@@ -57,10 +33,8 @@ export default class DataTable extends Vue {
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
-    const headerRow: TableComponentRenderer = (h, p, c) => h(HeaderRow, { ...p }, c);
     const bodyRow: TableComponentRenderer = (h, p, c) => h(BodyRow, { ...p }, c);
-    const bodyCell: TableComponentRenderer = (h, p, c) => h(BodyCell, { ...p }, c);
-    return { table, header: { cell, row: headerRow }, body: { row: bodyRow, cell: bodyCell } };
+    return { table, header: { cell }, body: { row: bodyRow } };
   }
 
   get spinnerComponent(): VNode {

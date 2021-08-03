@@ -5,8 +5,6 @@
 </template>
 
 <script lang="ts">
-// TODO: remove all any's and following comment!
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component } from 'vue-property-decorator';
 
 @Component
