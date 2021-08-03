@@ -37,13 +37,14 @@ abstract class GenericLegacyRepository<Model> implements IRepository<Model> {
     action: string,
     params: { [key: string]: unknown },
   ): Promise<ApiModel> {
+    const controller = `${this.api}?module=${module}&action=${action}`;
     let request;
     switch (method) {
       case 'get':
-        request = this.client.get(`${this.api}?module=${module}&action=${action}`, { params });
+        request = this.client.get(controller, { params });
         break;
       case 'post':
-        request = this.client.post(`${this.api}?module=${module}&action=${action}`, { ...params });
+        request = this.client.post(controller, { ...params });
         break;
       default:
         throw Error(`request method: ${method} not implemented`);
