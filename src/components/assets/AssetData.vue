@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row w-full h-full"><rental-table :assetId="assetId" /></div>
+  <div class="flex flex-row w-full h-full pt-4"><rental-table :assetId="assetId" /></div>
 </template>
 
 <script lang="ts">

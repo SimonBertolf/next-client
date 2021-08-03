@@ -186,25 +186,19 @@ export default class RentalTableComponent extends Vue {
   }
 
   get totalCount(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => Number(accumulator) + Number(rental.count), 0);
+    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.count, 0);
   }
 
   get totalArea(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => Number(accumulator) + Number(rental.area), 0);
+    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.area, 0);
   }
 
   get totalMarketRent(): number {
-    return this.rentals.reduce(
-      (accumulator: number, rental: Rental) => Number(accumulator) + Number(rental.marketRent),
-      0,
-    );
+    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.marketRent, 0);
   }
 
   get totalNetRent(): number {
-    return this.rentals.reduce(
-      (accumulator: number, rental: Rental) => Number(accumulator) + Number(rental.netRent),
-      0,
-    );
+    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.netRent, 0);
   }
 }
 </script>

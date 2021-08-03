@@ -26,9 +26,9 @@ import BodyRow from './BodyRow.vue';
 
 @Component
 export default class DataTable extends Vue {
-  @Prop({ type: Array }) columns: TableColumn[];
+  @Prop({ type: Array, required: true }) columns: TableColumn[];
 
-  @Prop({ type: Array }) data: TableData[];
+  @Prop({ type: Array, required: true }) data: TableData[];
 
   @Prop({ type: Boolean, default: false }) loading: boolean;
 

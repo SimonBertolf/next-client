@@ -9,7 +9,7 @@ import { RentalTableComponent } from '../RentalTableComponent';
 
 @Component({ components: { RentalTableComponent } })
 export default class RentalTable extends Vue {
-  @Prop(String) assetId: string;
+  @Prop({ type: String, required: true }) assetId: string;
 
   loading = true;
 
