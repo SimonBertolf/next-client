@@ -5,7 +5,7 @@ import type { Rental } from '@/models';
 
 @Module({ namespaced: true })
 export default class Rentals extends VuexModule {
-  public rentals: Rental[] = []; // TODO: get assets from repository (or Repository mock)
+  public rentals: Rental[] = [];
 
   @Inject('RentalRepository')
   private rentalRepository: IRepository<Rental>;
@@ -21,11 +21,9 @@ export default class Rentals extends VuexModule {
       .list({ filter: { assetId } })
       .then((rentals: Rental[]) => {
         this.context.commit('setRentals', rentals);
-        return Promise.resolve();
       })
       .catch((error) => {
         this.context.commit('Errors/setError', error, { root: true });
-        return Promise.reject();
       });
   }
 }
