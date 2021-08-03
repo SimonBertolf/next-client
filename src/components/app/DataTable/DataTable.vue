@@ -1,15 +1,17 @@
 <template>
-  <a-table
-    class="w-full"
-    :row-key="(record) => record._id"
-    :components="itsComponents"
-    :columns="itsColumns"
-    :data-source="data"
-    :scroll="{ x: true }"
-    :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
-    :loading="{ indicator: spinnerComponent, spinning: loading }"
-  >
-  </a-table>
+  <div class="data-table">
+    <a-table
+      class="w-full"
+      :row-key="(record) => record._id"
+      :components="itsComponents"
+      :columns="itsColumns"
+      :data-source="data"
+      :scroll="{ x: true }"
+      :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
+      :loading="{ indicator: spinnerComponent, spinning: loading }"
+    >
+    </a-table>
+  </div>
 </template>
 
 <script lang="ts">
@@ -55,6 +57,9 @@ export default class DataTable extends Vue {
 </script>
 
 <style>
+.data-table {
+  @apply w-full;
+}
 .data-table-pagination > .ant-pagination-item-active {
   @apply border-primary !important;
 }
