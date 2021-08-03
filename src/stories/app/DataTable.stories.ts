@@ -1,4 +1,4 @@
-import { TemplateInterface } from '@/types';
+import type { TemplateInterface } from '@/types';
 import { DataTable } from '@/components/app';
 
 export default {

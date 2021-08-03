@@ -1,6 +1,6 @@
-import { QueryInterface } from '@/types';
+import type { QueryInterface } from '@/types';
 import axios, { AxiosStatic } from 'axios';
-import { IRepository } from '../../interfaces';
+import type { IRepository } from '../../interfaces';
 
 abstract class GenericLegacyRepository<Model> implements IRepository<Model> {
   protected client: AxiosStatic = axios;

@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
-import { VNode } from 'vue';
+import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
+import type { VNode } from 'vue';
 import { TableResolver, HeaderStyleResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';

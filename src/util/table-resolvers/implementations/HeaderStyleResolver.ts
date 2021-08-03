@@ -1,5 +1,5 @@
-import { TableColumn } from '@/types';
-import { TableResolver } from '../TableResolver';
+import type { TableColumn } from '@/types';
+import type { TableResolver } from '../TableResolver';
 
 export class HeaderStyleResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;

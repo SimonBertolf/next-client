@@ -5,7 +5,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { Rental } from '@/models';
-import { TableColumn } from '@/types';
+import type { TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
 
 @Component({ components: { DataTable } })

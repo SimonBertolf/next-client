@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { Rental } from '@/models';
+import type { Rental } from '@/models';
 import { RentalTableComponent } from '../RentalTableComponent';
 
 @Component({ components: { RentalTableComponent } })
