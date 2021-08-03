@@ -1,4 +1,4 @@
-import { TableColumn } from '@/types';
+import type { TableColumn } from '@/types';
 
 export interface TableResolver {
   resolve(ctx: TableColumn[]): TableColumn[];

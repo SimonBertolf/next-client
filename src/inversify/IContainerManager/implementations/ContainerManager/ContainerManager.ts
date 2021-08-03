@@ -1,6 +1,6 @@
 import { container, Container } from 'inversify-props';
-import { ConstructorType } from '@/types';
-import { ApiLayout, Asset, Dashboard, Report, Rental } from '@/models';
+import type { ConstructorType } from '@/types';
+import type { ApiLayout, Asset, Dashboard, Report, Rental } from '@/models';
 import {
   IDomDocument,
   DomDocument,

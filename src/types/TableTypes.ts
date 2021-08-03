@@ -1,4 +1,4 @@
-import { VNode, VNodeData } from 'vue';
+import type { VNode, VNodeData } from 'vue';
 
 export interface TableRenderer {
   (node: unknown, props: VNodeData, c: unknown): VNode;

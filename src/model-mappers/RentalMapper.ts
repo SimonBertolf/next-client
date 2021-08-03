@@ -1,5 +1,5 @@
-import { ApiRental, Rental } from '@/models';
-import { ModelMapper } from './ModelMapper';
+import type { ApiRental, Rental } from '@/models';
+import type { ModelMapper } from './ModelMapper';
 
 export const rentalFromApiRental: ModelMapper<ApiRental, Rental> = (apiRental: ApiRental): Rental => {
   const { MietObjektID, MONr, MietTyp, tenant, Anzahl, Flaeche, Beginn, Ende, netm2, marketrent } = apiRental;

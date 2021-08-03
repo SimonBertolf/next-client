@@ -1,6 +1,6 @@
-import { GridBreakpoint } from 'vue-grid-layout';
+import type { GridBreakpoint } from 'vue-grid-layout';
 import { WidgetAppearance, WidgetLayoutItem, ResponsiveWidgetLayoutItems, gridBreakpoints, WidgetType } from '@/types';
-import { ModelMapper } from './ModelMapper';
+import type { ModelMapper } from './ModelMapper';
 
 export const responsiveLayoutFromApiWidgets: ModelMapper<WidgetAppearance[], ResponsiveWidgetLayoutItems> = (
   apiWidgets: WidgetAppearance[],
