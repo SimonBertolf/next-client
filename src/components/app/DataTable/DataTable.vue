@@ -11,7 +11,7 @@
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
       <template slot="selection" slot-scope="text, row">
-        <row-selector :rowKey="row.key" @change="onSelectRow" />
+        <row-selector :checked="isChecked(row._id)" :rowKey="row._id" @change="onSelectRow" />
       </template>
     </a-table>
   </div>
@@ -26,8 +26,9 @@ import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
+import RowSelector from './RowSelector.vue';
 
-@Component
+@Component({ components: { RowSelector } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -67,15 +68,21 @@ export default class DataTable extends Vue {
     return resolver;
   }
 
-  onSelectRow({ rowKey }: { checked: boolean; rowKey: string }): void {
-    const row = this.selectedRows.find(({ key }) => key === rowKey);
+  onSelectRow(rowKey: string): void {
+    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
     if (row) {
-      this.selectedRows = this.selectedRows.filter(({ key }) => key !== rowKey);
+      this.selectedRows = this.selectedRows.filter(({ _id }) => _id !== rowKey);
     } else {
-      const selectedRow = this.data.find(({ key }) => key === rowKey);
+      const selectedRow = this.data.find(({ _id }) => _id === rowKey);
       if (selectedRow) this.selectedRows = [...this.selectedRows, selectedRow];
     }
     this.rowSelection?.onChange([...this.selectedRows]);
+  }
+
+  isChecked(rowKey: string): boolean {
+    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
+    if (row) return true;
+    return false;
   }
 }
 </script>

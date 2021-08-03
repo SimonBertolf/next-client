@@ -9,29 +9,18 @@ import { Vue, Component, Emit, Prop } from 'vue-property-decorator';
 
 @Component
 export default class RowSelector extends Vue {
-  @Prop(String) readonly rowKey: string;
+  @Prop({ type: String, required: true }) readonly rowKey: string;
 
-  checked = false;
+  @Prop({ type: Boolean, required: true }) readonly checked: boolean;
 
-  fill = 'transparent';
-
-  mounted(): void {
-    if (this.checked) {
-      this.fill = '#28304D';
-    } else {
-      this.fill = 'transparent';
-    }
+  get fill(): string {
+    if (this.checked) return '#28304D';
+    return 'transparent';
   }
 
   @Emit()
-  change(): { checked: boolean; rowKey: string } {
-    this.checked = !this.checked;
-    if (this.checked) {
-      this.fill = '#28304D';
-    } else {
-      this.fill = 'transparent';
-    }
-    return { checked: this.checked, rowKey: this.rowKey };
+  change(): string {
+    return this.rowKey;
   }
 }
 </script>

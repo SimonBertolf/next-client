@@ -6,9 +6,26 @@ export class RowSelectionResolver implements TableResolver {
 
   resolve(ctx: TableColumn[]): TableColumn[] {
     const columns = [...ctx];
-
-    if (this.nextResolver) return this.nextResolver.resolve([...columns]);
-    return columns;
+    const rowSelectionColumn = {
+      key: 'selection',
+      children: [
+        {
+          type: 'sub',
+          background: 'transparent',
+          children: [
+            {
+              type: 'summary',
+              background: 'transparent',
+              width: 16,
+              scopedSlots: { customRender: 'selection' },
+            },
+          ],
+        },
+      ],
+    };
+    const itsColumns = [{ ...rowSelectionColumn }, ...columns];
+    if (this.nextResolver) return this.nextResolver.resolve([...itsColumns]);
+    return itsColumns;
   }
 
   setNext(resolver: TableResolver): void {

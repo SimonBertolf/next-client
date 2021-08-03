@@ -1,9 +1,9 @@
 <template>
-  <data-table :columns="columns" :data="rentals" :loading="loading" />
+  <data-table :columns="columns" :data="rentals" :loading="loading" :rowSelection="{ onChange: selectRentals }" />
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import type { Rental } from '@/models';
 import type { TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
@@ -14,7 +14,12 @@ export default class RentalTableComponent extends Vue {
 
   @Prop({ type: Object, required: true }) summary: Pick<Rental, 'count' | 'area' | 'marketRent' | 'netRent'>;
 
-  @Prop(Boolean) loading: boolean;
+  @Prop({ type: Boolean, default: false }) loading: boolean;
+
+  @Emit()
+  selectRentals(selectedRentals: Rental[]): Rental[] {
+    return selectedRentals;
+  }
 
   get columns(): TableColumn[] {
     const { count, area, marketRent, netRent } = this.summary;
