@@ -10,6 +10,9 @@
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
+      <template slot="selection" slot-scope="text, row">
+        <row-selector :rowKey="row.key" @change="onSelectRow" />
+      </template>
     </a-table>
   </div>
 </template>
@@ -18,7 +21,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver } from '@/util';
+import { TableResolver, HeaderStyleResolver, RowSelectionResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -33,6 +36,10 @@ export default class DataTable extends Vue {
   @Prop({ type: Boolean, default: false }) loading: boolean;
 
   @Prop({ type: Number, default: 5 }) pageSize: number;
+
+  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange(selectedRows: TableData[]): void };
+
+  selectedRows: TableData[] = [];
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -50,8 +57,25 @@ export default class DataTable extends Vue {
   }
 
   get tableResolver(): TableResolver {
-    const resolver: TableResolver = new HeaderStyleResolver();
+    let resolver: TableResolver = new HeaderStyleResolver();
+    let nextResolver = null;
+    if (this.rowSelection) {
+      nextResolver = new RowSelectionResolver();
+      nextResolver.setNext(resolver);
+      resolver = nextResolver;
+    }
     return resolver;
+  }
+
+  onSelectRow({ rowKey }: { checked: boolean; rowKey: string }): void {
+    const row = this.selectedRows.find(({ key }) => key === rowKey);
+    if (row) {
+      this.selectedRows = this.selectedRows.filter(({ key }) => key !== rowKey);
+    } else {
+      const selectedRow = this.data.find(({ key }) => key === rowKey);
+      if (selectedRow) this.selectedRows = [...this.selectedRows, selectedRow];
+    }
+    this.rowSelection?.onChange([...this.selectedRows]);
   }
 }
 </script>
