@@ -10,11 +10,14 @@ import { DataTable } from '@/components/app';
 
 @Component({ components: { DataTable } })
 export default class RentalTableComponent extends Vue {
-  @Prop({ type: Array }) rentals: Rental[];
+  @Prop({ type: Array, required: true }) rentals: Rental[];
+
+  @Prop({ type: Object, required: true }) summary: Pick<Rental, 'count' | 'area' | 'marketRent' | 'netRent'>;
 
   @Prop(Boolean) loading: boolean;
 
   get columns(): TableColumn[] {
+    const { count, area, marketRent, netRent } = this.summary;
     return [
       {
         title: 'Nr.',
@@ -76,11 +79,11 @@ export default class RentalTableComponent extends Vue {
             background: 'transparent',
             children: [
               {
-                title: this.$options.filters?.tableNumber(this.totalCount),
+                title: this.$options.filters?.tableNumber(count),
                 type: 'summary',
                 background: 'transparent',
                 dataIndex: 'count',
-                customRender: (text: string) => this.$options.filters?.tableNumber(Number(text)),
+                customRender: (text: string) => this.$options.filters?.tableNumber(+text),
               },
             ],
           },
@@ -96,11 +99,11 @@ export default class RentalTableComponent extends Vue {
             background: 'transparent',
             children: [
               {
-                title: this.$options.filters?.simpleNumber(this.totalArea),
+                title: this.$options.filters?.simpleNumber(area),
                 type: 'summary',
                 background: 'transparent',
                 dataIndex: 'area',
-                customRender: (text: string) => this.$options.filters?.simpleNumber(Number(text)),
+                customRender: (text: string) => this.$options.filters?.simpleNumber(text),
               },
             ],
           },
@@ -152,11 +155,11 @@ export default class RentalTableComponent extends Vue {
             background: 'transparent',
             children: [
               {
-                title: this.$options.filters?.tableNumber(this.totalMarketRent),
+                title: this.$options.filters?.tableNumber(marketRent),
                 type: 'summary',
                 background: 'transparent',
                 dataIndex: 'marketRent',
-                customRender: (text: string) => this.$options.filters?.tableNumber(text),
+                customRender: (text: string) => this.$options.filters?.tableNumber(+text),
               },
             ],
           },
@@ -172,33 +175,17 @@ export default class RentalTableComponent extends Vue {
             background: 'transparent',
             children: [
               {
-                title: this.$options.filters?.tableNumber(this.totalNetRent),
+                title: this.$options.filters?.tableNumber(+netRent),
                 type: 'summary',
                 background: 'transparent',
                 dataIndex: 'netRent',
-                customRender: (text: string) => this.$options.filters?.tableNumber(text),
+                customRender: (text: string) => this.$options.filters?.tableNumber(+text),
               },
             ],
           },
         ],
       },
     ];
-  }
-
-  get totalCount(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.count, 0);
-  }
-
-  get totalArea(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.area, 0);
-  }
-
-  get totalMarketRent(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.marketRent, 0);
-  }
-
-  get totalNetRent(): number {
-    return this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.netRent, 0);
   }
 }
 </script>

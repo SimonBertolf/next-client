@@ -1,5 +1,5 @@
 <template>
-  <rental-table-component :rentals="rentals" :loading="loading" />
+  <rental-table-component :rentals="rentals" :loading="loading" :summary="summary" />
 </template>
 
 <script lang="ts">
@@ -21,6 +21,14 @@ export default class RentalTable extends Vue {
 
   get rentals(): Rental[] {
     return this.$store.state.Rentals.rentals;
+  }
+
+  get summary(): Pick<Rental, 'count' | 'area' | 'marketRent' | 'netRent'> {
+    const count = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.count, 0);
+    const area = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.area, 0);
+    const marketRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.marketRent, 0);
+    const netRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.netRent, 0);
+    return { count, area, marketRent, netRent };
   }
 }
 </script>
