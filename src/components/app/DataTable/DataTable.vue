@@ -6,7 +6,7 @@
     :columns="itsColumns"
     :data-source="data"
     :scroll="{ x: true }"
-    :pagination="{ pageSize: 5, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
+    :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
     :loading="{ indicator: spinnerComponent, spinning: loading }"
   >
   </a-table>
@@ -29,6 +29,8 @@ export default class DataTable extends Vue {
   @Prop({ type: Array }) data: TableData[];
 
   @Prop({ type: Boolean, default: false }) loading: boolean;
+
+  @Prop({ type: Number, default: 5 }) pageSize: number;
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
