@@ -19,6 +19,10 @@ export default class RentalTable extends Vue {
     });
   }
 
+  destroyed(): void {
+    this.$store.dispatch('Rentals/flushRentals');
+  }
+
   get rentals(): Rental[] {
     return this.$store.state.Rentals.rentals;
   }
