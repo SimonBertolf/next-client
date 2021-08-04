@@ -36,7 +36,8 @@ export default class RentalTableComponent extends Vue {
                 title: 'Total',
                 type: TableColumnTypes.SUMMARY,
                 background: 'transparent',
-                customRender: () => this.$createElement('span', {}, '-'),
+                dataIndex: 'nr',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
               },
             ],
           },
@@ -49,7 +50,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'nr' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'property',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },
@@ -60,7 +68,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'rentalType' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'rentalType',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },
@@ -71,7 +86,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'tenant' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'tenant',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },

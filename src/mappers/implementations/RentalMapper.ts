@@ -2,10 +2,23 @@ import type { ApiRental, Rental } from '@/models';
 import type { ModelMapper } from '../interfaces/ModelMapper';
 
 export const rentalFromApiRental: ModelMapper<ApiRental, Rental> = (apiRental) => {
-  const { MietObjektID, MONr, MietTyp, tenant, Anzahl, Flaeche, Beginn, Ende, netm2, marketrent } = apiRental;
+  const {
+    MietObjektID,
+    MONr,
+    MietObjekt,
+    MietTyp,
+    tenant,
+    Anzahl,
+    Flaeche,
+    Beginn,
+    Ende,
+    netm2,
+    marketrent,
+  } = apiRental;
   return {
     _id: MietObjektID,
     nr: MONr,
+    property: MietObjekt,
     rentalType: MietTyp,
     tenant,
     count: +Anzahl,
@@ -18,10 +31,11 @@ export const rentalFromApiRental: ModelMapper<ApiRental, Rental> = (apiRental) =
 };
 
 export const apiRentalFromRental: ModelMapper<Rental, ApiRental> = (rental) => {
-  const { _id, nr, rentalType, tenant, count, area, activeFrom, activeTo, marketRent, netRent } = rental;
+  const { _id, nr, property, rentalType, tenant, count, area, activeFrom, activeTo, marketRent, netRent } = rental;
   return {
     MietObjektID: _id,
     MONr: nr,
+    MietObjekt: property,
     MietTyp: rentalType,
     tenant,
     Anzahl: count,
