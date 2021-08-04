@@ -1,5 +1,5 @@
 <template>
-  <a-menu v-model="current">
+  <a-menu v-model="current" mode="horizontal">
     <a-menu-item v-for="item in this.items" :key="item._id">
       <router-link :to="`${basePath}/${item._id}`">
         {{ item.name }}
