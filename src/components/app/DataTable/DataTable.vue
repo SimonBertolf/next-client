@@ -28,9 +28,6 @@ import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
 import RowSelector from './RowSelector.vue';
 
-// define resolver outside DataTable to avoid rerendering when resolver is mutating
-let resolver: TableResolver = new HeaderStyleResolver();
-
 @Component({ components: { RowSelector } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
@@ -45,15 +42,6 @@ export default class DataTable extends Vue {
 
   selectedRows: TableData[] = [];
 
-  mounted(): void {
-    let nextResolver = null;
-    if (this.rowSelection) {
-      nextResolver = new RowSelectionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-  }
-
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
@@ -66,7 +54,18 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return resolver.resolve(this.columns);
+    return this.resolver.resolve(this.columns);
+  }
+
+  get resolver(): TableResolver {
+    let resolver: TableResolver = new HeaderStyleResolver();
+    let nextResolver = null;
+    if (this.rowSelection) {
+      nextResolver = new RowSelectionResolver();
+      nextResolver.setNext(resolver);
+      resolver = nextResolver;
+    }
+    return resolver;
   }
 
   onSelectRow(rowKey: string): void {
