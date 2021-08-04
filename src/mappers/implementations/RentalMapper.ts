@@ -12,8 +12,8 @@ export const rentalFromApiRental: ModelMapper<ApiRental, Rental> = (apiRental) =
     area: +Flaeche,
     activeFrom: Beginn,
     activeTo: Ende,
-    marketRent: marketrent,
-    netRent: netm2,
+    marketRent: +marketrent,
+    netRent: +netm2,
   };
 };
 
