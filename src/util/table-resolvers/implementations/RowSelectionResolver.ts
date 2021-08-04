@@ -6,23 +6,20 @@ export class RowSelectionResolver implements TableResolver {
 
   resolve(ctx: TableColumn[]): TableColumn[] {
     const columns = [...ctx];
-    const rowSelectionColumn = {
-      key: 'selection',
-      children: [
-        {
-          type: 'sub',
-          background: 'transparent',
-          children: [
-            {
-              type: 'summary',
-              background: 'transparent',
-              width: 16,
-              scopedSlots: { customRender: 'selection' },
-            },
-          ],
-        },
-      ],
-    };
+    let rowSelectionColumn: TableColumn = { key: 'selection' };
+    const col = columns[0];
+    if (col.children?.length) {
+      rowSelectionColumn = {
+        ...rowSelectionColumn,
+        children: [{ ...this.applyRowSelectionChildHeaders(col.children) }],
+      };
+    } else {
+      rowSelectionColumn = {
+        ...rowSelectionColumn,
+        width: 16,
+        scopedSlots: { customRender: 'selection' },
+      };
+    }
     const itsColumns = [{ ...rowSelectionColumn }, ...columns];
     if (this.nextResolver) return this.nextResolver.resolve([...itsColumns]);
     return itsColumns;
@@ -30,5 +27,28 @@ export class RowSelectionResolver implements TableResolver {
 
   setNext(resolver: TableResolver): void {
     this.nextResolver = resolver;
+  }
+
+  private applyRowSelectionChildHeaders(childCols: TableColumn[]): TableColumn {
+    const col = childCols[0];
+    const { type, background } = col;
+    let itsCol: TableColumn = {
+      type,
+      background,
+    };
+    if (col.children?.length) {
+      const childCol = this.applyRowSelectionChildHeaders(col.children);
+      itsCol = {
+        ...itsCol,
+        children: [{ ...childCol }],
+      };
+    } else {
+      itsCol = {
+        ...itsCol,
+        width: 16,
+        scopedSlots: { customRender: 'selection' },
+      };
+    }
+    return itsCol;
   }
 }
