@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
+import { TableColumnTypes } from '@/types';
 
 @Component
 export default class HeaderCell extends Vue {
@@ -36,26 +37,26 @@ export default class HeaderCell extends Vue {
   }
 
   get firstCellCls(): string {
-    if (this.isFirst && this.type !== 'sub') return 'header-cell-first';
+    if (this.isFirst && this.type !== TableColumnTypes.UNIT) return 'header-cell-first';
     return '';
   }
 
   get lastCellCls(): string {
-    if (this.isLast && this.type !== 'sub') return 'header-cell-last';
+    if (this.isLast && this.type !== TableColumnTypes.UNIT) return 'header-cell-last';
     return '';
   }
 
   get typeCls(): string {
     let cls = '';
-    if (this.type === 'default') {
+    if (this.type === TableColumnTypes.DEFAULT) {
       cls = `${cls} header-cell-default`;
       if (!this.isLast) cls = `${cls} header-cell-default-border`;
     }
-    if (this.type === 'sub') {
+    if (this.type === TableColumnTypes.UNIT) {
       cls = `${cls} header-cell-other`;
-      cls = `${cls} header-cell-sub-border`;
+      cls = `${cls} header-cell-unit-border`;
     }
-    if (this.type === 'summary') {
+    if (this.type === TableColumnTypes.SUMMARY) {
       cls = `${cls} header-cell-other`;
       cls = `${cls} header-cell-summary header-cell-summary-border`;
       if (this.isFirst) cls = `${cls} header-cell-summary-border-first`;
@@ -108,7 +109,7 @@ export default class HeaderCell extends Vue {
 .header-cell-last {
   @apply rounded-tr-md rounded-br-md !important;
 }
-.header-cell-sub-border {
+.header-cell-unit-border {
   border-color: #cbcbcb;
   @apply py-2 border-b !important;
 }

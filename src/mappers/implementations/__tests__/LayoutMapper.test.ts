@@ -1,5 +1,5 @@
 import type { ResponsiveWidgetLayoutItems, WidgetAppearance } from '@/types';
-import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '@/model-mappers';
+import { apiWidgetsFromResponsiveLayout, responsiveLayoutFromApiWidgets } from '../index';
 
 const testResponsiveLayout: ResponsiveWidgetLayoutItems = {
   lg: [

@@ -1,5 +1,5 @@
 import { injectable } from 'inversify-props';
-import { rentalFromApiRental } from '@/model-mappers';
+import { rentalFromApiRental } from '@/mappers';
 import type { QueryInterface } from '@/types';
 import type { Rental, ApiRental } from '@/models';
 import { GenericLegacyRepository } from '../GenericLegacyRepository';

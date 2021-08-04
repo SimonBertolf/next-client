@@ -26,4 +26,9 @@ export default class Rentals extends VuexModule {
         this.context.commit('Errors/setError', error, { root: true });
       });
   }
+
+  @Action
+  public flushRentals(): void {
+    this.context.commit('setRentals', []);
+  }
 }
