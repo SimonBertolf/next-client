@@ -7,5 +7,11 @@ export const dateFormatFilter = (value: string): string => {
   if (value === '0000-00-00') return '-';
   const itsDate = new Date(value);
   if (Number.isNaN(itsDate.getTime())) throw new Error(`invalid date format for parameter value, with value: ${value}`);
-  return `${itsDate.getDay()}.${itsDate.getMonth() + 1}.${itsDate.getFullYear()}`;
+  const day = itsDate.getDate();
+  const month = itsDate.getMonth() + 1;
+  const year = `${itsDate.getFullYear()}`;
+  const formattedDay = day < 10 ? `0${day}` : day;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+  const formattedYear = year.substring(year.length - 2);
+  return `${formattedDay}.${formattedMonth}.${formattedYear}`;
 };
