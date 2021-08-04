@@ -10,3 +10,5 @@ export * from './BasicData';
 export * from './KpiListContainer';
 export * from './AssetTabs';
 export * from './KpiListMobile';
+export * from './RentalTableComponent';
+export * from './RentalTable';

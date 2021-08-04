@@ -1,132 +1,78 @@
 <template>
   <div class="data-table">
-    <a-table :columns="itsColumns" :data-source="data" :pagination="false" :scroll="{ x: true }"></a-table>
+    <a-table
+      class="w-full"
+      :row-key="(record) => record._id"
+      :components="itsComponents"
+      :columns="itsColumns"
+      :data-source="data"
+      :scroll="{ x: true }"
+      :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
+      :loading="{ indicator: spinnerComponent, spinning: loading }"
+    >
+    </a-table>
   </div>
 </template>
 
 <script lang="ts">
-// TODO: remove all any's and following comment!
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { TableColumn, TableData } from '@/types';
-import { TableActionButton } from '../TableActionButton';
+import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
+import type { VNode } from 'vue';
+import { TableResolver, HeaderStyleResolver } from '@/util';
+import { Spinner } from '@/components/app/Spinner';
+import CustomTable from './CustomTable.vue';
+import HeaderCell from './HeaderCell.vue';
+import BodyRow from './BodyRow.vue';
 
-@Component({ components: { TableActionButton } })
+@Component
 export default class DataTable extends Vue {
-  @Prop({ type: Array }) columns: TableColumn[];
+  @Prop({ type: Array, required: true }) columns: TableColumn[];
 
-  @Prop({ type: Array }) data: TableData[];
+  @Prop({ type: Array, required: true }) data: TableData[];
 
-  @Prop({
-    type: [Object, Boolean],
-    default: () => false,
-  })
-  operation: { onOperationHeader: (...args: any[]) => any; onOperationCell: (...args: any[]) => any } | boolean;
+  @Prop({ type: Boolean, default: false }) loading: boolean;
+
+  @Prop({ type: Number, default: 5 }) pageSize: number;
+
+  get itsComponents(): TableComponents {
+    const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
+    const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
+    const bodyRow: TableComponentRenderer = (h, p, c) => h(BodyRow, { ...p }, c);
+    return { table, header: { cell }, body: { row: bodyRow } };
+  }
+
+  get spinnerComponent(): VNode {
+    return this.$createElement(Spinner, { props: { spinning: true } });
+  }
 
   get itsColumns(): TableColumn[] {
-    if (!this.operation) return this.columns;
-    const { onOperationHeader, onOperationCell } = this.operation as {
-      onOperationHeader: (...args: any[]) => any;
-      onOperationCell: (...args: any[]) => any;
-    };
-    const itsProps = { props: { onAction: onOperationCell }, style: 'height: 55px !important;' };
-    return [
-      ...this.columns,
-      {
-        title: this.$createElement(TableActionButton, { props: { onAction: onOperationHeader } }),
-        key: 'operation',
-        customRender: () => this.$createElement(TableActionButton, itsProps),
-        className: 'operation-cell',
-        width: 10,
-      },
-    ];
+    return this.tableResolver.resolve(this.columns);
+  }
+
+  get tableResolver(): TableResolver {
+    const resolver: TableResolver = new HeaderStyleResolver();
+    return resolver;
   }
 }
 </script>
 
 <style>
-.data-table .ant-table-body {
-  @apply scrollbar-thin scrollbar-thumb-thumb scrollbar-thumb-rounded scrollbar-track-background;
-  @apply lg:overflow-x-hidden hover:overflow-x-auto !important;
+.data-table {
+  @apply w-full;
 }
-
-.data-table .ant-table td {
-  white-space: nowrap;
+.data-table-pagination > .ant-pagination-item-active {
+  @apply border-primary !important;
 }
-
-.data-table th[key='operation'] {
-  background-color: #f0f0f0 !important;
+.data-table-pagination > .ant-pagination-item-active > a {
+  @apply text-primary !important;
 }
-
-.data-table th[key='operation'] > .ant-table-header-column {
-  @apply border-l-0 !important;
+.data-table-pagination > .ant-pagination-item > a {
+  @apply hover:text-primary !important;
 }
-
-.data-table th[key='operation'] > .ant-table-header-column {
-  @apply p-0 !important;
+.data-table-pagination > li:not(.ant-pagination-disabled) > a {
+  @apply hover:text-primary !important;
 }
-
-.data-table .operation-cell {
-  background-color: #f0f0f0 !important;
-  @apply p-0 h-full !important;
-}
-
-.data-table .operation-cell:hover,
-.data-table .operation-cell:active,
-.data-table .operation-cell:focus {
-  background-color: #dbdbdb !important;
-}
-
-.data-table .ant-table-tbody {
-  @apply font-primary text-dark;
-}
-
-.data-table .ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.data-table .ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.data-table .ant-table-thead > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell),
-.data-table .ant-table-tbody > tr:hover:not(.ant-table-expanded-row) > td:not(.operation-cell) {
-  background: unset !important;
-  background-color: #f5f5f5 !important;
-}
-
-.data-table .ant-table-thead::after {
-  content: '';
-  display: block;
-  height: 1.5em;
-  width: 100%;
-  background: transparent;
-}
-
-.data-table .ant-table-thead > tr {
-  @apply py-2;
-}
-
-.data-table .ant-table-row:first-child > td {
-  @apply border-t border-divider;
-}
-
-.data-table .ant-table-row > td:last-child {
-  @apply border-r border-divider;
-}
-
-.data-table th:not(:first-child) > .ant-table-header-column {
-  @apply border-l;
-}
-
-.data-table .ant-table-thead > tr > th {
-  white-space: nowrap;
-  @apply bg-table text-neutral px-0 py-2;
-}
-
-.data-table .ant-table-thead > tr > th:first-child {
-  @apply rounded-tl rounded-bl;
-}
-
-.data-table .ant-table-thead > tr > th:last-child {
-  @apply rounded-tr rounded-br;
-}
-
-.data-table .ant-table-thead > tr > th > .ant-table-header-column {
-  @apply w-full px-4 font-primary font-light;
+.data-table-pagination > .ant-pagination-item:hover a {
+  @apply text-primary !important;
 }
 </style>

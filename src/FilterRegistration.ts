@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { tableNumberFilter, percentNumberFilter, simpleNumberFilter, dateTimeFilter } from './util';
+import { tableNumberFilter, percentNumberFilter, simpleNumberFilter, dateTimeFilter, dateFormatFilter } from './util';
 
 class FilterRegistration {
   register(): void {
@@ -7,6 +7,7 @@ class FilterRegistration {
     Vue.filter('percentNumber', percentNumberFilter);
     Vue.filter('simpleNumber', simpleNumberFilter);
     Vue.filter('dateTime', dateTimeFilter);
+    Vue.filter('dateFormatFilter', dateFormatFilter);
   }
 }
 

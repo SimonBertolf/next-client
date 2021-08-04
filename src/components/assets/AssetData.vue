@@ -1,13 +1,14 @@
 <template>
-  <p class="pt-4">{{ name }}</p>
+  <div class="flex flex-row w-full h-full pt-4"><rental-table :assetId="assetId" /></div>
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
+import { RentalTable } from './RentalTable';
 
-@Component({ components: {} })
+@Component({ components: { RentalTable } })
 export default class AssetData extends Vue {
-  name = 'AssetData';
+  @Prop(String) assetId: string;
 }
 </script>
 
