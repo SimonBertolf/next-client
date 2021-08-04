@@ -11,7 +11,7 @@
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
       <template slot="selection" slot-scope="text, row">
-        <row-selector :checked="isChecked(row._id)" :rowKey="row._id" @change="onSelectRow" />
+        <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
     </a-table>
   </div>
@@ -103,7 +103,9 @@ export default class DataTable extends Vue {
 .data-table-pagination > li:not(.ant-pagination-disabled) > a {
   @apply hover:text-primary !important;
 }
-.data-table-pagination > .ant-pagination-item:hover a {
+.data-table-pagination > .ant-pagination-item:hover a,
+.data-table-pagination > .ant-pagination-next:focus a,
+.data-table-pagination > .ant-pagination-prev:focus a {
   @apply text-primary !important;
 }
 </style>
