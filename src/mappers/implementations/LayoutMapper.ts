@@ -1,10 +1,10 @@
 import type { GridBreakpoint } from 'vue-grid-layout';
 import { WidgetAppearance, WidgetLayoutItem, ResponsiveWidgetLayoutItems, gridBreakpoints, WidgetType } from '@/types';
-import type { ModelMapper } from './ModelMapper';
+import type { ModelMapper } from '../interfaces/ModelMapper';
 
 export const responsiveLayoutFromApiWidgets: ModelMapper<WidgetAppearance[], ResponsiveWidgetLayoutItems> = (
-  apiWidgets: WidgetAppearance[],
-): ResponsiveWidgetLayoutItems => {
+  apiWidgets,
+) => {
   const responsiveLayout = Object.fromEntries(
     gridBreakpoints.map((breakpoint) => [breakpoint, new Array<WidgetLayoutItem>()]),
   );
@@ -29,8 +29,8 @@ export const responsiveLayoutFromApiWidgets: ModelMapper<WidgetAppearance[], Res
 };
 
 export const apiWidgetsFromResponsiveLayout: ModelMapper<ResponsiveWidgetLayoutItems, Partial<WidgetAppearance>[]> = (
-  responsiveLayout: ResponsiveWidgetLayoutItems,
-): Partial<WidgetAppearance>[] => {
+  responsiveLayout,
+) => {
   const breakpoints = Object.keys(responsiveLayout);
   const responsiveWidgetLayoutItems = Object.values(responsiveLayout);
   const widgetMetas = responsiveWidgetLayoutItems.map((widgetLayoutItems) =>
