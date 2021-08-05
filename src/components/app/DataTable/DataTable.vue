@@ -71,13 +71,15 @@ export default class DataTable extends Vue {
   }
 
   onSelectRow(rowKey: string): void {
-    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
-    if (row) {
-      this.selectedRows = this.selectedRows.filter(({ _id }) => _id !== rowKey);
+    const selectedRows = [...this.selectedRows];
+    const rowIndex = selectedRows.findIndex(({ _id }) => _id === rowKey);
+    if (rowIndex === -1) {
+      const row = this.data.find(({ _id }) => _id === rowKey);
+      selectedRows.push(row as TableData);
     } else {
-      const selectedRow = this.data.find(({ _id }) => _id === rowKey);
-      if (selectedRow) this.selectedRows = [...this.selectedRows, selectedRow];
+      selectedRows.splice(rowIndex, 1);
     }
+    this.selectedRows = [...selectedRows];
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
