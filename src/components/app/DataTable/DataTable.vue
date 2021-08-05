@@ -38,9 +38,9 @@ export default class DataTable extends Vue {
 
   @Prop({ type: Number, default: 5 }) pageSize: number;
 
-  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange(selectedRows: TableData[]): void };
+  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
-  selectedRows: TableData[] = [];
+  selectedRows: string[] = [];
 
   private readonly resolver: TableResolver = this.makeTableResolver();
 
@@ -72,10 +72,9 @@ export default class DataTable extends Vue {
 
   onSelectRow(rowKey: string): void {
     const selectedRows = [...this.selectedRows];
-    const rowIndex = selectedRows.findIndex(({ _id }) => _id === rowKey);
+    const rowIndex = selectedRows.findIndex((element: string) => element === rowKey);
     if (rowIndex === -1) {
-      const row = this.data.find(({ _id }) => _id === rowKey);
-      selectedRows.push(row as TableData);
+      selectedRows.push(rowKey);
     } else {
       selectedRows.splice(rowIndex, 1);
     }
@@ -84,9 +83,7 @@ export default class DataTable extends Vue {
   }
 
   isChecked(rowKey: string): boolean {
-    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
-    if (row) return true;
-    return false;
+    return this.selectedRows.includes(rowKey);
   }
 }
 </script>
