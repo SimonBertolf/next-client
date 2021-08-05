@@ -20,7 +20,7 @@ export class RowActionResolver implements TableResolver {
         scopedSlots: { customRender: 'action' },
       };
     }
-    const itsColumns = [{ ...rowActionColumn }, ...columns];
+    const itsColumns = [...columns, { ...rowActionColumn }];
     if (this.nextResolver) return this.nextResolver.resolve([...itsColumns]);
     return itsColumns;
   }
