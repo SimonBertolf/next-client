@@ -12,13 +12,11 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 
 @Component
 export default class RowActionMenu extends Vue {
-  @Prop({ type: String, required: true }) rowKey: string;
-
   @Prop({ type: Array, default: [] }) options: Array<{ key: string; label: string }>;
 
   @Emit()
-  click({ key }: { key: string }) {
-    return { key, rowKey: this.rowKey };
+  click({ key }: { key: string }): { key: string } {
+    return { key };
   }
 }
 </script>

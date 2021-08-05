@@ -13,6 +13,9 @@
       <template slot="selection" slot-scope="text, row">
         <row-selector :checked="isChecked(row._id)" :rowKey="row._id" @change="onSelectRow" />
       </template>
+      <template slot="action" slot-scope="text, row">
+        <row-action-menu :options="rowAction.options" @click="(key) => rowAction.onClick(key, row._id)" />
+      </template>
     </a-table>
   </div>
 </template>
@@ -27,8 +30,9 @@ import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
 import RowSelector from './RowSelector.vue';
+import RowActionMenu from './RowActionMenu.vue';
 
-@Component({ components: { RowSelector } })
+@Component({ components: { RowSelector, RowActionMenu } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -39,6 +43,9 @@ export default class DataTable extends Vue {
   @Prop({ type: Number, default: 5 }) pageSize: number;
 
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange(selectedRows: TableData[]): void };
+
+  @Prop({ type: [Object, Boolean], default: false })
+  rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
 
   selectedRows: TableData[] = [];
 
