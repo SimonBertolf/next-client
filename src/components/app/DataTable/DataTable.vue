@@ -42,7 +42,7 @@ export default class DataTable extends Vue {
 
   selectedRows: TableData[] = [];
 
-  private resolver: TableResolver = this.tableResolver;
+  private readonly resolver: TableResolver = this.makeTableResolver();
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -59,7 +59,7 @@ export default class DataTable extends Vue {
     return this.resolver.resolve(this.columns);
   }
 
-  get tableResolver(): TableResolver {
+  makeTableResolver(): TableResolver {
     let resolver: TableResolver = new HeaderStyleResolver();
     let nextResolver = null;
     if (this.rowSelection) {
