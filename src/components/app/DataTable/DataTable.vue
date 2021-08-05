@@ -72,7 +72,7 @@ export default class DataTable extends Vue {
 
   onSelectRow(rowKey: string): void {
     const selectedRows = [...this.selectedRows];
-    const rowIndex = selectedRows.findIndex((element: string) => element === rowKey);
+    const rowIndex = selectedRows.findIndex((id: string) => id === rowKey);
     if (rowIndex === -1) {
       selectedRows.push(rowKey);
     } else {
