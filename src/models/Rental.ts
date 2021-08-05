@@ -1,6 +1,7 @@
 export interface Rental {
   _id: string;
   nr: string;
+  property: string;
   rentalType: string;
   tenant: string;
   count: number;
@@ -14,6 +15,7 @@ export interface Rental {
 export interface ApiRental {
   MietObjektID: string;
   MONr: string;
+  MietObjekt: string;
   MietTyp: string;
   tenant: string;
   Anzahl: number;

@@ -11,7 +11,7 @@
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
       <template slot="selection" slot-scope="text, row">
-        <row-selector :checked="isChecked(row._id)" :rowKey="row._id" @change="onSelectRow" />
+        <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
       <template slot="action" slot-scope="text, row">
         <row-action-menu :options="rowAction.options" @click="(key) => rowAction.onClick(key, row._id)" />
@@ -49,6 +49,8 @@ export default class DataTable extends Vue {
 
   selectedRows: TableData[] = [];
 
+  private resolver: TableResolver = this.tableResolver;
+
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
@@ -61,7 +63,7 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.tableResolver.resolve(this.columns);
+    return this.resolver.resolve(this.columns);
   }
 
   get tableResolver(): TableResolver {
@@ -110,7 +112,9 @@ export default class DataTable extends Vue {
 .data-table-pagination > li:not(.ant-pagination-disabled) > a {
   @apply hover:text-primary !important;
 }
-.data-table-pagination > .ant-pagination-item:hover a {
+.data-table-pagination > .ant-pagination-item:hover a,
+.data-table-pagination > .ant-pagination-next:focus a,
+.data-table-pagination > .ant-pagination-prev:focus a {
   @apply text-primary !important;
 }
 </style>

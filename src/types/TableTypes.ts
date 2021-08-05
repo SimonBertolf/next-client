@@ -22,6 +22,12 @@ export interface TableComponents {
   };
 }
 
+export enum TableColumnTypes {
+  DEFAULT = 'default',
+  SUMMARY = 'summary',
+  UNIT = 'unit',
+}
+
 export interface TableColumn {
   title?: string | VNode;
   dataIndex?: string;
