@@ -1,6 +1,6 @@
 <template>
   <svg height="18" width="18">
-    <circle cx="9" cy="9" r="7" stroke="black" stroke-width="1" :fill="fill" @click="click" />
+    <circle :class="cls" cx="9" cy="9" r="7" stroke="black" stroke-width="1" @click="click" />
   </svg>
 </template>
 
@@ -11,9 +11,9 @@ import { Vue, Component, Emit, Prop } from 'vue-property-decorator';
 export default class RowSelector extends Vue {
   @Prop({ type: Boolean, required: true }) readonly checked: boolean;
 
-  get fill(): string {
-    if (this.checked) return '#28304D';
-    return 'transparent';
+  get cls(): string {
+    if (this.checked) return 'row-selector-circle-checked';
+    return 'row-selector-circle-unchecked';
   }
 
   @Emit()
@@ -26,5 +26,12 @@ export default class RowSelector extends Vue {
 <style scoped>
 svg {
   cursor: pointer;
+}
+
+.row-selector-circle-unchecked {
+  @apply fill-current text-transparent;
+}
+.row-selector-circle-checked {
+  @apply fill-current text-primary;
 }
 </style>
