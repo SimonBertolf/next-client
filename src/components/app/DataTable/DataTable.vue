@@ -24,7 +24,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver, RowSelectionResolver } from '@/util';
+import { TableResolver, HeaderStyleResolver, RowSelectionResolver, RowActionResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -71,6 +71,11 @@ export default class DataTable extends Vue {
     let nextResolver = null;
     if (this.rowSelection) {
       nextResolver = new RowSelectionResolver();
+      nextResolver.setNext(resolver);
+      resolver = nextResolver;
+    }
+    if (this.rowAction) {
+      nextResolver = new RowActionResolver();
       nextResolver.setNext(resolver);
       resolver = nextResolver;
     }
