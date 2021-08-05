@@ -20,22 +20,19 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class Modal extends Vue {
-  @Prop(Boolean) readonly visible: boolean;
+  @Prop({ type: Boolean, required: true }) readonly visible: boolean;
 
-  @Prop(String) readonly title: boolean;
+  @Prop({ type: [String, Boolean], default: false }) readonly title: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ default: () => () => undefined }) readonly onClose: (...args: any[]) => any;
+  @Prop({ default: () => () => undefined }) readonly onClose: (...args: unknown[]) => void;
 
-  @Prop(String) readonly okText: string;
+  @Prop({ type: [String, Boolean], default: false }) readonly okText: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ default: () => () => undefined }) readonly onOk: (...args: any[]) => any;
+  @Prop({ default: () => () => undefined }) readonly onOk: (...args: unknown[]) => void;
 
   @Prop({ default: false }) readonly confirmLoading: boolean;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Prop({ default: () => () => undefined }) readonly afterClose: (...args: any[]) => any;
+  @Prop({ default: () => () => undefined }) readonly afterClose: (...args: unknown[]) => void;
 
   @Prop({ default: false }) readonly isDisabled: boolean;
 

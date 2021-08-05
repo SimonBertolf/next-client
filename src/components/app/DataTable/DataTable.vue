@@ -14,7 +14,7 @@
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
       <template slot="action" slot-scope="text, row">
-        <row-action-menu :options="rowAction.options" @click="(key) => rowAction.onClick(key, row._id)" />
+        <row-action-menu :options="rowAction.options" @click="({ key }) => rowAction.onClick(key, row._id)" />
       </template>
     </a-table>
   </div>
@@ -49,7 +49,7 @@ export default class DataTable extends Vue {
 
   selectedRows: TableData[] = [];
 
-  private resolver: TableResolver = this.tableResolver;
+  private resolver: TableResolver = this.tableResolver();
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -66,7 +66,7 @@ export default class DataTable extends Vue {
     return this.resolver.resolve(this.columns);
   }
 
-  get tableResolver(): TableResolver {
+  tableResolver(): TableResolver {
     let resolver: TableResolver = new HeaderStyleResolver();
     let nextResolver = null;
     if (this.rowSelection) {
