@@ -1,7 +1,7 @@
 <template>
   <div class="data-table">
-    <span v-if="hasFilter" class="self-end">
-      <column-filter :options="filterOptions" @filter="onFilter" />
+    <span v-if="hasColumnFilter" class="self-end">
+      <column-filter :options="columnFilterOptions" @filter="onColumnFilter" />
     </span>
     <a-table
       class="w-full"
@@ -52,8 +52,6 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false })
   rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
 
-  @Prop({ type: Boolean, default: false }) hasFilter: boolean;
-
   selectedRows: string[] = [];
 
   private readonly resolver: TableResolver = this.makeTableResolver();
@@ -84,8 +82,14 @@ export default class DataTable extends Vue {
     return this.resolver.resolve(this.columns);
   }
 
-  get filterOptions(): Array<{ key: string; label: string }> {
-    return this.columns.map((col) => {
+  get hasColumnFilter(): boolean {
+    const filterableColumns = this.columns.filter((col) => col.optional);
+    return filterableColumns.length !== 0;
+  }
+
+  get columnFilterOptions(): Array<{ key: string; label: string }> {
+    const filterableColumns = this.columns.filter((col) => col.optional);
+    return filterableColumns.map((col) => {
       const { key = '', title = '' } = col;
       const label = title as string;
       return { key, label };
@@ -124,7 +128,7 @@ export default class DataTable extends Vue {
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
-  onFilter({ checked, key }: { checked: boolean; key: string }): void {
+  onColumnFilter({ checked, key }: { checked: boolean; key: string }): void {
     if (!checked) {
       this.filteredColumns = this.filteredColumns.filter((col) => col.key !== key);
     } else {
