@@ -49,7 +49,7 @@ export default class RentalTable extends Vue {
     }
   }
 
-  async deleteRental(_id: string): Promise<void> {
+  deleteRental(_id: string): void {
     this.$confirm({
       title: 'Do you want to delete this item?',
       onOk: () => {
