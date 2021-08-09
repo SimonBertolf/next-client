@@ -30,7 +30,7 @@ export class RentalRepository extends GenericLegacyRepository<Rental> {
         id: _id,
       },
     );
-    if (!success) throw Error(message);
+    if (!success) throw new Error(message);
     const deletedRental: Partial<Rental> = { _id };
     return deletedRental as Rental;
   }
