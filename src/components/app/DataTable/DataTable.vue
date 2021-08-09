@@ -24,7 +24,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import _ from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
 import { TableResolver, HeaderStyleResolver, RowSelectionResolver, RowActionResolver } from '@/util';
@@ -58,6 +59,15 @@ export default class DataTable extends Vue {
   private readonly resolver: TableResolver = this.makeTableResolver();
 
   filteredColumns: TableColumn[] = this.itsColumns;
+
+  @Watch('columns', { immediate: true, deep: true })
+  handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!_.isEqual(val, oldVal)) {
+      this.filteredColumns = this.filteredColumns.map(
+        (col) => this.itsColumns.find((c) => c.key === col.key) as TableColumn,
+      );
+    }
+  }
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
