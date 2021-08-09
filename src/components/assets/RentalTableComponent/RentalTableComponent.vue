@@ -1,9 +1,9 @@
 <template>
-  <data-table :columns="columns" :data="rentals" :loading="loading" />
+  <data-table :columns="columns" :data="rentals" :loading="loading" :rowSelection="{ onChange: selectRentals }" />
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator';
 import type { Rental } from '@/models';
 import { TableColumn, TableColumnTypes } from '@/types';
 import { DataTable } from '@/components/app';
@@ -14,7 +14,12 @@ export default class RentalTableComponent extends Vue {
 
   @Prop({ type: Object, required: true }) summary: Pick<Rental, 'count' | 'area' | 'marketRent' | 'netRent'>;
 
-  @Prop(Boolean) loading: boolean;
+  @Prop({ type: Boolean, default: false }) loading: boolean;
+
+  @Emit()
+  selectRentals(selectedRentals: string[]): string[] {
+    return selectedRentals;
+  }
 
   get columns(): TableColumn[] {
     const { count, area, marketRent, netRent } = this.summary;
@@ -31,7 +36,8 @@ export default class RentalTableComponent extends Vue {
                 title: 'Total',
                 type: TableColumnTypes.SUMMARY,
                 background: 'transparent',
-                customRender: () => this.$createElement('span', {}, '-'),
+                dataIndex: 'nr',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
               },
             ],
           },
@@ -44,7 +50,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'nr' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'property',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },
@@ -55,7 +68,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'rentalType' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'rentalType',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },
@@ -66,7 +86,14 @@ export default class RentalTableComponent extends Vue {
           {
             type: TableColumnTypes.UNIT,
             background: 'transparent',
-            children: [{ type: TableColumnTypes.SUMMARY, background: 'transparent', dataIndex: 'tenant' }],
+            children: [
+              {
+                type: TableColumnTypes.SUMMARY,
+                background: 'transparent',
+                dataIndex: 'tenant',
+                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+              },
+            ],
           },
         ],
       },

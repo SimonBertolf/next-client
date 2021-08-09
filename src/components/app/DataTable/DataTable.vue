@@ -10,6 +10,9 @@
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
+      <template slot="selection" slot-scope="text, row">
+        <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
+      </template>
     </a-table>
   </div>
 </template>
@@ -18,13 +21,14 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver } from '@/util';
+import { TableResolver, HeaderStyleResolver, RowSelectionResolver } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
+import RowSelector from './RowSelector.vue';
 
-@Component
+@Component({ components: { RowSelector } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -33,6 +37,12 @@ export default class DataTable extends Vue {
   @Prop({ type: Boolean, default: false }) loading: boolean;
 
   @Prop({ type: Number, default: 5 }) pageSize: number;
+
+  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
+
+  selectedRows: string[] = [];
+
+  private readonly resolver: TableResolver = this.makeTableResolver();
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -46,12 +56,32 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.tableResolver.resolve(this.columns);
+    return this.resolver.resolve(this.columns);
   }
 
-  get tableResolver(): TableResolver {
-    const resolver: TableResolver = new HeaderStyleResolver();
+  makeTableResolver(): TableResolver {
+    let resolver: TableResolver = new HeaderStyleResolver();
+    let nextResolver = null;
+    if (this.rowSelection) {
+      nextResolver = new RowSelectionResolver();
+      nextResolver.setNext(resolver);
+      resolver = nextResolver;
+    }
     return resolver;
+  }
+
+  onSelectRow(rowKey: string): void {
+    const rowIndex = this.selectedRows.findIndex((id: string) => id === rowKey);
+    if (rowIndex === -1) {
+      this.selectedRows.push(rowKey);
+    } else {
+      this.selectedRows.splice(rowIndex, 1);
+    }
+    this.rowSelection?.onChange([...this.selectedRows]);
+  }
+
+  isChecked(rowKey: string): boolean {
+    return this.selectedRows.includes(rowKey);
   }
 }
 </script>
@@ -72,7 +102,9 @@ export default class DataTable extends Vue {
 .data-table-pagination > li:not(.ant-pagination-disabled) > a {
   @apply hover:text-primary !important;
 }
-.data-table-pagination > .ant-pagination-item:hover a {
+.data-table-pagination > .ant-pagination-item:hover a,
+.data-table-pagination > .ant-pagination-next:focus a,
+.data-table-pagination > .ant-pagination-prev:focus a {
   @apply text-primary !important;
 }
 </style>

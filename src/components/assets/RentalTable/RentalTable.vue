@@ -1,5 +1,10 @@
 <template>
-  <rental-table-component :rentals="rentals" :loading="loading" :summary="summary" />
+  <rental-table-component
+    :rentals="rentals"
+    :loading="loading"
+    :summary="summary"
+    @select-rentals="handleSelectRentals"
+  />
 </template>
 
 <script lang="ts">
@@ -33,6 +38,13 @@ export default class RentalTable extends Vue {
     const marketRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.marketRent, 0);
     const netRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.netRent, 0);
     return { count, area, marketRent, netRent };
+  }
+
+  handleSelectRentals(selectedRentals: string[]): void {
+    const totalRentals = this.rentals.length;
+    const numSelectedRentals = selectedRentals.length;
+    this.$message.config({ maxCount: 1 });
+    this.$message.info(`Selected Rentals: ${numSelectedRentals}/${totalRentals}`);
   }
 }
 </script>
