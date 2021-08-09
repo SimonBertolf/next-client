@@ -42,14 +42,14 @@ export default class DataTable extends Vue {
 
   @Prop({ type: Number, default: 5 }) pageSize: number;
 
-  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange(selectedRows: TableData[]): void };
+  @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
   @Prop({ type: [Object, Boolean], default: false })
   rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
 
-  selectedRows: TableData[] = [];
+  selectedRows: string[] = [];
 
-  private resolver: TableResolver = this.tableResolver();
+  private readonly resolver: TableResolver = this.makeTableResolver();
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -66,7 +66,7 @@ export default class DataTable extends Vue {
     return this.resolver.resolve(this.columns);
   }
 
-  tableResolver(): TableResolver {
+  makeTableResolver(): TableResolver {
     let resolver: TableResolver = new HeaderStyleResolver();
     let nextResolver = null;
     if (this.rowSelection) {
@@ -83,20 +83,19 @@ export default class DataTable extends Vue {
   }
 
   onSelectRow(rowKey: string): void {
-    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
-    if (row) {
-      this.selectedRows = this.selectedRows.filter(({ _id }) => _id !== rowKey);
+    const selectedRows = [...this.selectedRows];
+    const rowIndex = selectedRows.findIndex((id: string) => id === rowKey);
+    if (rowIndex === -1) {
+      selectedRows.push(rowKey);
     } else {
-      const selectedRow = this.data.find(({ _id }) => _id === rowKey);
-      if (selectedRow) this.selectedRows = [...this.selectedRows, selectedRow];
+      selectedRows.splice(rowIndex, 1);
     }
+    this.selectedRows = [...selectedRows];
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
   isChecked(rowKey: string): boolean {
-    const row = this.selectedRows.find(({ _id }) => _id === rowKey);
-    if (row) return true;
-    return false;
+    return this.selectedRows.includes(rowKey);
   }
 }
 </script>

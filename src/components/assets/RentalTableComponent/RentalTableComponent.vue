@@ -29,7 +29,7 @@ export default class RentalTableComponent extends Vue {
   @Prop({ type: Boolean, default: false }) loading: boolean;
 
   @Emit()
-  selectRentals(selectedRentals: Rental[]): Rental[] {
+  selectRentals(selectedRentals: string[]): string[] {
     return selectedRentals;
   }
 

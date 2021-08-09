@@ -1,6 +1,12 @@
 <template>
   <div class="w-full">
-    <rental-table-component :rentals="rentals" :loading="loading" :summary="summary" @action="handleAction" />
+    <rental-table-component
+      :rentals="rentals"
+      :loading="loading"
+      :summary="summary"
+      @action="handleAction"
+      @select-rentals="handleSelectRentals"
+    />
   </div>
 </template>
 
@@ -52,6 +58,13 @@ export default class RentalTable extends Vue {
         });
       },
     });
+  }
+
+  handleSelectRentals(selectedRentals: string[]): void {
+    const totalRentals = this.rentals.length;
+    const numSelectedRentals = selectedRentals.length;
+    this.$message.config({ maxCount: 1 });
+    this.$message.info(`Selected Rentals: ${numSelectedRentals}/${totalRentals}`);
   }
 }
 </script>
