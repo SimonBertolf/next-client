@@ -44,9 +44,7 @@ export default class RentalTable extends Vue {
   }
 
   handleAction({ key, _id }: { key: string; _id: string }): void {
-    if (key === 'delete') {
-      this.deleteRental(_id);
-    }
+    if (key === 'delete') this.deleteRental(_id);
   }
 
   deleteRental(_id: string): void {
