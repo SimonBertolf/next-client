@@ -27,6 +27,18 @@ export default class Rentals extends VuexModule {
       });
   }
 
+  @Action async deleteRental(_id: string): Promise<void> {
+    return this.rentalRepository
+      .delete(_id)
+      .then(() => {
+        const otherRentals = this.rentals.filter(({ _id: rentalId }) => _id !== rentalId);
+        this.context.commit('setRentals', otherRentals);
+      })
+      .catch((error) => {
+        this.context.commit('Errors/setError', error, { root: true });
+      });
+  }
+
   @Action
   public flushRentals(): void {
     this.context.commit('setRentals', []);

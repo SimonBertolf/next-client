@@ -1,5 +1,7 @@
 <template>
-  <rental-table-component :rentals="rentals" :loading="loading" :summary="summary" @action="handleAction" />
+  <div class="w-full">
+    <rental-table-component :rentals="rentals" :loading="loading" :summary="summary" @action="handleAction" />
+  </div>
 </template>
 
 <script lang="ts">
@@ -36,9 +38,20 @@ export default class RentalTable extends Vue {
   }
 
   handleAction({ key, _id }: { key: string; _id: string }): void {
-    if (key === 'edit') {
-      console.log({ _id });
+    if (key === 'delete') {
+      this.deleteRental(_id);
     }
+  }
+
+  async deleteRental(_id: string): Promise<void> {
+    this.$confirm({
+      title: 'Do you want to delete this item?',
+      onOk: () => {
+        this.$store.dispatch('Rentals/deleteRental', _id).then(() => {
+          this.$store.dispatch('Rentals/loadRentals', this.assetId);
+        });
+      },
+    });
   }
 }
 </script>

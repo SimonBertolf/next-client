@@ -51,7 +51,7 @@ abstract class GenericLegacyRepository<Model> implements IRepository<Model> {
     }
     const res = await request;
     const { data } = res;
-    const { data: apiModel } = data.data;
+    const { data: apiModel } = data;
     return apiModel as ApiModel;
   }
 }
