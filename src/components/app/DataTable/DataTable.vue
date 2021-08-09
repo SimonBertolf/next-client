@@ -92,6 +92,9 @@ export default class DataTable extends Vue {
 .data-table {
   @apply w-full;
 }
+.data-table-pagination {
+  @apply mb-0 !important;
+}
 .data-table-pagination > .ant-pagination-item-active {
   @apply border-primary !important;
 }
