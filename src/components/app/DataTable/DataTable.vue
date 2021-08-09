@@ -45,7 +45,7 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
   @Prop({ type: [Object, Boolean], default: false })
-  rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
+  rowAction: { options: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
 
   selectedRows: string[] = [];
 
