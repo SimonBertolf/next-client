@@ -1,10 +1,13 @@
 <template>
   <div class="data-table">
+    <span v-if="hasFilter" class="self-end">
+      <column-filter :options="filterOptions" @filter="onFilter" />
+    </span>
     <a-table
       class="w-full"
       :row-key="(record) => record._id"
       :components="itsComponents"
-      :columns="itsColumns"
+      :columns="filteredColumns"
       :data-source="data"
       :scroll="{ x: true }"
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
@@ -31,8 +34,9 @@ import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
 import RowSelector from './RowSelector.vue';
 import RowActionMenu from './RowActionMenu.vue';
+import ColumnFilter from './ColumnFilter.vue';
 
-@Component({ components: { RowSelector, RowActionMenu } })
+@Component({ components: { RowSelector, RowActionMenu, ColumnFilter } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -47,9 +51,13 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false })
   rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
 
+  @Prop({ type: Boolean, default: false }) hasFilter: boolean;
+
   selectedRows: string[] = [];
 
   private readonly resolver: TableResolver = this.makeTableResolver();
+
+  filteredColumns: TableColumn[] = this.itsColumns;
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -64,6 +72,18 @@ export default class DataTable extends Vue {
 
   get itsColumns(): TableColumn[] {
     return this.resolver.resolve(this.columns);
+  }
+
+  get filterOptions(): Array<{ key: string; label: string }> {
+    return this.columns.map((col) => {
+      const { key = '', title = '' } = col;
+      const label = title as string;
+      return { key, label };
+    });
+  }
+
+  isChecked(rowKey: string): boolean {
+    return this.selectedRows.includes(rowKey);
   }
 
   makeTableResolver(): TableResolver {
@@ -94,15 +114,29 @@ export default class DataTable extends Vue {
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
-  isChecked(rowKey: string): boolean {
-    return this.selectedRows.includes(rowKey);
+  onFilter({ checked, key }: { checked: boolean; key: string }): void {
+    if (!checked) {
+      this.filteredColumns = this.filteredColumns.filter((col) => col.key !== key);
+    } else {
+      const itsFilteredColumns: TableColumn[] = [];
+      const allColumns = this.itsColumns;
+      allColumns.forEach((col) => {
+        if (col.key === key) {
+          itsFilteredColumns.push(col);
+        } else {
+          const colInFilter = this.filteredColumns.find((c) => c.key === col.key);
+          if (colInFilter) itsFilteredColumns.push(colInFilter);
+        }
+      });
+      this.filteredColumns = [...itsFilteredColumns];
+    }
   }
 }
 </script>
 
 <style>
 .data-table {
-  @apply w-full;
+  @apply w-full flex flex-col;
 }
 .data-table-pagination > .ant-pagination-item-active {
   @apply border-primary !important;

@@ -8,6 +8,7 @@
       options: [{ key: 'delete', label: 'Delete' }],
       onClick: action,
     }"
+    :hasFilter="true"
   />
 </template>
 

@@ -470,6 +470,8 @@ exports[`Storyshots app/DataTable Example 1`] = `
 <div
   class="data-table"
 >
+  <!---->
+   
   <div
     class="w-full ant-table-wrapper"
   >
