@@ -5,10 +5,7 @@
     :loading="loading"
     :rowSelection="{ onChange: selectRentals }"
     :rowAction="{
-      options: [
-        { key: 'delete', label: 'Delete' },
-        { key: 'edit', label: 'Edit' },
-      ],
+      options: [{ key: 'delete', label: 'Delete' }],
       onClick: action,
     }"
   />
