@@ -7,8 +7,10 @@
     <div v-if="isReady" class="mx-4 md:mx-0">
       <Card :autoSize="true" :hasTitle="false" :padding="true">
         <sub-nav-menu :items="items" :base-path="basePath" />
-        <router-view></router-view>
       </Card>
+      <div class="mt-4">
+        <router-view></router-view>
+      </div>
     </div>
     <div v-else class="text-center mt-8">
       <spinner />
