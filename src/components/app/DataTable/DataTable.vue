@@ -117,14 +117,14 @@ export default class DataTable extends Vue {
   }
 
   onSelectRow(rowKey: string): void {
-    const selectedRows = [...this.selectedRows];
-    const rowIndex = selectedRows.findIndex((id: string) => id === rowKey);
+    const newSelectedRows = [...this.selectedRows];
+    const rowIndex = newSelectedRows.findIndex((id: string) => id === rowKey);
     if (rowIndex === -1) {
-      selectedRows.push(rowKey);
+      newSelectedRows.push(rowKey);
     } else {
-      selectedRows.splice(rowIndex, 1);
+      newSelectedRows.splice(rowIndex, 1);
     }
-    this.selectedRows = [...selectedRows];
+    this.selectedRows = newSelectedRows;
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
@@ -151,6 +151,9 @@ export default class DataTable extends Vue {
 <style>
 .data-table {
   @apply w-full flex flex-col;
+}
+.data-table-pagination {
+  @apply mb-0 !important;
 }
 .data-table-pagination > .ant-pagination-item-active {
   @apply border-primary !important;
