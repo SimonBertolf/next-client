@@ -13,6 +13,7 @@
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
+      <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
       <template slot="selection" slot-scope="text, row">
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
@@ -24,11 +25,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import _ from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver, RowSelectionResolver, RowActionResolver } from '@/util';
+import {
+  TableResolver,
+  HeaderStyleResolver,
+  RowSelectionResolver,
+  RowActionResolver,
+  TableSorterResolver,
+} from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -58,6 +65,8 @@ export default class DataTable extends Vue {
 
   filteredColumns: TableColumn[] = this.itsColumns;
 
+  currentSorter: boolean | { direction: string | boolean; key: string } = false;
+
   @Watch('columns', { immediate: true, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
     if (!_.isEqual(val, oldVal)) {
@@ -65,6 +74,31 @@ export default class DataTable extends Vue {
         (col) => this.itsColumns.find((c) => c.key === col.key) as TableColumn,
       );
     }
+  }
+
+  @Watch('currentSorter', { immediate: true, deep: true })
+  handleCurrentSorter(
+    val: boolean | { direction: string | boolean; key: string },
+    oldVal: boolean | { direction: string | boolean; key: string },
+  ): void {
+    if (!_.isEqual(val, oldVal)) {
+      this.filteredColumns = this.filteredColumns.map(
+        (col) => this.itsColumns.find((c) => c.key === col.key) as TableColumn,
+      );
+    }
+  }
+
+  @Emit()
+  sort(direction: string | boolean, key: string): { direction: string | boolean; key: string } {
+    if (direction) {
+      this.currentSorter = {
+        direction,
+        key,
+      };
+    } else {
+      this.currentSorter = false;
+    }
+    return { direction, key };
   }
 
   get itsComponents(): TableComponents {
@@ -79,7 +113,9 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.resolver.resolve(this.columns);
+    const sorterResolver = new TableSorterResolver(this.currentSorter, this.sort);
+    sorterResolver.setNext(this.resolver);
+    return sorterResolver.resolve(this.columns);
   }
 
   get hasColumnFilter(): boolean {

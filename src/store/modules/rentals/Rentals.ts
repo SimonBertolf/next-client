@@ -1,6 +1,7 @@
 import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { Inject } from 'inversify-props';
 import type { IRepository } from '@/services';
+import type { QueryInterface } from '@/types';
 import type { Rental } from '@/models';
 
 @Module({ namespaced: true })
@@ -16,9 +17,16 @@ export default class Rentals extends VuexModule {
   }
 
   @Action
-  public async loadRentals(assetId: string): Promise<void> {
+  public async loadRentals({ assetId, query }: { assetId: string; query?: QueryInterface }): Promise<void> {
+    let itsQuery: QueryInterface = { filter: { assetId } };
+    if (query?.sort) {
+      itsQuery = {
+        ...itsQuery,
+        sort: { ...query.sort },
+      };
+    }
     return this.rentalRepository
-      .list({ filter: { assetId } })
+      .list({ ...itsQuery })
       .then((rentals: Rental[]) => {
         this.context.commit('setRentals', rentals);
       })

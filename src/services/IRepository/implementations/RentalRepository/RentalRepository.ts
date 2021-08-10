@@ -7,14 +7,31 @@ import { GenericLegacyRepository } from '../GenericLegacyRepository';
 @injectable()
 export class RentalRepository extends GenericLegacyRepository<Rental> {
   async list(query?: QueryInterface): Promise<Rental[]> {
-    const { filter } = query || { filter: {} };
+    const { filter, sort } = query || { filter: {}, sort: {} };
+    let itsSort = {
+      sort: 'MietObjektID',
+      dir: 'ASC',
+    };
+    if (sort?.nr) {
+      itsSort = {
+        ...itsSort,
+        sort: 'MONr',
+        dir: sort.nr === 1 ? 'ASC' : 'DESC',
+      };
+    }
+    if (sort?.property) {
+      itsSort = {
+        ...itsSort,
+        sort: 'MietObjekt',
+        dir: sort.property === 1 ? 'ASC' : 'DESC',
+      };
+    }
     const { data: apiRentals } = await this.requestLegacy<{ data: ApiRental[] }>('get', 'IO_Mietobjekt', 'getRentals', {
       ...filter,
       showAll: true,
-      sort: 'MietObjektID',
       start: 0,
       limit: 1000,
-      dir: 'ASC',
+      ...itsSort,
     });
     const rentals: Rental[] = apiRentals.map((rental: ApiRental) => rentalFromApiRental(rental));
     return rentals;

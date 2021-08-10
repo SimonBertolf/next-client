@@ -8,6 +8,7 @@
       options: [{ key: 'delete', label: 'Delete' }],
       onClick: action,
     }"
+    @sort="sort"
   />
 </template>
 
@@ -35,12 +36,19 @@ export default class RentalTableComponent extends Vue {
     return { key, _id };
   }
 
+  @Emit()
+  sort(sorter: { direction: string | boolean; key: string }): { direction: string | boolean; key: string } {
+    return sorter;
+  }
+
   get columns(): TableColumn[] {
     const { count, area, marketRent, netRent } = this.summary;
     return [
       {
         title: 'Nr.',
         key: 'nr',
+        sorter: true,
+        slots: { title: 'customTitle' },
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -59,7 +67,8 @@ export default class RentalTableComponent extends Vue {
       },
       {
         title: 'Mietobjekt',
-        key: 'rentalProperty',
+        key: 'property',
+        sorter: true,
         children: [
           {
             type: TableColumnTypes.UNIT,

@@ -6,6 +6,7 @@
       :summary="summary"
       @action="handleAction"
       @select-rentals="handleSelectRentals"
+      @sort="handleSort"
     />
   </div>
 </template>
@@ -22,7 +23,7 @@ export default class RentalTable extends Vue {
   loading = true;
 
   mounted(): void {
-    this.$store.dispatch('Rentals/loadRentals', this.assetId).then(() => {
+    this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId }).then(() => {
       this.loading = false;
     });
   }
@@ -54,7 +55,7 @@ export default class RentalTable extends Vue {
       title: 'Do you want to delete this item?',
       onOk: () => {
         this.$store.dispatch('Rentals/deleteRental', _id).then(() => {
-          this.$store.dispatch('Rentals/loadRentals', this.assetId);
+          this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId });
         });
       },
     });
@@ -65,6 +66,22 @@ export default class RentalTable extends Vue {
     const numSelectedRentals = selectedRentals.length;
     this.$message.config({ maxCount: 1 });
     this.$message.info(`Selected Rentals: ${numSelectedRentals}/${totalRentals}`);
+  }
+
+  handleSort(sorter: { direction: string | boolean; key: string }): void {
+    const { direction, key } = sorter;
+    this.loading = true;
+    if (!direction) {
+      this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId }).then(() => {
+        this.loading = false;
+      });
+    } else {
+      const itsDir = direction === 'asc' ? 1 : -1;
+      const sort = { [key]: itsDir };
+      this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId, query: { sort } }).then(() => {
+        this.loading = false;
+      });
+    }
   }
 }
 </script>
