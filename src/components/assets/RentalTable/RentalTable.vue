@@ -51,9 +51,16 @@ export default class RentalTable extends Vue {
     this.$confirm({
       title: 'Do you want to delete this item?',
       onOk: () => {
-        this.$store.dispatch('Rentals/deleteRental', _id).then(() => {
-          this.$store.dispatch('Rentals/loadRentals', this.assetId);
-        });
+        this.loading = true;
+        this.$store
+          .dispatch('Rentals/deleteRental', _id)
+          .then(() => {
+            this.loading = false;
+            this.$message.success('Item deleted successfully');
+          })
+          .catch(() => {
+            this.loading = false;
+          });
       },
     });
   }
