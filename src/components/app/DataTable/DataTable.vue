@@ -17,7 +17,7 @@
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
       <template slot="action" slot-scope="text, row">
-        <row-action-menu :options="rowAction.options" @click="({ key }) => rowAction.onClick(key, row._id)" />
+        <row-action-menu :options="rowActions.actions" @click="({ key }) => rowActions.onClick(key, row._id)" />
       </template>
     </a-table>
   </div>
@@ -28,7 +28,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import _ from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver, RowSelectionResolver, RowActionResolver } from '@/util';
+import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -50,20 +50,30 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
   @Prop({ type: [Object, Boolean], default: false })
-  rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
+  rowActions: { actions: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
 
   selectedRows: string[] = [];
 
-  private readonly resolver: TableResolver = this.makeTableResolver();
+  private resolver: TableResolver;
 
-  filteredColumns: TableColumn[] = this.itsColumns;
+  filteredColumns: TableColumn[] = [];
 
-  @Watch('columns', { immediate: true, deep: true })
+  created(): void {
+    const builder: TableResolverBuilder = new DataTableResolverBuilder();
+    if (this.rowSelection) builder.setRowSelection(true);
+    if (this.rowActions) builder.setRowAction(true);
+    this.resolver = builder.build();
+  }
+
+  mounted(): void {
+    this.filteredColumns = this.itsColumns;
+  }
+
+  @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
     if (!_.isEqual(val, oldVal)) {
-      this.filteredColumns = this.filteredColumns.map(
-        (col) => this.itsColumns.find((c) => c.key === col.key) as TableColumn,
-      );
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
     }
   }
 
@@ -100,31 +110,15 @@ export default class DataTable extends Vue {
     return this.selectedRows.includes(rowKey);
   }
 
-  makeTableResolver(): TableResolver {
-    let resolver: TableResolver = new HeaderStyleResolver();
-    let nextResolver = null;
-    if (this.rowSelection) {
-      nextResolver = new RowSelectionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-    if (this.rowAction) {
-      nextResolver = new RowActionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-    return resolver;
-  }
-
   onSelectRow(rowKey: string): void {
-    const selectedRows = [...this.selectedRows];
-    const rowIndex = selectedRows.findIndex((id: string) => id === rowKey);
+    const newSelectedRows = [...this.selectedRows];
+    const rowIndex = newSelectedRows.findIndex((id: string) => id === rowKey);
     if (rowIndex === -1) {
-      selectedRows.push(rowKey);
+      newSelectedRows.push(rowKey);
     } else {
-      selectedRows.splice(rowIndex, 1);
+      newSelectedRows.splice(rowIndex, 1);
     }
-    this.selectedRows = [...selectedRows];
+    this.selectedRows = newSelectedRows;
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
@@ -151,6 +145,9 @@ export default class DataTable extends Vue {
 <style>
 .data-table {
   @apply w-full flex flex-col;
+}
+.data-table-pagination {
+  @apply mb-0 !important;
 }
 .data-table-pagination > .ant-pagination-item-active {
   @apply border-primary !important;
