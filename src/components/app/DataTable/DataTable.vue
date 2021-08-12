@@ -13,6 +13,9 @@
       <template slot="selection" slot-scope="text, row">
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
+      <template slot="action" slot-scope="text, row">
+        <row-action-menu :options="rowActions.actions" @click="({ key }) => rowActions.onClick(key, row._id)" />
+      </template>
     </a-table>
   </div>
 </template>
@@ -21,14 +24,15 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver, RowSelectionResolver } from '@/util';
+import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
 import RowSelector from './RowSelector.vue';
+import RowActionMenu from './RowActionMenu.vue';
 
-@Component({ components: { RowSelector } })
+@Component({ components: { RowSelector, RowActionMenu } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -40,9 +44,19 @@ export default class DataTable extends Vue {
 
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
+  @Prop({ type: [Object, Boolean], default: false })
+  rowActions: { actions: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
+
   selectedRows: string[] = [];
 
-  private readonly resolver: TableResolver = this.makeTableResolver();
+  private resolver: TableResolver;
+
+  created(): void {
+    const builder: TableResolverBuilder = new DataTableResolverBuilder();
+    if (this.rowSelection) builder.setRowSelection(true);
+    if (this.rowActions) builder.setRowAction(true);
+    this.resolver = builder.build();
+  }
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -57,17 +71,6 @@ export default class DataTable extends Vue {
 
   get itsColumns(): TableColumn[] {
     return this.resolver.resolve(this.columns);
-  }
-
-  makeTableResolver(): TableResolver {
-    let resolver: TableResolver = new HeaderStyleResolver();
-    let nextResolver = null;
-    if (this.rowSelection) {
-      nextResolver = new RowSelectionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-    return resolver;
   }
 
   onSelectRow(rowKey: string): void {

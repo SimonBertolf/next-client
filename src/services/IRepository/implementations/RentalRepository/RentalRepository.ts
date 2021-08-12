@@ -8,7 +8,7 @@ import { GenericLegacyRepository } from '../GenericLegacyRepository';
 export class RentalRepository extends GenericLegacyRepository<Rental> {
   async list(query?: QueryInterface): Promise<Rental[]> {
     const { filter } = query || { filter: {} };
-    const apiRentals = await this.requestLegacy<ApiRental[]>('get', 'IO_Mietobjekt', 'getRentals', {
+    const { data: apiRentals } = await this.requestLegacy<{ data: ApiRental[] }>('get', 'IO_Mietobjekt', 'getRentals', {
       ...filter,
       showAll: true,
       sort: 'MietObjektID',
@@ -18,5 +18,20 @@ export class RentalRepository extends GenericLegacyRepository<Rental> {
     });
     const rentals: Rental[] = apiRentals.map((rental: ApiRental) => rentalFromApiRental(rental));
     return rentals;
+  }
+
+  async delete(_id: string): Promise<Rental> {
+    const { success, message } = await this.requestLegacy<{ success: boolean; message: string }>(
+      'post',
+      'IO_Mietobjekt',
+      'delRental',
+      {
+        confirmed: true,
+        id: _id,
+      },
+    );
+    if (!success) throw new Error(message);
+    const deletedRental: Partial<Rental> = { _id };
+    return deletedRental as Rental;
   }
 }

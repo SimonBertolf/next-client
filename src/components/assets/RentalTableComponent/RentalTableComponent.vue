@@ -1,5 +1,14 @@
 <template>
-  <data-table :columns="columns" :data="rentals" :loading="loading" :rowSelection="{ onChange: selectRentals }" />
+  <data-table
+    :columns="columns"
+    :data="rentals"
+    :loading="loading"
+    :rowSelection="{ onChange: selectRentals }"
+    :rowActions="{
+      actions: [{ key: 'delete', label: 'Delete' }],
+      onClick: action,
+    }"
+  />
 </template>
 
 <script lang="ts">
@@ -19,6 +28,11 @@ export default class RentalTableComponent extends Vue {
   @Emit()
   selectRentals(selectedRentals: string[]): string[] {
     return selectedRentals;
+  }
+
+  @Emit()
+  action(key: string, _id: string): { key: string; _id: string } {
+    return { key, _id };
   }
 
   get columns(): TableColumn[] {

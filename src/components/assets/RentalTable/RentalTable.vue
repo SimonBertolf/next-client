@@ -1,10 +1,13 @@
 <template>
-  <rental-table-component
-    :rentals="rentals"
-    :loading="loading"
-    :summary="summary"
-    @select-rentals="handleSelectRentals"
-  />
+  <div class="w-full">
+    <rental-table-component
+      :rentals="rentals"
+      :loading="loading"
+      :summary="summary"
+      @action="handleAction"
+      @select-rentals="handleSelectRentals"
+    />
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +22,7 @@ export default class RentalTable extends Vue {
   loading = true;
 
   mounted(): void {
-    this.$store.dispatch('Rentals/loadRentals', this.assetId).then(() => {
+    this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } }).then(() => {
       this.loading = false;
     });
   }
@@ -38,6 +41,29 @@ export default class RentalTable extends Vue {
     const marketRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.marketRent, 0);
     const netRent = this.rentals.reduce((accumulator: number, rental: Rental) => accumulator + rental.netRent, 0);
     return { count, area, marketRent, netRent };
+  }
+
+  handleAction({ key, _id }: { key: string; _id: string }): void {
+    if (key === 'delete') this.deleteRental(_id);
+  }
+
+  deleteRental(_id: string): void {
+    this.$confirm({
+      title: 'Do you want to delete this item?',
+      onOk: () => {
+        this.loading = true;
+        this.$store
+          .dispatch('Rentals/deleteRental', _id)
+          .then(() => {
+            this.loading = false;
+            this.$message.success('Item deleted successfully');
+            this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } });
+          })
+          .catch(() => {
+            this.loading = false;
+          });
+      },
+    });
   }
 
   handleSelectRentals(selectedRentals: string[]): void {
