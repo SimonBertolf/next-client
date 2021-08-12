@@ -24,7 +24,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
-import { TableResolver, HeaderStyleResolver, RowSelectionResolver, RowActionResolver } from '@/util';
+import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
 import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
@@ -49,7 +49,14 @@ export default class DataTable extends Vue {
 
   selectedRows: string[] = [];
 
-  private readonly resolver: TableResolver = this.makeTableResolver();
+  private resolver: TableResolver;
+
+  created(): void {
+    const builder: TableResolverBuilder = new DataTableResolverBuilder();
+    if (this.rowSelection) builder.setRowSelection(true);
+    if (this.rowAction) builder.setRowAction(true);
+    this.resolver = builder.build();
+  }
 
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
@@ -64,22 +71,6 @@ export default class DataTable extends Vue {
 
   get itsColumns(): TableColumn[] {
     return this.resolver.resolve(this.columns);
-  }
-
-  makeTableResolver(): TableResolver {
-    let resolver: TableResolver = new HeaderStyleResolver();
-    let nextResolver = null;
-    if (this.rowSelection) {
-      nextResolver = new RowSelectionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-    if (this.rowAction) {
-      nextResolver = new RowActionResolver();
-      nextResolver.setNext(resolver);
-      resolver = nextResolver;
-    }
-    return resolver;
   }
 
   onSelectRow(rowKey: string): void {
