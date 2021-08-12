@@ -34,6 +34,6 @@ export default class KpiListMobile extends Vue {
 
 <style>
 .ant-collapse-content-box {
-  @apply bg-background p-4 !important;
+  @apply bg-common-100 p-4 !important;
 }
 </style>

@@ -80,19 +80,19 @@ export default class HeaderCell extends Vue {
   @apply px-2 font-primary whitespace-nowrap !important;
 }
 .header-cell-bg-primary {
-  background-color: #ce423b;
+  @apply bg-primary-100;
 }
 .header-cell-bg-secondary {
-  background-color: #939393 !important;
+  @apply bg-common-500;
 }
 .header-cell-bg-transparent {
-  background-color: transparent !important;
+  @apply bg-transparent;
 }
 .header-cell-text-color-dark {
-  @apply text-dark !important;
+  @apply text-black !important;
 }
 .header-cell-text-color-neutral {
-  @apply text-neutral !important;
+  @apply text-white !important;
 }
 .header-cell-default {
   @apply py-1 !important;
@@ -101,7 +101,7 @@ export default class HeaderCell extends Vue {
   @apply py-2 !important;
 }
 .header-cell-default-border {
-  @apply border-r border-neutral !important;
+  @apply border-r border-white !important;
 }
 .header-cell-first {
   @apply rounded-tl-md rounded-bl-md !important;
@@ -110,19 +110,18 @@ export default class HeaderCell extends Vue {
   @apply rounded-tr-md rounded-br-md !important;
 }
 .header-cell-unit-border {
-  border-color: #cbcbcb;
-  @apply py-2 border-b !important;
+  @apply py-2 border-b border-common-400 !important;
 }
 .header-cell-summary {
   @apply font-bold;
 }
 .header-cell-summary-border {
-  @apply border-dark border-t border-b !important;
+  @apply border-black border-t border-b !important;
 }
 .header-cell-summary-border-first {
-  @apply border-dark border-l !important;
+  @apply border-black border-l !important;
 }
 .header-cell-summary-border-last {
-  @apply border-dark border-r !important;
+  @apply border-black border-r !important;
 }
 </style>

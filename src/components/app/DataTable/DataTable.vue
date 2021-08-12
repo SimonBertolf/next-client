@@ -99,20 +99,20 @@ export default class DataTable extends Vue {
   @apply mb-0 !important;
 }
 .data-table-pagination > .ant-pagination-item-active {
-  @apply border-primary !important;
+  @apply border-secondary-100 !important;
 }
 .data-table-pagination > .ant-pagination-item-active > a {
-  @apply text-primary !important;
+  @apply text-secondary-100 !important;
 }
 .data-table-pagination > .ant-pagination-item > a {
-  @apply hover:text-primary !important;
+  @apply hover:text-secondary-100 !important;
 }
 .data-table-pagination > li:not(.ant-pagination-disabled) > a {
-  @apply hover:text-primary !important;
+  @apply hover:text-secondary-100 !important;
 }
 .data-table-pagination > .ant-pagination-item:hover a,
 .data-table-pagination > .ant-pagination-next:focus a,
 .data-table-pagination > .ant-pagination-prev:focus a {
-  @apply text-primary !important;
+  @apply text-secondary-100 !important;
 }
 </style>

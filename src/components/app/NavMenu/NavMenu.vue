@@ -42,6 +42,6 @@ li.menu-item:not(:last-child) {
 .nav-menu {
   @apply border-r-0 sm:border-t-2 sm:border-b-2 !important;
   @apply pl-16 sm:pl-0 !important;
-  @apply sm:border-divider sm:divide-solid sm:divide-y-2 sm:divide-divider !important;
+  @apply sm:border-common-400 sm:divide-solid sm:divide-y-2 sm:divide-common-400 !important;
 }
 </style>

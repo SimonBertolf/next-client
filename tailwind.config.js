@@ -4,25 +4,23 @@ module.exports = {
   theme: {
     fontFamily: { primary: ['Brown', 'sans-serif'] },
     colors: {
-      primary: '#252D48',
-      primaryl: '#4f5674',
-      secondary: '#822829',
-      tertiary: '#D0841C',
-      quaternary: '#9B9B9B',
-      neutral: '#FFFFFF',
+      primary: {
+        100: '#CE423B',
+        200: '#8C2B2D',
+        300: '#d76762',
+        400: '#a35557',
+      },
+      secondary: { 100: '#28304D', 200: '#4F5674' },
+      common: {
+        100: '#fafafa', // light backgroun
+        200: '#f5f5f5', // darker background
+        300: '#f0f0f0', // table hover
+        400: '#D9D9D9', // all kind of dividers
+        500: '#939393', // higlighting
+      },
+      black: '#000000',
+      white: '#ffffff',
       transparent: 'transparent',
-      table: '#DA716B',
-      dark: '#000000',
-      background: '#F5F5F5',
-      bgSecondary: '#FAFAFA',
-      tableBody: '#D1D5DB',
-      start: '#CE423B',
-      startl: '#ff7466',
-      input: '#d9d9d9',
-      subTitle: '#3E3E3E',
-      divider: '#E8E8E8',
-      thumb: '#B2B2B2',
-      magenta: '#FF00FF',
     },
     fontSize: {
       xs: '0.75rem',
@@ -34,8 +32,6 @@ module.exports = {
     },
     gradientColorStops: (theme) => ({
       ...theme('colors'),
-      stop: '#8C2B2D',
-      stopl: '#c15956',
     }),
     extend: {
       spacing: {
