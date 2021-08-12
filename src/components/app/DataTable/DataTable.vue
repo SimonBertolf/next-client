@@ -81,17 +81,6 @@ export default class DataTable extends Vue {
     }
   }
 
-  @Watch('currentSorter', { immediate: false, deep: true })
-  handleCurrentSorter(
-    val: boolean | { direction: string | boolean; key: string },
-    oldVal: boolean | { direction: string | boolean; key: string },
-  ): void {
-    if (!_.isEqual(val, oldVal)) {
-      const cols = [...this.itsColumns];
-      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
-    }
-  }
-
   @Emit()
   sort(direction: string | boolean, key: string): { direction: string | boolean; key: string } {
     if (direction) {
