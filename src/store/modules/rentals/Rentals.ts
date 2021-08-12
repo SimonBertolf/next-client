@@ -17,16 +17,9 @@ export default class Rentals extends VuexModule {
   }
 
   @Action
-  public async loadRentals({ assetId, query }: { assetId: string; query?: QueryInterface }): Promise<void> {
-    let itsQuery: QueryInterface = { filter: { assetId } };
-    if (query?.sort) {
-      itsQuery = {
-        ...itsQuery,
-        sort: { ...query.sort },
-      };
-    }
+  public async loadRentals(query: QueryInterface): Promise<void> {
     return this.rentalRepository
-      .list({ ...itsQuery })
+      .list({ ...query })
       .then((rentals: Rental[]) => {
         this.context.commit('setRentals', rentals);
       })
@@ -36,15 +29,14 @@ export default class Rentals extends VuexModule {
   }
 
   @Action async deleteRental(_id: string): Promise<void> {
-    return this.rentalRepository
-      .delete(_id)
-      .then(async () => {
-        console.log({ asset: this.context.rootState.Assets.asset });
-        await this.context.dispatch('loadRentals', { assetId: this.context.rootState.Assets.asset.id });
-      })
-      .catch((error) => {
-        this.context.commit('Errors/setError', error, { root: true });
-      });
+    try {
+      await this.rentalRepository.delete(_id);
+      const rentals = this.rentals.filter((rental) => rental._id !== _id);
+      this.context.commit('setRentals', rentals);
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+      throw new Error(error);
+    }
   }
 
   @Action

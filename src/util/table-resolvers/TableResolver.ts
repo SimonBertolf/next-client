@@ -13,3 +13,10 @@ export interface TableResolver {
   resolve(ctx: TableResolverContext): TableColumn[];
   setNext(resolver: TableResolver): void;
 }
+
+export interface TableResolverBuilder {
+  addRowAction(): TableResolverBuilder;
+  addRowSelection(): TableResolverBuilder;
+  addTableSorter(): TableResolverBuilder;
+  build(): TableResolver;
+}

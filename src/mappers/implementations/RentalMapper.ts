@@ -64,6 +64,9 @@ export const sortApiRentalFromRental: ModelMapper<{ [key: string]: SortType }, {
       case 'nr':
         sortProp = 'MONr';
         break;
+      case 'property':
+        sortProp = 'MietObjekt';
+        break;
       default:
         throw new Error(`sort for ${key} is not implemented.`);
     }

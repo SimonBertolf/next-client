@@ -4,8 +4,8 @@
     :data="rentals"
     :loading="loading"
     :rowSelection="{ onChange: selectRentals }"
-    :rowAction="{
-      options: [{ key: 'delete', label: 'Delete' }],
+    :rowActions="{
+      actions: [{ key: 'delete', label: 'Delete' }],
       onClick: action,
     }"
     @sort="sort"

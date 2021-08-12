@@ -14,6 +14,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { Rental } from '@/models';
+import type { SortType } from '@/types';
 import { RentalTableComponent } from '../RentalTableComponent';
 
 @Component({ components: { RentalTableComponent } })
@@ -22,10 +23,14 @@ export default class RentalTable extends Vue {
 
   loading = true;
 
+  sort: { [key: string]: SortType } = { _id: 1 };
+
   mounted(): void {
-    this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId }).then(() => {
-      this.loading = false;
-    });
+    this.$store
+      .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+      .then(() => {
+        this.loading = false;
+      });
   }
 
   destroyed(): void {
@@ -58,6 +63,7 @@ export default class RentalTable extends Vue {
           .then(() => {
             this.loading = false;
             this.$message.success('Item deleted successfully');
+            this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } });
           })
           .catch(() => {
             this.loading = false;
@@ -77,15 +83,20 @@ export default class RentalTable extends Vue {
     const { direction, key } = sorter;
     this.loading = true;
     if (!direction) {
-      this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId }).then(() => {
-        this.loading = false;
-      });
+      this.sort = { _id: 1 };
+      this.$store
+        .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+        .then(() => {
+          this.loading = false;
+        });
     } else {
       const itsDir = direction === 'asc' ? 1 : -1;
-      const sort = { [key]: itsDir };
-      this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId, query: { sort } }).then(() => {
-        this.loading = false;
-      });
+      this.sort = { [key]: itsDir };
+      this.$store
+        .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+        .then(() => {
+          this.loading = false;
+        });
     }
   }
 }
