@@ -71,7 +71,7 @@ export default class DataTable extends Vue {
 
   @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
-    if (!_.isEqual(val, oldVal)) {
+    if (!isEqual(val, oldVal)) {
       const cols = [...this.itsColumns];
       this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
     }
