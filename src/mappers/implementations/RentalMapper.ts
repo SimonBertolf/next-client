@@ -1,3 +1,4 @@
+import { SortType } from '@/types';
 import type { ApiRental, Rental } from '@/models';
 import type { ModelMapper } from '../interfaces/ModelMapper';
 
@@ -45,4 +46,32 @@ export const apiRentalFromRental: ModelMapper<Rental, ApiRental> = (rental) => {
     marketrent: marketRent,
     netm2: netRent,
   };
+};
+
+export const sortApiRentalFromRental: ModelMapper<{ [key: string]: SortType }, { sort: string; dir: string }> = (
+  sort,
+) => {
+  let itsSort = {
+    sort: 'MietObjektID',
+    dir: 'ASC',
+  };
+  Object.entries(sort).forEach(([key, value]) => {
+    let sortProp = '';
+    switch (key) {
+      case '_id':
+        sortProp = 'MietObjektID';
+        break;
+      case 'nr':
+        sortProp = 'MONr';
+        break;
+      default:
+        throw new Error(`sort for ${key} is not implemented.`);
+    }
+    itsSort = {
+      ...itsSort,
+      sort: sortProp,
+      dir: value === 1 ? 'ASC' : 'DESC',
+    };
+  });
+  return itsSort;
 };

@@ -57,7 +57,7 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
   @Prop({ type: [Object, Boolean], default: false })
-  rowAction: { options: Array<{ key: string; label: string }>; onClick(actionKey: string, rowKey: string): void };
+  rowAction: { options: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
 
   selectedRows: string[] = [];
 
@@ -65,7 +65,7 @@ export default class DataTable extends Vue {
 
   filteredColumns: TableColumn[] = this.itsColumns;
 
-  currentSorter: boolean | { direction: string | boolean; key: string } = false;
+  currentSorter: { direction: string | boolean; key: string } = { direction: false, key: '' };
 
   @Watch('columns', { immediate: true, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
@@ -96,7 +96,7 @@ export default class DataTable extends Vue {
         key,
       };
     } else {
-      this.currentSorter = false;
+      this.currentSorter = { direction: false, key: '' };
     }
     return { direction, key };
   }
@@ -113,9 +113,7 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    const sorterResolver = new TableSorterResolver(this.currentSorter, this.sort);
-    sorterResolver.setNext(this.resolver);
-    return sorterResolver.resolve(this.columns);
+    return this.resolver.resolve({ cols: this.columns, sorter: { ...this.currentSorter, handler: this.sort } });
   }
 
   get hasColumnFilter(): boolean {
@@ -149,6 +147,9 @@ export default class DataTable extends Vue {
       nextResolver.setNext(resolver);
       resolver = nextResolver;
     }
+    nextResolver = new TableSorterResolver();
+    nextResolver.setNext(resolver);
+    resolver = nextResolver;
     return resolver;
   }
 

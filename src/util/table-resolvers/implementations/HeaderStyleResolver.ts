@@ -1,11 +1,11 @@
 import type { TableColumn } from '@/types';
-import type { TableResolver } from '../TableResolver';
+import type { TableResolver, TableResolverContext } from '../TableResolver';
 
 export class HeaderStyleResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;
 
-  resolve(ctx: TableColumn[]): TableColumn[] {
-    const columns = [...ctx];
+  resolve(ctx: TableResolverContext): TableColumn[] {
+    const columns = [...ctx.cols];
     const transformChildren = (
       childColumns: TableColumn[],
       parentIndex: number,
@@ -77,7 +77,11 @@ export class HeaderStyleResolver implements TableResolver {
       return itsCol;
     });
     if (this.nextResolver) {
-      return this.nextResolver.resolve([...itsColumns]);
+      const resolverCtx = {
+        ...ctx,
+        cols: [...itsColumns],
+      };
+      return this.nextResolver.resolve(resolverCtx);
     }
     return itsColumns;
   }

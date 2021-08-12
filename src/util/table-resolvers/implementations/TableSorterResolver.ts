@@ -1,36 +1,25 @@
 import type { TableColumn } from '@/types';
-import type { TableResolver } from '../TableResolver';
+import type { TableResolver, TableResolverContext } from '../TableResolver';
 
 export class TableSorterResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;
 
-  private currentSorter: boolean | { direction: string | boolean; key: string };
-
-  private sortHandler: (dir: string | boolean, key: string) => void;
-
-  constructor(
-    currentSorter: boolean | { direction: string | boolean; key: string },
-    sortHandler: (dir: string | boolean, key: string) => void,
-  ) {
-    this.currentSorter = currentSorter;
-    this.sortHandler = sortHandler;
-  }
-
-  resolve(ctx: TableColumn[]): TableColumn[] {
-    const columns = [...ctx];
+  resolve(ctx: TableResolverContext): TableColumn[] {
+    const columns = [...ctx.cols];
     const itsColumns: TableColumn[] = columns.map((col) => {
       const { sorter, ...restOfCol } = col;
-      if (sorter) {
+      const { sorter: resolverSorter } = ctx;
+      if (sorter && resolverSorter) {
+        const { handler, direction, key } = resolverSorter;
         const itsCol: TableColumn = {
           ...restOfCol,
           customHeaderCell: () => {
             let sortProps: { sorter: boolean; onSort: (dir: string | boolean) => void; direction: string | boolean } = {
               sorter: true,
-              onSort: (dir: string | boolean) => this.sortHandler(dir, col.key as string),
+              onSort: (dir: string | boolean) => handler(dir, col.key as string),
               direction: false,
             };
-            if (this.currentSorter) {
-              const { key, direction } = this.currentSorter as { direction: string | boolean; key: string };
+            if (direction) {
               if (key === col.key) sortProps = { ...sortProps, direction };
             }
             if (col.customHeaderCell) {
@@ -52,7 +41,11 @@ export class TableSorterResolver implements TableResolver {
       return col;
     });
     if (this.nextResolver) {
-      return this.nextResolver.resolve([...itsColumns]);
+      const resolverCtx = {
+        ...ctx,
+        cols: [...itsColumns],
+      };
+      return this.nextResolver.resolve(resolverCtx);
     }
     return itsColumns;
   }

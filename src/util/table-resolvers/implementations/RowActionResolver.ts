@@ -1,11 +1,11 @@
 import type { TableColumn } from '@/types';
-import type { TableResolver } from '../TableResolver';
+import type { TableResolver, TableResolverContext } from '../TableResolver';
 
 export class RowActionResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;
 
-  resolve(ctx: TableColumn[]): TableColumn[] {
-    const columns = [...ctx];
+  resolve(ctx: TableResolverContext): TableColumn[] {
+    const columns = [...ctx.cols];
     let rowActionColumn: TableColumn = { key: 'action' };
     const col = columns[columns.length - 1];
     if (col.children?.length) {
@@ -21,7 +21,11 @@ export class RowActionResolver implements TableResolver {
       };
     }
     const itsColumns = [...columns, { ...rowActionColumn }];
-    if (this.nextResolver) return this.nextResolver.resolve([...itsColumns]);
+    const resolverCtx = {
+      ...ctx,
+      cols: [...itsColumns],
+    };
+    if (this.nextResolver) return this.nextResolver.resolve(resolverCtx);
     return itsColumns;
   }
 

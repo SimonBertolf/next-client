@@ -45,18 +45,23 @@ export default class RentalTable extends Vue {
   }
 
   handleAction({ key, _id }: { key: string; _id: string }): void {
-    if (key === 'delete') {
-      this.deleteRental(_id);
-    }
+    if (key === 'delete') this.deleteRental(_id);
   }
 
-  async deleteRental(_id: string): Promise<void> {
+  deleteRental(_id: string): void {
     this.$confirm({
       title: 'Do you want to delete this item?',
       onOk: () => {
-        this.$store.dispatch('Rentals/deleteRental', _id).then(() => {
-          this.$store.dispatch('Rentals/loadRentals', { assetId: this.assetId });
-        });
+        this.loading = true;
+        this.$store
+          .dispatch('Rentals/deleteRental', _id)
+          .then(() => {
+            this.loading = false;
+            this.$message.success('Item deleted successfully');
+          })
+          .catch(() => {
+            this.loading = false;
+          });
       },
     });
   }

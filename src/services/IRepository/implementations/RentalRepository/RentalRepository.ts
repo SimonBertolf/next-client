@@ -1,5 +1,5 @@
 import { injectable } from 'inversify-props';
-import { rentalFromApiRental } from '@/mappers';
+import { rentalFromApiRental, sortApiRentalFromRental } from '@/mappers';
 import type { QueryInterface } from '@/types';
 import type { Rental, ApiRental } from '@/models';
 import { GenericLegacyRepository } from '../GenericLegacyRepository';
@@ -7,25 +7,10 @@ import { GenericLegacyRepository } from '../GenericLegacyRepository';
 @injectable()
 export class RentalRepository extends GenericLegacyRepository<Rental> {
   async list(query?: QueryInterface): Promise<Rental[]> {
-    const { filter, sort } = query || { filter: {}, sort: {} };
-    let itsSort = {
-      sort: 'MietObjektID',
-      dir: 'ASC',
-    };
-    if (sort?.nr) {
-      itsSort = {
-        ...itsSort,
-        sort: 'MONr',
-        dir: sort.nr === 1 ? 'ASC' : 'DESC',
-      };
-    }
-    if (sort?.property) {
-      itsSort = {
-        ...itsSort,
-        sort: 'MietObjekt',
-        dir: sort.property === 1 ? 'ASC' : 'DESC',
-      };
-    }
+    const { filter, sort = { _id: 1 } } = query || { filter: {}, sort: { _id: 1 } };
+
+    const itsSort = sortApiRentalFromRental(sort);
+
     const { data: apiRentals } = await this.requestLegacy<{ data: ApiRental[] }>('get', 'IO_Mietobjekt', 'getRentals', {
       ...filter,
       showAll: true,
@@ -47,7 +32,7 @@ export class RentalRepository extends GenericLegacyRepository<Rental> {
         id: _id,
       },
     );
-    if (!success) throw Error(message);
+    if (!success) throw new Error(message);
     const deletedRental: Partial<Rental> = { _id };
     return deletedRental as Rental;
   }

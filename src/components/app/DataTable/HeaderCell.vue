@@ -2,7 +2,7 @@
   <th v-bind="{ ...$attrs, ...restProps }" :class="clsClass">
     <span class="w-full flex flex-noWrap justify-between">
       <slot></slot>
-      <span v-if="sorter" class="self-end">
+      <span v-if="sorter" class="self-end pl-2">
         <table-sorter :direction="direction" @sort="onSort" />
       </span>
     </span>
