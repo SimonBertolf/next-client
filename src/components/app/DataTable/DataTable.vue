@@ -1,6 +1,6 @@
 <template>
   <div class="data-table">
-    <span v-if="hasColumnFilter" class="self-end">
+    <span v-if="hasColumnFilter" class="self-end mb-4">
       <column-filter :options="columnFilterOptions" @filter="onColumnFilter" />
     </span>
     <a-table
@@ -26,7 +26,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
-import _ from 'lodash';
+import { isEqual } from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
 import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
@@ -75,7 +75,7 @@ export default class DataTable extends Vue {
 
   @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
-    if (!_.isEqual(val, oldVal)) {
+    if (!isEqual(val, oldVal)) {
       const cols = [...this.itsColumns];
       this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
     }
