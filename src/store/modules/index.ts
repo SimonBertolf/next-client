@@ -6,3 +6,4 @@ export * from './dashboards';
 export * from './reports';
 export * from './widgets';
 export * from './rentals';
+export * from './projections';

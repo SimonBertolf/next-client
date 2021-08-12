@@ -887,7 +887,7 @@ exports[`Storyshots app/Layout Example 1`] = `
           >
             <a
               class="inactive-link"
-              href="#/planing"
+              href="#/planning"
             >
               Planning
             </a>
@@ -1066,7 +1066,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
   >
     <a
       class="inactive-link"
-      href="#/planing"
+      href="#/planning"
     >
       Planning
     </a>
@@ -3844,7 +3844,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           >
             <a
               class="inactive-link"
-              href="#/planing"
+              href="#/planning"
             >
               Planning
             </a>
