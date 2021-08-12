@@ -14,7 +14,7 @@
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
       <template slot="action" slot-scope="text, row">
-        <row-action-menu :options="rowAction.options" @click="({ key }) => rowAction.onClick(key, row._id)" />
+        <row-action-menu :options="rowActions.actions" @click="({ key }) => rowActions.onClick(key, row._id)" />
       </template>
     </a-table>
   </div>
@@ -45,7 +45,7 @@ export default class DataTable extends Vue {
   @Prop({ type: [Object, Boolean], default: false }) rowSelection: { onChange: (selectedRows: string[]) => void };
 
   @Prop({ type: [Object, Boolean], default: false })
-  rowAction: { options: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
+  rowActions: { actions: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
 
   selectedRows: string[] = [];
 
@@ -54,7 +54,7 @@ export default class DataTable extends Vue {
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
     if (this.rowSelection) builder.setRowSelection(true);
-    if (this.rowAction) builder.setRowAction(true);
+    if (this.rowActions) builder.setRowAction(true);
     this.resolver = builder.build();
   }
 
