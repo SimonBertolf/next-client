@@ -22,7 +22,7 @@ export default class RentalTable extends Vue {
   loading = true;
 
   mounted(): void {
-    this.$store.dispatch('Rentals/loadRentals', this.assetId).then(() => {
+    this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } }).then(() => {
       this.loading = false;
     });
   }
@@ -57,6 +57,7 @@ export default class RentalTable extends Vue {
           .then(() => {
             this.loading = false;
             this.$message.success('Item deleted successfully');
+            this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } });
           })
           .catch(() => {
             this.loading = false;
