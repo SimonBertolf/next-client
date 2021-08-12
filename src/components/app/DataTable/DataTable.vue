@@ -13,7 +13,6 @@
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
       :loading="{ indicator: spinnerComponent, spinning: loading }"
     >
-      <span slot="customTitle"><a-icon type="smile-o" /> Name</span>
       <template slot="selection" slot-scope="text, row">
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
       </template>
