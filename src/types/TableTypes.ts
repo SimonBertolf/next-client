@@ -48,6 +48,7 @@ export interface TableColumn {
   background?: string;
   type?: string;
   sorter?: boolean;
+  optional?: boolean;
 }
 
 export interface TableData {

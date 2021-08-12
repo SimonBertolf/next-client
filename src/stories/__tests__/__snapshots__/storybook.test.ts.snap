@@ -470,6 +470,8 @@ exports[`Storyshots app/DataTable Example 1`] = `
 <div
   class="data-table"
 >
+  <!---->
+   
   <div
     class="w-full ant-table-wrapper"
   >
@@ -498,140 +500,33 @@ exports[`Storyshots app/DataTable Example 1`] = `
                   class="ant-table-fixed"
                   style="width: auto;"
                 >
-                  <colgroup>
-                    <col
-                      style="width: 150px; min-width: 150px;"
-                    />
-                    <col />
-                  </colgroup>
+                  <colgroup />
                   <thead
                     class="ant-table-thead"
-                  >
-                    <tr>
-                      <th
-                        bg="primary"
-                        class="header-cell header-cell-bg-primary header-cell-text-color-neutral header-cell-first  header-cell-default header-cell-default-border ant-table-row-cell-break-word"
-                        isfirst="true"
-                        key="age"
-                        type="default"
-                      >
-                        <span
-                          class="ant-table-header-column"
-                        >
-                          <div>
-                            <span
-                              class="ant-table-column-title"
-                            >
-                              Age
-                            </span>
-                            <span
-                              class="ant-table-column-sorter"
-                            />
-                          </div>
-                        </span>
-                      </th>
-                      <th
-                        bg="secondary"
-                        class="header-cell header-cell-bg-secondary header-cell-text-color-neutral header-cell-last  header-cell-default ant-table-row-cell-last"
-                        islast="true"
-                        key="address"
-                        type="default"
-                      >
-                        <span
-                          class="ant-table-header-column"
-                        >
-                          <div>
-                            <span
-                              class="ant-table-column-title"
-                            >
-                              Address
-                            </span>
-                            <span
-                              class="ant-table-column-sorter"
-                            />
-                          </div>
-                        </span>
-                      </th>
-                    </tr>
-                  </thead>
+                  />
                   <tbody
                     class="ant-table-tbody"
                   >
                     <tr
                       class="body-row ant-table-row ant-table-row-level-0"
                       data-row-key="1"
-                    >
-                      <td
-                        class="ant-table-row-cell-break-word"
-                      >
-                        32
-                      </td>
-                      <td
-                        class=""
-                      >
-                        New York No. 1 Lake Park
-                      </td>
-                    </tr>
+                    />
                     <tr
                       class="body-row ant-table-row ant-table-row-level-0"
                       data-row-key="2"
-                    >
-                      <td
-                        class="ant-table-row-cell-break-word"
-                      >
-                        42
-                      </td>
-                      <td
-                        class=""
-                      >
-                        London No. 1 Lake Park
-                      </td>
-                    </tr>
+                    />
                     <tr
                       class="body-row ant-table-row ant-table-row-level-0"
                       data-row-key="3"
-                    >
-                      <td
-                        class="ant-table-row-cell-break-word"
-                      >
-                        32
-                      </td>
-                      <td
-                        class=""
-                      >
-                        New York No. 1 Lake Park
-                      </td>
-                    </tr>
+                    />
                     <tr
                       class="body-row ant-table-row ant-table-row-level-0"
                       data-row-key="4"
-                    >
-                      <td
-                        class="ant-table-row-cell-break-word"
-                      >
-                        42
-                      </td>
-                      <td
-                        class=""
-                      >
-                        London No. 1 Lake Park
-                      </td>
-                    </tr>
+                    />
                     <tr
                       class="body-row ant-table-row ant-table-row-level-0"
                       data-row-key="5"
-                    >
-                      <td
-                        class="ant-table-row-cell-break-word"
-                      >
-                        32
-                      </td>
-                      <td
-                        class=""
-                      >
-                        New York No. 1 Lake Park
-                      </td>
-                    </tr>
+                    />
                   </tbody>
                 </table>
               </div>
