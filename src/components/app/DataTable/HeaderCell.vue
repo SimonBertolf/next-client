@@ -28,7 +28,7 @@ export default class HeaderCell extends Vue {
 
   @Prop({ type: [String, Boolean], default: false }) direction: string | boolean;
 
-  @Prop({ default: () => () => undefined }) onSort: (...args: unknown[]) => void;
+  @Prop({ default: () => () => undefined }) onSort: (direction: boolean | string) => void;
 
   get restProps(): Record<string, unknown> {
     const { ...restProps } = this.$props;
