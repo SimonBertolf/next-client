@@ -1,6 +1,6 @@
 <template>
   <div class="data-table">
-    <span v-if="hasColumnFilter" class="self-end">
+    <span v-if="hasColumnFilter" class="self-end mb-4">
       <column-filter :options="columnFilterOptions" @filter="onColumnFilter" />
     </span>
     <a-table
