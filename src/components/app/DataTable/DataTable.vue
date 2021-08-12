@@ -25,7 +25,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import _ from 'lodash';
+import { isEqual } from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
 import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
