@@ -9,7 +9,7 @@
           <button
             :href="href"
             @click="navigate"
-            class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+            class="bg-secondary-100 text-white hover:bg-secondary-200 text-white font-bold py-2 px-4 rounded mt-4"
           >
             {{ asset.name }} (id: {{ asset.id }})
           </button>

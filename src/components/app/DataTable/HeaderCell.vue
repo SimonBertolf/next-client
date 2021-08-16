@@ -80,7 +80,7 @@ export default class HeaderCell extends Vue {
   @apply px-2 font-primary whitespace-nowrap !important;
 }
 .header-cell-bg-primary {
-  @apply bg-primary-100;
+  @apply bg-primary-200;
 }
 .header-cell-bg-secondary {
   @apply bg-common-500;

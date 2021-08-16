@@ -2,7 +2,7 @@
 
 exports[`Storyshots app/ButtonAbort Example 1`] = `
 <button
-  class="ant-btn ant-btn-primary button-primary"
+  class="ant-btn ant-btn-primary button-base-primary"
   type="button"
 >
   <span>
@@ -13,7 +13,7 @@ exports[`Storyshots app/ButtonAbort Example 1`] = `
 
 exports[`Storyshots app/ButtonAdd Example 1`] = `
 <button
-  class="ant-btn ant-btn-primary ant-btn-lg button-secondary"
+  class="ant-btn ant-btn-primary ant-btn-lg button-base-secondary"
   type="button"
 >
   <i
@@ -46,7 +46,7 @@ exports[`Storyshots app/ButtonAdd Example 1`] = `
 
 exports[`Storyshots app/ButtonBase Example 1`] = `
 <button
-  class="ant-btn ant-btn-primary button-primary"
+  class="ant-btn ant-btn-primary button-base-primary"
   type="button"
 >
   <span>
@@ -85,7 +85,7 @@ exports[`Storyshots app/ButtonEdit Example 1`] = `
 exports[`Storyshots app/ButtonSave Example 1`] = `
 <form>
   <button
-    class="ant-btn ant-btn-primary button-secondary"
+    class="ant-btn ant-btn-primary button-base-secondary"
     type="submit"
   >
     <span>
@@ -104,7 +104,7 @@ exports[`Storyshots app/ButtonToggle Example 1`] = `
   />
    
   <button
-    class="transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-0"
+    class="transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-white bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-0"
     style="height: 3.125rem;"
   >
     <span
@@ -113,7 +113,6 @@ exports[`Storyshots app/ButtonToggle Example 1`] = `
       <i
         aria-label="icon: right"
         class="anticon anticon-right"
-        style="color: rgb(156, 163, 175);"
       >
         <svg
           aria-hidden="true"
@@ -816,7 +815,7 @@ exports[`Storyshots app/InfiniteScroll Example 1`] = `
 
 exports[`Storyshots app/Layout Example 1`] = `
 <section
-  class="h-screen bg-background root-layout ant-layout"
+  class="h-screen bg-common-400 root-layout ant-layout"
 >
   <span
     class="md:hidden"
@@ -958,7 +957,7 @@ exports[`Storyshots app/Layout Example 1`] = `
   </aside>
    
   <button
-    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
+    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-white bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
     style="height: 3.125rem;"
   >
     <span
@@ -967,7 +966,6 @@ exports[`Storyshots app/Layout Example 1`] = `
       <i
         aria-label="icon: right"
         class="anticon anticon-right"
-        style="color: rgb(156, 163, 175);"
       >
         <svg
           aria-hidden="true"
@@ -988,10 +986,10 @@ exports[`Storyshots app/Layout Example 1`] = `
   </button>
    
   <section
-    class="bg-background ant-layout"
+    class="bg-common-400 ant-layout"
   >
     <section
-      class="container mx-auto p-0 sm:p-4 bg-background ant-layout"
+      class="container mx-auto p-0 sm:p-4 bg-common-400 ant-layout"
     >
       <header
         class="layout-header ant-layout-header"
@@ -1000,7 +998,7 @@ exports[`Storyshots app/Layout Example 1`] = `
       </header>
        
       <main
-        class="bg-background ant-layout-content"
+        class="bg-common-400 ant-layout-content"
       >
         <div
           class="sm:hidden h-20"
@@ -3773,7 +3771,7 @@ exports[`Storyshots typography/TitleLight Example 1`] = `
 
 exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
 <section
-  class="h-screen bg-background root-layout ant-layout"
+  class="h-screen bg-common-400 root-layout ant-layout"
 >
   <span
     class="md:hidden"
@@ -3915,7 +3913,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
   </aside>
    
   <button
-    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
+    class="hidden sm:flex transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-white bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap translate-x-48"
     style="height: 3.125rem;"
   >
     <span
@@ -3924,7 +3922,6 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
       <i
         aria-label="icon: right"
         class="anticon anticon-right"
-        style="color: rgb(156, 163, 175);"
       >
         <svg
           aria-hidden="true"
@@ -3945,10 +3942,10 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
   </button>
    
   <section
-    class="bg-background ant-layout"
+    class="bg-common-400 ant-layout"
   >
     <section
-      class="container mx-auto p-0 sm:p-4 bg-background ant-layout"
+      class="container mx-auto p-0 sm:p-4 bg-common-400 ant-layout"
     >
       <header
         class="layout-header ant-layout-header"
@@ -3961,7 +3958,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
       </header>
        
       <main
-        class="bg-background ant-layout-content"
+        class="bg-common-400 ant-layout-content"
       >
         <div
           class="sm:hidden h-20"
@@ -3970,7 +3967,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         <ul>
           <li>
             <button
-              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              class="bg-secondary-100 text-white hover:bg-secondary-200 text-white font-bold py-2 px-4 rounded mt-4"
               href="#/assets/9"
             >
               
@@ -3980,7 +3977,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           </li>
           <li>
             <button
-              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              class="bg-secondary-100 text-white hover:bg-secondary-200 text-white font-bold py-2 px-4 rounded mt-4"
               href="#/assets/16"
             >
               
@@ -3990,7 +3987,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
           </li>
           <li>
             <button
-              class="bg-primary text-neutral hover:bg-primaryl text-white font-bold py-2 px-4 rounded mt-4"
+              class="bg-secondary-100 text-white hover:bg-secondary-200 text-white font-bold py-2 px-4 rounded mt-4"
               href="#/assets/60"
             >
               

@@ -1,7 +1,7 @@
 <template>
   <button style="height: 3.125rem" @click="onToggle" :class="buttonCls">
     <span :class="rootCls">
-      <a-icon type="right" :style="{ color: '#9CA3AF' }" />
+      <a-icon type="right" style="button-toggle-icon" />
     </span>
   </button>
 </template>
@@ -21,7 +21,7 @@ export default class ButtonToggle extends Vue {
   // eslint-disable-next-line class-methods-use-this
   get buttonCls(): string {
     // eslint-disable-next-line max-len
-    return `transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-neutral bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap ${this.buttonOpenCls}`;
+    return `transform transition-all duration-200 ease-in-out p-1 hover:pl-3 bg-white bg-opacity-80 w-6 hover:w-8 outline-none focus:outline-none self-center z-20 fixed flex flex-nowrap ${this.buttonOpenCls}`;
   }
 
   get rootCls(): string {
@@ -38,4 +38,8 @@ export default class ButtonToggle extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.button-toggle-icon {
+  @apply text-common-100;
+}
+</style>

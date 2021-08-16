@@ -18,15 +18,15 @@ export default class NavMenuItem extends Vue {
 <style scoped>
 .active-link,
 .active-link::after {
-  @apply bg-neutral sm:bg-gradient-to-r from-start to-stop border-0 sm:border-secondary !important;
+  @apply bg-white sm:bg-gradient-to-r from-primary-200 to-primary-100 border-0 sm:border-primary-200 !important;
   @apply sm:w-full h-full;
-  @apply text-secondary font-primary text-4xl font-normal !important;
-  @apply sm:text-center sm:text-neutral  sm:text-2xl  sm:font-light !important;
+  @apply text-primary-200 font-primary text-4xl font-normal !important;
+  @apply sm:text-center sm:text-white  sm:text-2xl  sm:font-light !important;
 }
 
 .inactive-link {
-  @apply text-dark sm:text-center text-4xl sm:text-2xl font-primary font-light hover:text-secondary !important;
-  @apply sm:bg-gradient-to-r sm:hover:from-start sm:hover:to-stop sm:hover:text-neutral !important;
+  @apply text-black sm:text-center text-4xl sm:text-2xl font-primary font-light hover:text-primary-200 !important;
+  @apply sm:bg-gradient-to-r sm:hover:from-primary-200 sm:hover:to-primary-100 sm:hover:text-white !important;
   @apply border-none !important;
   @apply w-full h-full !important;
 }

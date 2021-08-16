@@ -32,11 +32,12 @@ export default class ButtonBase extends Vue {
 </script>
 
 <style scoped>
-.button-base-secondary {
+.button-base-primary {
   @apply bg-secondary-100 hover:bg-secondary-200  border-0 border-secondary-100 !important;
 }
 
-.button-base-primary {
-  @apply bg-gradient-to-r from-primary-100 to-primary-200 hover:from-primary-300 hover:to-primary-400 border-0 border-primary-100 !important;
+.button-base-secondary {
+  @apply bg-gradient-to-r from-primary-100 to-primary-200 hover:from-primary-300 hover:to-primary-400 !important;
+  @apply border-primary-100 border-0 !important;
 }
 </style>

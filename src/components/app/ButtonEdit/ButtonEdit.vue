@@ -14,9 +14,9 @@ export default class ButtonEdit extends Vue {
 
 <style scoped>
 .button-edit {
-  @apply focus:border-start
-        focus:text-start
-        hover:border-start
-        hover:text-start;
+  @apply focus:border-primary-200
+        focus:text-primary-200
+        hover:border-primary-200
+        hover:text-primary-200;
 }
 </style>
