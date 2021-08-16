@@ -9,7 +9,7 @@ export class RentalRepository extends GenericLegacyRepository<Rental> {
   async list(query?: QueryInterface): Promise<Rental[]> {
     const { filter, sort = { _id: 1 } } = query || { filter: {}, sort: { _id: 1 } };
 
-    const itsSort = sortApiRentalFromRental(sort);
+    const itsSort = sortApiRentalFromSortRental(sort);
 
     const { data: apiRentals } = await this.requestLegacy<{ data: ApiRental[] }>('get', 'IO_Mietobjekt', 'getRentals', {
       ...filter,
