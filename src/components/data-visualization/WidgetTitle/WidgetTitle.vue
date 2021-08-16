@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <h2 :class="Classes">{{ title }}</h2>
-  </div>
+  <h2 :class="cls">{{ title }}</h2>
 </template>
 
 <script lang="ts">
@@ -14,7 +12,7 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'dark', type: String }) readonly color: string;
 
-  get Classes() {
+  get cls() {
     return `text-3xl font-bold font-${this.color} text-${this.position}`;
   }
 }
