@@ -72,6 +72,46 @@ export const sortApiRentalFromSortRental: ModelMapper<{ [key: string]: SortType 
         sort: 'MietObjekt',
         dir,
       };
+    case 'rentalType':
+      return {
+        sort: 'MietTyp',
+        dir,
+      };
+    case 'tenant':
+      return {
+        sort: 'tenant',
+        dir,
+      };
+    case 'count':
+      return {
+        sort: 'Anzahl',
+        dir,
+      };
+    case 'area':
+      return {
+        sort: 'Flaeche',
+        dir,
+      };
+    case 'activeFrom':
+      return {
+        sort: 'Beginn',
+        dir,
+      };
+    case 'activeTo':
+      return {
+        sort: 'Ende',
+        dir,
+      };
+    case 'marketRent':
+      return {
+        sort: 'marketrent',
+        dir,
+      };
+    case 'netRent':
+      return {
+        sort: 'netm2',
+        dir,
+      };
     default:
       throw new Error(`sort for ${key} is not implemented.`);
   }
