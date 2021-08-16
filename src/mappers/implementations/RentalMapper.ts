@@ -48,7 +48,7 @@ export const apiRentalFromRental: ModelMapper<Rental, ApiRental> = (rental) => {
   };
 };
 
-export const sortApiRentalFromRental: ModelMapper<{ [key: string]: SortType }, { sort: string; dir: string }> = (
+export const sortApiRentalFromSortRental: ModelMapper<{ [key: string]: SortType }, { sort: string; dir: string }> = (
   sort,
 ) => {
   let itsSort = {
