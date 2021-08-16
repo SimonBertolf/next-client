@@ -1,14 +1,20 @@
 <template>
   <th v-bind="{ ...$attrs, ...restProps }" :class="clsClass">
-    <slot></slot>
+    <span class="w-full flex flex-noWrap justify-between">
+      <slot></slot>
+      <span v-if="sorter" class="self-end pl-2">
+        <table-sorter :direction="direction" @sort="onSort" />
+      </span>
+    </span>
   </th>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { TableColumnTypes } from '@/types';
+import TableSorter from './TableSorter.vue';
 
-@Component
+@Component({ components: { TableSorter } })
 export default class HeaderCell extends Vue {
   @Prop({ type: String, default: 'primary' }) bg: string;
 
@@ -17,6 +23,12 @@ export default class HeaderCell extends Vue {
   @Prop({ type: Boolean, default: false }) isFirst: boolean;
 
   @Prop({ type: Boolean, default: false }) isLast: boolean;
+
+  @Prop({ type: Boolean, default: false }) sorter: boolean;
+
+  @Prop({ type: [String, Boolean], default: false }) direction: string | boolean;
+
+  @Prop({ default: () => () => undefined }) onSort: (direction: boolean | string) => void;
 
   get restProps(): Record<string, unknown> {
     const { ...restProps } = this.$props;

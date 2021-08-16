@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
 import { isEqual } from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
@@ -58,10 +58,13 @@ export default class DataTable extends Vue {
 
   filteredColumns: TableColumn[] = [];
 
+  currentSorter: { direction?: string | boolean; key?: string } = {};
+
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
-    if (this.rowSelection) builder.setRowSelection(true);
-    if (this.rowActions) builder.setRowAction(true);
+    if (this.rowSelection) builder.addRowSelection();
+    if (this.rowActions) builder.addRowAction();
+    builder.addTableSorter();
     this.resolver = builder.build();
   }
 
@@ -77,6 +80,19 @@ export default class DataTable extends Vue {
     }
   }
 
+  @Emit()
+  sort(direction: string | boolean, key: string): { direction: string | boolean; key: string } {
+    if (direction) {
+      this.currentSorter = {
+        direction,
+        key,
+      };
+    } else {
+      this.currentSorter = { direction: false, key: '' };
+    }
+    return { direction, key };
+  }
+
   get itsComponents(): TableComponents {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
@@ -89,7 +105,7 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.resolver.resolve(this.columns);
+    return this.resolver.resolve({ cols: this.columns, sorter: { ...this.currentSorter, handler: this.sort } });
   }
 
   get hasColumnFilter(): boolean {

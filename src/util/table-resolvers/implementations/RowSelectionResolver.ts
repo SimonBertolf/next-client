@@ -1,11 +1,11 @@
 import type { TableColumn } from '@/types';
-import type { TableResolver } from '../TableResolver';
+import type { TableResolver, TableResolverContext } from '../TableResolver';
 
 export class RowSelectionResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;
 
-  resolve(ctx: TableColumn[]): TableColumn[] {
-    const columns = [...ctx];
+  resolve(ctx: TableResolverContext): TableColumn[] {
+    const columns = [...ctx.cols];
     let rowSelectionColumn: TableColumn = { key: 'selection' };
     const col = columns[0];
     if (col.children?.length) {
@@ -21,7 +21,11 @@ export class RowSelectionResolver implements TableResolver {
       };
     }
     const itsColumns = [{ ...rowSelectionColumn }, ...columns];
-    if (this.nextResolver) return this.nextResolver.resolve([...itsColumns]);
+    const resolverCtx = {
+      ...ctx,
+      cols: [...itsColumns],
+    };
+    if (this.nextResolver) return this.nextResolver.resolve(resolverCtx);
     return itsColumns;
   }
 
