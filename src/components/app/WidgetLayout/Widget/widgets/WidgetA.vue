@@ -10,11 +10,11 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
-import { LineChart, KeyValue } from '@/components/data-visualization';
+import { LineChart } from '@/components/data-visualization';
 
 const relevantFilters = ['assets', 'tenants', 'clients'];
 
-@Component({ components: { LineChart, KeyValue } })
+@Component({ components: { LineChart } })
 export default class WidgetA extends Vue {
   @Prop(String) readonly id: string;
 
