@@ -1,8 +1,8 @@
 import { Action, Module, Mutation, VuexModule } from 'vuex-module-decorators';
 import { Inject } from 'inversify-props';
 import type { IRepository } from '@/services';
-import type { Rental } from '@/models';
 import type { QueryInterface } from '@/types';
+import type { Rental } from '@/models';
 
 @Module({ namespaced: true })
 export default class Rentals extends VuexModule {
