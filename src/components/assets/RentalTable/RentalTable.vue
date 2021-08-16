@@ -6,6 +6,7 @@
       :summary="summary"
       @action="handleAction"
       @select-rentals="handleSelectRentals"
+      @sort="handleSort"
     />
   </div>
 </template>
@@ -13,6 +14,7 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import type { Rental } from '@/models';
+import type { SortType } from '@/types';
 import { RentalTableComponent } from '../RentalTableComponent';
 
 @Component({ components: { RentalTableComponent } })
@@ -21,10 +23,14 @@ export default class RentalTable extends Vue {
 
   loading = true;
 
+  sort: { [key: string]: SortType } = { nr: 1 };
+
   mounted(): void {
-    this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } }).then(() => {
-      this.loading = false;
-    });
+    this.$store
+      .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+      .then(() => {
+        this.loading = false;
+      });
   }
 
   destroyed(): void {
@@ -57,7 +63,7 @@ export default class RentalTable extends Vue {
           .then(() => {
             this.loading = false;
             this.$message.success('Item deleted successfully');
-            this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId } });
+            this.$store.dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } });
           })
           .catch(() => {
             this.loading = false;
@@ -71,6 +77,27 @@ export default class RentalTable extends Vue {
     const numSelectedRentals = selectedRentals.length;
     this.$message.config({ maxCount: 1 });
     this.$message.info(`Selected Rentals: ${numSelectedRentals}/${totalRentals}`);
+  }
+
+  handleSort(sorter: { direction: string | boolean; key: string }): void {
+    const { direction, key } = sorter;
+    this.loading = true;
+    if (!direction) {
+      this.sort = {};
+      this.$store
+        .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+        .then(() => {
+          this.loading = false;
+        });
+    } else {
+      const itsDir = direction === 'asc' ? 1 : -1;
+      this.sort = { [key]: itsDir };
+      this.$store
+        .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
+        .then(() => {
+          this.loading = false;
+        });
+    }
   }
 }
 </script>

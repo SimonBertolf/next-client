@@ -1,10 +1,13 @@
 <template>
   <div class="data-table">
+    <span v-if="hasColumnFilter" class="self-end mb-4">
+      <column-filter :options="columnFilterOptions" @filter="onColumnFilter" />
+    </span>
     <a-table
       class="w-full"
       :row-key="(record) => record._id"
       :components="itsComponents"
-      :columns="itsColumns"
+      :columns="filteredColumns"
       :data-source="data"
       :scroll="{ x: true }"
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
@@ -21,7 +24,8 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator';
+import { isEqual } from 'lodash';
 import type { TableColumn, TableData, TableComponents, TableComponentRenderer } from '@/types';
 import type { VNode } from 'vue';
 import { TableResolver, TableResolverBuilder, DataTableResolverBuilder } from '@/util';
@@ -31,8 +35,9 @@ import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
 import RowSelector from './RowSelector.vue';
 import RowActionMenu from './RowActionMenu.vue';
+import ColumnFilter from './ColumnFilter.vue';
 
-@Component({ components: { RowSelector, RowActionMenu } })
+@Component({ components: { RowSelector, RowActionMenu, ColumnFilter } })
 export default class DataTable extends Vue {
   @Prop({ type: Array, required: true }) columns: TableColumn[];
 
@@ -51,11 +56,41 @@ export default class DataTable extends Vue {
 
   private resolver: TableResolver;
 
+  filteredColumns: TableColumn[] = [];
+
+  currentSorter: { direction?: string | boolean; key?: string } = {};
+
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
-    if (this.rowSelection) builder.setRowSelection(true);
-    if (this.rowActions) builder.setRowAction(true);
+    if (this.rowSelection) builder.addRowSelection();
+    if (this.rowActions) builder.addRowAction();
+    builder.addTableSorter();
     this.resolver = builder.build();
+  }
+
+  mounted(): void {
+    this.filteredColumns = this.itsColumns;
+  }
+
+  @Watch('columns', { immediate: false, deep: true })
+  handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!isEqual(val, oldVal)) {
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
+    }
+  }
+
+  @Emit()
+  sort(direction: string | boolean, key: string): { direction: string | boolean; key: string } {
+    if (direction) {
+      this.currentSorter = {
+        direction,
+        key,
+      };
+    } else {
+      this.currentSorter = { direction: false, key: '' };
+    }
+    return { direction, key };
   }
 
   get itsComponents(): TableComponents {
@@ -70,7 +105,25 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.resolver.resolve(this.columns);
+    return this.resolver.resolve({ cols: this.columns, sorter: { ...this.currentSorter, handler: this.sort } });
+  }
+
+  get hasColumnFilter(): boolean {
+    const filterableColumns = this.columns.filter((col) => col.optional);
+    return filterableColumns.length !== 0;
+  }
+
+  get columnFilterOptions(): Array<{ key: string; label: string }> {
+    const filterableColumns = this.columns.filter((col) => col.optional);
+    return filterableColumns.map((col) => {
+      const { key = '', title = '' } = col;
+      const label = title as string;
+      return { key, label };
+    });
+  }
+
+  isChecked(rowKey: string): boolean {
+    return this.selectedRows.includes(rowKey);
   }
 
   onSelectRow(rowKey: string): void {
@@ -85,15 +138,29 @@ export default class DataTable extends Vue {
     this.rowSelection?.onChange([...this.selectedRows]);
   }
 
-  isChecked(rowKey: string): boolean {
-    return this.selectedRows.includes(rowKey);
+  onColumnFilter({ checked, key }: { checked: boolean; key: string }): void {
+    if (!checked) {
+      this.filteredColumns = this.filteredColumns.filter((col) => col.key !== key);
+    } else {
+      const itsFilteredColumns: TableColumn[] = [];
+      const allColumns = this.itsColumns;
+      allColumns.forEach((col) => {
+        if (col.key === key) {
+          itsFilteredColumns.push(col);
+        } else {
+          const colInFilter = this.filteredColumns.find((c) => c.key === col.key);
+          if (colInFilter) itsFilteredColumns.push(colInFilter);
+        }
+      });
+      this.filteredColumns = [...itsFilteredColumns];
+    }
   }
 }
 </script>
 
 <style>
 .data-table {
-  @apply w-full;
+  @apply w-full flex flex-col;
 }
 .data-table-pagination {
   @apply mb-0 !important;

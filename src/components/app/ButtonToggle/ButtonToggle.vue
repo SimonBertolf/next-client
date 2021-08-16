@@ -40,6 +40,6 @@ export default class ButtonToggle extends Vue {
 
 <style scoped>
 .button-toggle-icon {
-  @apply text-common-100;
+  @apply fill-current text-common-100;
 }
 </style>

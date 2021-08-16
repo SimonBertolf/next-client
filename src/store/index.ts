@@ -1,7 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import * as modules from './modules';
-import { AuthLoader, AssetLoader, DashboardLoader, ReportLoader, WidgetLoader, LayoutLoader } from './plugins';
+import {
+  AuthLoader,
+  AssetLoader,
+  DashboardLoader,
+  ReportLoader,
+  WidgetLoader,
+  LayoutLoader,
+  ProjectionLoader,
+} from './plugins';
 
 Vue.use(Vuex);
 
@@ -10,5 +18,5 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules,
-  plugins: [AuthLoader, AssetLoader, DashboardLoader, ReportLoader, WidgetLoader, LayoutLoader],
+  plugins: [AuthLoader, AssetLoader, DashboardLoader, ReportLoader, WidgetLoader, LayoutLoader, ProjectionLoader],
 });
