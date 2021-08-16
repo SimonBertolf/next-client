@@ -23,7 +23,7 @@ export default class RentalTable extends Vue {
 
   loading = true;
 
-  sort: { [key: string]: SortType } = {};
+  sort: { [key: string]: SortType } = { nr: 1 };
 
   mounted(): void {
     this.$store

@@ -3,8 +3,8 @@ import type { TableColumn } from '@/types';
 export interface TableResolverContext {
   cols: TableColumn[];
   sorter?: {
-    key: string;
-    direction: string | boolean;
+    key?: string;
+    direction?: string | boolean;
     handler: (dir: string | boolean, key: string) => void;
   };
 }

@@ -7,17 +7,17 @@ export class TableSorterResolver implements TableResolver {
   resolve(ctx: TableResolverContext): TableColumn[] {
     const columns = [...ctx.cols];
     const itsColumns: TableColumn[] = columns.map((col) => {
-      const { sorter, ...restOfCol } = col;
+      const { sorter, direction: itsDir, ...restOfCol } = col;
       const { sorter: resolverSorter } = ctx;
       if (sorter && resolverSorter) {
-        const { handler, direction, key } = resolverSorter;
+        const { handler, direction = undefined, key = undefined } = resolverSorter;
         const itsCol: TableColumn = {
           ...restOfCol,
           customHeaderCell: () => {
             let sortProps: { sorter: boolean; onSort: (dir: string | boolean) => void; direction: string | boolean } = {
               sorter: true,
               onSort: (dir: string | boolean) => handler(dir, col.key as string),
-              direction: false,
+              direction: key === undefined && itsDir ? (itsDir as string).toLowerCase() : false,
             };
             if (direction) {
               if (key === col.key) sortProps = { ...sortProps, direction };

@@ -58,7 +58,7 @@ export default class DataTable extends Vue {
 
   filteredColumns: TableColumn[] = [];
 
-  currentSorter: { direction: string | boolean; key: string } = { direction: false, key: '' };
+  currentSorter: { direction?: string | boolean; key?: string } = {};
 
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();

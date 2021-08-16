@@ -48,6 +48,7 @@ export default class RentalTableComponent extends Vue {
         title: 'Nr.',
         key: 'nr',
         sorter: true,
+        direction: 'asc',
         children: [
           {
             type: TableColumnTypes.UNIT,
