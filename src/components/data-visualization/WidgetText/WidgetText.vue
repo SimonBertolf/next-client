@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <p :class="classes">{{ text }}</p>
-  </div>
+  <p :class="cls">{{ text }}</p>
 </template>
 
 <script lang="ts">
@@ -12,7 +10,7 @@ export default class WidgetText extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly position: string;
 
-  get classes() {
+  get cls() {
     return `text-base font-bold font-dark text-${this.position}`;
   }
 }
