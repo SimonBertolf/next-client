@@ -1,5 +1,5 @@
 import { injectable } from 'inversify-props';
-import { rentalFromApiRental, sortApiRentalFromRental } from '@/mappers';
+import { rentalFromApiRental, sortApiRentalFromSortRental } from '@/mappers';
 import type { QueryInterface } from '@/types';
 import type { Rental, ApiRental } from '@/models';
 import { GenericLegacyRepository } from '../GenericLegacyRepository';
@@ -7,7 +7,7 @@ import { GenericLegacyRepository } from '../GenericLegacyRepository';
 @injectable()
 export class RentalRepository extends GenericLegacyRepository<Rental> {
   async list(query?: QueryInterface): Promise<Rental[]> {
-    const { filter, sort = { _id: 1 } } = query || { filter: {}, sort: { _id: 1 } };
+    const { filter, sort = {} } = query || { filter: {}, sort: {} };
 
     const itsSort = sortApiRentalFromSortRental(sort);
 

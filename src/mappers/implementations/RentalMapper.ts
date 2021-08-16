@@ -48,33 +48,31 @@ export const apiRentalFromRental: ModelMapper<Rental, ApiRental> = (rental) => {
   };
 };
 
-export const sortApiRentalFromSortRental: ModelMapper<{ [key: string]: SortType }, { sort: string; dir: string }> = (
+export const sortApiRentalFromSortRental: ModelMapper<{ [key: string]: SortType }, { sort?: string; dir?: string }> = (
   sort,
 ) => {
-  let itsSort = {
-    sort: 'MietObjektID',
-    dir: 'ASC',
-  };
-  Object.entries(sort).forEach(([key, value]) => {
-    let sortProp = '';
-    switch (key) {
-      case '_id':
-        sortProp = 'MietObjektID';
-        break;
-      case 'nr':
-        sortProp = 'MONr';
-        break;
-      case 'property':
-        sortProp = 'MietObjekt';
-        break;
-      default:
-        throw new Error(`sort for ${key} is not implemented.`);
-    }
-    itsSort = {
-      ...itsSort,
-      sort: sortProp,
-      dir: value === 1 ? 'ASC' : 'DESC',
-    };
-  });
-  return itsSort;
+  const sortKeys = Object.keys(sort);
+  if (!sortKeys.length) return {};
+  if (sortKeys.length > 1) throw new Error('Multi dimension sorting is not supported');
+  const key = sortKeys[0];
+  const dir = sort[key] === 1 ? 'ASC' : 'DESC';
+  switch (key) {
+    case '_id':
+      return {
+        sort: 'MietObjektID',
+        dir,
+      };
+    case 'nr':
+      return {
+        sort: 'MONr',
+        dir,
+      };
+    case 'property':
+      return {
+        sort: 'MietObjekt',
+        dir,
+      };
+    default:
+      throw new Error(`sort for ${key} is not implemented.`);
+  }
 };

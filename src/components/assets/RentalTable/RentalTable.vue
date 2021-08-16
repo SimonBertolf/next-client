@@ -23,7 +23,7 @@ export default class RentalTable extends Vue {
 
   loading = true;
 
-  sort: { [key: string]: SortType } = { _id: 1 };
+  sort: { [key: string]: SortType } = {};
 
   mounted(): void {
     this.$store
@@ -83,7 +83,7 @@ export default class RentalTable extends Vue {
     const { direction, key } = sorter;
     this.loading = true;
     if (!direction) {
-      this.sort = { _id: 1 };
+      this.sort = {};
       this.$store
         .dispatch('Rentals/loadRentals', { filter: { assetId: this.assetId }, sort: { ...this.sort } })
         .then(() => {
