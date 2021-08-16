@@ -1,5 +1,5 @@
 <template>
-  <component :is="componentName" />
+  <component :is="componentName" :section="section" />
 </template>
 
 <script lang="ts">

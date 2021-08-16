@@ -4,8 +4,8 @@ export const mockProtections: Projection[] = [
   {
     _id: '6115096e4a8313b0397b8d48',
     name: 'Luftschloss 225, 8005 Himmel',
-    from: new Date('January 2020'),
-    to: new Date('December 2024'),
+    from: new Date('March 2017'),
+    to: new Date('November 2021'),
     sections: [
       {
         name: 'sale',

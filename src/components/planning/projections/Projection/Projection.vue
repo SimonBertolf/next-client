@@ -2,6 +2,8 @@
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4">
     <h2 class="text-4xl mb-2">{{ title }}</h2>
     <p>{{ name }}</p>
+    <p>from: {{ from | dateMonth }} – to: {{ to | dateMonth }}</p>
+    <p>years: {{ years }}, quarters: {{ quarters }}, months: {{ months }}</p>
     <projection-sections class="mt-4" />
   </Card>
 </template>
@@ -22,6 +24,26 @@ export default class Projection extends Vue {
 
   get name(): string | undefined {
     return this.projection?.name;
+  }
+
+  get from(): Date | undefined {
+    return this.projection?.from;
+  }
+
+  get to(): Date | undefined {
+    return this.projection?.to;
+  }
+
+  get years(): number {
+    return this.$store.getters['Projections/years'];
+  }
+
+  get quarters(): number {
+    return this.$store.getters['Projections/quarters'];
+  }
+
+  get months(): number {
+    return this.$store.getters['Projections/months'];
   }
 
   @Prop(String) readonly projectionId: string;
