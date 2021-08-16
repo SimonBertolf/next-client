@@ -1,8 +1,8 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4">
-    <h2 class="text-2xl mb-2">{{ title }}</h2>
+    <h2 class="text-4xl mb-2">{{ title }}</h2>
     <p>{{ name }}</p>
-    <p>ID: {{ projectionId }}</p>
+    <projection-sections class="mt-4" />
   </Card>
 </template>
 
@@ -10,8 +10,9 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Card } from '@/components/app';
 import { Projection as ProjectionModel } from '@/models';
+import ProjectionSections from './ProjectionSections.vue';
 
-@Component({ components: { Card } })
+@Component({ components: { Card, ProjectionSections } })
 export default class Projection extends Vue {
   title = 'Cashflow Projection';
 
