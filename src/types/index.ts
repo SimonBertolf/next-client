@@ -13,6 +13,6 @@ export * from './WidgetLayout';
 export * from './Filter';
 export * from './Translation';
 export * from './SubNavItem';
-export * from './Chart';
+export * from './ChartTypes';
 export * from './Pagination';
 export * from './TableTypes';

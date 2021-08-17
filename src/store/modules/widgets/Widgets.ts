@@ -47,7 +47,7 @@ export default class Widgets extends VuexModule {
           data.push({
             x: Math.random(),
             y: Math.random(),
-            z: type,
+            z: Math.random(),
           });
         }
         data.sort((item1, item2) => (item1.x as number) - (item2.x as number));
