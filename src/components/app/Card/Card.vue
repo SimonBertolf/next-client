@@ -37,13 +37,13 @@ export default class Card extends Vue {
 <style>
 @media print {
   .card {
-    @apply bg-neutral rounded-lg flex flex-col;
+    @apply bg-white rounded-lg flex flex-col;
   }
 }
 
 @media screen {
   .card {
-    @apply bg-neutral shadow-xl rounded-lg flex flex-col;
+    @apply bg-white shadow-xl rounded-lg flex flex-col;
   }
 }
 
@@ -54,6 +54,6 @@ export default class Card extends Vue {
   @apply h-full w-full;
 }
 .ant-card-actions {
-  background: white;
+  @apply bg-white;
 }
 </style>

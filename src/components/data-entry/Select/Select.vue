@@ -26,11 +26,11 @@ export default class Select extends Vue {
 }
 
 .ant-select-selection__rendered {
-  @apply border-r border-input mr-8 !important;
+  @apply border-r border-common-200 mr-8 !important;
 }
 
 .ant-select-selection__placeholder,
 .ant-select-arrow {
-  @apply text-dark !important;
+  @apply text-black !important;
 }
 </style>

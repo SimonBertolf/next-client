@@ -32,6 +32,6 @@ svg {
   @apply fill-current text-transparent;
 }
 .row-selector-circle-checked {
-  @apply fill-current text-primary;
+  @apply fill-current text-secondary-100;
 }
 </style>

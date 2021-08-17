@@ -2,7 +2,7 @@
   <a-button
     @click="onClick"
     type="primary"
-    :class="primary ? 'button-primary' : 'button-secondary'"
+    :class="primary ? 'button-base-primary' : 'button-base-secondary'"
     :htmlType="type"
     :icon="icon"
     :size="size"
@@ -32,11 +32,12 @@ export default class ButtonBase extends Vue {
 </script>
 
 <style scoped>
-.button-primary {
-  @apply bg-primary hover:bg-primaryl  border-0 border-primary !important;
+.button-base-primary {
+  @apply bg-secondary-100 hover:bg-secondary-200  border-0 border-secondary-100 !important;
 }
 
-.button-secondary {
-  @apply bg-gradient-to-r from-start to-stop hover:from-startl hover:to-stopl border-0 border-secondary !important;
+.button-base-secondary {
+  @apply bg-gradient-to-r from-primary-100 to-primary-200 hover:from-primary-300 hover:to-primary-400 !important;
+  @apply border-primary-100 border-0 !important;
 }
 </style>

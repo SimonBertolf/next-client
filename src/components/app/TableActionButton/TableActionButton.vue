@@ -22,8 +22,7 @@ export default class TableActionButton extends Vue {
 }
 
 .custom-button {
-  border-color: #dbdbdb;
-  @apply text-dark hover:text-dark focus:text-dark active:text-dark !important;
-  @apply border-0 shadow-none px-1 ring-0 transition-none h-full !important;
+  @apply text-black hover:text-black focus:text-black active:text-black !important;
+  @apply border-0 border-common-200 shadow-none px-1 ring-0 transition-none h-full !important;
 }
 </style>

@@ -16,9 +16,8 @@ export default class ButtonToggleMobile extends Vue {
   @Prop({ default: false })
   readonly open: boolean;
 
-  @Prop({ default: () => undefined })
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  readonly onToggle: (...args: any[]) => any;
+  @Prop({ default: () => () => undefined })
+  readonly onToggle: (...args: unknown[]) => unknown;
 
   get itsOpen(): boolean {
     return this.open;
@@ -29,6 +28,6 @@ export default class ButtonToggleMobile extends Vue {
 <style scoped>
 .button-toggle-mobile {
   @apply w-20 h-20 shadow-md fixed bottom-8 left-8 sm:hidden !important;
-  @apply border-input focus:text-dark hover:text-dark active:text-dark !important;
+  @apply border-common-200 focus:text-black hover:text-black active:text-black !important;
 }
 </style>
