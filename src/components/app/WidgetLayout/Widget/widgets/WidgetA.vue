@@ -2,7 +2,8 @@
   <div class="overflow-hidden h-full">
     <a-icon class="text-4xl" type="dot-chart" />
     <h3 class="pb-4">Widget {{ name }}</h3>
-    <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" />
+    <bubble-chart />
+    <!-- <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" /> -->
     <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
   </div>
 </template>
@@ -11,10 +12,11 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
 import { LineChart } from '@/components/data-visualization';
+import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
 
 const relevantFilters = ['assets', 'tenants', 'clients'];
 
-@Component({ components: { LineChart } })
+@Component({ components: { LineChart, BubbleChart } })
 export default class WidgetA extends Vue {
   @Prop(String) readonly id: string;
 
