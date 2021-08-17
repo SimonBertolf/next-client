@@ -1,26 +1,26 @@
 import type { TableColumn } from '@/types';
 import type { TableResolver, TableResolverContext } from '../TableResolver';
 
-export class RowSelectionResolver implements TableResolver {
+export class RowActionResolver implements TableResolver {
   private nextResolver: TableResolver | null = null;
 
   resolve(ctx: TableResolverContext): TableColumn[] {
     const columns = [...ctx.cols];
-    let rowSelectionColumn: TableColumn = { key: 'selection' };
-    const col = columns[0];
+    let rowActionColumn: TableColumn = { key: 'action' };
+    const col = columns[columns.length - 1];
     if (col.children?.length) {
-      rowSelectionColumn = {
-        ...rowSelectionColumn,
-        children: [{ ...this.applyRowSelectionChildHeaders(col.children) }],
+      rowActionColumn = {
+        ...rowActionColumn,
+        children: [{ ...this.applyRowActionChildHeaders(col.children) }],
       };
     } else {
-      rowSelectionColumn = {
-        ...rowSelectionColumn,
+      rowActionColumn = {
+        ...rowActionColumn,
         width: 16,
-        scopedSlots: { customRender: 'selection' },
+        scopedSlots: { customRender: 'action' },
       };
     }
-    const itsColumns = [{ ...rowSelectionColumn }, ...columns];
+    const itsColumns = [...columns, { ...rowActionColumn }];
     const resolverCtx = {
       ...ctx,
       cols: [...itsColumns],
@@ -33,7 +33,7 @@ export class RowSelectionResolver implements TableResolver {
     this.nextResolver = resolver;
   }
 
-  private applyRowSelectionChildHeaders(childCols: TableColumn[]): TableColumn {
+  private applyRowActionChildHeaders(childCols: TableColumn[]): TableColumn {
     const col = childCols[0];
     const { type, background } = col;
     let itsCol: TableColumn = {
@@ -41,7 +41,7 @@ export class RowSelectionResolver implements TableResolver {
       background,
     };
     if (col.children?.length) {
-      const childCol = this.applyRowSelectionChildHeaders(col.children);
+      const childCol = this.applyRowActionChildHeaders(col.children);
       itsCol = {
         ...itsCol,
         children: [{ ...childCol }],
@@ -50,7 +50,7 @@ export class RowSelectionResolver implements TableResolver {
       itsCol = {
         ...itsCol,
         width: 16,
-        scopedSlots: { customRender: 'selection' },
+        scopedSlots: { customRender: 'action' },
       };
     }
     return itsCol;

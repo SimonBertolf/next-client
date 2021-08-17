@@ -11,10 +11,12 @@ import {
   NotFound,
   Reporting,
   Admin,
+  Planning,
 } from '@/views';
 import { WidgetEditor, DashboardsAdmin } from '@/components/admin';
 import { AssetData, AssetAttributes } from '@/components/assets';
 import { Analysis, Reports, Report } from '@/components/reporting';
+import { Projection, Projections } from '@/components/planning';
 import { Health } from '../components/util';
 import { ProtectedRoutes } from '../components/auth/index';
 
@@ -89,6 +91,23 @@ const routes: Array<RouteConfig> = [
         path: '/reporting/reports/:reportId/print',
         props: true,
         component: ReportPrint,
+      },
+      {
+        path: '/planning',
+        props: true,
+        redirect: '/planning/projections',
+        component: Planning,
+        children: [
+          {
+            path: 'projections',
+            component: Projections,
+          },
+          {
+            path: 'projections/:projectionId',
+            props: true,
+            component: Projection,
+          },
+        ],
       },
       {
         path: '/admin',

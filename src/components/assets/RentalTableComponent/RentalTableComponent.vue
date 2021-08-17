@@ -1,5 +1,15 @@
 <template>
-  <data-table :columns="columns" :data="rentals" :loading="loading" :rowSelection="{ onChange: selectRentals }" />
+  <data-table
+    :columns="columns"
+    :data="rentals"
+    :loading="loading"
+    :rowSelection="{ onChange: selectRentals }"
+    :rowActions="{
+      actions: [{ key: 'delete', label: 'Delete' }],
+      onClick: action,
+    }"
+    @sort="sort"
+  />
 </template>
 
 <script lang="ts">
@@ -21,12 +31,24 @@ export default class RentalTableComponent extends Vue {
     return selectedRentals;
   }
 
+  @Emit()
+  action(key: string, _id: string): { key: string; _id: string } {
+    return { key, _id };
+  }
+
+  @Emit()
+  sort(sorter: { direction: string | boolean; key: string }): { direction: string | boolean; key: string } {
+    return sorter;
+  }
+
   get columns(): TableColumn[] {
     const { count, area, marketRent, netRent } = this.summary;
     return [
       {
         title: 'Nr.',
-        key: 'rentalId',
+        key: 'nr',
+        sorter: true,
+        direction: 'asc',
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -45,7 +67,7 @@ export default class RentalTableComponent extends Vue {
       },
       {
         title: 'Mietobjekt',
-        key: 'nr',
+        key: 'property',
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -64,6 +86,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Miettyp',
         key: 'rentalType',
+        optional: true,
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -82,6 +105,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Mieter',
         key: 'tenant',
+        optional: true,
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -100,6 +124,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Anzahl',
         key: 'count',
+        optional: true,
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -119,6 +144,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Fläche',
         key: 'area',
+        optional: true,
         children: [
           {
             title: 'm²',
@@ -139,6 +165,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Aktiv ab',
         key: 'activeFrom',
+        optional: true,
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -157,6 +184,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Aktiv bis',
         key: 'activeTo',
+        optional: true,
         children: [
           {
             type: TableColumnTypes.UNIT,
@@ -175,6 +203,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Markmiete',
         key: 'marketRent',
+        optional: true,
         children: [
           {
             title: 'CHF',
@@ -195,6 +224,7 @@ export default class RentalTableComponent extends Vue {
       {
         title: 'Nettomiete',
         key: 'netRent',
+        optional: true,
         children: [
           {
             title: 'p.a./m²',
