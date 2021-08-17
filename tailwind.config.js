@@ -18,6 +18,10 @@ module.exports = {
         400: '#F5F5F5', // all kind of dividers
         500: '#FAFAFA', // higlighting
       },
+      accent: {
+        100: '#FF00FF',
+        200: '#D0841C',
+      },
       black: '#000000',
       white: '#ffffff',
       transparent: 'transparent',

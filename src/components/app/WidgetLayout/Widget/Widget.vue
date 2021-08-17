@@ -50,10 +50,9 @@ export default class Widget extends Vue {
 .widget-card .remove {
   position: absolute;
   right: 5px;
-  font-size: 10px;
   top: 4px;
-  color: #a3a3a3;
   cursor: pointer;
+  @apply text-xs text-common-100;
 }
 
 .widget-card .ant-spin-container {

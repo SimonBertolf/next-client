@@ -19,7 +19,7 @@ export default class Overlay extends Vue {
 
   get rootCls(): string {
     // eslint-disable-next-line max-len
-    return `transform transition-all duration-500 ease-in-out bg-dark w-full h-full ${this.displayCls} ${this.absoluteCls}`;
+    return `transform transition-all duration-500 ease-in-out bg-black w-full h-full ${this.displayCls} ${this.absoluteCls}`;
   }
 
   get absoluteCls(): string {

@@ -12,12 +12,12 @@
     <spinner :spinning="loading">
       <div class="widget-layout relative -mx-4" :style="{ height: `${height}px` }">
         <div v-if="showGuides" :style="{ height: `${height}px` }" :class="`layout-guides absolute left-0 top-0 w-full`">
-          <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-magenta line-break"></div>
+          <div :style="{ height: `${margin / 2 + 1}px` }" class="border-b-2 border-accent-100 line-break"></div>
           <div
             :style="{ height: `${(rowHeight + margin) * rowsPerPage}px` }"
             v-for="n in numberOfPages - 1"
             :key="n"
-            class="border-b-2 border-magenta line-break"
+            class="border-b-2 border-accent-100 line-break"
           />
         </div>
         <div class="layout-container absolute top-0 left-0 w-full" ref="layoutContainer">
@@ -218,7 +218,7 @@ export default class WidgetLayout extends Vue {
 
 <style>
 .layout-guides {
-  background: #eee;
+  @apply bg-common-400;
 }
 
 .vue-grid-item.vue-grid-placeholder {
@@ -242,7 +242,7 @@ export default class WidgetLayout extends Vue {
   width: 100%;
 }
 .vue-grid-item .minMax {
-  font-size: 12px;
+  @apply text-xs;
 }
 .vue-grid-item .add {
   cursor: pointer;
@@ -252,10 +252,7 @@ export default class WidgetLayout extends Vue {
   right: 5px !important;
 }
 .layoutJSON {
-  background: #ddd;
-  border: 1px solid black;
-  margin-top: 10px;
-  padding: 10px;
+  @apply bg-common-300 border border-solid border-black mt-2.5 p-2.5;
 }
 .columns {
   -moz-columns: 120px;

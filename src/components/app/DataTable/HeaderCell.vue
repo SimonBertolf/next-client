@@ -95,7 +95,7 @@ export default class HeaderCell extends Vue {
   @apply bg-primary-200;
 }
 .header-cell-bg-secondary {
-  @apply bg-common-500;
+  @apply bg-common-100;
 }
 .header-cell-bg-transparent {
   @apply bg-transparent;

@@ -716,7 +716,7 @@ exports[`Storyshots app/Layout Example 1`] = `
     class="md:hidden"
   >
     <div
-      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+      class="transform transition-all duration-500 ease-in-out bg-black w-full h-full bg-opacity-40 z-20 fixed"
     />
   </span>
    
@@ -1015,7 +1015,7 @@ exports[`Storyshots app/Overlay Absolute 1`] = `
     style="border: 1px solid black; position: relative;"
   >
     <div
-      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 absolute"
+      class="transform transition-all duration-500 ease-in-out bg-black w-full h-full bg-opacity-40 z-20 absolute"
     />
      
     <div
@@ -1035,7 +1035,7 @@ exports[`Storyshots app/Overlay Full Screen 1`] = `
     style="border: 1px solid black; position: relative;"
   >
     <div
-      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+      class="transform transition-all duration-500 ease-in-out bg-black w-full h-full bg-opacity-40 z-20 fixed"
     />
      
     <div
@@ -1333,6 +1333,34 @@ exports[`Storyshots app/Skeleton Example 1`] = `
         style="width: 61%;"
       />
     </ul>
+  </div>
+</div>
+`;
+
+exports[`Storyshots app/Spinner Example 1`] = `
+<div>
+  <div
+    class="ant-spin ant-spin-spinning"
+  >
+    <i
+      aria-label="icon: loading"
+      class="spinner-icon anticon anticon-loading ant-spin-dot"
+    >
+      <svg
+        aria-hidden="true"
+        class="anticon-spin"
+        data-icon="loading"
+        fill="currentColor"
+        focusable="false"
+        height="1em"
+        viewBox="0 0 1024 1024"
+        width="1em"
+      >
+        <path
+          d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.45 440.45 0 0 0-94.3-139.9 437.71 437.71 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150c47 47 83.9 101.8 109.7 162.7 26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36z"
+        />
+      </svg>
+    </i>
   </div>
 </div>
 `;
@@ -1763,7 +1791,7 @@ exports[`Storyshots assets/AssetTabs Example 1`] = `
           style="flex-grow: 1;"
         >
           <div
-            class="w-full bg-primary flex justify-center items-center text-neutral"
+            class="w-full bg-secondary-100 flex justify-center items-center text-white"
             style="min-height: 100px; min-width: 200px;"
           >
             
@@ -1817,7 +1845,7 @@ exports[`Storyshots assets/BasicData Example 1`] = `
     style="flex-grow: 1;"
   >
     <div
-      class="w-full bg-primary flex justify-center items-center text-neutral"
+      class="w-full bg-secondary-100 flex justify-center items-center text-white"
       style="min-height: 100px; min-width: 200px;"
     >
       
@@ -1834,13 +1862,13 @@ exports[`Storyshots assets/KpiItem Example 1`] = `
   style="flex-grow: 1;"
 >
   <div
-    class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+    class="font-primary font-normal text-black subpixel-antialiased text-sm"
   >
     Example
   </div>
    
   <div
-    class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+    class="font-primary font-bold text-black text-sm subpixel-antialiased"
   >
     5'949'302
   </div>
@@ -1857,7 +1885,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -1876,13 +1904,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -1892,13 +1920,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -1908,13 +1936,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -1924,13 +1952,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -1940,13 +1968,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -1956,13 +1984,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -1972,13 +2000,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -1988,13 +2016,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2004,13 +2032,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2020,13 +2048,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2036,13 +2064,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2052,13 +2080,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2071,7 +2099,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -2090,13 +2118,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2106,13 +2134,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2122,13 +2150,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2138,13 +2166,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2154,13 +2182,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2170,13 +2198,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2186,13 +2214,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2202,13 +2230,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2218,13 +2246,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2234,13 +2262,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2250,13 +2278,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2266,13 +2294,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2285,7 +2313,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -2304,13 +2332,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2320,13 +2348,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2336,13 +2364,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2352,13 +2380,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2368,13 +2396,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2384,13 +2412,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2400,13 +2428,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2416,13 +2444,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2432,13 +2460,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2448,13 +2476,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2464,13 +2492,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2480,13 +2508,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2499,7 +2527,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -2518,13 +2546,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2534,13 +2562,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2550,13 +2578,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2566,13 +2594,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2582,13 +2610,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2598,13 +2626,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2614,13 +2642,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2630,13 +2658,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2646,13 +2674,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2662,13 +2690,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2678,13 +2706,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2694,13 +2722,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2713,7 +2741,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -2732,13 +2760,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2748,13 +2776,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2764,13 +2792,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2780,13 +2808,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2796,13 +2824,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2812,13 +2840,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -2828,13 +2856,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2844,13 +2872,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2860,13 +2888,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -2876,13 +2904,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2892,13 +2920,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2908,13 +2936,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -2927,7 +2955,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -2946,13 +2974,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2962,13 +2990,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2978,13 +3006,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -2994,13 +3022,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3010,13 +3038,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3026,13 +3054,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3042,13 +3070,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3058,13 +3086,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3074,13 +3102,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3090,13 +3118,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3106,13 +3134,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3122,13 +3150,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3141,7 +3169,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -3160,13 +3188,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3176,13 +3204,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3192,13 +3220,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3208,13 +3236,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3224,13 +3252,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3240,13 +3268,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3256,13 +3284,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3272,13 +3300,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3288,13 +3316,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3304,13 +3332,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3320,13 +3348,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3336,13 +3364,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3355,7 +3383,7 @@ exports[`Storyshots assets/KpiList Example 1`] = `
     style="flex-grow: 1;"
   >
     <h4
-      class="text-subTitle font-primary text-base"
+      class="text-black font-primary text-base"
     >
       Example Kpis
     </h4>
@@ -3374,13 +3402,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-0
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3390,13 +3418,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-1
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3406,13 +3434,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-2
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100%
         </div>
@@ -3422,13 +3450,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-3
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3438,13 +3466,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-4
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3454,13 +3482,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-5
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           100
         </div>
@@ -3470,13 +3498,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-6
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3486,13 +3514,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-7
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3502,13 +3530,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-8
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           1'000'000'001
         </div>
@@ -3518,13 +3546,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-9
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3534,13 +3562,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-10
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3550,13 +3578,13 @@ exports[`Storyshots assets/KpiList Example 1`] = `
         style="flex-grow: 1;"
       >
         <div
-          class="font-primary font-normal text-dark subpixel-antialiased text-sm"
+          class="font-primary font-normal text-black subpixel-antialiased text-sm"
         >
           Keyfigure-11
         </div>
          
         <div
-          class="font-primary font-bold text-dark text-sm subpixel-antialiased"
+          class="font-primary font-bold text-black text-sm subpixel-antialiased"
         >
           -9'999
         </div>
@@ -3575,7 +3603,7 @@ exports[`Storyshots assets/KpiListContainer Example 1`] = `
 
 exports[`Storyshots assets/KpiListMobile Example 1`] = `
 <div
-  class="w-full text-center text-primary font-bold text-2xl bg-neutral ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
+  class="w-full text-center text-primary font-bold text-2xl bg-white ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
 >
   <div
     class="ant-collapse-item"
@@ -3694,7 +3722,7 @@ exports[`Storyshots typography/Heading Example 1`] = `
 
 exports[`Storyshots typography/HighlightSmall Example 1`] = `
 <strong
-  class="font-primary text-dark"
+  class="font-primary text-black"
 >
   Example
 </strong>
@@ -3704,7 +3732,7 @@ exports[`Storyshots typography/SubTitle Example 1`] = `<div />`;
 
 exports[`Storyshots typography/Title Example 1`] = `
 <h2
-  class="text-3xl font-bold font-primary font-dark"
+  class="text-3xl font-bold font-primary text-black"
 >
   Example
 </h2>
@@ -3712,7 +3740,7 @@ exports[`Storyshots typography/Title Example 1`] = `
 
 exports[`Storyshots typography/TitleLight Example 1`] = `
 <div
-  class="text-3xl font-light text-dark font-primary"
+  class="text-3xl font-light text-black font-primary"
 >
   Example Title
 </div>
@@ -3726,7 +3754,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
     class="md:hidden"
   >
     <div
-      class="transform transition-all duration-500 ease-in-out bg-dark w-full h-full bg-opacity-40 z-20 fixed"
+      class="transform transition-all duration-500 ease-in-out bg-black w-full h-full bg-opacity-40 z-20 fixed"
     />
   </span>
    
