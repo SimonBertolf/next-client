@@ -49,6 +49,10 @@ export default class BubbleChart extends Vue {
       if (!this.chart) throw new Error('Can not add series to undefined chart!');
 
       const series = this.chart.series.push(new XYSeries());
+      series.dataFields.valueX = chartSeries.x.key;
+      series.dataFields.valueY = chartSeries.y.key;
+      series.dataFields.value = chartSeries.z.key;
+      series.strokeOpacity = 0;
 
       const bullet = series.bullets.push(new CircleBullet());
       bullet.fill = am4core.color(chartSeries.color || this.color);
@@ -59,16 +63,13 @@ export default class BubbleChart extends Vue {
       labelBullet.label.text = '{value}';
       labelBullet.label.fill = am4core.color('#FFFFFF');
       labelBullet.fontSize = 9;
-      series.dataFields.valueX = chartSeries.x.key;
-      series.dataFields.valueY = chartSeries.y.key;
-      series.dataFields.value = chartSeries.z.key;
+
       series.heatRules.push({
         target: bullet.circle,
         min: 5,
         max: 20,
         property: 'radius',
       });
-      series.strokeOpacity = 0;
     });
   }
 
