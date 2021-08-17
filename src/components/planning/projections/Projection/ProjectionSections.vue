@@ -1,5 +1,5 @@
 <template>
-  <a-collapse class="projection-sections">
+  <a-collapse class="projection-sections" :activeKey="initialActiveKey">
     <a-collapse-panel
       v-for="section in sections"
       :key="`${section.type}-${section.name}`"
@@ -25,6 +25,10 @@ export default class ProjectionSections extends Vue {
 
   get sections(): ProjectionSectionModel[] {
     return this.$store.state.Projections.projection?.sections;
+  }
+
+  get initialActiveKey(): string[] {
+    return this.sections.map((section) => `${section.type}-${section.name}`);
   }
 }
 </script>
