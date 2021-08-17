@@ -9,7 +9,8 @@
       </spinner>
     </Card>
     <filter-button @click="showFilterModal" :loading="loading" />
-    <a-modal title="Filters" v-model="filterModalVisible" class="filter-modal" :footer="null">
+    <a-modal v-model="filterModalVisible" class="filter-modal" :footer="null">
+      <span class="font-primary text-xl" slot="title">Filters</span>
       <filter-list />
     </a-modal>
   </div>
