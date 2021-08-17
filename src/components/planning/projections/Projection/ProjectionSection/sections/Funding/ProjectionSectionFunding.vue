@@ -1,20 +1,16 @@
 <template>
-  <pre>{{ rawData }}</pre>
+  <p>{{ name }}</p>
 </template>
 
 <script lang="ts">
-import { ProjectionSection } from '@/models';
+import type { ProjectionSection } from '@/models';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component({ components: {} })
-export default class ProjectionSectionSale extends Vue {
-  name = 'ProjectionSectionSale';
+export default class ProjectionSectionFunding extends Vue {
+  name = 'ProjectionSectionFunding';
 
   @Prop({ type: Object, required: true }) readonly section!: ProjectionSection;
-
-  get rawData(): string {
-    return JSON.stringify(this.section.inputs, null, 2);
-  }
 }
 </script>
 

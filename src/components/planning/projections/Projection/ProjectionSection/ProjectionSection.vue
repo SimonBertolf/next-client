@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ProjectionSection as ProjectionSectionModel } from '@/models';
+import type { ProjectionSection as ProjectionSectionModel } from '@/models';
 import * as sectionComponents from './sections';
 
 @Component({ components: { ...sectionComponents } })
