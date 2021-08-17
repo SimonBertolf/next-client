@@ -1,6 +1,6 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4">
-    <h2 class="text-4xl mb-2">{{ title }}</h2>
+    <h2 class="font-primary text-2xl mb-2">{{ title }}</h2>
     <p>{{ name }}</p>
     <p>from: {{ from | dateMonth }} – to: {{ to | dateMonth }}</p>
     <p>years: {{ years }}, quarters: {{ quarters }}, months: {{ months }}</p>

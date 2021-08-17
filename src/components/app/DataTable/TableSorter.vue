@@ -35,9 +35,9 @@ export default class TableSorter extends Vue {
   width: 10px;
 }
 .table-sorter-icon-inactive {
-  color: rgba(0, 0, 0, 0.4);
+  @apply fill-current text-black text-opacity-40 !important;
 }
 .table-sorter-icon-active {
-  @apply text-neutral;
+  @apply text-white;
 }
 </style>

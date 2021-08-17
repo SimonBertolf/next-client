@@ -26,13 +26,13 @@ export default class Tabs extends Vue {
 
 <style>
 .ant-tabs-ink-bar {
-  @apply bg-start;
+  @apply bg-primary-200;
 }
 .ant-tabs-tab-active,
 .ant-tabs-tab:hover {
-  color: #000000 !important;
+  @apply text-black !important;
 }
 .ant-tabs-nav-container {
-  @apply text-3xl bg-neutral sm:bg-transparent;
+  @apply text-3xl bg-white sm:bg-transparent;
 }
 </style>

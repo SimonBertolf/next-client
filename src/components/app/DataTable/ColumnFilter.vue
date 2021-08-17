@@ -48,6 +48,6 @@ export default class ColumnFilter extends Vue {
   cursor: pointer;
 }
 .column-filter-menu-visible {
-  @apply text-primary;
+  @apply text-secondary-100;
 }
 </style>

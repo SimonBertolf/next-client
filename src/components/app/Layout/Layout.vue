@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="h-screen bg-background root-layout">
+  <a-layout class="h-screen bg-common-400 root-layout">
     <span class="md:hidden"><Overlay :show="!collapsed" :onClose="handleCollapse" /></span>
     <a-layout-sider
       :class="layoutSliderCls"
@@ -17,12 +17,12 @@
       </div>
     </a-layout-sider>
     <ButtonToggle class="hidden sm:flex" :open="!collapsed" :onToggle="handleCollapse" />
-    <a-layout class="bg-background">
-      <a-layout class="container mx-auto p-0 sm:p-4 bg-background">
+    <a-layout class="bg-common-400">
+      <a-layout class="container mx-auto p-0 sm:p-4 bg-common-400">
         <a-layout-header class="layout-header">
           <slot name="header"></slot>
         </a-layout-header>
-        <a-layout-content class="bg-background">
+        <a-layout-content class="bg-common-400">
           <div class="sm:hidden h-20" />
           <slot></slot>
         </a-layout-content>
@@ -69,7 +69,7 @@ export default class Layout extends Vue {
 }
 
 .a-layout-slider {
-  @apply bg-neutral z-30 shadow-md fixed md:static;
+  @apply bg-white z-30 shadow-md fixed md:static;
 }
 
 .a-layout-slider-open {
@@ -85,7 +85,7 @@ export default class Layout extends Vue {
 }
 
 .layout-header {
-  @apply bg-neutral sm:bg-background mb-2 shadow sm:shadow-none sm:mb-0 p-0 leading-normal sm:h-auto;
+  @apply bg-white sm:bg-common-400 mb-2 shadow sm:shadow-none sm:mb-0 p-0 leading-normal sm:h-auto;
   @apply flex justify-center items-center w-full px-4 md:px-0 mb-0 sm:mb-4 fixed sm:static z-10;
 }
 </style>

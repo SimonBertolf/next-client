@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-2xl mb-2">I'am good. Thanks for asking.</h1>
+    <h1 class="text-xl mb-2">I'am good. Thanks for asking.</h1>
     <p>NODE_ENV = {{ nodeEnv }}, OPS_ENV = {{ opsEnv }}</p>
   </div>
 </template>

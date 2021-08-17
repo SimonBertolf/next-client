@@ -1,6 +1,6 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true">
-    <h1 class="text-2xl mb-4">Layouts</h1>
+    <h1 class="font-primary text-2xl mb-4">Layouts</h1>
     <!-- TODO: setup working pagination -->
     <spinner :spinning="loading">
       <a-table :columns="columns" :data-source="tableData">

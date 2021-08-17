@@ -2,7 +2,7 @@
   <div>
     <Card :autoSize="true" :hasTitle="false" :padding="true"> Asset KPIs </Card>
     <Card :autoSize="true" :hasTitle="true" :padding="true" class="mt-4">
-      <template v-slot:title>Mietobjekte</template>
+      <template v-slot:title><span class="font-primary text-2xl">Mietobjekte</span></template>
       <div class="flex flex-row w-full h-full"><rental-table :assetId="assetId" /></div>
     </Card>
   </div>
