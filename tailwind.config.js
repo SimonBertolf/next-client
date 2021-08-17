@@ -26,14 +26,6 @@ module.exports = {
       white: '#ffffff',
       transparent: 'transparent',
     },
-    fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
-      base: '1rem',
-      '2xl': '1.1rem',
-      '3xl': '1.25rem',
-      '4xl': '1.5rem',
-    },
     gradientColorStops: (theme) => ({ ...theme('colors') }),
     extend: {
       spacing: {

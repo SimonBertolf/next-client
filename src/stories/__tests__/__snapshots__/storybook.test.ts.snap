@@ -744,7 +744,7 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/dashboards"
             >
               Dashboards
@@ -756,7 +756,7 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/assets"
             >
               Assets
@@ -768,7 +768,7 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/reporting"
             >
               Reporting
@@ -780,7 +780,7 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/planning"
             >
               Planning
@@ -792,7 +792,7 @@ exports[`Storyshots app/Layout Example 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/admin"
             >
               <i
@@ -922,7 +922,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="inactive-link"
+      class="nav-menu-item-item inactive-link"
       href="#/dashboards"
     >
       Dashboards
@@ -934,7 +934,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="inactive-link"
+      class="nav-menu-item-item inactive-link"
       href="#/assets"
     >
       Assets
@@ -946,7 +946,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="inactive-link"
+      class="nav-menu-item-item inactive-link"
       href="#/reporting"
     >
       Reporting
@@ -958,7 +958,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="inactive-link"
+      class="nav-menu-item-item inactive-link"
       href="#/planning"
     >
       Planning
@@ -970,7 +970,7 @@ exports[`Storyshots app/NavMenu Example 1`] = `
     style="padding-left: 24px;"
   >
     <a
-      class="inactive-link"
+      class="nav-menu-item-item inactive-link"
       href="#/admin"
     >
       <i
@@ -3603,7 +3603,7 @@ exports[`Storyshots assets/KpiListContainer Example 1`] = `
 
 exports[`Storyshots assets/KpiListMobile Example 1`] = `
 <div
-  class="w-full text-center text-primary font-bold text-2xl bg-white ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
+  class="w-full text-center text-primary font-bold text-xl bg-white ant-collapse ant-collapse-borderless ant-collapse-icon-position-right"
 >
   <div
     class="ant-collapse-item"
@@ -3714,7 +3714,7 @@ exports[`Storyshots motion/Fade Example 1`] = `
 
 exports[`Storyshots typography/Heading Example 1`] = `
 <h1
-  class="font-primary text-4xl font-light text-center"
+  class="font-primary text-3xl font-light text-center"
 >
   heading
 </h1>
@@ -3782,7 +3782,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/dashboards"
             >
               Dashboards
@@ -3794,7 +3794,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/assets"
             >
               Assets
@@ -3806,7 +3806,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/reporting"
             >
               Reporting
@@ -3818,7 +3818,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/planning"
             >
               Planning
@@ -3830,7 +3830,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
             style="padding-left: 24px;"
           >
             <a
-              class="inactive-link"
+              class="nav-menu-item-item inactive-link"
               href="#/admin"
             >
               <i
@@ -3928,7 +3928,7 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
         class="layout-header ant-layout-header"
       >
         <h1
-          class="font-primary text-4xl font-light text-center"
+          class="font-primary text-3xl font-light text-center"
         >
           Assets
         </h1>

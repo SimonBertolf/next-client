@@ -1,19 +1,19 @@
 <template>
   <a-menu mode="inline" class="nav-menu">
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/dashboards">Dashboards</nav-menu-item>
+      <nav-menu-item class="nav-menu-item-item" to="/dashboards">Dashboards</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/assets">Assets</nav-menu-item>
+      <nav-menu-item class="nav-menu-item-item" to="/assets">Assets</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/reporting">Reporting</nav-menu-item>
+      <nav-menu-item class="nav-menu-item-item" to="/reporting">Reporting</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/planning">Planning</nav-menu-item>
+      <nav-menu-item class="nav-menu-item-item" to="/planning">Planning</nav-menu-item>
     </a-menu-item>
     <a-menu-item class="menu-item self-end sm:self-start">
-      <nav-menu-item to="/admin"><a-icon type="setting" /> Admin</nav-menu-item>
+      <nav-menu-item class="nav-menu-item-item" to="/admin"><a-icon type="setting" /> Admin</nav-menu-item>
     </a-menu-item>
   </a-menu>
 </template>
@@ -37,6 +37,11 @@ export default class NavMenu extends Vue {}
 
 li.menu-item:not(:last-child) {
   @apply mb-4 sm:mb-0 !important;
+}
+
+.nav-menu-item-item {
+  @apply text-xl font-primary font-light !important;
+  @apply sm:flex sm:items-center sm:justify-center;
 }
 
 .nav-menu {

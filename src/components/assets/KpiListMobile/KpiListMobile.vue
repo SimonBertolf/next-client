@@ -1,7 +1,7 @@
 <template>
   <a-collapse
     expand-icon-position="right"
-    class="w-full text-center text-primary font-bold text-2xl bg-white"
+    class="w-full text-center text-primary font-bold text-xl bg-white"
     :bordered="false"
   >
     <a-collapse-panel :key="kpiGroup.id" :header="kpiGroup.category">

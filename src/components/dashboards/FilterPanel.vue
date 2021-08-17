@@ -2,7 +2,7 @@
   <div class="filter-pannel">
     <Card :autoSize="true" :hasTitle="true" :padding="true" class="hidden md:flex mt-4 filter-card">
       <template v-slot:title>
-        <span>Filters</span>
+        <span class="font-primary text-xl">Filters</span>
       </template>
       <spinner :spinning="loading">
         <filter-list />

@@ -1,7 +1,7 @@
 <template>
   <div class="widget-editor">
     <div class="mb-4 px-2">
-      <h2 class="mb-4 text-2xl">{{ name }}</h2>
+      <h2 class="mb-4 font-primary text-2xl">{{ name }}</h2>
       <a-space>
         <span>Edit mode: <a-switch v-model="editable" /></span>
         <a-dropdown v-if="editable">
