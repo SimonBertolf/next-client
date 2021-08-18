@@ -35,7 +35,7 @@ export default class ProjectionSections extends Vue {
 
 <style>
 .projection-sections {
-  @apply bg-neutral border-0 -ml-4 !important;
+  @apply bg-white border-0 -ml-4 !important;
 }
 
 .projection-sections .ant-collapse-item {
@@ -43,11 +43,11 @@ export default class ProjectionSections extends Vue {
 }
 
 .projection-sections .ant-collapse-content {
-  @apply border-0 bg-neutral !important;
+  @apply border-0 bg-white !important;
 }
 
 .projection-sections .ant-collapse-content-box {
-  @apply bg-neutral !important;
+  @apply bg-white !important;
 }
 
 .projection-sections .ant-collapse-header {
