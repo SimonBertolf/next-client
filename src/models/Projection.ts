@@ -2,7 +2,7 @@ import { Translation } from '@/types';
 import { OrganisationDocument } from './Document';
 
 interface ProjectionInput {
-  readonly _id?: string;
+  readonly _id: string;
   name: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   meta?: { [key: string]: any };
