@@ -11,12 +11,13 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: string;
 
+  res = 'text-3xl font-bold truncate';
+
   get cls() {
-    const res = 'text-3xl font-bold truncate';
-    if (this.align === 'right') `${res} text-right`;
-    if (this.align === 'center') `${res} text-center`;
-    if (this.align === 'left') `${res} text-left`;
-    return res;
+    if (this.align === 'right') this.res = `${this.res} text-right`;
+    if (this.align === 'center') this.res = `${this.res} text-center`;
+    if (this.align === 'left') this.res = `${this.res} text-left`;
+    return this.res;
   }
 }
 </script>
