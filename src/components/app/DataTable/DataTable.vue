@@ -33,6 +33,7 @@ import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
+import BodyCell from './BodyCell.vue';
 import RowSelector from './RowSelector.vue';
 import RowActionMenu from './RowActionMenu.vue';
 import ColumnFilter from './ColumnFilter.vue';
@@ -65,6 +66,7 @@ export default class DataTable extends Vue {
     if (this.rowSelection) builder.addRowSelection();
     if (this.rowActions) builder.addRowAction();
     builder.addTableSorter();
+    builder.addEditableCells();
     this.resolver = builder.build();
   }
 
@@ -97,7 +99,8 @@ export default class DataTable extends Vue {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
     const bodyRow: TableComponentRenderer = (h, p, c) => h(BodyRow, { ...p }, c);
-    return { table, header: { cell }, body: { row: bodyRow } };
+    const bodyCell: TableComponentRenderer = (h, p, c) => h(BodyCell, { ...p }, c);
+    return { table, header: { cell }, body: { row: bodyRow, cell: bodyCell } };
   }
 
   get spinnerComponent(): VNode {

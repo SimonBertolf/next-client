@@ -44,12 +44,13 @@ export interface TableColumn {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   customRender?: (text: string, record: any, index: number) => VNode;
   customHeaderCell?: () => VNodeData;
-  customCell?: () => VNodeData;
+  customCell?: (record: unknown, rowIndex: number) => VNodeData;
   background?: string;
   type?: string;
   sorter?: boolean;
   optional?: boolean;
   direction?: boolean | string;
+  editable?: boolean;
 }
 
 export interface TableData {

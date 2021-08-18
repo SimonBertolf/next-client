@@ -18,5 +18,6 @@ export interface TableResolverBuilder {
   addRowAction(): TableResolverBuilder;
   addRowSelection(): TableResolverBuilder;
   addTableSorter(): TableResolverBuilder;
+  addEditableCells(): TableResolverBuilder;
   build(): TableResolver;
 }

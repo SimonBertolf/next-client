@@ -77,6 +77,7 @@ export default class RentalTableComponent extends Vue {
                 type: TableColumnTypes.SUMMARY,
                 background: 'transparent',
                 dataIndex: 'property',
+                editable: true,
                 customRender: (text: string) => this.$createElement('span', {}, text || '-'),
               },
             ],
