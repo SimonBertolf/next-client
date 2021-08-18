@@ -73,6 +73,7 @@ export default class Projections extends VuexModule {
     try {
       this.context.commit('setLoading', { key: 'projection', loading: true });
       const projection = this.projections.find((item) => item._id === _id) || null;
+      if (projection === null) throw new Error(`Could not find projection with _id ${_id}`);
       this.context.commit('setProjection', projection);
       this.context.commit('setLoading', { key: 'projection', loading: false });
     } catch (error) {
