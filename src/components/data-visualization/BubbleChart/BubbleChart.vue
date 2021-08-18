@@ -31,6 +31,10 @@ export default class BubbleChart extends Vue {
     }
   }
 
+  mounted(): void {
+    this.createChart();
+  }
+
   createChart(): void {
     if (this.chart) this.chart.dispose();
     this.chart = am4core.create(this.$refs.chartDiv as HTMLElement, XYChart);
@@ -44,6 +48,8 @@ export default class BubbleChart extends Vue {
     const xAxis = this.chart.xAxes.push(new ValueAxis());
     xAxis.title.text = 'Anlagekosten in CHFm';
     xAxis.title.fontWeight = 'bold';
+
+    this.chart.logo.disabled = true;
 
     this.chartSeries.forEach((chartSeries) => {
       if (!this.chart) throw new Error('Can not add series to undefined chart!');
