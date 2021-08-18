@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden h-full">
-    <a-icon class="text-4xl" type="pie-chart" />
-    <h3 class="pb-4">Widget {{ name }}</h3>
+    <widget-title :title="chartTitle" />
+    <widget-text :text="chartText" />
     <line-chart
       :chartData="widgetData"
       :chartSeries="chartSeries"
@@ -16,17 +16,19 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
-import { LineChart } from '@/components/data-visualization';
+import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
 const relevantFilters = ['regions', 'assets'];
 
-@Component({ components: { LineChart } })
+@Component({ components: { LineChart, WidgetTitle, WidgetText } })
 export default class WidgetB extends Vue {
   @Prop(String) readonly id: string;
 
   @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
-  name = 'B';
+  chartTitle = 'Widget - B';
+
+  chartText = 'Subtitle or description';
 
   chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
 
