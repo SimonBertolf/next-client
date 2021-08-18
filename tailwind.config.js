@@ -4,39 +4,29 @@ module.exports = {
   theme: {
     fontFamily: { primary: ['Brown', 'sans-serif'] },
     colors: {
-      primary: '#252D48',
-      primaryl: '#4f5674',
-      secondary: '#822829',
-      tertiary: '#D0841C',
-      quaternary: '#9B9B9B',
-      neutral: '#FFFFFF',
+      primary: {
+        100: '#8C2B2D',
+        200: '#CE423B',
+        300: '#a35557',
+        400: '#d76762',
+      },
+      secondary: { 100: '#28304D', 200: '#4F5674' },
+      common: {
+        100: '#939393', // light backgroun
+        200: '#D9D9D9', // darker background
+        300: '#F0F0F0', // table hover
+        400: '#F5F5F5', // all kind of dividers
+        500: '#FAFAFA', // higlighting
+      },
+      accent: {
+        100: '#FF00FF',
+        200: '#D0841C',
+      },
+      black: '#000000',
+      white: '#ffffff',
       transparent: 'transparent',
-      table: '#DA716B',
-      dark: '#000000',
-      background: '#F5F5F5',
-      bgSecondary: '#FAFAFA',
-      tableBody: '#D1D5DB',
-      start: '#CE423B',
-      startl: '#ff7466',
-      input: '#d9d9d9',
-      subTitle: '#3E3E3E',
-      divider: '#E8E8E8',
-      thumb: '#B2B2B2',
-      magenta: '#FF00FF',
     },
-    fontSize: {
-      xs: '0.75rem',
-      sm: '0.875rem',
-      base: '1rem',
-      '2xl': '1.1rem',
-      '3xl': '1.25rem',
-      '4xl': '1.5rem',
-    },
-    gradientColorStops: (theme) => ({
-      ...theme('colors'),
-      stop: '#8C2B2D',
-      stopl: '#c15956',
-    }),
+    gradientColorStops: (theme) => ({ ...theme('colors') }),
     extend: {
       spacing: {
         48: '200px',

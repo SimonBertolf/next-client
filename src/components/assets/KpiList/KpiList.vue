@@ -1,6 +1,6 @@
 <template>
   <FlexLayout :column="true" :grow="1">
-    <h4 class="text-subTitle font-primary text-base">{{ kpiGroup.category }}</h4>
+    <h4 class="text-black font-primary text-base">{{ kpiGroup.category }}</h4>
     <a-divider class="my-4" />
     <FlexLayout :column="true" :gap="4" :grow="1">
       <KpiItem v-for="kpi in kpiGroup.kpis" :key="kpi.id" :kpi="kpi" />

@@ -16,6 +16,6 @@ export default class AssetTabs extends Vue {}
 
 <style scoped>
 .tab-pane {
-  @apply bg-transparent sm:bg-bgSecondary rounded-none sm:rounded-t-xl;
+  @apply bg-transparent sm:bg-common-400 rounded-none sm:rounded-t-xl;
 }
 </style>

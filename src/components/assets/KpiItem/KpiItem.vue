@@ -1,6 +1,6 @@
 <template>
   <FlexLayout :gap="{ x: 2 }" justify="between" :grow="1">
-    <div class="font-primary font-normal text-dark subpixel-antialiased text-sm">{{ kpi.label }}</div>
+    <div class="font-primary font-normal text-black subpixel-antialiased text-sm">{{ kpi.label }}</div>
     <div :class="clsValue">{{ formatedValue }}</div>
   </FlexLayout>
 </template>
@@ -25,7 +25,7 @@ export default class KpiItem extends Vue {
   }
 
   get clsValue(): string {
-    return 'font-primary font-bold text-dark text-sm subpixel-antialiased';
+    return 'font-primary font-bold text-black text-sm subpixel-antialiased';
   }
 }
 </script>
