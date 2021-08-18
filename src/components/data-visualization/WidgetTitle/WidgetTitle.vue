@@ -4,7 +4,6 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ColorType } from '@/types/ColorType';
 
 @Component({ components: {} })
 export default class WidgetTitle extends Vue {
@@ -12,11 +11,12 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: string;
 
-  @Prop() readonly color: ColorType | undefined;
-
   get cls() {
-    if (this.color) return `text-3xl font-bold text-${this.color} text-${this.align} truncate`;
-    return `text-3xl font-bold text-${this.align} truncate`;
+    const res = 'text-3xl font-bold truncate';
+    if (this.align === 'right') `${res} text-right`;
+    if (this.align === 'center') `${res} text-center`;
+    if (this.align === 'left') `${res} text-left`;
+    return res;
   }
 }
 </script>

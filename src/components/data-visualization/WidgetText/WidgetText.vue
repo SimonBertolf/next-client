@@ -11,10 +11,12 @@ export default class WidgetText extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: string;
 
-  @Prop({ default: 'dark', type: String }) readonly color: string;
-
   get cls() {
-    return `text-base font-bold text-${this.color} text-${this.align} truncate`;
+    const res = 'text-3xl font-bold truncate';
+    if (this.align === 'right') `${res} text-right`;
+    if (this.align === 'center') `${res} text-center`;
+    if (this.align === 'left') `${res} text-left`;
+    return res;
   }
 }
 </script>
