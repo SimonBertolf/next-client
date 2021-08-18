@@ -7,6 +7,7 @@ export interface TableResolverContext {
     direction?: string | boolean;
     handler: (dir: string | boolean, key: string) => void;
   };
+  editableRowIndex?: number;
 }
 
 export interface TableResolver {

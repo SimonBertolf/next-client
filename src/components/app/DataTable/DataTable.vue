@@ -5,6 +5,20 @@
     </span>
     <a-table
       class="w-full"
+      :customRow="
+        (record, index) => {
+          return {
+            on: {
+              mouseenter: (event) => {
+                this.handleMouseEnter(index);
+              },
+              mouseleave: (event) => {
+                this.handleMouseLeave();
+              },
+            },
+          };
+        }
+      "
       :row-key="(record) => record._id"
       :components="itsComponents"
       :columns="filteredColumns"
@@ -61,6 +75,8 @@ export default class DataTable extends Vue {
 
   currentSorter: { direction?: string | boolean; key?: string } = {};
 
+  editableRowIndex = -1;
+
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
     if (this.rowSelection) builder.addRowSelection();
@@ -74,8 +90,24 @@ export default class DataTable extends Vue {
     this.filteredColumns = this.itsColumns;
   }
 
+  handleMouseEnter(rowIndex: number): void {
+    this.editableRowIndex = rowIndex;
+  }
+
+  handleMouseLeave(): void {
+    this.editableRowIndex = -1;
+  }
+
   @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!isEqual(val, oldVal)) {
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
+    }
+  }
+
+  @Watch('editableRowIndex', { immediate: false, deep: true })
+  handleEditableRowIndexChange(val: number, oldVal: number): void {
     if (!isEqual(val, oldVal)) {
       const cols = [...this.itsColumns];
       this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
@@ -108,7 +140,11 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.resolver.resolve({ cols: this.columns, sorter: { ...this.currentSorter, handler: this.sort } });
+    return this.resolver.resolve({
+      cols: this.columns,
+      sorter: { ...this.currentSorter, handler: this.sort },
+      editableRowIndex: this.editableRowIndex,
+    });
   }
 
   get hasColumnFilter(): boolean {

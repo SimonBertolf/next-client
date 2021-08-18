@@ -77,7 +77,6 @@ export default class RentalTableComponent extends Vue {
                 type: TableColumnTypes.SUMMARY,
                 background: 'transparent',
                 dataIndex: 'property',
-                editable: true,
                 customRender: (text: string) => this.$createElement('span', {}, text || '-'),
               },
             ],
@@ -97,7 +96,11 @@ export default class RentalTableComponent extends Vue {
                 type: TableColumnTypes.SUMMARY,
                 background: 'transparent',
                 dataIndex: 'rentalType',
-                customRender: (text: string) => this.$createElement('span', {}, text || '-'),
+                editable: (record: unknown, rowIndex: number) => rowIndex !== 1,
+                customRender: (text: string, r: unknown, i: unknown, col: TableColumn, editable = false) => {
+                  if (!editable) return this.$createElement('span', {}, text || '-');
+                  return this.$createElement('a-input', { props: { value: text } });
+                },
               },
             ],
           },

@@ -42,7 +42,7 @@ export interface TableColumn {
   children?: TableColumn[];
   scopedSlots?: { customRender: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  customRender?: (text: string, record: any, index: number) => VNode;
+  customRender?: (text: string, record: any, index: number, col: TableColumn, editable: boolean) => VNode;
   customHeaderCell?: () => VNodeData;
   customCell?: (record: unknown, rowIndex: number) => VNodeData;
   background?: string;
@@ -50,7 +50,7 @@ export interface TableColumn {
   sorter?: boolean;
   optional?: boolean;
   direction?: boolean | string;
-  editable?: boolean;
+  editable?: boolean | ((record: unknown, rowIndex: number) => boolean);
 }
 
 export interface TableData {
