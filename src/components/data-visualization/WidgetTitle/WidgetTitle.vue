@@ -11,7 +11,7 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: string;
 
-  res = 'text-3xl font-bold truncate';
+  res = 'text-xl font-bold truncate';
 
   get cls() {
     if (this.align === 'right') this.res = `${this.res} text-right`;
