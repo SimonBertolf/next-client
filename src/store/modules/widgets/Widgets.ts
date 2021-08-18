@@ -30,7 +30,7 @@ export default class Widgets extends VuexModule {
 
   @Action
   public async loadWidgetData({ widget, report }: { widget: Widget; report?: Report }): Promise<void> {
-    const { _id: widgetId, type } = widget;
+    const { _id: widgetId } = widget;
     this.context.commit('removeWidgetData', { widgetId });
     if (report) {
       const { data: widgetsData } = report;

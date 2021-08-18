@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { WidgetData, Filter, LineChartSeries, LineChartAxes, XYChartAxes, XYChartSeries } from '@/types';
+import { WidgetData, Filter, XYChartAxes, XYChartSeries } from '@/types';
 import { LineChart } from '@/components/data-visualization';
 import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
 

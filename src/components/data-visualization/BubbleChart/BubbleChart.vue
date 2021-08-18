@@ -1,13 +1,13 @@
 <template>
-  <div ref="chartDiv"></div>
+  <div ref="chartDiv" class="w-full h-full"></div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
-import { XYChart, ValueAxis, LineSeries, CircleBullet, XYSeries, LabelBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, LineChartAxes, LineChartSeries, XYChartAxes, XYChartSeries } from '@/types';
+import { XYChart, ValueAxis, CircleBullet, XYSeries, LabelBullet } from '@amcharts/amcharts4/charts';
+import type { ChartData, XYChartAxes, XYChartSeries } from '@/types';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -18,7 +18,7 @@ export default class BubbleChart extends Vue {
 
   @Prop({ type: Array, default: () => [] }) readonly chartSeries: XYChartSeries[];
 
-  @Prop({ type: Object, required: true }) readonly chartAxes!: XYChartAxes;
+  @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 
   @Prop({ type: String, default: 'primary' }) readonly color: string;
 
