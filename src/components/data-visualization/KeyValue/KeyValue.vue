@@ -18,11 +18,8 @@ export default class KeyValue extends Vue {
 
   @Prop({ default: '', type: String }) readonly unit: string;
 
-  baseClassNames = 'text-4xl mb-2 font-bold text-center truncate';
-
   get classNames(): string {
-    if (this.color === 'accent-200') return `${this.baseClassNames} text-accent-200`;
-    return this.baseClassNames;
+    return `text-4xl mb-2 font-bold text-center truncate text-${this.color}`;
   }
 }
 </script>
