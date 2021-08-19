@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDiv" class="w-full h-screen"></div>
+  <div ref="chartDiv" class="w-full h-full"></div>
 </template>
 
 <script lang="ts">
@@ -22,19 +22,17 @@ export default class BubbleChart extends Vue {
 
   @Prop({ type: String, default: 'primary' }) readonly color: string;
 
+  @Prop({ type: String, default: '' }) readonly labelY: string;
+
+  @Prop({ type: String, default: '' }) readonly unitY: string;
+
+  @Prop({ type: String, default: '' }) readonly labelX: string;
+
+  @Prop({ type: String, default: '' }) readonly unitX: string;
+
+  @Prop({ type: Boolean, default: false }) readonly labelZ: boolean;
+
   chart: XYChart | undefined;
-
-  labelY = 'Eigenkapitalrendite (ROE)';
-
-  unitY = '%';
-
-  labelX = 'Anlagekosten in CHFm';
-
-  unitX = '';
-
-  bubbleMin = 10;
-
-  bubbleMax = 20;
 
   @Watch('chartData', { immediate: true, deep: true })
   onChartDataChange(newData: ChartData[], oldData: ChartData[]): void {
@@ -53,6 +51,7 @@ export default class BubbleChart extends Vue {
     this.chart.data = cloneDeep(this.chartData);
 
     this.chart.responsive.enabled = true;
+    this.chart.responsive.useDefault = false;
 
     const yAxis = this.chart.yAxes.push(new ValueAxis());
     yAxis.title.text = this.labelY;
@@ -62,8 +61,7 @@ export default class BubbleChart extends Vue {
     const xAxis = this.chart.xAxes.push(new ValueAxis());
     xAxis.title.text = this.labelX;
     xAxis.title.fontWeight = 'bold';
-
-    this.chart.logo.disabled = true;
+    xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitX}`);
 
     this.chartSeries.forEach((chartSeries) => {
       if (!this.chart) throw new Error('Can not add series to undefined chart!');
@@ -80,37 +78,45 @@ export default class BubbleChart extends Vue {
       bullet.strokeOpacity = 0.0;
 
       const labelBullet = series.bullets.push(new LabelBullet());
-      labelBullet.label.text = '{value}';
+      if (this.labelZ) {
+        labelBullet.label.text = '{value}';
+      }
       labelBullet.label.fill = am4core.color('#FFFFFF');
       labelBullet.fontSize = 9;
 
       series.heatRules.push({
         target: bullet.circle,
-        min: this.bubbleMin,
-        max: this.bubbleMax,
+        min: 10,
+        max: 20,
         property: 'radius',
       });
     });
 
-    this.chart.responsive.useDefault = false;
     let contentDiagonale = 0;
     this.chart.responsive.rules.push({
-      relevant: function (target) {
+      relevant(target) {
         contentDiagonale = Math.sqrt(
           target.contentWidth * target.contentWidth + target.contentHeight * target.contentHeight,
         );
         return true;
       },
-      /* @ts-ignore*/
-      state: function (target, stateId) {
+      state(target, stateId) {
         if (target instanceof XYChart) {
           contentDiagonale = Math.sqrt(
             target.contentWidth * target.contentWidth + target.contentHeight * target.contentHeight,
           );
         }
+        if (target instanceof LabelBullet) {
+          const state = target.states.create(stateId);
+          if (contentDiagonale >= 1100) state.properties.fontSize = 20;
+          if (contentDiagonale <= 1100) state.properties.fontSize = 18;
+          if (contentDiagonale <= 900) state.properties.fontSize = 16;
+          if (contentDiagonale <= 700) state.properties.fontSize = 12;
+          if (contentDiagonale <= 500) state.properties.fontSize = 9;
+          return state;
+        }
         if (target instanceof CircleBullet) {
           const state = target.circle.states.create(stateId);
-          /* @ts-ignore*/
           if (contentDiagonale >= 1100) state.properties.scale = 2.0;
           if (contentDiagonale <= 1100) state.properties.scale = 1.8;
           if (contentDiagonale <= 900) state.properties.scale = 1.6;
@@ -118,7 +124,7 @@ export default class BubbleChart extends Vue {
           if (contentDiagonale <= 500) state.properties.scale = 1.0;
           return state;
         }
-        return;
+        return null;
       },
     });
   }

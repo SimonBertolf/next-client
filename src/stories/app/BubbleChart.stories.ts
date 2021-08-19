@@ -11,7 +11,16 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
   props: Object.keys(argTypes),
   components: { BubbleChart },
   template: `
-      <bubble-chart :chartData="chartData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-screen w-full" />
+      <bubble-chart 
+      :chartData="chartData" 
+      :chartSeries="chartSeries" 
+      :chartAxes="chartAxes" 
+      labelY="Eigenkapital" 
+      unitY="%"
+      labelX="Bruttoertrag"
+      unitX="K"
+      labelZ="true"
+      class="h-screen w-full" />
   `,
 });
 
