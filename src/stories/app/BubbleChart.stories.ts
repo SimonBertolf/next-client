@@ -19,7 +19,7 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
       unitY="%"
       labelX="Bruttoertrag"
       unitX="K"
-      labelZ="true"
+      :labelZ="true"
       class="h-screen w-full" />
   `,
 });

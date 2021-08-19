@@ -20,7 +20,7 @@ export default class BubbleChart extends Vue {
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 
-  @Prop({ type: String, default: 'primary' }) readonly color: string;
+  @Prop({ type: String, default: 'primary-100' }) readonly color: string;
 
   @Prop({ type: String, default: '' }) readonly labelY: string;
 
@@ -107,22 +107,22 @@ export default class BubbleChart extends Vue {
           );
         }
         if (target instanceof LabelBullet) {
-          const state = target.states.create(stateId);
-          if (contentDiagonale >= 1100) state.properties.fontSize = 20;
-          if (contentDiagonale <= 1100) state.properties.fontSize = 18;
-          if (contentDiagonale <= 900) state.properties.fontSize = 16;
-          if (contentDiagonale <= 700) state.properties.fontSize = 12;
-          if (contentDiagonale <= 500) state.properties.fontSize = 9;
-          return state;
+          const LabelBulletState = target.states.create(stateId);
+          if (contentDiagonale >= 1100) LabelBulletState.properties.fontSize = 2.0;
+          if (contentDiagonale <= 1100) LabelBulletState.properties.fontSize = 18;
+          if (contentDiagonale <= 900) LabelBulletState.properties.fontSize = 16;
+          if (contentDiagonale <= 700) LabelBulletState.properties.fontSize = 12;
+          if (contentDiagonale <= 500) LabelBulletState.properties.fontSize = 10;
+          return LabelBulletState;
         }
         if (target instanceof CircleBullet) {
-          const state = target.circle.states.create(stateId);
-          if (contentDiagonale >= 1100) state.properties.scale = 2.0;
-          if (contentDiagonale <= 1100) state.properties.scale = 1.8;
-          if (contentDiagonale <= 900) state.properties.scale = 1.6;
-          if (contentDiagonale <= 700) state.properties.scale = 1.2;
-          if (contentDiagonale <= 500) state.properties.scale = 1.0;
-          return state;
+          const CircleBulletState = target.circle.states.create(stateId);
+          if (contentDiagonale >= 1100) CircleBulletState.properties.scale = 2.0;
+          if (contentDiagonale <= 1100) CircleBulletState.properties.scale = 1.8;
+          if (contentDiagonale <= 900) CircleBulletState.properties.scale = 1.6;
+          if (contentDiagonale <= 700) CircleBulletState.properties.scale = 1.2;
+          if (contentDiagonale <= 500) CircleBulletState.properties.scale = 1.0;
+          return CircleBulletState;
         }
         return null;
       },
