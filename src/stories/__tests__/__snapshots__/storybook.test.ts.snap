@@ -4038,3 +4038,15 @@ exports[`Storyshots widget/WidgetTitle Example Right 1`] = `
   </h4>
 </div>
 `;
+
+exports[`Storyshots widgets/BubbleChart Example 1`] = `
+<bubble-chart
+  chartaxes="[object Object]"
+  chartdata="[object Object],[object Object],[object Object],[object Object],[object Object]"
+  chartseries="[object Object]"
+  class="h-screen w-full"
+  labelz="true"
+  unitx="K"
+  unity="%"
+/>
+`;
