@@ -67,10 +67,61 @@ export default class Projections extends VuexModule {
         case 'monthly':
           return this.months;
         default:
-          throw new Error(`the resulution ${this.projectionMeta.resolution} is not supported`);
+          throw new Error(`the resolution ${this.projectionMeta.resolution} is not supported`);
       }
     }
     return 0;
+  }
+
+  get columnDates(): Date[] {
+    if (this.projectionMeta) {
+      const { from, resolution } = this.projectionMeta;
+      const titles = [...new Array(this.dataColumnsLength)];
+
+      if (resolution === 'monthly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setMonth(columnDate.getMonth() + index);
+          return columnDate;
+        });
+      }
+
+      if (resolution === 'quarterly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setMonth(columnDate.getMonth() + index * 3);
+          return columnDate;
+        });
+      }
+
+      if (resolution === 'yearly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setFullYear(columnDate.getFullYear() + index);
+          return columnDate;
+        });
+      }
+    }
+    return [];
+  }
+
+  get columnTitles(): string[] {
+    if (this.projectionMeta) {
+      const { resolution } = this.projectionMeta;
+      if (resolution === 'monthly') {
+        return this.columnDates.map((date) => date.toLocaleDateString('de-CH', { year: '2-digit', month: 'short' }));
+      }
+      if (resolution === 'quarterly') {
+        return this.columnDates.map((date) => {
+          const quarter = Math.ceil((date.getMonth() + 1) / 3);
+          return `Q${quarter} ${date.toLocaleDateString('de-CH', { year: '2-digit' })}`;
+        });
+      }
+      if (resolution === 'yearly') {
+        return this.columnDates.map((date) => date.toLocaleDateString('de-CH', { year: 'numeric' }));
+      }
+    }
+    return [];
   }
 
   @Mutation
@@ -108,7 +159,7 @@ export default class Projections extends VuexModule {
   @Action
   buildDataColumns(): void {
     const dataColumns: DataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
-      const column = { name: `col ${index}` };
+      const column = { name: this.columnTitles[index] };
       return column;
     });
     this.context.commit('setDataColumns', dataColumns);
