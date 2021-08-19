@@ -1,5 +1,5 @@
 <template>
-  <h4 :class="cls">{{ title }}</h4>
+  <h4 :class="classNames">{{ title }}</h4>
 </template>
 
 <script lang="ts">
@@ -11,13 +11,13 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: string;
 
-  res = 'text-xl font-bold truncate';
+  baseClassNames = 'text-xl font-bold truncate';
 
-  get cls() {
-    if (this.align === 'right') this.res = `${this.res} text-right`;
-    if (this.align === 'center') this.res = `${this.res} text-center`;
-    if (this.align === 'left') this.res = `${this.res} text-left`;
-    return this.res;
+  get classNames(): string {
+    if (this.align === 'right') return `${this.baseClassNames} text-right`;
+    if (this.align === 'center') return `${this.baseClassNames} text-center`;
+    if (this.align === 'left') return `${this.baseClassNames} text-left`;
+    return this.baseClassNames;
   }
 }
 </script>

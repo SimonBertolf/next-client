@@ -3981,31 +3981,31 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
 
 exports[`Storyshots widget/WidgetText Example Center 1`] = `
 <div>
-  <p
+  <span
     class="text-sm truncate text-center"
   >
     Text under the widget blablabal
-  </p>
+  </span>
 </div>
 `;
 
 exports[`Storyshots widget/WidgetText Example Left 1`] = `
 <div>
-  <p
+  <span
     class="text-sm truncate text-left"
   >
     Text under the widget blablabal
-  </p>
+  </span>
 </div>
 `;
 
 exports[`Storyshots widget/WidgetText Example Right 1`] = `
 <div>
-  <p
+  <span
     class="text-sm truncate text-right"
   >
     Text under the widget blablabal
-  </p>
+  </span>
 </div>
 `;
 
