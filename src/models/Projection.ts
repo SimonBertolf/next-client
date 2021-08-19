@@ -1,6 +1,8 @@
 import { Translation } from '@/types';
 import { OrganisationDocument } from './Document';
 
+export type Resolution = 'yearly' | 'quarterly' | 'monthly';
+
 interface ProjectionInput {
   readonly _id: string;
   name: string;
@@ -27,11 +29,15 @@ export interface ProjectionSection {
   inputs: ProjectionInput[];
 }
 
-export interface Projection extends OrganisationDocument {
+export interface ProjectionMeta extends OrganisationDocument {
   name: string;
   description?: string;
   from: Date;
   to: Date;
+  resolution: Resolution;
+}
+
+export interface Projection extends ProjectionMeta {
   sections: ProjectionSection[];
   milestones: ProjectionMilestone[];
 }

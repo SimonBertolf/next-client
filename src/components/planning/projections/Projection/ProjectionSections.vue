@@ -24,7 +24,7 @@ export default class ProjectionSections extends Vue {
   }
 
   get sections(): ProjectionSectionModel[] {
-    return this.$store.state.Projections.projection?.sections;
+    return this.$store.state.Projections.sections;
   }
 
   get initialActiveKey(): string[] {

@@ -15,6 +15,7 @@ export const mockProtections: Projection[] = [
     name: 'Luftschloss 225, 8005 Himmel',
     from: FROM,
     to: TO,
+    resolution: 'quarterly',
     sections: [
       {
         name: 'sale',
@@ -355,6 +356,7 @@ export const mockProtections: Projection[] = [
     name: 'Hüpfburg 333, 5032 Spielen',
     from: new Date('January 2018'),
     to: new Date('December 2026'),
+    resolution: 'yearly',
     sections: [],
     milestones: [],
   },
