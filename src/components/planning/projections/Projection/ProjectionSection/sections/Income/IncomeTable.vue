@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { DataColumn, TableColumn } from '@/types';
+import { ProjectionDataColumn, TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
 
 @Component({ components: { DataTable } })
@@ -13,7 +13,7 @@ export default class IncomeTable extends Vue {
 
   @Prop({ type: Boolean, default: true }) readonly loading: boolean;
 
-  get dataColumns(): DataColumn[] {
+  get dataColumns(): ProjectionDataColumn[] {
     return this.$store.state.Projections.dataColumns;
   }
 
@@ -28,9 +28,16 @@ export default class IncomeTable extends Vue {
       },
       ...this.dataColumns.map((col) => ({
         title: col.name,
-        key: col.name,
-        dataIndex: col.name,
+        key: col.key,
+        dataIndex: col.key,
       })),
+      {
+        title: '',
+        key: 'end',
+        width: '1rem',
+        dataIndex: 'end',
+        fixed: 'right',
+      },
     ];
   }
 }

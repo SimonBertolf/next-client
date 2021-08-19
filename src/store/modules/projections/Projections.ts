@@ -1,7 +1,7 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import { cloneDeep } from 'lodash';
 import type { Projection, ProjectionMeta, ProjectionMilestone, ProjectionSection, Resolution } from '@/models';
-import { DataColumn } from '@/types';
+import { ProjectionDataColumn } from '@/types';
 import { mockProtections } from './ProjectionsMock';
 
 @Module({ namespaced: true })
@@ -21,7 +21,7 @@ export default class Projections extends VuexModule {
     pdf: false,
   };
 
-  public dataColumns: DataColumn[] = [];
+  public dataColumns: ProjectionDataColumn[] = [];
 
   get months(): number {
     if (this.projectionMeta) {
@@ -145,7 +145,7 @@ export default class Projections extends VuexModule {
   }
 
   @Mutation
-  setDataColumns(columns: DataColumn[]): void {
+  setDataColumns(columns: ProjectionDataColumn[]): void {
     this.dataColumns = columns;
   }
 
@@ -158,8 +158,11 @@ export default class Projections extends VuexModule {
 
   @Action
   buildDataColumns(): void {
-    const dataColumns: DataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
-      const column = { name: this.columnTitles[index] };
+    const dataColumns: ProjectionDataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
+      const column: ProjectionDataColumn = {
+        name: this.columnTitles[index],
+        key: this.columnDates[index].toISOString(),
+      };
       return column;
     });
     this.context.commit('setDataColumns', dataColumns);
