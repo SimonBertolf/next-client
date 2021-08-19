@@ -3978,3 +3978,63 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
   </section>
 </section>
 `;
+
+exports[`Storyshots widget/WidgetText Example Center 1`] = `
+<div>
+  <span
+    class="text-sm truncate text-center"
+  >
+    Text under the widget blablabal
+  </span>
+</div>
+`;
+
+exports[`Storyshots widget/WidgetText Example Left 1`] = `
+<div>
+  <span
+    class="text-sm truncate text-left"
+  >
+    Text under the widget blablabal
+  </span>
+</div>
+`;
+
+exports[`Storyshots widget/WidgetText Example Right 1`] = `
+<div>
+  <span
+    class="text-sm truncate text-right"
+  >
+    Text under the widget blablabal
+  </span>
+</div>
+`;
+
+exports[`Storyshots widget/WidgetTitle Example Center 1`] = `
+<div>
+  <h4
+    class="text-xl font-bold mb-1 truncate text-center"
+  >
+    Title of Widgets
+  </h4>
+</div>
+`;
+
+exports[`Storyshots widget/WidgetTitle Example Left 1`] = `
+<div>
+  <h4
+    class="text-xl font-bold mb-1 truncate text-left"
+  >
+    Title of Widgets
+  </h4>
+</div>
+`;
+
+exports[`Storyshots widget/WidgetTitle Example Right 1`] = `
+<div>
+  <h4
+    class="text-xl font-bold mb-1 truncate text-right"
+  >
+    Title of Widgets
+  </h4>
+</div>
+`;
