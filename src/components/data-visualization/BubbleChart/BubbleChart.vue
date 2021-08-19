@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import { XYChart, ValueAxis, CircleBullet, XYSeries, LabelBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, XYChartAxes, XYChartSeries } from '@/types';
+import type { ChartData, XYChartAxes, XYChartSeries } from '@/types/Chart';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -19,12 +19,6 @@ export default class BubbleChart extends Vue {
   @Prop({ type: Array, required: true }) readonly chartSeries: XYChartSeries[];
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
-
-  @Prop({ type: String, default: '' }) readonly unitY: string;
-
-  @Prop({ type: String, default: '' }) readonly unitX: string;
-
-  @Prop({ type: Boolean, default: false }) readonly labelZ: boolean;
 
   chart: XYChart | undefined;
 
@@ -50,12 +44,12 @@ export default class BubbleChart extends Vue {
     const yAxis = this.chart.yAxes.push(new ValueAxis());
     yAxis.title.text = this.chartAxes.y.label;
     yAxis.title.fontWeight = 'bold';
-    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitY}`);
+    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.chartAxes.y.unit}`);
 
     const xAxis = this.chart.xAxes.push(new ValueAxis());
     xAxis.title.text = this.chartAxes.x.label;
     xAxis.title.fontWeight = 'bold';
-    xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitX}`);
+    xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.chartAxes.x.unit}`);
 
     this.chartSeries.forEach((chartSeries) => {
       if (!this.chart) throw new Error('Can not add series to undefined chart!');
@@ -67,15 +61,15 @@ export default class BubbleChart extends Vue {
       series.strokeOpacity = 0;
 
       const bullet = series.bullets.push(new CircleBullet());
-      bullet.fill = am4core.color('#28304D');
+      bullet.fill = am4core.color(chartSeries.z.valueFillColor);
       bullet.fillOpacity = 0.5;
       bullet.strokeOpacity = 0.0;
 
       const labelBullet = series.bullets.push(new LabelBullet());
-      if (this.labelZ) {
+      if (chartSeries.z.showValue) {
         labelBullet.label.text = '{value}';
       }
-      labelBullet.label.fill = am4core.color('#FFFFFF');
+      labelBullet.label.fill = am4core.color(chartSeries.z.valueTextColor);
       labelBullet.fontSize = 9;
 
       series.heatRules.push({

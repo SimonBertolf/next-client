@@ -15,9 +15,6 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
       :chartData="chartData" 
       :chartSeries="chartSeries" 
       :chartAxes="chartAxes" 
-      unitY="%"
-      unitX="K"
-      :labelZ="true"
       class="h-screen w-full" />
   `,
 });
@@ -57,7 +54,7 @@ Example.args = {
     {
       x: { key: 'x' },
       y: { key: 'y' },
-      z: { key: 'z' },
+      z: { key: 'z', showValue: true, valueFillColor: 'secondary-100', valueTextColor: 'white' },
     },
   ],
 };

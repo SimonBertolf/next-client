@@ -1,21 +1,15 @@
 <template>
   <div class="overflow-hidden h-full">
-    <widget-title :title="name" align="affe" />
+    <widget-title :title="name" />
     <widget-text :text="info" />
-    <bubble-chart
-      :chartData="widgetData"
-      :chartSeries="chartSeries"
-      :chartAxes="chartAxes"
-      unitY="%"
-      unitX="K"
-      :labelZ="true"
-    />
+    <bubble-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { WidgetData, Filter, XYChartAxes, XYChartSeries } from '@/types';
+import { WidgetData, Filter } from '@/types';
+import { XYChartAxes, XYChartSeries } from '@/types/Chart';
 import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
 import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
@@ -31,13 +25,17 @@ export default class WidgetA extends Vue {
 
   info = 'Subtitle or description';
 
-  chartAxes: XYChartAxes = { x: { label: 'Bruttoertrag' }, y: { label: 'Eigenkapitalrenditte %' } };
+  chartAxes: XYChartAxes = {
+    x: { label: 'Bruttoertrag', unit: '' },
+    y: { label: 'Eigenkapitalrenditte %', unit: '%' },
+    z: { label: 'Segment', unit: '' },
+  };
 
   chartSeries: XYChartSeries[] = [
     {
       x: { key: 'x' },
       y: { key: 'y' },
-      z: { key: 'z' },
+      z: { key: 'z', showValue: true, valueFillColor: 'secondary-200', valueTextColor: 'white' },
     },
   ];
 
