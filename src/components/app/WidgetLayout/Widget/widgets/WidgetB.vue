@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden h-full">
-    <widget-title :title="chartTitle" />
-    <widget-text :text="chartText" />
+    <widget-title :title="name" />
+    <widget-text :text="info" />
     <line-chart
       :chartData="widgetData"
       :chartSeries="chartSeries"
@@ -26,9 +26,9 @@ export default class WidgetB extends Vue {
 
   @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
-  chartTitle = 'Widget - B';
+  name = 'Widget - B';
 
-  chartText = 'Subtitle or description';
+  info = 'Subtitle or description';
 
   chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
 

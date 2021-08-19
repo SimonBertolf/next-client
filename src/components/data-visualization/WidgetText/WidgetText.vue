@@ -9,7 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class WidgetText extends Vue {
   @Prop({ required: true, type: String }) readonly text: string;
 
-  @Prop({ default: 'left', type: String }) readonly align: string;
+  @Prop({ default: 'left', type: String }) readonly align: 'left' | 'right' | 'center';
 
   baseClassNames = 'text-sm truncate';
 

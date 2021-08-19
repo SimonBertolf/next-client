@@ -9,7 +9,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class WidgetTitle extends Vue {
   @Prop({ required: true, type: String }) readonly title: string;
 
-  @Prop({ default: 'left', type: String }) readonly align: string;
+  @Prop({ default: 'left', type: String }) readonly align: 'left' | 'right' | 'center';
 
   baseClassNames = 'text-xl font-bold truncate';
 

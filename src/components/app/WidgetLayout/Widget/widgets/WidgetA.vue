@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden h-full">
-    <widget-title :title="chartTitle" />
-    <widget-text :text="chartText" />
+    <widget-title :title="name" />
+    <widget-text :text="info" />
     <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" />
     <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
   </div>
@@ -20,9 +20,9 @@ export default class WidgetA extends Vue {
 
   @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
-  chartTitle = 'Widget - A';
+  name = 'Widget - A';
 
-  chartText = 'Subtitle or description';
+  info = 'Subtitle or description';
 
   chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
 
