@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDiv" class="w-full h-full"></div>
+  <div ref="chartDiv" class="w-full h-full pb-16"></div>
 </template>
 
 <script lang="ts">
@@ -19,8 +19,6 @@ export default class BubbleChart extends Vue {
   @Prop({ type: Array, default: () => [] }) readonly chartSeries: XYChartSeries[];
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
-
-  @Prop({ type: String, default: 'primary-100' }) readonly color: string;
 
   @Prop({ type: String, default: '' }) readonly labelY: string;
 
@@ -73,8 +71,8 @@ export default class BubbleChart extends Vue {
       series.strokeOpacity = 0;
 
       const bullet = series.bullets.push(new CircleBullet());
-      bullet.fill = am4core.color(chartSeries.color || this.color);
-      bullet.fillOpacity = 0.4;
+      bullet.fill = am4core.color('#28304D');
+      bullet.fillOpacity = 0.5;
       bullet.strokeOpacity = 0.0;
 
       const labelBullet = series.bullets.push(new LabelBullet());
