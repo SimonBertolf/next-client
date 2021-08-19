@@ -28,7 +28,7 @@ export default class BubbleChart extends Vue {
 
   chart: XYChart | undefined;
 
-  @Watch('chartData', { immediate: true, deep: true })
+  @Watch('chartData', { immediate: false, deep: true })
   onChartDataChange(newData: ChartData[], oldData: ChartData[]): void {
     if (!isEqual(newData, oldData)) {
       this.createChart();
@@ -118,7 +118,8 @@ export default class BubbleChart extends Vue {
           if (contentDiagonale <= 500) CircleBulletState.properties.scale = 1.0;
           return CircleBulletState;
         }
-        return null;
+        // eslint-disable-next-line no-useless-return, consistent-return
+        return;
       },
     });
   }
