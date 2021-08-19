@@ -17,7 +17,7 @@ export interface LineChartAxes {
 
 export interface XYChartAxes {
   x: { label: string; unit?: string };
-  y: { label: string };
+  y: { label: string; unit?: string };
 }
 
 export interface ChartData {
