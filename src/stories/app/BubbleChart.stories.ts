@@ -2,7 +2,7 @@ import { TemplateInterface } from '@/types';
 import BubbleChart from '../../components/data-visualization/BubbleChart/BubbleChart.vue';
 
 export default {
-  title: 'widget/BubbleChart',
+  title: 'widgets/BubbleChart',
   component: BubbleChart,
 };
 
@@ -11,9 +11,7 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
   props: Object.keys(argTypes),
   components: { BubbleChart },
   template: `
-    <div style="height:400px;width:500px;">
-      <bubble-chart :chartData="chartData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" />
-    </div>
+      <bubble-chart :chartData="chartData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-screen w-full" />
   `,
 });
 

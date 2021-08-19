@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDiv" class="w-full h-full"></div>
+  <div ref="chartDiv" class="w-full h-screen"></div>
 </template>
 
 <script lang="ts">
@@ -24,6 +24,18 @@ export default class BubbleChart extends Vue {
 
   chart: XYChart | undefined;
 
+  labelY = 'Eigenkapitalrendite (ROE)';
+
+  unitY = '%';
+
+  labelX = 'Anlagekosten in CHFm';
+
+  unitX = '';
+
+  bubbleMin = 10;
+
+  bubbleMax = 20;
+
   @Watch('chartData', { immediate: true, deep: true })
   onChartDataChange(newData: ChartData[], oldData: ChartData[]): void {
     if (!isEqual(newData, oldData)) {
@@ -40,13 +52,15 @@ export default class BubbleChart extends Vue {
     this.chart = am4core.create(this.$refs.chartDiv as HTMLElement, XYChart);
     this.chart.data = cloneDeep(this.chartData);
 
+    this.chart.responsive.enabled = true;
+
     const yAxis = this.chart.yAxes.push(new ValueAxis());
-    yAxis.title.text = 'Eigenkapitalrendite (ROE)';
+    yAxis.title.text = this.labelY;
     yAxis.title.fontWeight = 'bold';
-    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}%`);
+    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitY}`);
 
     const xAxis = this.chart.xAxes.push(new ValueAxis());
-    xAxis.title.text = 'Anlagekosten in CHFm';
+    xAxis.title.text = this.labelX;
     xAxis.title.fontWeight = 'bold';
 
     this.chart.logo.disabled = true;
@@ -72,10 +86,42 @@ export default class BubbleChart extends Vue {
 
       series.heatRules.push({
         target: bullet.circle,
-        min: 5,
-        max: 20,
+        min: this.bubbleMin,
+        max: this.bubbleMax,
         property: 'radius',
+        logarithmic: false,
       });
+    });
+
+    this.chart.responsive.useDefault = false;
+    let contentDiagonale = 0;
+    this.chart.responsive.rules.push({
+      relevant: function (target) {
+        contentDiagonale = Math.sqrt(
+          target.contentWidth * target.contentWidth + target.contentHeight * target.contentHeight,
+        );
+        return true;
+      },
+      /* @ts-ignore*/
+      state: function (target, stateId) {
+        if (target instanceof XYChart) {
+          contentDiagonale = Math.sqrt(
+            target.contentWidth * target.contentWidth + target.contentHeight * target.contentHeight,
+          );
+        }
+        if (target instanceof CircleBullet) {
+          const state = target.circle.states.create(stateId);
+          console.log(contentDiagonale);
+          /* @ts-ignore*/
+          if (contentDiagonale >= 1100) state.properties.scale = 2.0;
+          if (contentDiagonale <= 1100) state.properties.scale = 1.8;
+          if (contentDiagonale <= 900) state.properties.scale = 1.6;
+          if (contentDiagonale <= 700) state.properties.scale = 1.2;
+          if (contentDiagonale <= 500) state.properties.scale = 1.0;
+          return state;
+        }
+        return;
+      },
     });
   }
 
