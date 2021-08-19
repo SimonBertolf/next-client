@@ -2,14 +2,15 @@
   <div class="filter-pannel">
     <Card :autoSize="true" :hasTitle="true" :padding="true" class="hidden md:flex mt-4 filter-card">
       <template v-slot:title>
-        <span>Filters</span>
+        <span class="font-primary text-xl">Filters</span>
       </template>
       <spinner :spinning="loading">
         <filter-list />
       </spinner>
     </Card>
     <filter-button @click="showFilterModal" :loading="loading" />
-    <a-modal title="Filters" v-model="filterModalVisible" class="filter-modal" :footer="null">
+    <a-modal v-model="filterModalVisible" class="filter-modal" :footer="null">
+      <span class="font-primary text-xl" slot="title">Filters</span>
       <filter-list />
     </a-modal>
   </div>

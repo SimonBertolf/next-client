@@ -1,5 +1,5 @@
 <template>
-  <strong class="font-primary text-dark"><slot></slot></strong>
+  <strong class="font-primary text-black"><slot></slot></strong>
 </template>
 
 <script lang="ts">

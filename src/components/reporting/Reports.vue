@@ -1,6 +1,6 @@
 <template>
   <Card :autoSize="true" :hasTitle="false" :padding="true">
-    <h1 class="text-2xl mb-4">{{ name }}</h1>
+    <h1 class="font-primary text-2xl mb-4">{{ name }}</h1>
     <spinner :spinning="loading">
       <!-- TODO: setup working pagination -->
       <a-table :columns="columns" :data-source="tableData">

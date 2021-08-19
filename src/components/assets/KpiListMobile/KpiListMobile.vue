@@ -1,7 +1,7 @@
 <template>
   <a-collapse
     expand-icon-position="right"
-    class="w-full text-center text-primary font-bold text-2xl bg-neutral"
+    class="w-full text-center text-primary font-bold text-xl bg-white"
     :bordered="false"
   >
     <a-collapse-panel :key="kpiGroup.id" :header="kpiGroup.category">
@@ -34,6 +34,6 @@ export default class KpiListMobile extends Vue {
 
 <style>
 .ant-collapse-content-box {
-  @apply bg-background p-4 !important;
+  @apply bg-common-400 p-4 !important;
 }
 </style>

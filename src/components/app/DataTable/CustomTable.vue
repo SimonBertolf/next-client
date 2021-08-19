@@ -28,6 +28,6 @@ export default class CustomTable extends Vue {
 
 <style>
 .custom-table-scrollbar {
-  @apply scrollbar-thin scrollbar-thumb-thumb scrollbar-track-transparent !important;
+  @apply scrollbar-thin scrollbar-thumb-common-100 scrollbar-track-transparent !important;
 }
 </style>
