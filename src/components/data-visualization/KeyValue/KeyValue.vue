@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1 :class="cls">{{ value }} {{ unit }}</h1>
-    <p class="text-center truncate">{{ name }}</p>
+    <span :class="classNames">{{ value }} {{ unit }}</span>
+    <span class="text-center truncate">{{ name }}</span>
   </div>
 </template>
 
@@ -14,16 +14,15 @@ export default class KeyValue extends Vue {
 
   @Prop({ required: true, type: String }) readonly name: string;
 
-  @Prop({ default: 'accent', type: String }) readonly color: string;
+  @Prop({ default: 'accent-200', type: String }) readonly color: string;
 
   @Prop({ default: '', type: String }) readonly unit: string;
 
-  res = 'text-4xl font-bold text-center truncate';
+  baseClassNames = 'text-4xl mb-2 font-bold text-center truncate';
 
-  get cls() {
-    if( this.color === 'accent') this.res = `${this.res} text-accent-200`;
-
-    return this.res;
+  get classNames(): string {
+    if (this.color === 'accent-200') return `${this.baseClassNames} text-accent-200`;
+    return this.baseClassNames;
   }
 }
 </script>

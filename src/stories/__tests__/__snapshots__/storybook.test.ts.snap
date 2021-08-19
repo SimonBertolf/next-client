@@ -3979,62 +3979,18 @@ exports[`Storyshots views/Assets Monte Carlo Root Screen 1`] = `
 </section>
 `;
 
-exports[`Storyshots widget/WidgetText Example Center 1`] = `
+exports[`Storyshots widgets/KeyValue Example 1`] = `
 <div>
-  <p
-    class="text-sm truncate text-center"
+  <span
+    class="text-4xl mb-2 font-bold text-center truncate"
   >
-    Text under the widget blablabal
-  </p>
-</div>
-`;
-
-exports[`Storyshots widget/WidgetText Example Left 1`] = `
-<div>
-  <p
-    class="text-sm truncate text-left"
+    11.1 %
+  </span>
+   
+  <span
+    class="text-center truncate"
   >
-    Text under the widget blablabal
-  </p>
-</div>
-`;
-
-exports[`Storyshots widget/WidgetText Example Right 1`] = `
-<div>
-  <p
-    class="text-sm truncate text-right"
-  >
-    Text under the widget blablabal
-  </p>
-</div>
-`;
-
-exports[`Storyshots widget/WidgetTitle Example Center 1`] = `
-<div>
-  <h4
-    class="text-xl font-bold truncate text-center"
-  >
-    Title of Widgets
-  </h4>
-</div>
-`;
-
-exports[`Storyshots widget/WidgetTitle Example Left 1`] = `
-<div>
-  <h4
-    class="text-xl font-bold truncate text-left"
-  >
-    Title of Widgets
-  </h4>
-</div>
-`;
-
-exports[`Storyshots widget/WidgetTitle Example Right 1`] = `
-<div>
-  <h4
-    class="text-xl font-bold truncate text-right"
-  >
-    Title of Widgets
-  </h4>
+    Eigenkapitalrenditte
+  </span>
 </div>
 `;
