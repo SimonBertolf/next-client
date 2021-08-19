@@ -14,17 +14,13 @@ am4core.useTheme(am4themesAnimated);
 
 @Component({ components: {} })
 export default class BubbleChart extends Vue {
-  @Prop({ type: Array, default: () => [] }) readonly chartData: ChartData[];
+  @Prop({ type: Array, required: true }) readonly chartData: ChartData[];
 
-  @Prop({ type: Array, default: () => [] }) readonly chartSeries: XYChartSeries[];
+  @Prop({ type: Array, required: true }) readonly chartSeries: XYChartSeries[];
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 
-  @Prop({ type: String, default: '' }) readonly labelY: string;
-
   @Prop({ type: String, default: '' }) readonly unitY: string;
-
-  @Prop({ type: String, default: '' }) readonly labelX: string;
 
   @Prop({ type: String, default: '' }) readonly unitX: string;
 
@@ -52,12 +48,12 @@ export default class BubbleChart extends Vue {
     this.chart.responsive.useDefault = false;
 
     const yAxis = this.chart.yAxes.push(new ValueAxis());
-    yAxis.title.text = this.labelY;
+    yAxis.title.text = this.chartAxes.y.label;
     yAxis.title.fontWeight = 'bold';
     yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitY}`);
 
     const xAxis = this.chart.xAxes.push(new ValueAxis());
-    xAxis.title.text = this.labelX;
+    xAxis.title.text = this.chartAxes.x.label;
     xAxis.title.fontWeight = 'bold';
     xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.unitX}`);
 

@@ -15,9 +15,7 @@ const Template: TemplateInterface = (args: any, { argTypes }: any) => ({
       :chartData="chartData" 
       :chartSeries="chartSeries" 
       :chartAxes="chartAxes" 
-      labelY="Eigenkapital" 
       unitY="%"
-      labelX="Bruttoertrag"
       unitX="K"
       :labelZ="true"
       class="h-screen w-full" />

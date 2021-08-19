@@ -6,9 +6,7 @@
       :chartData="widgetData"
       :chartSeries="chartSeries"
       :chartAxes="chartAxes"
-      labelY="Eigenkapital ()"
       unitY="%"
-      labelX="Bruttoertrag )("
       unitX="K"
       :labelZ="true"
     />
@@ -31,7 +29,7 @@ export default class WidgetA extends Vue {
 
   name = 'A';
 
-  chartAxes: XYChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
+  chartAxes: XYChartAxes = { x: { label: 'Bruttoertrag' }, y: { label: 'Eigenkapitalrenditte %' } };
 
   chartSeries: XYChartSeries[] = [
     {
