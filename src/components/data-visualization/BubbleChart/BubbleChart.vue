@@ -89,7 +89,6 @@ export default class BubbleChart extends Vue {
         min: this.bubbleMin,
         max: this.bubbleMax,
         property: 'radius',
-        logarithmic: false,
       });
     });
 
@@ -111,7 +110,6 @@ export default class BubbleChart extends Vue {
         }
         if (target instanceof CircleBullet) {
           const state = target.circle.states.create(stateId);
-          console.log(contentDiagonale);
           /* @ts-ignore*/
           if (contentDiagonale >= 1100) state.properties.scale = 2.0;
           if (contentDiagonale <= 1100) state.properties.scale = 1.8;
