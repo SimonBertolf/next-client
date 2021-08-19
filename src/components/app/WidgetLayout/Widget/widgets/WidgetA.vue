@@ -1,9 +1,8 @@
 <template>
   <div class="overflow-hidden h-full">
-    <widget-title :title="name" align="affe" />
+    <widget-title :title="name" />
     <widget-text :text="info" />
     <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" />
-    <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
   </div>
 </template>
 
