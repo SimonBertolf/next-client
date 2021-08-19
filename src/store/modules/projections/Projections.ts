@@ -21,7 +21,16 @@ export default class Projections extends VuexModule {
     pdf: false,
   };
 
-  public dataColumns: ProjectionDataColumn[] = [];
+  get dataColumns(): ProjectionDataColumn[] {
+    const dataColumns: ProjectionDataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
+      const column: ProjectionDataColumn = {
+        name: this.columnTitles[index],
+        key: this.columnDates[index].toISOString(),
+      };
+      return column;
+    });
+    return dataColumns;
+  }
 
   get months(): number {
     if (this.projectionMeta) {
@@ -144,28 +153,11 @@ export default class Projections extends VuexModule {
     this.projectionMeta = meta;
   }
 
-  @Mutation
-  setDataColumns(columns: ProjectionDataColumn[]): void {
-    this.dataColumns = columns;
-  }
-
   @Action
   setResolution(resolution: Resolution): void {
     const newProjectionMeta = { ...this.projectionMeta };
     newProjectionMeta.resolution = resolution;
     this.context.commit('setProjectionMeta', newProjectionMeta);
-  }
-
-  @Action
-  buildDataColumns(): void {
-    const dataColumns: ProjectionDataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
-      const column: ProjectionDataColumn = {
-        name: this.columnTitles[index],
-        key: this.columnDates[index].toISOString(),
-      };
-      return column;
-    });
-    this.context.commit('setDataColumns', dataColumns);
   }
 
   @Action
@@ -193,7 +185,6 @@ export default class Projections extends VuexModule {
   flushProjection(): void {
     this.context.commit('setSections', []);
     this.context.commit('setMilestones', []);
-    this.context.commit('setDataColumns', []);
     this.context.commit('setProjectionMeta', null);
   }
 }

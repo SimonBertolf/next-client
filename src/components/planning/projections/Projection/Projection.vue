@@ -10,7 +10,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
+import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Card } from '@/components/app';
 import { Projection as ProjectionModel, Resolution } from '@/models';
 import ProjectionSections from './ProjectionSections.vue';
@@ -50,11 +50,6 @@ export default class Projection extends Vue {
 
   get resolution(): Resolution {
     return this.$store.state.Projections.projectionMeta?.resolution;
-  }
-
-  @Watch('resolution', { immediate: true, deep: true })
-  onResolutionChange(): void {
-    this.$store.dispatch('Projections/buildDataColumns');
   }
 
   @Prop(String) readonly projectionId: string;

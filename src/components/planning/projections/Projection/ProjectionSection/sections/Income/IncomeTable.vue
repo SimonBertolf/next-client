@@ -14,7 +14,7 @@ export default class IncomeTable extends Vue {
   @Prop({ type: Boolean, default: true }) readonly loading: boolean;
 
   get dataColumns(): ProjectionDataColumn[] {
-    return this.$store.state.Projections.dataColumns;
+    return this.$store.getters['Projections/dataColumns'];
   }
 
   get columns(): TableColumn[] {

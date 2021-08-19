@@ -1,7 +1,6 @@
-import { TableData } from '@/types';
 import { ProjectionResolverContext } from './Context';
 
 export interface ProjectionResolver {
-  resolve(ctx: ProjectionResolverContext): TableData[];
+  resolve(ctx: ProjectionResolverContext): ProjectionResolverContext;
   setNext(resolver: ProjectionResolver): void;
 }

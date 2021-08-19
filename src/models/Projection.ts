@@ -3,7 +3,7 @@ import { OrganisationDocument } from './Document';
 
 export type Resolution = 'yearly' | 'quarterly' | 'monthly';
 
-interface ProjectionInput {
+export interface ProjectionInput {
   readonly _id: string;
   name: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

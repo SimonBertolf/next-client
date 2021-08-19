@@ -6,7 +6,10 @@ const TO = new Date('November 2018');
 const createMockValues = (from: Date, to: Date): number[] => {
   if (from > to) throw new Error('Start date (from) must be before end date (to)!');
   const months = 12 * (to.getFullYear() - from.getFullYear()) - from.getMonth() + to.getMonth() + 1;
-  return new Array(months).fill(0);
+  return [...new Array(months)].reduce((acc) => {
+    acc.push((acc[acc.length - 1] || 1) + (acc[acc.length - 2] || 0));
+    return acc;
+  }, []);
 };
 
 export const mockProtections: Projection[] = [
