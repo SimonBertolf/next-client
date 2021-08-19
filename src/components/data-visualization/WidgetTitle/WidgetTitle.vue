@@ -11,13 +11,8 @@ export default class WidgetTitle extends Vue {
 
   @Prop({ default: 'left', type: String }) readonly align: 'left' | 'right' | 'center';
 
-  baseClassNames = 'text-xl font-bold truncate';
-
   get classNames(): string {
-    if (this.align === 'right') return `${this.baseClassNames} text-right`;
-    if (this.align === 'center') return `${this.baseClassNames} text-center`;
-    if (this.align === 'left') return `${this.baseClassNames} text-left`;
-    return this.baseClassNames;
+    return `text-xl font-bold mb-1 truncate text-${this.align}`;
   }
 }
 </script>
