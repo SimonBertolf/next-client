@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden h-full">
-    <a-icon class="text-4xl" type="dot-chart" />
-    <h3>Widget {{ name }}</h3>
+    <widget-title :title="name" align="affe" />
+    <widget-text :text="info" />
     <bubble-chart
       :chartData="widgetData"
       :chartSeries="chartSeries"
@@ -16,18 +16,20 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter, XYChartAxes, XYChartSeries } from '@/types';
-import { LineChart } from '@/components/data-visualization';
 import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
+import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
 const relevantFilters = ['assets', 'tenants', 'clients'];
 
-@Component({ components: { LineChart, BubbleChart } })
+@Component({ components: { LineChart, WidgetTitle, WidgetText, BubbleChart } })
 export default class WidgetA extends Vue {
   @Prop(String) readonly id: string;
 
   @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
-  name = 'A';
+  name = 'Widget - A';
+
+  info = 'Subtitle or description';
 
   chartAxes: XYChartAxes = { x: { label: 'Bruttoertrag' }, y: { label: 'Eigenkapitalrenditte %' } };
 
