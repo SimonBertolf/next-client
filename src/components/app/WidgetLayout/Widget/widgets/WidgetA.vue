@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden h-full">
-    <a-icon class="text-4xl" type="dot-chart" />
-    <h3 class="pb-4">Widget {{ name }}</h3>
+    <widget-title :title="name" align="affe" />
+    <widget-text :text="info" />
     <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" class="h-5/6" />
     <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
   </div>
@@ -10,17 +10,19 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
-import { LineChart } from '@/components/data-visualization';
+import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
 const relevantFilters = ['assets', 'tenants', 'clients'];
 
-@Component({ components: { LineChart } })
+@Component({ components: { LineChart, WidgetTitle, WidgetText } })
 export default class WidgetA extends Vue {
   @Prop(String) readonly id: string;
 
   @Prop({ default: () => [], type: Array }) readonly widgetData: WidgetData['data'];
 
-  name = 'A';
+  name = 'Widget - A';
+
+  info = 'Subtitle or description';
 
   chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
 

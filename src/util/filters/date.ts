@@ -1,3 +1,5 @@
+// TODO: clean up. Use localized date formatting. e.g. momentjs
+
 export const dateTimeFilter = (value: string): string => {
   const date = new Date(value);
   return `${date.toLocaleDateString()}, ${date.toLocaleTimeString()}`;
@@ -14,4 +16,9 @@ export const dateFormatFilter = (value: string): string => {
   const formattedMonth = month < 10 ? `0${month}` : month;
   const formattedYear = year.substring(year.length - 2);
   return `${formattedDay}.${formattedMonth}.${formattedYear}`;
+};
+
+export const dateMonthFilter = (value: string): string => {
+  const date = new Date(value);
+  return `${date.getMonth() + 1}.${date.getFullYear()}`;
 };
