@@ -2,20 +2,14 @@
   <div class="overflow-hidden h-full">
     <widget-title :title="name" />
     <widget-text :text="info" />
-    <line-chart
-      :chartData="widgetData"
-      :chartSeries="chartSeries"
-      :chartAxes="chartAxes"
-      color="#37F52F"
-      class="h-5/6"
-    />
-    <!-- <pre>{{ JSON.stringify(this.widgetData, null, 2) }}</pre> -->
+    <line-chart :chartData="widgetData" :chartSeries="chartSeries" :chartAxes="chartAxes" />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
+import { WidgetData, Filter } from '@/types';
+import { LineChartAxes, LineChartSeries } from '@/types/Chart';
 import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
 const relevantFilters = ['regions', 'assets'];
@@ -28,14 +22,17 @@ export default class WidgetB extends Vue {
 
   name = 'Widget - B';
 
-  info = 'Subtitle or description';
+  info = 'Linechart';
 
-  chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
+  chartAxes: LineChartAxes = { x: { label: 'X in %', unit: 'CHF' }, y: { label: 'Y in %' } };
 
   chartSeries: LineChartSeries[] = [
     {
       x: { key: 'x' },
       y: { key: 'y' },
+      showStroke: true,
+      showBullet: true,
+      strokeColor: '#FF0000',
     },
   ];
 

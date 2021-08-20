@@ -23,10 +23,10 @@ export default class WidgetA extends Vue {
 
   name = 'Widget - A';
 
-  info = 'Subtitle or description';
+  info = 'Bubblechart';
 
   chartAxes: XYChartAxes = {
-    x: { label: 'Bruttoertrag', unit: '' },
+    x: { label: 'Bruttoertrag' },
     y: { label: 'Eigenkapitalrenditte %', unit: '%' },
     z: { label: 'Segment', unit: '' },
   };
@@ -35,7 +35,7 @@ export default class WidgetA extends Vue {
     {
       x: { key: 'x' },
       y: { key: 'y' },
-      z: { key: 'z', showValue: true, valueFillColor: 'red', valueTextColor: 'accent-100', unit: 'K' },
+      z: { key: 'z', showValue: true, unit: 'K' },
     },
   ];
 
