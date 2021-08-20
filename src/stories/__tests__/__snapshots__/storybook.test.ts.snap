@@ -3990,31 +3990,31 @@ exports[`Storyshots widget/BubbleChart Example 1`] = `
 
 exports[`Storyshots widget/WidgetText Example Center 1`] = `
 <div>
-  <span
+  <p
     class="text-sm truncate text-center"
   >
     Text under the widget blablabal
-  </span>
+  </p>
 </div>
 `;
 
 exports[`Storyshots widget/WidgetText Example Left 1`] = `
 <div>
-  <span
+  <p
     class="text-sm truncate text-left"
   >
     Text under the widget blablabal
-  </span>
+  </p>
 </div>
 `;
 
 exports[`Storyshots widget/WidgetText Example Right 1`] = `
 <div>
-  <span
+  <p
     class="text-sm truncate text-right"
   >
     Text under the widget blablabal
-  </span>
+  </p>
 </div>
 `;
 
