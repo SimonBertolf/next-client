@@ -6,7 +6,7 @@
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
-import { XYChart, ValueAxis, LineSeries, CircleBullet } from '@amcharts/amcharts4/charts';
+import { XYChart, ValueAxis, LineSeries } from '@amcharts/amcharts4/charts';
 import type { ChartData, XYChartAxes, LineChartSeries } from '@/types/Chart';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
@@ -53,24 +53,12 @@ export default class LineChart extends Vue {
     xAxis.title.fontWeight = 'bold';
     xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.chartAxes.x.unit}`);
 
-    this.chartSeries.forEach((chartSeries) => {
-      if (!this.chart) throw new Error('Can not add series to undefined chart!');
-
-      const series = this.chart.series.push(new LineSeries());
-      if (chartSeries.showStroke) {
-        series.stroke = am4core.color(chartSeries.color || '#000000');
-        series.strokeWidth = 1.5;
-      }
-      series.dataFields.valueX = chartSeries.x.key;
-      series.dataFields.valueY = chartSeries.y.key;
-
-      if (chartSeries.showBullet) {
-        const bullet = series.bullets.push(new CircleBullet());
-        bullet.fill = am4core.color(chartSeries.color || '#000000');
-        bullet.strokeWidth = 0;
-        bullet.circle.radius = 3;
-      }
-    });
+    if (!this.chart) throw new Error('Can not add series to undefined chart!');
+    const series = this.chart.series.push(new LineSeries());
+    series.stroke = am4core.color(this.chartSeries || '#FF0000');
+    series.strokeWidth = 2;
+    series.dataFields.valueX = this.chartSeries.x.key;
+    series.dataFields.valueY = this.chartSeries.y.key;
   }
 
   beforeDestroy(): void {
