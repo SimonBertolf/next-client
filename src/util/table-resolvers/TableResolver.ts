@@ -8,6 +8,9 @@ export interface TableResolverContext {
     handler: (dir: string | boolean, key: string) => void;
   };
   editableRowIndex?: number;
+  blurHandler?: () => void;
+  focusHandler?: (dataIndex: string, rowIndex: number) => void;
+  focusedCell?: { dataIndex: string; rowIndex: number };
 }
 
 export interface TableResolver {

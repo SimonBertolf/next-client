@@ -77,6 +77,8 @@ export default class DataTable extends Vue {
 
   editableRowIndex = -1;
 
+  focusedCell: { dataIndex: string; rowIndex: number } = { dataIndex: '', rowIndex: -1 };
+
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
     if (this.rowSelection) builder.addRowSelection();
@@ -98,8 +100,24 @@ export default class DataTable extends Vue {
     this.editableRowIndex = -1;
   }
 
+  handleFocus(dataIndex: string, rowIndex: number): void {
+    this.focusedCell = { dataIndex, rowIndex };
+  }
+
+  handleBlur(): void {
+    this.focusedCell = { dataIndex: '', rowIndex: -1 };
+  }
+
   @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!isEqual(val, oldVal)) {
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
+    }
+  }
+
+  @Watch('focusedCell', { immediate: false, deep: true })
+  handleFocusedCellChange(val: TableColumn[], oldVal: TableColumn[]): void {
     if (!isEqual(val, oldVal)) {
       const cols = [...this.itsColumns];
       this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
@@ -144,6 +162,9 @@ export default class DataTable extends Vue {
       cols: this.columns,
       sorter: { ...this.currentSorter, handler: this.sort },
       editableRowIndex: this.editableRowIndex,
+      focusedCell: this.focusedCell,
+      blurHandler: this.handleBlur,
+      focusHandler: this.handleFocus,
     });
   }
 
