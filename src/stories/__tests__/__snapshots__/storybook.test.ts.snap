@@ -4038,3 +4038,19 @@ exports[`Storyshots widget/WidgetTitle Example Right 1`] = `
   </h4>
 </div>
 `;
+
+exports[`Storyshots widgets/KeyValue Example 1`] = `
+<div>
+  <span
+    class="text-4xl mb-2 font-bold text-center truncate text-accent"
+  >
+    11.1 %
+  </span>
+   
+  <span
+    class="text-center truncate"
+  >
+    Eigenkapitalrenditte
+  </span>
+</div>
+`;
