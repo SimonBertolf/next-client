@@ -10,6 +10,7 @@ const ProjectionLoader: Plugin<any> = (store: Store<any>) => {
       if (params?.projectionId) {
         const { projectionId } = params;
         store.dispatch('Projections/loadProjection', { _id: projectionId });
+        store.dispatch('Projections/loadActuals');
       } else if (state.Projections.projectionMeta) {
         store.dispatch('Projections/flushProjection');
       }

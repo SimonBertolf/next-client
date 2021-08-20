@@ -12,6 +12,13 @@ export interface ProjectionInput {
   values: number[];
 }
 
+export interface ProjectionActual {
+  name: string;
+  section: string; // reference to section
+  displayNames: Translation[];
+  values: number[];
+}
+
 export interface ProjectionMilestone {
   readonly _id?: string;
   name: string;

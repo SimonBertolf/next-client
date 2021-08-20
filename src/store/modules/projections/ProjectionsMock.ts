@@ -1,4 +1,4 @@
-import { Projection } from '@/models';
+import { Projection, ProjectionActual } from '@/models';
 
 const FROM = new Date('March 2017');
 const TO = new Date('November 2018');
@@ -362,5 +362,14 @@ export const mockProtections: Projection[] = [
     resolution: 'yearly',
     sections: [],
     milestones: [],
+  },
+];
+
+export const mockActuals: ProjectionActual[] = [
+  {
+    name: 'rent',
+    section: 'rent',
+    displayNames: [{ lang: 'de', text: 'Effektive Erträge' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
   },
 ];

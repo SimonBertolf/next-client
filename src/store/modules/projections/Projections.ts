@@ -1,8 +1,15 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
 import { cloneDeep } from 'lodash';
-import type { Projection, ProjectionMeta, ProjectionMilestone, ProjectionSection, Resolution } from '@/models';
+import type {
+  Projection,
+  ProjectionActual,
+  ProjectionMeta,
+  ProjectionMilestone,
+  ProjectionSection,
+  Resolution,
+} from '@/models';
 import { ProjectionDataColumn } from '@/types';
-import { mockProtections } from './ProjectionsMock';
+import { mockActuals, mockProtections } from './ProjectionsMock';
 
 @Module({ namespaced: true })
 export default class Projections extends VuexModule {
@@ -12,13 +19,15 @@ export default class Projections extends VuexModule {
 
   public sections: ProjectionSection[] = [];
 
+  public actuals: ProjectionActual[] = [];
+
   public milestones: ProjectionMilestone[] = [];
 
   public loading = {
     projections: false,
     projection: false,
+    actuals: false,
     newProjection: false,
-    pdf: false,
   };
 
   get dataColumns(): ProjectionDataColumn[] {
@@ -144,6 +153,11 @@ export default class Projections extends VuexModule {
   }
 
   @Mutation
+  setActuals(actuals: ProjectionActual[]): void {
+    this.actuals = actuals;
+  }
+
+  @Mutation
   setMilestones(milestones: ProjectionMilestone[]): void {
     this.milestones = milestones;
   }
@@ -172,10 +186,24 @@ export default class Projections extends VuexModule {
   async loadProjection({ _id }: { _id: string }): Promise<void> {
     try {
       this.context.commit('setLoading', { key: 'projection', loading: true });
+      // TODO: replace mock
       const projection = this.projections.find((item) => item._id === _id) || null;
-      if (projection === null) throw new Error(`Could not find projection with _id ${_id}`);
+      if (projection === undefined) throw new Error(`Could not find projection with _id ${_id}`);
       this.context.dispatch('setProjection', projection);
       this.context.commit('setLoading', { key: 'projection', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
+  async loadActuals(): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'actuals', loading: true });
+      // TODO: replace mock
+      const actuals = mockActuals;
+      this.context.commit('setActuals', actuals);
+      this.context.commit('setLoading', { key: 'actuals', loading: false });
     } catch (error) {
       this.context.commit('Errors/setError', error, { root: true });
     }
@@ -185,6 +213,7 @@ export default class Projections extends VuexModule {
   flushProjection(): void {
     this.context.commit('setSections', []);
     this.context.commit('setMilestones', []);
+    this.context.commit('setActuals', []);
     this.context.commit('setProjectionMeta', null);
   }
 }
