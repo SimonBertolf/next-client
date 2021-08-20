@@ -55,10 +55,10 @@ export default class LineChart extends Vue {
 
     if (!this.chart) throw new Error('Can not add series to undefined chart!');
     const series = this.chart.series.push(new LineSeries());
-    series.stroke = am4core.color(this.chartSeries || '#FF0000');
+    series.stroke = am4core.color('#FF0000');
     series.strokeWidth = 2;
-    series.dataFields.valueX = this.chartSeries.x.key;
-    series.dataFields.valueY = this.chartSeries.y.key;
+    series.dataFields.valueX = 'x';
+    series.dataFields.valueY = 'y';
   }
 
   beforeDestroy(): void {
