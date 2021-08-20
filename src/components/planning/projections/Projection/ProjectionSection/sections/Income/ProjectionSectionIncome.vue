@@ -5,7 +5,7 @@
 <script lang="ts">
 import type { ProjectionSection, Resolution } from '@/models';
 import type { TableData } from '@/types';
-import { ResolutionResolver } from '@/util';
+import { ProjectionResolverBuilder, ProjectionResolverInterface, ProjectionResolverBuilderInterface } from '@/util';
 import { cloneDeep } from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import IncomeTable from './IncomeTable.vue';
@@ -14,7 +14,13 @@ import IncomeTable from './IncomeTable.vue';
 export default class ProjectionSectionIncome extends Vue {
   @Prop({ type: Object, required: true }) readonly section!: ProjectionSection;
 
-  private resolver = new ResolutionResolver();
+  private resolver: ProjectionResolverInterface;
+
+  created(): void {
+    const builder: ProjectionResolverBuilderInterface = new ProjectionResolverBuilder();
+    builder.addResolutionResolver();
+    this.resolver = builder.build();
+  }
 
   get columnDates(): Date[] {
     return this.$store.getters['Projections/columnDates'];

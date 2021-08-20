@@ -1,6 +1,6 @@
-import { ProjectionResolverContext } from './Context';
+import { ProjectionResolverContextInterface } from './Context';
 
-export interface ProjectionResolver {
-  resolve(ctx: ProjectionResolverContext): ProjectionResolverContext;
-  setNext(resolver: ProjectionResolver): void;
+export interface ProjectionResolverInterface {
+  resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface;
+  setNext(resolver: ProjectionResolverInterface): void;
 }

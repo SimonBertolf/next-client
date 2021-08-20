@@ -1,10 +1,10 @@
 import { TableData } from '@/types';
-import { ProjectionResolver, ProjectionResolverContext } from '../interfaces';
+import { ProjectionResolverInterface, ProjectionResolverContextInterface } from '../interfaces';
 
-export class ResolutionResolver implements ProjectionResolver {
-  private nextResolver: ProjectionResolver | null = null;
+export class ResolutionResolver implements ProjectionResolverInterface {
+  private nextResolver: ProjectionResolverInterface | null = null;
 
-  resolve(ctx: ProjectionResolverContext): ProjectionResolverContext {
+  resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface {
     const { resolution, columnDates, inputs, rows } = ctx;
 
     const firstClusterDate = new Date(columnDates[0]);
@@ -55,7 +55,7 @@ export class ResolutionResolver implements ProjectionResolver {
     return newCtx;
   }
 
-  setNext(resolver: ProjectionResolver): void {
+  setNext(resolver: ProjectionResolverInterface): void {
     this.nextResolver = resolver;
   }
 }

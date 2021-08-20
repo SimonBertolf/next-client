@@ -1,5 +1,6 @@
-import { ProjectionResolver } from './Resolver';
+import { ProjectionResolverInterface } from './Resolver';
 
-export interface ProjectionResolverBuilder {
-  build(): ProjectionResolver;
+export interface ProjectionResolverBuilderInterface {
+  addResolutionResolver(): ProjectionResolverBuilderInterface;
+  build(): ProjectionResolverInterface;
 }
