@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import { XYChart, ValueAxis, LineSeries, CircleBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, LineChartAxes, LineChartSeries } from '@/types/Chart';
+import type { ChartData, XYChartAxes, LineChartSeries } from '@/types/Chart';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -18,7 +18,7 @@ export default class LineChart extends Vue {
 
   @Prop({ type: Array, required: true }) readonly chartSeries: LineChartSeries[];
 
-  @Prop({ type: Object, required: true }) readonly chartAxes: LineChartAxes;
+  @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 
   chart: XYChart | undefined;
 
@@ -58,7 +58,7 @@ export default class LineChart extends Vue {
 
       const series = this.chart.series.push(new LineSeries());
       if (chartSeries.showStroke) {
-        series.stroke = am4core.color(chartSeries.strokeColor || '#000000');
+        series.stroke = am4core.color(chartSeries.color || '#000000');
         series.strokeWidth = 1.5;
       }
       series.dataFields.valueX = chartSeries.x.key;
@@ -66,7 +66,7 @@ export default class LineChart extends Vue {
 
       if (chartSeries.showBullet) {
         const bullet = series.bullets.push(new CircleBullet());
-        bullet.fill = am4core.color(chartSeries.bulletFillCollor || '#000000');
+        bullet.fill = am4core.color(chartSeries.color || '#000000');
         bullet.strokeWidth = 0;
         bullet.circle.radius = 3;
       }

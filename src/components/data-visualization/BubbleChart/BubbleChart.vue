@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import { XYChart, ValueAxis, CircleBullet, XYSeries, LabelBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, XYChartAxes, XYChartSeries } from '@/types/Chart';
+import type { ChartData, XYChartAxes, BubbelChartSeries } from '@/types/Chart';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -16,7 +16,7 @@ am4core.useTheme(am4themesAnimated);
 export default class BubbleChart extends Vue {
   @Prop({ type: Array, required: true }) readonly chartData: ChartData[];
 
-  @Prop({ type: Array, required: true }) readonly chartSeries: XYChartSeries[];
+  @Prop({ type: Array, required: true }) readonly chartSeries: BubbelChartSeries[];
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 
@@ -46,12 +46,14 @@ export default class BubbleChart extends Vue {
     const yAxis = this.chart.yAxes.push(new ValueAxis());
     yAxis.title.text = this.chartAxes.y.label;
     yAxis.title.fontWeight = 'bold';
-    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.chartAxes.y.unit}`);
+    const unitY = this.chartAxes.y.unit || '';
+    yAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${unitY}`);
 
     const xAxis = this.chart.xAxes.push(new ValueAxis());
     xAxis.title.text = this.chartAxes.x.label;
     xAxis.title.fontWeight = 'bold';
-    xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${this.chartAxes.x.unit}`);
+    const unitX = this.chartAxes.x.unit || '';
+    xAxis.renderer.labels.template.adapter.add('text', (text) => `${text}${unitX}`);
 
     this.chartSeries.forEach((chartSeries) => {
       if (!this.chart) throw new Error('Can not add series to undefined chart!');
@@ -64,15 +66,16 @@ export default class BubbleChart extends Vue {
       series.sequencedInterpolation = true;
 
       const bullet = series.bullets.push(new CircleBullet());
-      bullet.fill = am4core.color(chartSeries.z.valueFillColor || '#000000');
+      bullet.fill = am4core.color(chartSeries.color || '#000000');
       bullet.fillOpacity = 0.5;
       bullet.strokeOpacity = 0.0;
 
       const labelBullet = series.bullets.push(new LabelBullet());
       if (chartSeries.z.showValue) {
-        labelBullet.label.text = `{value}${chartSeries.z.unit}`;
+        const unit = chartSeries.z.unit || '';
+        labelBullet.label.text = `{value}${unit}`;
       }
-      labelBullet.label.fill = am4core.color(chartSeries.z.valueTextColor || '#FFFFFF');
+      labelBullet.label.fill = am4core.color(chartSeries.color || '#FFFFFF');
       labelBullet.fontSize = 9;
 
       series.heatRules.push({
