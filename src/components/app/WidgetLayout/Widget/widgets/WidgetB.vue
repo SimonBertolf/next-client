@@ -32,7 +32,6 @@ export default class WidgetB extends Vue {
       y: { key: 'y' },
       showStroke: true,
       showBullet: true,
-      strokeColor: '#FF0000',
     },
   ];
 
