@@ -99,7 +99,7 @@ export default class BubbleChart extends Vue {
         }
         if (target instanceof LabelBullet) {
           const LabelBulletState = target.states.create(stateId);
-          if (contentDiagonale >= 1100) LabelBulletState.properties.fontSize = 2.0;
+          if (contentDiagonale >= 1100) LabelBulletState.properties.fontSize = 20;
           if (contentDiagonale <= 1100) LabelBulletState.properties.fontSize = 18;
           if (contentDiagonale <= 900) LabelBulletState.properties.fontSize = 16;
           if (contentDiagonale <= 700) LabelBulletState.properties.fontSize = 12;
