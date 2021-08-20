@@ -35,7 +35,7 @@ export default class WidgetA extends Vue {
     {
       x: { key: 'x' },
       y: { key: 'y' },
-      z: { key: 'z', showValue: true, valueFillColor: 'secondary-200', valueTextColor: 'white' },
+      z: { key: 'z', showValue: true, valueFillColor: 'red', valueTextColor: 'accent-100', unit: 'K' },
     },
   ];
 

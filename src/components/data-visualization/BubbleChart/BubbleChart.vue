@@ -1,5 +1,5 @@
 <template>
-  <div ref="chartDiv" class="w-full h-full pb-16"></div>
+  <div ref="chartDiv" class="w-full h-full pb-16 justify-start"></div>
 </template>
 
 <script lang="ts">
@@ -40,7 +40,8 @@ export default class BubbleChart extends Vue {
 
     this.chart.responsive.enabled = true;
     this.chart.responsive.useDefault = false;
-
+    this.chart.paddingLeft = 0;
+    this.chart.paddingBottom = 0;
     const yAxis = this.chart.yAxes.push(new ValueAxis());
     yAxis.title.text = this.chartAxes.y.label;
     yAxis.title.fontWeight = 'bold';
@@ -59,6 +60,7 @@ export default class BubbleChart extends Vue {
       series.dataFields.valueY = chartSeries.y.key;
       series.dataFields.value = chartSeries.z.key;
       series.strokeOpacity = 0;
+      series.sequencedInterpolation = true;
 
       const bullet = series.bullets.push(new CircleBullet());
       bullet.fill = am4core.color(chartSeries.z.valueFillColor);
@@ -67,7 +69,7 @@ export default class BubbleChart extends Vue {
 
       const labelBullet = series.bullets.push(new LabelBullet());
       if (chartSeries.z.showValue) {
-        labelBullet.label.text = '{value}';
+        labelBullet.label.text = `{value}${chartSeries.z.unit}`;
       }
       labelBullet.label.fill = am4core.color(chartSeries.z.valueTextColor);
       labelBullet.fontSize = 9;

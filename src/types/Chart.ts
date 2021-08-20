@@ -3,19 +3,18 @@ export interface ChartData {
 }
 
 export interface LineChartSeries {
-  x: { key: string };
-  y: { key: string };
-  color?: string;
+  x: { key: string; color?: string };
+  y: { key: string; color?: string };
 }
 export interface LineChartAxes {
-  x: { label: string };
-  y: { label: string };
+  x: { label: string; unit?: string };
+  y: { label: string; unit?: string };
 }
 
 export interface XYChartSeries {
   x: { key: string };
   y: { key: string };
-  z: { key: string; showValue: boolean; valueFillColor?: string; valueTextColor?: string };
+  z: { key: string; showValue: boolean; valueFillColor?: string; valueTextColor?: string; unit?: string };
 }
 
 export interface XYChartAxes {

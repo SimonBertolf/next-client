@@ -49,7 +49,7 @@ Example.args = {
       z: Math.random(),
     },
   ],
-  chartAxes: { x: { label: 'X in %' }, y: { label: 'Y in %' } },
+  chartAxes: { x: { label: 'X in %', unit: '%' }, y: { label: 'Y in %' } },
   chartSeries: [
     {
       x: { key: 'x' },
