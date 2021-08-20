@@ -2,7 +2,7 @@ import { TemplateInterface } from '@/types';
 import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
 
 export default {
-  title: 'widgets/BubbleChart',
+  title: 'widget/BubbleChart',
   component: BubbleChart,
 };
 

@@ -15,7 +15,8 @@
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
-import { WidgetData, Filter, LineChartSeries, LineChartAxes } from '@/types';
+import { WidgetData, Filter } from '@/types';
+import { LineChartAxes, LineChartSeries } from '@/types/Chart';
 import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
 const relevantFilters = ['period', 'kinds', 'usages', 'assets'];
@@ -28,19 +29,17 @@ export default class WidgetC extends Vue {
 
   name = 'Widget - C';
 
-  info = 'Subtitle or description';
+  info = 'Linechart';
 
-  chartAxes: LineChartAxes = { x: { label: 'X in %' }, y: { label: 'Y in %' } };
+  chartAxes: LineChartAxes = { x: { label: 'X in %', unit: 'CHF' }, y: { label: 'Y in %' } };
 
   chartSeries: LineChartSeries[] = [
     {
       x: { key: 'x' },
       y: { key: 'y' },
-    },
-    {
-      x: { key: 'y' },
-      y: { key: 'x' },
-      color: '#E2B007',
+      showStroke: true,
+      showBullet: false,
+      strokeColor: '#FF0000',
     },
   ];
 

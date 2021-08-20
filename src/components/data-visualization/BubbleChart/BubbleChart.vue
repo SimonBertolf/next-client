@@ -42,6 +42,7 @@ export default class BubbleChart extends Vue {
     this.chart.responsive.useDefault = false;
     this.chart.paddingLeft = 0;
     this.chart.paddingBottom = 0;
+
     const yAxis = this.chart.yAxes.push(new ValueAxis());
     yAxis.title.text = this.chartAxes.y.label;
     yAxis.title.fontWeight = 'bold';
@@ -63,7 +64,7 @@ export default class BubbleChart extends Vue {
       series.sequencedInterpolation = true;
 
       const bullet = series.bullets.push(new CircleBullet());
-      bullet.fill = am4core.color(chartSeries.z.valueFillColor);
+      bullet.fill = am4core.color(chartSeries.z.valueFillColor || '#000000');
       bullet.fillOpacity = 0.5;
       bullet.strokeOpacity = 0.0;
 
@@ -71,7 +72,7 @@ export default class BubbleChart extends Vue {
       if (chartSeries.z.showValue) {
         labelBullet.label.text = `{value}${chartSeries.z.unit}`;
       }
-      labelBullet.label.fill = am4core.color(chartSeries.z.valueTextColor);
+      labelBullet.label.fill = am4core.color(chartSeries.z.valueTextColor || '#FFFFFF');
       labelBullet.fontSize = 9;
 
       series.heatRules.push({
