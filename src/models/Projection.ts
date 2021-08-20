@@ -1,7 +1,9 @@
 import { Translation } from '@/types';
 import { OrganisationDocument } from './Document';
 
-interface ProjectionInput {
+export type Resolution = 'yearly' | 'quarterly' | 'monthly';
+
+export interface ProjectionInput {
   readonly _id: string;
   name: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -27,11 +29,15 @@ export interface ProjectionSection {
   inputs: ProjectionInput[];
 }
 
-export interface Projection extends OrganisationDocument {
+export interface ProjectionMeta extends OrganisationDocument {
   name: string;
   description?: string;
   from: Date;
   to: Date;
+  resolution: Resolution;
+}
+
+export interface Projection extends ProjectionMeta {
   sections: ProjectionSection[];
   milestones: ProjectionMilestone[];
 }
