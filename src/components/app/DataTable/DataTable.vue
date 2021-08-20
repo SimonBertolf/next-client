@@ -5,6 +5,20 @@
     </span>
     <a-table
       class="w-full"
+      :customRow="
+        (record, index) => {
+          return {
+            on: {
+              mouseenter: (event) => {
+                this.handleMouseEnter(index);
+              },
+              mouseleave: (event) => {
+                this.handleMouseLeave();
+              },
+            },
+          };
+        }
+      "
       :row-key="(record) => record._id"
       :components="itsComponents"
       :columns="filteredColumns"
@@ -33,6 +47,7 @@ import { Spinner } from '@/components/app/Spinner';
 import CustomTable from './CustomTable.vue';
 import HeaderCell from './HeaderCell.vue';
 import BodyRow from './BodyRow.vue';
+import BodyCell from './BodyCell.vue';
 import RowSelector from './RowSelector.vue';
 import RowActionMenu from './RowActionMenu.vue';
 import ColumnFilter from './ColumnFilter.vue';
@@ -60,11 +75,16 @@ export default class DataTable extends Vue {
 
   currentSorter: { direction?: string | boolean; key?: string } = {};
 
+  editableRowIndex = -1;
+
+  focusedCell: { dataIndex: string; rowIndex: number } = { dataIndex: '', rowIndex: -1 };
+
   created(): void {
     const builder: TableResolverBuilder = new DataTableResolverBuilder();
     if (this.rowSelection) builder.addRowSelection();
     if (this.rowActions) builder.addRowAction();
     builder.addTableSorter();
+    builder.addEditableCells();
     this.resolver = builder.build();
   }
 
@@ -72,8 +92,40 @@ export default class DataTable extends Vue {
     this.filteredColumns = this.itsColumns;
   }
 
+  handleMouseEnter(rowIndex: number): void {
+    this.editableRowIndex = rowIndex;
+  }
+
+  handleMouseLeave(): void {
+    this.editableRowIndex = -1;
+  }
+
+  handleFocus(dataIndex: string, rowIndex: number): void {
+    this.focusedCell = { dataIndex, rowIndex };
+  }
+
+  handleBlur(): void {
+    this.focusedCell = { dataIndex: '', rowIndex: -1 };
+  }
+
   @Watch('columns', { immediate: false, deep: true })
   handleColumnsChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!isEqual(val, oldVal)) {
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
+    }
+  }
+
+  @Watch('focusedCell', { immediate: false, deep: true })
+  handleFocusedCellChange(val: TableColumn[], oldVal: TableColumn[]): void {
+    if (!isEqual(val, oldVal)) {
+      const cols = [...this.itsColumns];
+      this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
+    }
+  }
+
+  @Watch('editableRowIndex', { immediate: false, deep: true })
+  handleEditableRowIndexChange(val: number, oldVal: number): void {
     if (!isEqual(val, oldVal)) {
       const cols = [...this.itsColumns];
       this.filteredColumns = this.filteredColumns.map((col) => cols.find((c) => c.key === col.key) as TableColumn);
@@ -97,7 +149,8 @@ export default class DataTable extends Vue {
     const table: TableComponentRenderer = (h, p, c) => h(CustomTable, { ...p }, c);
     const cell: TableComponentRenderer = (h, p, c) => h(HeaderCell, { ...p }, c);
     const bodyRow: TableComponentRenderer = (h, p, c) => h(BodyRow, { ...p }, c);
-    return { table, header: { cell }, body: { row: bodyRow } };
+    const bodyCell: TableComponentRenderer = (h, p, c) => h(BodyCell, { ...p }, c);
+    return { table, header: { cell }, body: { row: bodyRow, cell: bodyCell } };
   }
 
   get spinnerComponent(): VNode {
@@ -105,7 +158,14 @@ export default class DataTable extends Vue {
   }
 
   get itsColumns(): TableColumn[] {
-    return this.resolver.resolve({ cols: this.columns, sorter: { ...this.currentSorter, handler: this.sort } });
+    return this.resolver.resolve({
+      cols: this.columns,
+      sorter: { ...this.currentSorter, handler: this.sort },
+      editableRowIndex: this.editableRowIndex,
+      focusedCell: this.focusedCell,
+      blurHandler: this.handleBlur,
+      focusHandler: this.handleFocus,
+    });
   }
 
   get hasColumnFilter(): boolean {
