@@ -21,8 +21,9 @@ export const mockProtections: Projection[] = [
     resolution: 'quarterly',
     sections: [
       {
-        name: 'sale',
+        name: 'sale-sales',
         type: 'sale',
+        actual: 'sale-sales',
         displayNames: [{ lang: 'de', text: 'Verkauf' }],
         inputs: [
           {
@@ -35,8 +36,9 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'rent',
+        name: 'income-rent',
         type: 'income',
+        actual: 'income-rent',
         displayNames: [{ lang: 'de', text: 'Miete' }],
         inputs: [
           {
@@ -72,36 +74,41 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'general',
+        name: 'cost-general',
         type: 'cost',
         displayNames: [{ lang: 'de', text: 'Kosten' }],
         inputs: [
           {
             name: 'property',
+            actual: 'property',
             displayNames: [{ lang: 'de', text: 'Grundstück' }],
             values: createMockValues(FROM, TO),
             _id: 'property',
           },
           {
             name: 'fees',
+            actual: 'fees',
             displayNames: [{ lang: 'de', text: 'Planungs- und Projekthonorare' }],
             values: createMockValues(FROM, TO),
             _id: 'fees',
           },
           {
             name: 'construction',
+            actual: 'construction',
             displayNames: [{ lang: 'de', text: 'Baukosten (ohne Honorare)' }],
             values: createMockValues(FROM, TO),
             _id: 'construction',
           },
           {
             name: 'misc',
+            actual: 'misc',
             displayNames: [{ lang: 'de', text: 'Diverse Kosten (ohne Provisionen)' }],
             values: createMockValues(FROM, TO),
             _id: 'misc',
           },
           {
             name: 'commissions',
+            actual: 'commissions',
             displayNames: [{ lang: 'de', text: 'Verkaufsprovisionen ' }],
             values: createMockValues(FROM, TO),
             _id: 'commissions',
@@ -109,42 +116,48 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'property',
+        name: 'cost-property',
         type: 'cost',
         displayNames: [{ lang: 'de', text: 'Liegenschaftsaufwand' }],
         inputs: [
           {
             name: 'maintenance',
+            actual: 'maintenance',
             displayNames: [{ lang: 'de', text: 'Unterhalt und Reparaturen' }],
             values: createMockValues(FROM, TO),
             _id: 'maintenance',
           },
           {
             name: 'insurance',
+            actual: 'insurance',
             displayNames: [{ lang: 'de', text: 'Versicherung' }],
             values: createMockValues(FROM, TO),
             _id: 'insurance',
           },
           {
             name: 'auxiliary',
+            actual: 'auxiliary',
             displayNames: [{ lang: 'de', text: 'HNK z.L. Eigentümer' }],
             values: createMockValues(FROM, TO),
             _id: 'auxiliary',
           },
           {
             name: 'marketing',
+            actual: 'marketing',
             displayNames: [{ lang: 'de', text: 'Vermietungs- und Vermarktungskosten' }],
             values: createMockValues(FROM, TO),
             _id: 'marketing',
           },
           {
             name: 'taxes',
+            actual: 'taxes',
             displayNames: [{ lang: 'de', text: 'Objektsteuern / Gebühren + Abgaben' }],
             values: createMockValues(FROM, TO),
             _id: 'taxes',
           },
           {
             name: 'fees',
+            actual: 'fees',
             displayNames: [{ lang: 'de', text: 'Verwaltungshonorar ' }],
             values: createMockValues(FROM, TO),
             _id: 'fees',
@@ -152,18 +165,20 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'management',
+        name: 'cost-management',
         type: 'cost',
         displayNames: [{ lang: 'de', text: 'Management Aufwand' }],
         inputs: [
           {
             name: 'asset',
+            actual: 'asset',
             displayNames: [{ lang: 'de', text: 'Asset Management' }],
             values: createMockValues(FROM, TO),
             _id: 'asset',
           },
           {
             name: 'accounting',
+            actual: 'accounting',
             displayNames: [{ lang: 'de', text: 'Buchführung' }],
             values: createMockValues(FROM, TO),
             _id: 'accounting',
@@ -171,24 +186,27 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'legal',
+        name: 'cost-legal',
         type: 'cost',
         displayNames: [{ lang: 'de', text: 'Legal Entity Kosten' }],
         inputs: [
           {
             name: 'administration',
+            actual: 'administration',
             displayNames: [{ lang: 'de', text: 'Verwaltungsaufwand' }],
             values: createMockValues(FROM, TO),
             _id: 'administration',
           },
           {
             name: 'taxes',
+            actual: 'taxes',
             displayNames: [{ lang: 'de', text: 'Steuern' }],
             values: createMockValues(FROM, TO),
             _id: 'taxes',
           },
           {
             name: 'external',
+            actual: 'external',
             displayNames: [{ lang: 'de', text: 'Betriebsfremder, a.o. Aufwand/Ertrag' }],
             values: createMockValues(FROM, TO),
             _id: 'external',
@@ -196,7 +214,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'land',
+        name: 'funding-land',
+        actual: 'funding-land',
         type: 'funding',
         meta: { interest: 0.75 },
         displayNames: [{ lang: 'de', text: 'Finanzierung Landkredit' }],
@@ -216,7 +235,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'construction',
+        name: 'funding-construction',
+        actual: 'funding-construction',
         type: 'funding',
         meta: { interest: 0.75 },
         displayNames: [{ lang: 'de', text: 'Finanzierung Baukredit' }],
@@ -236,7 +256,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'subordinated',
+        name: 'funding-subordinated',
+        actual: 'funding-subordinated',
         type: 'funding',
         meta: { interest: 0.75 },
         displayNames: [{ lang: 'de', text: 'Finanzierung Nachrangige Darlehen' }],
@@ -256,7 +277,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'misc',
+        name: 'funding-misc',
+        actual: 'funding-misc',
         type: 'funding',
         meta: { interest: 0.75 },
         displayNames: [{ lang: 'de', text: 'Finanzierung übrige Darlehen' }],
@@ -276,7 +298,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'property',
+        name: 'equity-property',
+        actual: 'equity-property',
         type: 'equity',
         displayNames: [{ lang: 'de', text: 'Eigenkapital Grundstück' }],
         inputs: [
@@ -295,7 +318,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'construction',
+        name: 'equity-construction',
+        actual: 'equity-construction',
         type: 'equity',
         displayNames: [{ lang: 'de', text: 'Eigenkapital Bau' }],
         inputs: [
@@ -314,7 +338,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'universal',
+        name: 'equity-universal',
+        actual: 'equity-universal',
         type: 'equity',
         displayNames: [{ lang: 'de', text: 'Eigenkapital Allgemein' }],
         inputs: [
@@ -333,7 +358,8 @@ export const mockProtections: Projection[] = [
         ],
       },
       {
-        name: 'other',
+        name: 'equity-other',
+        actual: 'equity-other',
         type: 'equity',
         displayNames: [{ lang: 'de', text: 'Eigenkapital übrige Beteiligungen' }],
         inputs: [
@@ -366,10 +392,174 @@ export const mockProtections: Projection[] = [
 ];
 
 export const mockActuals: ProjectionActual[] = [
+  // sale-sales
   {
-    name: 'rent',
-    section: 'rent',
+    name: 'sale-sales',
+    section: 'sale-sales',
     displayNames: [{ lang: 'de', text: 'Effektive Erträge' }],
     values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // income-rent
+  {
+    name: 'income-rent',
+    section: 'income-rent',
+    displayNames: [{ lang: 'de', text: 'Effektive Erträge' }],
+    values: createMockValues(FROM, TO).map((value) => (value + 1) * 6),
+  },
+  // cost-general
+  {
+    name: 'property',
+    section: 'cost-general',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'fees',
+    section: 'cost-general',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'construction',
+    section: 'cost-general',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'misc',
+    section: 'cost-general',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'commissions',
+    section: 'cost-general',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // cost-property
+  {
+    name: 'maintenance',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'insurance',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'auxiliary',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'marketing',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'taxes',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'fees',
+    section: 'cost-property',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // cost-management
+  {
+    name: 'asset',
+    section: 'cost-management',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'accounting',
+    section: 'cost-management',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // cost-legal
+  {
+    name: 'administration',
+    section: 'cost-legal',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'taxes',
+    section: 'cost-legal',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  {
+    name: 'external',
+    section: 'cost-legal',
+    displayNames: [{ lang: 'de', text: 'Effektive Kosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // funding-land
+  {
+    name: 'funding-land',
+    section: 'funding-land',
+    displayNames: [{ lang: 'de', text: 'Effektive Finanzierungskosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 2),
+  },
+  // funding-construction
+  {
+    name: 'funding-construction',
+    section: 'funding-construction',
+    displayNames: [{ lang: 'de', text: 'Effektive Finanzierungskosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 3),
+  },
+  // funding-subordinated
+  {
+    name: 'funding-subordinated',
+    section: 'funding-subordinated',
+    displayNames: [{ lang: 'de', text: 'Effektive Finanzierungskosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 4),
+  },
+  // funding-misc
+  {
+    name: 'funding-misc',
+    section: 'funding-misc',
+    displayNames: [{ lang: 'de', text: 'Effektive Finanzierungskosten' }],
+    values: createMockValues(FROM, TO).map((value) => value + 5),
+  },
+  // equity-property
+  {
+    name: 'equity-property',
+    section: 'equity-property',
+    displayNames: [{ lang: 'de', text: 'Effektives Eigenkapital' }],
+    values: createMockValues(FROM, TO).map((value) => value + 1),
+  },
+  // equity-construction
+  {
+    name: 'equity-construction',
+    section: 'equity-construction',
+    displayNames: [{ lang: 'de', text: 'Effektives Eigenkapital' }],
+    values: createMockValues(FROM, TO).map((value) => value + 2),
+  },
+  // equity-universal
+  {
+    name: 'equity-universal',
+    section: 'equity-universal',
+    displayNames: [{ lang: 'de', text: 'Effektives Eigenkapital' }],
+    values: createMockValues(FROM, TO).map((value) => value + 3),
+  },
+  // equity-other
+  {
+    name: 'equity-other',
+    section: 'equity-other',
+    displayNames: [{ lang: 'de', text: 'Effektives Eigenkapital' }],
+    values: createMockValues(FROM, TO).map((value) => value + 4),
   },
 ];
