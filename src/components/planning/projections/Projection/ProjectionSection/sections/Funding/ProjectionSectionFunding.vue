@@ -24,6 +24,7 @@ export default class ProjectionSectionFunding extends Vue {
     builder.addHorizintalSumResolver();
     builder.addAbsoluteDeltaResolver();
     builder.addResolutionResolver();
+    builder.addRelativeDeltaResolver();
     this.resolver = builder.build();
   }
 

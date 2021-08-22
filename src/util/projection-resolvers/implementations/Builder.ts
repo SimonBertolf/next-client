@@ -5,6 +5,7 @@ import { HorizontalSumResolver } from './HorizontalSumResolver';
 import { InputActualsResolver } from './InputActualsResolver';
 import { InputsResolver } from './InputsResolver';
 import { InputsSumResolver } from './InputsSumResolver';
+import { RelativeDeltaResolver } from './RelativeDeltaResolver';
 import { ResolutionResolver } from './ResolutionResolver';
 import { SectionActualsResolver } from './SectionActualsResolver';
 
@@ -63,6 +64,12 @@ export class ProjectionResolverBuilder implements ProjectionResolverBuilderInter
 
   addAbsoluteDeltaResolver(): ProjectionResolverBuilderInterface {
     const resolver = new AbsoluteDeltaResolver();
+    this.addResolver(resolver);
+    return this;
+  }
+
+  addRelativeDeltaResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new RelativeDeltaResolver();
     this.addResolver(resolver);
     return this;
   }

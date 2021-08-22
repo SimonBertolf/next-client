@@ -24,6 +24,7 @@ export default class ProjectionSectionEquity extends Vue {
     builder.addHorizintalSumResolver();
     builder.addAbsoluteDeltaResolver();
     builder.addResolutionResolver();
+    builder.addRelativeDeltaResolver();
     this.resolver = builder.build();
   }
 

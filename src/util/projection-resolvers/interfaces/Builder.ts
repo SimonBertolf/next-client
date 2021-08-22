@@ -9,5 +9,6 @@ export interface ProjectionResolverBuilderInterface {
   addInputsSumResolver(): ProjectionResolverBuilderInterface;
   addActualsSumResolver(): ProjectionResolverBuilderInterface;
   addAbsoluteDeltaResolver(): ProjectionResolverBuilderInterface;
+  addRelativeDeltaResolver(): ProjectionResolverBuilderInterface;
   build(): ProjectionResolverInterface;
 }

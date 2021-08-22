@@ -13,6 +13,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { ProjectionDataColumn, ProjectionTableRow, TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
+import { tableNumberFilter } from '@/util';
 
 @Component({ components: { DataTable } })
 export default class SaleTable extends Vue {
@@ -44,12 +45,14 @@ export default class SaleTable extends Vue {
         className: 'horizontal-sum',
         align: 'right',
         fixed: 'left',
+        customRender: (text: string | number) => this.$createElement('span', {}, tableNumberFilter(text as number)),
       },
       ...this.dataColumns.map((col) => ({
         title: col.name,
         key: col.key,
         align: 'right',
         dataIndex: col.key,
+        customRender: (text: string | number) => this.$createElement('span', {}, tableNumberFilter(text as number)),
       })),
       {
         title: '',
