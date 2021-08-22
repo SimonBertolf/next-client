@@ -1,8 +1,9 @@
 import { ProjectionResolverInterface, ProjectionResolverBuilderInterface } from '../interfaces';
+import { ActualsSumResolver } from './ActualsSumResolver';
 import { HorizontalSumResolver } from './HorizontalSumResolver';
 import { InputActualsResolver } from './InputActualsResolver';
-import { InputResolver } from './InputResolver';
-import { InputSumResolver } from './InputSumResolver';
+import { InputsResolver } from './InputsResolver';
+import { InputsSumResolver } from './InputsSumResolver';
 import { ResolutionResolver } from './ResolutionResolver';
 import { SectionActualsResolver } from './SectionActualsResolver';
 
@@ -17,8 +18,8 @@ export class ProjectionResolverBuilder implements ProjectionResolverBuilderInter
     }
   }
 
-  addInputResolver(): ProjectionResolverBuilderInterface {
-    const resolver = new InputResolver();
+  addInputsResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new InputsResolver();
     this.addResolver(resolver);
     return this;
   }
@@ -47,8 +48,14 @@ export class ProjectionResolverBuilder implements ProjectionResolverBuilderInter
     return this;
   }
 
-  addInputSumResolver(): ProjectionResolverBuilderInterface {
-    const resolver = new InputSumResolver();
+  addInputsSumResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new InputsSumResolver();
+    this.addResolver(resolver);
+    return this;
+  }
+
+  addActualsSumResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new ActualsSumResolver();
     this.addResolver(resolver);
     return this;
   }

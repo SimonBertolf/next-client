@@ -1,11 +1,12 @@
 import { ProjectionResolverInterface } from './Resolver';
 
 export interface ProjectionResolverBuilderInterface {
-  addInputResolver(): ProjectionResolverBuilderInterface;
+  addInputsResolver(): ProjectionResolverBuilderInterface;
   addResolutionResolver(): ProjectionResolverBuilderInterface;
   addInputActualsResolver(): ProjectionResolverBuilderInterface;
   addSectionActualsResolver(): ProjectionResolverBuilderInterface;
   addHorizintalSumResolver(): ProjectionResolverBuilderInterface;
-  addInputSumResolver(): ProjectionResolverBuilderInterface;
+  addInputsSumResolver(): ProjectionResolverBuilderInterface;
+  addActualsSumResolver(): ProjectionResolverBuilderInterface;
   build(): ProjectionResolverInterface;
 }

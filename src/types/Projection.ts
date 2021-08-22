@@ -5,7 +5,7 @@ export interface ProjectionDataColumn {
   key: string;
 }
 
-type ProjectionRowType = 'input' | 'sectionActual' | 'inputActual' | 'inputSum' | 'percentage';
+type ProjectionRowType = 'input' | 'sectionActual' | 'inputActual' | 'inputsSum' | 'actualsSum' | 'percentage';
 
 export interface ProjectionTableRow extends Pick<TableData, '_id'> {
   [key: string]: string | number | number[];

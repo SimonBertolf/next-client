@@ -8,7 +8,13 @@ export class HorizontalSumResolver implements ProjectionResolverInterface {
 
     const newRows = rows.map((row) => {
       const { type } = row;
-      if (type === 'input' || type === 'inputActual' || type === 'sectionActual' || type === 'inputSum') {
+      if (
+        type === 'input' ||
+        type === 'inputActual' ||
+        type === 'sectionActual' ||
+        type === 'inputsSum' ||
+        type === 'actualsSum'
+      ) {
         const sum = row.values.reduce((acc, current) => acc + current, 0);
         return { ...row, sum };
       }

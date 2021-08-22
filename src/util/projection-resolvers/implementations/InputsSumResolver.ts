@@ -1,6 +1,6 @@
 import { ProjectionResolverInterface, ProjectionResolverContextInterface } from '../interfaces';
 
-export class InputSumResolver implements ProjectionResolverInterface {
+export class InputsSumResolver implements ProjectionResolverInterface {
   private nextResolver: ProjectionResolverInterface | null = null;
 
   resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface {
@@ -16,7 +16,7 @@ export class InputSumResolver implements ProjectionResolverInterface {
 
     rows.push({
       _id: `inputs-sum-${sectionName}`,
-      type: 'inputSum',
+      type: 'inputsSum',
       displayName: `Total ${section.displayNames.find((name) => name.lang === 'de')?.text || `t('${section.name}')`}`,
       name: `inputs-sum-${sectionName}`,
       className: 'inputs-sum',

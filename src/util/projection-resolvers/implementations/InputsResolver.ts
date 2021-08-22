@@ -1,7 +1,7 @@
 import { ProjectionTableRow } from '@/types';
 import { ProjectionResolverInterface, ProjectionResolverContextInterface } from '../interfaces';
 
-export class InputResolver implements ProjectionResolverInterface {
+export class InputsResolver implements ProjectionResolverInterface {
   private nextResolver: ProjectionResolverInterface | null = null;
 
   resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface {
