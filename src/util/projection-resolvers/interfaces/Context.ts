@@ -1,9 +1,10 @@
-import { Resolution, ProjectionInput } from '@/models';
-import { TableData } from '@/types';
+import { Resolution, ProjectionActual, ProjectionSection } from '@/models';
+import { ProjectionTableRow } from '@/types';
 
 export interface ProjectionResolverContextInterface {
-  rows: TableData[];
-  readonly inputs: ProjectionInput[];
+  rows: ProjectionTableRow[];
+  readonly section: ProjectionSection;
+  readonly actuals: ProjectionActual[];
   readonly columnDates: Date[];
   readonly resolution: Resolution;
 }

@@ -1,16 +1,16 @@
-import { TableData } from '@/types';
+import { ProjectionTableRow } from '@/types';
 import { ProjectionResolverInterface, ProjectionResolverContextInterface } from '../interfaces';
 
 export class ResolutionResolver implements ProjectionResolverInterface {
   private nextResolver: ProjectionResolverInterface | null = null;
 
   resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface {
-    const { resolution, columnDates, inputs, rows } = ctx;
+    const { resolution, columnDates, rows } = ctx;
 
     const firstClusterDate = new Date(columnDates[0]);
 
-    const newRows: TableData[] = rows.map((row, index) => {
-      const { values } = inputs[index];
+    const newRows: ProjectionTableRow[] = rows.map((row) => {
+      const { values } = row;
       const clusters = values.reduce(
         (acc: { value: number; date: Date }[], currentValue: number, currentIndex) => {
           // get clusterValue and clusterDate
@@ -56,6 +56,10 @@ export class ResolutionResolver implements ProjectionResolverInterface {
   }
 
   setNext(resolver: ProjectionResolverInterface): void {
-    this.nextResolver = resolver;
+    if (this.nextResolver) {
+      this.nextResolver.setNext(resolver);
+    } else {
+      this.nextResolver = resolver;
+    }
   }
 }

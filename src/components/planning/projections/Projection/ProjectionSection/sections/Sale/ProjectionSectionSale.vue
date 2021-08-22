@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
-import type { ProjectionSection, Resolution } from '@/models';
-import type { TableData } from '@/types';
+import type { ProjectionActual, ProjectionSection, Resolution } from '@/models';
+import type { ProjectionTableRow } from '@/types';
 import { ProjectionResolverBuilder, ProjectionResolverBuilderInterface, ProjectionResolverInterface } from '@/util';
 import { cloneDeep } from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
@@ -18,6 +18,8 @@ export default class ProjectionSectionSale extends Vue {
 
   created(): void {
     const builder: ProjectionResolverBuilderInterface = new ProjectionResolverBuilder();
+    builder.addInputResolver();
+    builder.addSectionActualsResolver();
     builder.addResolutionResolver();
     this.resolver = builder.build();
   }
@@ -30,16 +32,17 @@ export default class ProjectionSectionSale extends Vue {
     return this.$store.state.Projections.projectionMeta?.resolution || 'monthly';
   }
 
-  get rows(): TableData[] {
-    const { inputs } = this.section;
+  get actuals(): ProjectionActual[] {
+    return this.$store.state.Projections.actuals;
+  }
+
+  get rows(): ProjectionTableRow[] {
     const { rows } = this.resolver.resolve({
       columnDates: this.columnDates,
       resolution: this.resolution,
-      rows: [...new Array(inputs.length)].map((item, index) => ({
-        _id: inputs[index]._id,
-        name: inputs[index].displayNames.find((name) => name.lang === 'de')?.text || `t('${inputs[index].name}')`,
-      })),
-      inputs: cloneDeep(inputs),
+      rows: [],
+      section: cloneDeep(this.section),
+      actuals: this.actuals,
     });
     return rows;
   }

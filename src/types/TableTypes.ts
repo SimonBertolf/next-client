@@ -54,6 +54,6 @@ export interface TableColumn {
 }
 
 export interface TableData {
-  _id: string;
   [key: string]: string | number;
+  _id: string;
 }

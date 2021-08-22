@@ -1,5 +1,5 @@
 <template>
-  <data-table :columns="columns" :data="rows" :loading="loading" :pageSize="10" />
+  <data-table :columns="columns" :data="rows" :loading="loading" :pageSize="99" />
 </template>
 
 <script lang="ts">
@@ -21,14 +21,15 @@ export default class EquityTable extends Vue {
     return [
       {
         title: 'Name',
-        key: 'name',
+        key: 'displayName',
         width: '17rem',
-        dataIndex: 'name',
+        dataIndex: 'displayName',
         fixed: 'left',
       },
       ...this.dataColumns.map((col) => ({
         title: col.name,
         key: col.key,
+        align: 'right',
         dataIndex: col.key,
       })),
       {
