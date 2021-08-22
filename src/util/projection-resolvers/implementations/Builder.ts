@@ -1,4 +1,5 @@
 import { ProjectionResolverInterface, ProjectionResolverBuilderInterface } from '../interfaces';
+import { AbsoluteDeltaResolver } from './AbsoluteDeltaResolver';
 import { ActualsSumResolver } from './ActualsSumResolver';
 import { HorizontalSumResolver } from './HorizontalSumResolver';
 import { InputActualsResolver } from './InputActualsResolver';
@@ -56,6 +57,12 @@ export class ProjectionResolverBuilder implements ProjectionResolverBuilderInter
 
   addActualsSumResolver(): ProjectionResolverBuilderInterface {
     const resolver = new ActualsSumResolver();
+    this.addResolver(resolver);
+    return this;
+  }
+
+  addAbsoluteDeltaResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new AbsoluteDeltaResolver();
     this.addResolver(resolver);
     return this;
   }

@@ -23,6 +23,7 @@ export default class ProjectionSectionCost extends Vue {
     builder.addInputActualsResolver();
     builder.addActualsSumResolver();
     builder.addHorizintalSumResolver();
+    builder.addAbsoluteDeltaResolver();
     builder.addResolutionResolver();
     this.resolver = builder.build();
   }
