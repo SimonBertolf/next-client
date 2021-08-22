@@ -2,6 +2,7 @@ import { ProjectionResolverInterface, ProjectionResolverBuilderInterface } from 
 import { HorizontalSumResolver } from './HorizontalSumResolver';
 import { InputActualsResolver } from './InputActualsResolver';
 import { InputResolver } from './InputResolver';
+import { InputSumResolver } from './InputSumResolver';
 import { ResolutionResolver } from './ResolutionResolver';
 import { SectionActualsResolver } from './SectionActualsResolver';
 
@@ -42,6 +43,12 @@ export class ProjectionResolverBuilder implements ProjectionResolverBuilderInter
 
   addHorizintalSumResolver(): ProjectionResolverBuilderInterface {
     const resolver = new HorizontalSumResolver();
+    this.addResolver(resolver);
+    return this;
+  }
+
+  addInputSumResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new InputSumResolver();
     this.addResolver(resolver);
     return this;
   }

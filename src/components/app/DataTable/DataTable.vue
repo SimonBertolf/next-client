@@ -26,6 +26,7 @@
       :scroll="{ x: true }"
       :pagination="{ pageSize, hideOnSinglePage: true, size: 'small', class: 'data-table-pagination' }"
       :loading="{ indicator: spinnerComponent, spinning: loading }"
+      :row-class-name="rowClassName"
     >
       <template slot="selection" slot-scope="text, row">
         <row-selector :checked="isChecked(row._id)" @click="() => onSelectRow(row._id)" />
@@ -66,6 +67,11 @@ export default class DataTable extends Vue {
 
   @Prop({ type: [Object, Boolean], default: false })
   rowActions: { actions: Array<{ key: string; label: string }>; onClick: (actionKey: string, rowKey: string) => void };
+
+  @Prop({ type: Function, default: () => undefined }) readonly rowClassName: (
+    record: TableData,
+    index: number,
+  ) => string;
 
   selectedRows: string[] = [];
 

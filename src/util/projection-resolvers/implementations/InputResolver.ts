@@ -16,6 +16,7 @@ export class InputResolver implements ProjectionResolverInterface {
         displayName:
           inputs[index].displayNames.find((name) => name.lang === 'de')?.text || `t('${inputs[index].name}')`,
         name: inputs[index].name,
+        className: `input-${inputs[index].name}`,
         values: inputs[index].values,
       }),
     );

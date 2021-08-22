@@ -19,6 +19,7 @@ export default class ProjectionSectionSale extends Vue {
   created(): void {
     const builder: ProjectionResolverBuilderInterface = new ProjectionResolverBuilder();
     builder.addInputResolver();
+    builder.addInputSumResolver();
     builder.addSectionActualsResolver();
     builder.addHorizintalSumResolver();
     builder.addResolutionResolver();

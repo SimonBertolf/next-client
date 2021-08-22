@@ -1,10 +1,17 @@
 <template>
-  <data-table :columns="columns" :data="rows" :loading="loading" :pageSize="99" class="funding-table" />
+  <data-table
+    :columns="columns"
+    :data="rows"
+    :loading="loading"
+    :pageSize="99"
+    class="funding-table"
+    :row-class-name="rowClassName"
+  />
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
-import { ProjectionDataColumn, TableColumn } from '@/types';
+import { ProjectionDataColumn, ProjectionTableRow, TableColumn } from '@/types';
 import { DataTable } from '@/components/app';
 
 @Component({ components: { DataTable } })
@@ -12,6 +19,8 @@ export default class FundingTable extends Vue {
   @Prop({ type: Array, default: () => [] }) readonly rows: { name: string; year: number }[];
 
   @Prop({ type: Boolean, default: true }) readonly loading: boolean;
+
+  private rowClassName = (record: ProjectionTableRow) => record.className;
 
   get dataColumns(): ProjectionDataColumn[] {
     return this.$store.getters['Projections/dataColumns'];
@@ -22,7 +31,7 @@ export default class FundingTable extends Vue {
       {
         title: 'Name',
         key: 'displayName',
-        width: '17rem',
+        width: '18rem',
         dataIndex: 'displayName',
         className: 'display-name',
         fixed: 'left',
@@ -60,5 +69,8 @@ export default class FundingTable extends Vue {
 }
 .funding-table td.display-name {
   @apply font-medium !important;
+}
+.funding-table .inputs-sum {
+  @apply bg-common-300 !important;
 }
 </style>
