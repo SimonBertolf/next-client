@@ -1,7 +1,7 @@
 import { ProjectionTableRow } from '@/types';
 import { ProjectionResolverInterface, ProjectionResolverContextInterface } from '../interfaces';
 
-export class InputResolver implements ProjectionResolverInterface {
+export class InputsResolver implements ProjectionResolverInterface {
   private nextResolver: ProjectionResolverInterface | null = null;
 
   resolve(ctx: ProjectionResolverContextInterface): ProjectionResolverContextInterface {
@@ -16,6 +16,7 @@ export class InputResolver implements ProjectionResolverInterface {
         displayName:
           inputs[index].displayNames.find((name) => name.lang === 'de')?.text || `t('${inputs[index].name}')`,
         name: inputs[index].name,
+        className: `input-${inputs[index].name}`,
         values: inputs[index].values,
       }),
     );

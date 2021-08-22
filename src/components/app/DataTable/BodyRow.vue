@@ -27,7 +27,7 @@ export default class BodyRow extends Vue {
 
 <style scoped>
 .body-row > td {
-  @apply font-primary border-common-200 px-2 py-2 text-black border-b bg-transparent !important;
+  @apply border-common-200 px-2 py-2 text-black border-b bg-transparent !important;
 }
 .body-row:hover > td {
   @apply bg-common-300 !important;

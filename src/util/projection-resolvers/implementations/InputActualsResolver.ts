@@ -20,6 +20,7 @@ export class InputActualsResolver implements ProjectionResolverInterface {
           type: 'inputActual',
           displayName: actual.displayNames.find((name) => name.lang === 'de')?.text || `t('${actual.name}')`,
           name: actual.name,
+          className: `input-actual-${actual.name}`,
           values: actual.values,
         });
       }

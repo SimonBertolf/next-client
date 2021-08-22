@@ -14,7 +14,8 @@ export class SectionActualsResolver implements ProjectionResolverInterface {
         _id: `section-actual-${sectionName}-${actual.name}`,
         type: 'sectionActual',
         displayName: actual.displayNames.find((name) => name.lang === 'de')?.text || `t('${actual.name}')`,
-        name: actual.name,
+        name: `section-actual-${sectionName}-${actual.name}`,
+        className: 'section-actual',
         values: actual.values,
       });
     }
