@@ -20,6 +20,7 @@ export default class ProjectionSectionFunding extends Vue {
     const builder: ProjectionResolverBuilderInterface = new ProjectionResolverBuilder();
     builder.addInputResolver();
     builder.addSectionActualsResolver();
+    builder.addHorizintalSumResolver();
     builder.addResolutionResolver();
     this.resolver = builder.build();
   }

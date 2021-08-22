@@ -24,6 +24,16 @@ export default class IncomeTable extends Vue {
         key: 'displayName',
         width: '17rem',
         dataIndex: 'displayName',
+        className: 'display-name',
+        fixed: 'left',
+      },
+      {
+        title: 'Total',
+        key: 'sum',
+        width: '5rem',
+        dataIndex: 'sum',
+        className: 'horizontal-sum',
+        align: 'right',
         fixed: 'left',
       },
       ...this.dataColumns.map((col) => ({
@@ -44,4 +54,11 @@ export default class IncomeTable extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style>
+.income-table td.horizontal-sum {
+  @apply font-medium !important;
+}
+.income-table td.display-name {
+  @apply font-medium !important;
+}
+</style>

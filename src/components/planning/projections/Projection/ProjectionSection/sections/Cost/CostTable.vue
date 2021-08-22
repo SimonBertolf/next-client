@@ -1,5 +1,5 @@
 <template>
-  <data-table :columns="columns" :data="rows" :loading="loading" :pageSize="99" />
+  <data-table :columns="columns" :data="rows" :loading="loading" :pageSize="99" class="cost-table" />
 </template>
 
 <script lang="ts">
@@ -24,6 +24,16 @@ export default class CostTable extends Vue {
         key: 'displayName',
         width: '17rem',
         dataIndex: 'displayName',
+        className: 'display-name',
+        fixed: 'left',
+      },
+      {
+        title: 'Total',
+        key: 'sum',
+        width: '5rem',
+        dataIndex: 'sum',
+        align: 'right',
+        className: 'horizontal-sum',
         fixed: 'left',
       },
       ...this.dataColumns.map((col) => ({
@@ -44,4 +54,11 @@ export default class CostTable extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style>
+.cost-table td.horizontal-sum {
+  @apply font-medium !important;
+}
+.cost-table td.display-name {
+  @apply font-medium !important;
+}
+</style>

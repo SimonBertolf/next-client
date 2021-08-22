@@ -1,4 +1,5 @@
 import { ProjectionResolverInterface, ProjectionResolverBuilderInterface } from '../interfaces';
+import { HorizontalSumResolver } from './HorizontalSumResolver';
 import { InputActualsResolver } from './InputActualsResolver';
 import { InputResolver } from './InputResolver';
 import { ResolutionResolver } from './ResolutionResolver';
@@ -7,43 +8,41 @@ import { SectionActualsResolver } from './SectionActualsResolver';
 export class ProjectionResolverBuilder implements ProjectionResolverBuilderInterface {
   private resolver: ProjectionResolverInterface;
 
-  addInputResolver(): ProjectionResolverBuilderInterface {
-    const resolver = new InputResolver();
+  private addResolver(resolver: ProjectionResolverInterface): void {
     if (this.resolver) {
       this.resolver.setNext(resolver);
     } else {
       this.resolver = resolver;
     }
+  }
+
+  addInputResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new InputResolver();
+    this.addResolver(resolver);
     return this;
   }
 
   addResolutionResolver(): ProjectionResolverBuilderInterface {
     const resolver = new ResolutionResolver();
-    if (this.resolver) {
-      this.resolver.setNext(resolver);
-    } else {
-      this.resolver = resolver;
-    }
+    this.addResolver(resolver);
     return this;
   }
 
   addInputActualsResolver(): ProjectionResolverBuilderInterface {
     const resolver = new InputActualsResolver();
-    if (this.resolver) {
-      this.resolver.setNext(resolver);
-    } else {
-      this.resolver = resolver;
-    }
+    this.addResolver(resolver);
     return this;
   }
 
   addSectionActualsResolver(): ProjectionResolverBuilderInterface {
     const resolver = new SectionActualsResolver();
-    if (this.resolver) {
-      this.resolver.setNext(resolver);
-    } else {
-      this.resolver = resolver;
-    }
+    this.addResolver(resolver);
+    return this;
+  }
+
+  addHorizintalSumResolver(): ProjectionResolverBuilderInterface {
+    const resolver = new HorizontalSumResolver();
+    this.addResolver(resolver);
     return this;
   }
 
