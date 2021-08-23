@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import { XYChart, ValueAxis, CircleBullet, XYSeries, LabelBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, XYChartAxes, BubbelChartSeries } from '@/types/Chart';
+import type { ChartData, XYChartAxes, BubbleChartSeries } from '@/types/Chart';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -16,7 +16,7 @@ am4core.useTheme(am4themesAnimated);
 export default class BubbleChart extends Vue {
   @Prop({ type: Array, required: true }) readonly chartData: ChartData[];
 
-  @Prop({ type: Array, required: true }) readonly chartSeries: BubbelChartSeries[];
+  @Prop({ type: Array, required: true }) readonly chartSeries: BubbleChartSeries[];
 
   @Prop({ type: Object, required: true }) readonly chartAxes: XYChartAxes;
 

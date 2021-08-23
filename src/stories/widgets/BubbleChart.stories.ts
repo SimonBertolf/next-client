@@ -52,9 +52,11 @@ Example.args = {
   chartAxes: { x: { label: 'X in %', unit: '%' }, y: { label: 'Y in %' } },
   chartSeries: [
     {
+      color: '#0000FF',
+      valueColor: '#FF0000',
       x: { key: 'x' },
       y: { key: 'y' },
-      z: { key: 'z', showValue: true, valueFillColor: 'secondary-100', valueTextColor: 'white' },
+      z: { key: 'z', showValue: true },
     },
   ],
 };

@@ -9,7 +9,7 @@
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { WidgetData, Filter } from '@/types';
-import { XYChartAxes, XYChartSeries } from '@/types/Chart';
+import { XYChartAxes, BubbleChartSeries } from '@/types/Chart';
 import BubbleChart from '@/components/data-visualization/BubbleChart/BubbleChart.vue';
 import { LineChart, WidgetTitle, WidgetText } from '@/components/data-visualization';
 
@@ -28,10 +28,9 @@ export default class WidgetA extends Vue {
   chartAxes: XYChartAxes = {
     x: { label: 'Bruttoertrag' },
     y: { label: 'Eigenkapitalrenditte %', unit: '%' },
-    z: { label: 'Segment', unit: '' },
   };
 
-  chartSeries: XYChartSeries[] = [
+  chartSeries: BubbleChartSeries[] = [
     {
       x: { key: 'x' },
       y: { key: 'y' },

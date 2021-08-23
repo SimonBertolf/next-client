@@ -13,7 +13,7 @@ export interface LineChartSeries extends XYChartSeries {
   showBullet?: boolean; // default flse
 }
 
-export interface BubbelChartSeries extends XYChartSeries {
+export interface BubbleChartSeries extends XYChartSeries {
   z: { key: string; showValue?: boolean; unit?: string };
   valueColor?: string;
 }
