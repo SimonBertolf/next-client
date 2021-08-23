@@ -3991,7 +3991,7 @@ exports[`Storyshots widget/BubbleChart Example 1`] = `
 exports[`Storyshots widget/WidgetText Example Center 1`] = `
 <div>
   <p
-    class="text-sm truncate text-center"
+    class="text-sm truncate mb-4 text-center"
   >
     Text under the widget blablabal
   </p>
@@ -4001,7 +4001,7 @@ exports[`Storyshots widget/WidgetText Example Center 1`] = `
 exports[`Storyshots widget/WidgetText Example Left 1`] = `
 <div>
   <p
-    class="text-sm truncate text-left"
+    class="text-sm truncate mb-4 text-left"
   >
     Text under the widget blablabal
   </p>
@@ -4011,7 +4011,7 @@ exports[`Storyshots widget/WidgetText Example Left 1`] = `
 exports[`Storyshots widget/WidgetText Example Right 1`] = `
 <div>
   <p
-    class="text-sm truncate text-right"
+    class="text-sm truncate mb-4 text-right"
   >
     Text under the widget blablabal
   </p>
