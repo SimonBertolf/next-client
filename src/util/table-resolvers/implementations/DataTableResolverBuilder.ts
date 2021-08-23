@@ -3,6 +3,7 @@ import { HeaderStyleResolver } from './HeaderStyleResolver';
 import { RowActionResolver } from './RowActionResolver';
 import { RowSelectionResolver } from './RowSelectionResolver';
 import { TableSorterResolver } from './TableSorterResolver';
+import { EditableCellResolver } from './EditableCellResolver';
 
 export class DataTableResolverBuilder implements TableResolverBuilder {
   private resolver: TableResolver = new HeaderStyleResolver();
@@ -23,6 +24,13 @@ export class DataTableResolverBuilder implements TableResolverBuilder {
 
   addTableSorter(): TableResolverBuilder {
     const resolver = new TableSorterResolver();
+    resolver.setNext(this.resolver);
+    this.resolver = resolver;
+    return this;
+  }
+
+  addEditableCells(): TableResolverBuilder {
+    const resolver = new EditableCellResolver();
     resolver.setNext(this.resolver);
     this.resolver = resolver;
     return this;

@@ -1,9 +1,10 @@
 <template>
-  <Card :autoSize="true" :hasTitle="false" :padding="true" class="mt-4">
+  <Card v-if="projectionMeta" :autoSize="true" :hasTitle="false" :padding="true" class="mt-4">
     <h2 class="font-primary text-2xl mb-2">{{ title }}</h2>
     <p>{{ name }}</p>
     <p>from: {{ from | dateMonth }} – to: {{ to | dateMonth }}</p>
     <p>years: {{ years }}, quarters: {{ quarters }}, months: {{ months }}</p>
+    <resolution-select class="mt-4" />
     <projection-sections class="mt-4" />
   </Card>
 </template>
@@ -11,27 +12,28 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { Card } from '@/components/app';
-import { Projection as ProjectionModel } from '@/models';
+import { Projection as ProjectionModel, Resolution } from '@/models';
 import ProjectionSections from './ProjectionSections.vue';
+import ResolutionSelect from './ResolutionSelect.vue';
 
-@Component({ components: { Card, ProjectionSections } })
+@Component({ components: { Card, ProjectionSections, ResolutionSelect } })
 export default class Projection extends Vue {
   title = 'Cashflow Projection';
 
-  get projection(): ProjectionModel {
-    return this.$store.state.Projections.projection;
+  get projectionMeta(): ProjectionModel {
+    return this.$store.state.Projections.projectionMeta;
   }
 
   get name(): string | undefined {
-    return this.projection?.name;
+    return this.projectionMeta?.name;
   }
 
   get from(): Date | undefined {
-    return this.projection?.from;
+    return this.projectionMeta?.from;
   }
 
   get to(): Date | undefined {
-    return this.projection?.to;
+    return this.projectionMeta?.to;
   }
 
   get years(): number {
@@ -44,6 +46,10 @@ export default class Projection extends Vue {
 
   get months(): number {
     return this.$store.getters['Projections/months'];
+  }
+
+  get resolution(): Resolution {
+    return this.$store.state.Projections.projectionMeta?.resolution;
   }
 
   @Prop(String) readonly projectionId: string;

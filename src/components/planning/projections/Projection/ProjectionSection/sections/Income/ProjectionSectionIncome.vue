@@ -3,7 +3,10 @@
 </template>
 
 <script lang="ts">
-import type { ProjectionSection } from '@/models';
+import type { ProjectionActual, ProjectionSection, Resolution } from '@/models';
+import type { ProjectionTableRow } from '@/types';
+import { ProjectionResolverBuilder, ProjectionResolverInterface, ProjectionResolverBuilderInterface } from '@/util';
+import { cloneDeep } from 'lodash';
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import IncomeTable from './IncomeTable.vue';
 
@@ -11,12 +14,41 @@ import IncomeTable from './IncomeTable.vue';
 export default class ProjectionSectionIncome extends Vue {
   @Prop({ type: Object, required: true }) readonly section!: ProjectionSection;
 
-  get rows(): { name: string; year: number }[] {
-    return this.section.inputs.map((item) => ({
-      name: item.displayNames.find((name) => name.lang === 'de')?.text || `t('${item.name}')`,
-      year: 999,
-      _id: item._id,
-    }));
+  private resolver: ProjectionResolverInterface;
+
+  created(): void {
+    const builder: ProjectionResolverBuilderInterface = new ProjectionResolverBuilder();
+    builder.addInputsResolver();
+    builder.addInputsSumResolver();
+    builder.addSectionActualsResolver();
+    builder.addHorizintalSumResolver();
+    builder.addAbsoluteDeltaResolver();
+    builder.addResolutionResolver();
+    builder.addRelativeDeltaResolver();
+    this.resolver = builder.build();
+  }
+
+  get columnDates(): Date[] {
+    return this.$store.getters['Projections/columnDates'];
+  }
+
+  get resolution(): Resolution {
+    return this.$store.state.Projections.projectionMeta?.resolution || 'monthly';
+  }
+
+  get actuals(): ProjectionActual[] {
+    return this.$store.state.Projections.actuals;
+  }
+
+  get rows(): ProjectionTableRow[] {
+    const { rows } = this.resolver.resolve({
+      columnDates: this.columnDates,
+      resolution: this.resolution,
+      rows: [],
+      section: cloneDeep(this.section),
+      actuals: this.actuals,
+    });
+    return rows;
   }
 }
 </script>
