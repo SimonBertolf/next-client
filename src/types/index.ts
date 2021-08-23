@@ -16,3 +16,4 @@ export * from './SubNavItem';
 export * from './Chart';
 export * from './Pagination';
 export * from './TableTypes';
+export * from './Projection';

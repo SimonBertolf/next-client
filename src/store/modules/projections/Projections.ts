@@ -1,28 +1,50 @@
 import { Module, VuexModule, Action, Mutation } from 'vuex-module-decorators';
-import type { Projection } from '@/models';
-import { mockProtections } from './ProjectionsMock';
-
-type Resolution = 'yearly' | 'quarterly' | 'monthly';
+import { cloneDeep } from 'lodash';
+import type {
+  Projection,
+  ProjectionActual,
+  ProjectionMeta,
+  ProjectionMilestone,
+  ProjectionSection,
+  Resolution,
+} from '@/models';
+import { ProjectionDataColumn } from '@/types';
+import { mockActuals, mockProtections } from './ProjectionsMock';
 
 @Module({ namespaced: true })
 export default class Projections extends VuexModule {
   public projections: Projection[] = mockProtections;
 
-  public projection: Projection | null = null;
+  public projectionMeta: ProjectionMeta | null = null;
+
+  public sections: ProjectionSection[] = [];
+
+  public actuals: ProjectionActual[] = [];
+
+  public milestones: ProjectionMilestone[] = [];
 
   public loading = {
     projections: false,
     projection: false,
+    actuals: false,
     newProjection: false,
-    pdf: false,
   };
 
-  public resolution: Resolution = 'yearly';
+  get dataColumns(): ProjectionDataColumn[] {
+    const dataColumns: ProjectionDataColumn[] = [...new Array(this.dataColumnsLength)].map((item, index) => {
+      const column: ProjectionDataColumn = {
+        name: this.columnTitles[index],
+        key: this.columnDates[index].toISOString(),
+      };
+      return column;
+    });
+    return dataColumns;
+  }
 
   get months(): number {
-    if (this.projection) {
-      const from = new Date(this.projection.from);
-      const to = new Date(this.projection.to);
+    if (this.projectionMeta) {
+      const from = new Date(this.projectionMeta.from);
+      const to = new Date(this.projectionMeta.to);
       if (from > to) throw new Error('Start date (from) must be before end date (to)!');
       return 12 * (to.getFullYear() - from.getFullYear()) - from.getMonth() + to.getMonth() + 1;
     }
@@ -30,9 +52,9 @@ export default class Projections extends VuexModule {
   }
 
   get quarters(): number {
-    if (this.projection) {
-      const from = new Date(this.projection.from);
-      const to = new Date(this.projection.to);
+    if (this.projectionMeta) {
+      const from = new Date(this.projectionMeta.from);
+      const to = new Date(this.projectionMeta.to);
       if (from > to) throw new Error('Start date (from) must be before end date (to)!');
       return (
         4 * (to.getFullYear() - from.getFullYear() - 1) +
@@ -44,13 +66,80 @@ export default class Projections extends VuexModule {
   }
 
   get years(): number {
-    if (this.projection) {
-      const from = new Date(this.projection.from);
-      const to = new Date(this.projection.to);
+    if (this.projectionMeta) {
+      const from = new Date(this.projectionMeta.from);
+      const to = new Date(this.projectionMeta.to);
       if (from > to) throw new Error('Start date (from) must be before end date (to)!');
       return to.getFullYear() - from.getFullYear() + 1;
     }
     return 0;
+  }
+
+  get dataColumnsLength(): number {
+    if (this.projectionMeta) {
+      switch (this.projectionMeta.resolution) {
+        case 'yearly':
+          return this.years;
+        case 'quarterly':
+          return this.quarters;
+        case 'monthly':
+          return this.months;
+        default:
+          throw new Error(`the resolution ${this.projectionMeta.resolution} is not supported`);
+      }
+    }
+    return 0;
+  }
+
+  get columnDates(): Date[] {
+    if (this.projectionMeta) {
+      const { from, resolution } = this.projectionMeta;
+      const titles = [...new Array(this.dataColumnsLength)];
+
+      if (resolution === 'monthly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setMonth(columnDate.getMonth() + index);
+          return columnDate;
+        });
+      }
+
+      if (resolution === 'quarterly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setMonth(columnDate.getMonth() + index * 3);
+          return columnDate;
+        });
+      }
+
+      if (resolution === 'yearly') {
+        return titles.map((item, index) => {
+          const columnDate = new Date(from);
+          columnDate.setFullYear(columnDate.getFullYear() + index);
+          return columnDate;
+        });
+      }
+    }
+    return [];
+  }
+
+  get columnTitles(): string[] {
+    if (this.projectionMeta) {
+      const { resolution } = this.projectionMeta;
+      if (resolution === 'monthly') {
+        return this.columnDates.map((date) => date.toLocaleDateString('de-CH', { year: '2-digit', month: 'short' }));
+      }
+      if (resolution === 'quarterly') {
+        return this.columnDates.map((date) => {
+          const quarter = Math.ceil((date.getMonth() + 1) / 3);
+          return `Q${quarter} ${date.toLocaleDateString('de-CH', { year: '2-digit' })}`;
+        });
+      }
+      if (resolution === 'yearly') {
+        return this.columnDates.map((date) => date.toLocaleDateString('de-CH', { year: 'numeric' }));
+      }
+    }
+    return [];
   }
 
   @Mutation
@@ -59,21 +148,48 @@ export default class Projections extends VuexModule {
   }
 
   @Mutation
-  setProjection(projection: Projection | null): void {
-    this.projection = projection;
+  setSections(sections: ProjectionSection[]): void {
+    this.sections = sections;
   }
 
   @Mutation
+  setActuals(actuals: ProjectionActual[]): void {
+    this.actuals = actuals;
+  }
+
+  @Mutation
+  setMilestones(milestones: ProjectionMilestone[]): void {
+    this.milestones = milestones;
+  }
+
+  @Mutation
+  setProjectionMeta(meta: ProjectionMeta | null): void {
+    this.projectionMeta = meta;
+  }
+
+  @Action
   setResolution(resolution: Resolution): void {
-    this.resolution = resolution;
+    const newProjectionMeta = { ...this.projectionMeta };
+    newProjectionMeta.resolution = resolution;
+    this.context.commit('setProjectionMeta', newProjectionMeta);
+  }
+
+  @Action
+  setProjection(projection: Projection): void {
+    const { sections, milestones, ...rest } = projection;
+    this.context.commit('setSections', cloneDeep(sections));
+    this.context.commit('setMilestones', cloneDeep(milestones));
+    this.context.commit('setProjectionMeta', { ...rest });
   }
 
   @Action
   async loadProjection({ _id }: { _id: string }): Promise<void> {
     try {
       this.context.commit('setLoading', { key: 'projection', loading: true });
+      // TODO: replace mock
       const projection = this.projections.find((item) => item._id === _id) || null;
-      this.context.commit('setProjection', projection);
+      if (projection === undefined) throw new Error(`Could not find projection with _id ${_id}`);
+      this.context.dispatch('setProjection', projection);
       this.context.commit('setLoading', { key: 'projection', loading: false });
     } catch (error) {
       this.context.commit('Errors/setError', error, { root: true });
@@ -81,7 +197,23 @@ export default class Projections extends VuexModule {
   }
 
   @Action
+  async loadActuals(): Promise<void> {
+    try {
+      this.context.commit('setLoading', { key: 'actuals', loading: true });
+      // TODO: replace mock
+      const actuals = mockActuals;
+      this.context.commit('setActuals', actuals);
+      this.context.commit('setLoading', { key: 'actuals', loading: false });
+    } catch (error) {
+      this.context.commit('Errors/setError', error, { root: true });
+    }
+  }
+
+  @Action
   flushProjection(): void {
-    this.context.commit('setProjection', null);
+    this.context.commit('setSections', []);
+    this.context.commit('setMilestones', []);
+    this.context.commit('setActuals', []);
+    this.context.commit('setProjectionMeta', null);
   }
 }
