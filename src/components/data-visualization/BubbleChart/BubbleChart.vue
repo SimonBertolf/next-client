@@ -75,7 +75,7 @@ export default class BubbleChart extends Vue {
         const unit = chartSeries.z.unit || '';
         labelBullet.label.text = `{value}${unit}`;
       }
-      labelBullet.label.fill = am4core.color(chartSeries.color || '#FFFFFF');
+      labelBullet.label.fill = am4core.color(chartSeries.valueColor || '#FFFFFF');
       labelBullet.fontSize = 9;
 
       series.heatRules.push({

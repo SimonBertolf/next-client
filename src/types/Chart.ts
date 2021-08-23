@@ -15,7 +15,7 @@ export interface LineChartSeries extends XYChartSeries {
 
 export interface BubbelChartSeries extends XYChartSeries {
   z: { key: string; showValue?: boolean; unit?: string };
-  textColor?: string;
+  valueColor?: string;
 }
 
 export interface XYChartAxes {
