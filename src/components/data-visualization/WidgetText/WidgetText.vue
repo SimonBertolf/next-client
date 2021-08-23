@@ -12,7 +12,7 @@ export default class WidgetText extends Vue {
   @Prop({ default: 'left', type: String }) readonly align: 'left' | 'right' | 'center';
 
   get classNames(): string {
-    return `text-sm truncate text-${this.align}`;
+    return `text-sm truncate mb-4 text-${this.align}`;
   }
 }
 </script>
