@@ -7,7 +7,7 @@ import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import { cloneDeep, isEqual } from 'lodash';
 import * as am4core from '@amcharts/amcharts4/core';
 import { XYChart, ValueAxis, LineSeries, CircleBullet } from '@amcharts/amcharts4/charts';
-import type { ChartData, LineChartAxes, LineChartSeries } from '@/types';
+import type { ChartData, XYChartAxes, LineChartSeries } from '@/types';
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated';
 
 am4core.useTheme(am4themesAnimated);
@@ -18,7 +18,7 @@ export default class LineChart extends Vue {
 
   @Prop({ type: Array, default: () => [] }) readonly chartSeries: LineChartSeries[];
 
-  @Prop({ type: Object, required: true }) readonly chartAxes!: LineChartAxes;
+  @Prop({ type: Object, required: true }) readonly chartAxes!: XYChartAxes;
 
   @Prop({ type: String, default: '#3b82f6' }) readonly color: string;
 
